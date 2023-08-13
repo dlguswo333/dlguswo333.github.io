@@ -7,6 +7,9 @@ module.exports = {
   ignorePatterns: ['*.js', '*.cjs'],
   rules: {
     'indent': ['error', 2],
+    // Unlike what the docs says, 'indent' does not apply to .svelte files,
+    // so added 'svelte/indent' rule.
+    'svelte/indent': ['error', {indent: 2}],
     'quotes': ['error', 'single'],
     'semi': ['error', 'always'],
     'space-infix-ops': 'error',
