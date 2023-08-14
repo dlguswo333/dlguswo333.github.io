@@ -2,7 +2,7 @@
   import {name, email, githubUserName} from '$lib';
   const profileImageSrc = `https://github.com/${githubUserName}.png`;
 </script>
-<aside class="max-w-[300px] hidden md:!flex mt-10 flex-col justify-center items-center p-5">
+<aside class="max-w-[300px] hidden mt-10 self-start md:!flex flex-col justify-center items-center p-5">
   <img class="mb-5 rounded-xl border-2 border-slate-200" src={profileImageSrc} alt="profile" width="110" height="110">
   <ul class="[&>li]:p-0.5 [&_label]:inline-flex [&_label]:items-center [&>li:not(:last-child)]:border-b [&>li:not(:last-child)]:border-b-gray-300 [&>li:not(:last-child)]:pb-1 [&>li:not(:first-child)]:pt-1">
     <li class="flex justify-center">
