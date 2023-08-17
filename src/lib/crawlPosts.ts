@@ -10,7 +10,8 @@ type Frontmatter = {
 }
 
 const summaryLength = 100;
-const postBasePath = './markdown/posts';
+const postBasePath = './markdown';
+export const crawlResultFilePath = './posts.json';
 const regex = {
   wholeNumber: /^\d+$/,
   markdownExtension: /\.md$/i,
