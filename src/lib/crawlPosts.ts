@@ -17,20 +17,20 @@ const regex = {
   markdownExtension: /\.md$/i,
 } as const;
 
-export const compareNumInString = (a: string, b: string) => (
-  a.localeCompare(b)
+export const compareStringDesc = (a: string, b: string) => (
+  b.localeCompare(a)
 );
 
 export const getPostPaths = async () => {
   const postPaths = [];
   const yearFolders = (await fs.readdir(postBasePath, {recursive: true, withFileTypes: true}))
     .filter(entry => entry.isDirectory() && regex.wholeNumber.test(entry.name))
-    .sort((a, b) => compareNumInString(a.name, b.name));
+    .sort((a, b) => compareStringDesc(a.name, b.name));
   for (const yearFolder of yearFolders) {
     const yearPath = path.join(postBasePath, yearFolder.name);
     const postFiles = (await fs.readdir(yearPath, {recursive: false, withFileTypes: true}))
       .filter(entry => entry.isFile() && regex.markdownExtension.test(entry.name))
-      .sort((a, b) => compareNumInString(a.name, b.name));
+      .sort((a, b) => compareStringDesc(a.name, b.name));
     for (const postFile of postFiles) {
       const postPath = path.join(yearPath, postFile.name);
       postPaths.push(postPath);
