@@ -3,7 +3,7 @@ layout: post
 toc: true
 math: false
 title: "Vite: How to Transform HTML as You Like"
-categories: ["Programming"]
+category: ["Programming"]
 tags: [web, vite, javascript]
 author:
   - 이현재

@@ -3,7 +3,7 @@ layout: post
 toc: false
 editedDate: 2022-09-04
 title: "Visual Studio Code Branch Protection"
-categories: ["Programming"]
+category: ["Programming"]
 tags: [vscode, git]
 author:
   - 이현재

@@ -3,7 +3,7 @@ layout: post
 toc: true
 editedDate: 2021-12-05
 title: "Run Horovod across Multiple Machines inside Docker Container"
-categories: ["Programming"]
+category: ["Programming"]
 tags: [Horovod, Docker]
 author:
   - 이현재
@@ -25,7 +25,7 @@ you cannot go back to the initial environment.
 
 This is why you would need Docker, since they can be isolated
 from outside of the container,
-and even if something goes wrong, 
+and even if something goes wrong,
 you can just remove the container and install again.<br>
 Moreover, installation does not take too long!
 <br>
@@ -87,7 +87,7 @@ so that user input is not needed while communicating on ssh.
 Briefly, generate ssh keys by ``ssh-keygen -t rsa`` and copy the resulted ``/(id)/.ssh/id_rsa.pub`` into the other machines
 with the name ``/(id)/.ssh/authorized_keys``.<br>
 **Note** that you might want to concatenate the files rather then copy the files because it could delete the
-contents. 
+contents.
 <br>
 
 Now all the containers share their public keys. Now we need to enable ssh server service.<br>

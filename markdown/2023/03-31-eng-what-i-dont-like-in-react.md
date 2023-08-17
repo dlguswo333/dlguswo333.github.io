@@ -3,7 +3,7 @@ layout: post
 toc: true
 math: false
 title: "What I don't like in React"
-categories: ["Programming"]
+category: ["Programming"]
 tags: [web, react, javascript]
 author:
   - 이현재

@@ -3,7 +3,7 @@ layout: post
 toc: true
 editedDate: 2022-12-19
 title: "npm에 대하여"
-categories: ["Programming"]
+category: ["Programming"]
 tags: [npm, javascript]
 author:
   - 이현재

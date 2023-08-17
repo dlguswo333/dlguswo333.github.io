@@ -3,7 +3,7 @@ layout: post
 toc: false
 editedDate: 2022-09-22
 title: "Typescript satisfies keyword"
-categories: ["Programming"]
+category: ["Programming"]
 tags: [typescript, javascript]
 author:
   - 이현재

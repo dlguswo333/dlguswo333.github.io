@@ -3,7 +3,7 @@ layout: post
 toc: true
 editedDate: 2021-12-25
 title: "k Means Clustering"
-categories: ["Computer Science"]
+category: ["Computer Science"]
 tags: [Algorithms, Python]
 author:
   - 이현재
@@ -99,7 +99,7 @@ The assert statement ensures k is equal to the number of vectors or larger.
 It does not necessarily have to satisfy the condition, but in that case
 there will be no meaning.
 
-As we discussed eariler, we need to pull some $$k$$ vectors. 
+As we discussed eariler, we need to pull some $$k$$ vectors.
 Randomly select indices and pull the vectors to make them centroids.
 <br>
 <br>
@@ -153,14 +153,14 @@ we finally converge! Exit the loop, and cluster data with
 the converged centroids and return. Else, re-run the process
 until converge is made.
 
-<!-- 
+<!--
 {% highlight python linenos %}
 {% endhighlight %}
  -->
 
 # 3. Hierarchical k Means Clustering
 k means clustering algorithm is great, but it has serious
-problem: **the computational time**. 
+problem: **the computational time**.
 Let us say the number of vectors is *N*.
 Then the time complexity of the loop is:
 ![time-complexity.png](/img/2021-12-18-k-means-clustering/time-complexity.png)
