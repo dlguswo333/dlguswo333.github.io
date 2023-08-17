@@ -1,7 +1,7 @@
 ---
 layout: post
 toc: false
-math: false
+editedDate: 2022-03-03
 title: "Windows Path In WSL"
 categories: ["Programming"]
 tags: [windows, wsl]

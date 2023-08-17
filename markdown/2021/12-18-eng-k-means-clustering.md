@@ -1,7 +1,7 @@
 ---
 layout: post
 toc: true
-math: true
+editedDate: 2021-12-25
 title: "k Means Clustering"
 categories: ["Computer Science"]
 tags: [Algorithms, Python]

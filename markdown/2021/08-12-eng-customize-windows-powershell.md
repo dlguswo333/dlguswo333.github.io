@@ -1,6 +1,7 @@
 ---
 layout: post
 toc: true
+editedDate: 2022-06-18
 title: "Customize Windows Powershell"
 categories: ["Programming"]
 tags: [Windows, Powershell, Git]

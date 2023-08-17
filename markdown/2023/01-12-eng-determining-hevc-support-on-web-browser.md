@@ -1,6 +1,7 @@
 ---
 layout: post
 toc: true
+editedDate: 2023-04-04
 title: "Determining HEVC (H.265) Support On Web Browser"
 categories: ["Programming"]
 tags: [web, javascript]

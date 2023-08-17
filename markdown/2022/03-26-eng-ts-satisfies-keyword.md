@@ -1,7 +1,7 @@
 ---
 layout: post
 toc: false
-math: false
+editedDate: 2022-09-22
 title: "Typescript satisfies keyword"
 categories: ["Programming"]
 tags: [typescript, javascript]

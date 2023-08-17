@@ -1,6 +1,7 @@
 ---
 layout: post
 toc: true
+editedDate: 2021-12-05
 title: "Run Horovod across Multiple Machines inside Docker Container"
 categories: ["Programming"]
 tags: [Horovod, Docker]

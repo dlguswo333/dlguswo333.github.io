@@ -1,6 +1,7 @@
 ---
 layout: post
 toc: false
+editedDate: 2022-09-04
 title: "Visual Studio Code Branch Protection"
 categories: ["Programming"]
 tags: [vscode, git]

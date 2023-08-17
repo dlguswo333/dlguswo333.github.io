@@ -1,6 +1,7 @@
 ---
 layout: post
 toc: false
+editedDate: 2022-09-04
 title: "Simple Introduction to Vanilla ES Module"
 categories: ["Programming"]
 tags: [javascript]

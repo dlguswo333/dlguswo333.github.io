@@ -1,7 +1,7 @@
 ---
 layout: post
 toc: true
-math: false
+editedDate: 2022-12-19
 title: "npm에 대하여"
 categories: ["Programming"]
 tags: [npm, javascript]
