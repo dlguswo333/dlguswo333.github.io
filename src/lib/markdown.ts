@@ -45,7 +45,7 @@ export const getSummaryFromMarkdown = async (markdown: string, targetLength: num
     .use(remarkRehype)
     .use(rehypeStringify)
     .process(markdown);
-  return summary;
+  return summary as string | null;
 };
 
 /**

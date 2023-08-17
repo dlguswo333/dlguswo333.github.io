@@ -4,9 +4,17 @@ import {getFrontmatterFromMarkdown, getSummaryFromMarkdown} from './markdown';
 
 type Frontmatter = {
   title: string;
-  toc: boolean;
-  category: string;
+  toc: boolean | null;
+  editedDate: string | null;
+  category: string | null;
   tags: string[];
+}
+
+type PostMetadata = Frontmatter & {
+  summary: string | null;
+  lang: string;
+  date: string;
+  id: string;
 }
 
 const summaryLength = 100;
@@ -15,6 +23,7 @@ export const crawlResultFilePath = './posts.json';
 const regex = {
   wholeNumber: /^\d+$/,
   markdownExtension: /\.md$/i,
+  postFileNameFormat: /^(\d+)-(\d+)-([a-z]+)-([^.]+)\.md$/,
 } as const;
 
 export const compareStringDesc = (a: string, b: string) => (
@@ -39,11 +48,49 @@ export const getPostPaths = async () => {
   return postPaths;
 };
 
-export const crawlPost = async (postPath: string) => {
+/**
+ * Get date, language and post ID from the given post path.
+ */
+export const getDateLangIdFromPostPath = (postPath: string) => {
+  const paths = postPath.split(path.sep);
+  const year = paths[paths.length - 2];
+  const regexResult = regex.postFileNameFormat.exec(paths[paths.length - 1]);
+  if (!regexResult) {
+    throw new Error(`${postPath} does not folllow the post file name format!`);
+  }
+  const [, month, day, lang, postId] = [...regexResult];
+  const date = `${year}-${month}-${day}`;
+  return {
+    date, lang, id: postId,
+  };
+};
+
+export const crawlPost = async (postPath: string): Promise<PostMetadata> => {
   const postContent = await fs.readFile(postPath, {encoding: 'utf-8'});
   const frontmatter = await getFrontmatterFromMarkdown<Frontmatter>(postContent);
   const summary = await getSummaryFromMarkdown(postContent, summaryLength);
-  return {...frontmatter, summary};
+  const extraMetadata = getDateLangIdFromPostPath(postPath);
+  if (!frontmatter) {
+    throw new Error(`${postPath}'s frontmatter is empty!`);
+  }
+  if (!frontmatter.title) {
+    throw new Error(`${postPath}'s title is empty!`);
+  }
+  if (!frontmatter.toc) {
+    frontmatter.toc = null;
+  }
+  if (!frontmatter.editedDate) {
+    frontmatter.editedDate = null;
+  }
+  if (!frontmatter.category) {
+    frontmatter.category = null;
+  }
+  if (!frontmatter.tags) {
+    throw new Error(`${postPath}'s tag is empty! Specify '[]' if the post does not have any tag.`);
+  }
+  return {
+    ...frontmatter, ...extraMetadata, summary,
+  };
 };
 
 const crawlPosts = async () => {
