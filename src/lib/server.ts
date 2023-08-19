@@ -11,7 +11,8 @@ export const getCurrentPaginationIndex = (url: URL) => {
   }
   const paginationNumber = Number([...result][1]);
   if (Number.isNaN(paginationNumber) ||
-    Number.isInteger(paginationNumber)
+    !Number.isInteger(paginationNumber) ||
+    paginationNumber <= 0
   ) {
     throw error(404);
   }
