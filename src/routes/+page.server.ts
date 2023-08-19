@@ -1,10 +1,9 @@
 import {paginationSize} from '$lib';
 import crawlPosts from '$lib/crawlPosts';
-import {getCurrentPaginationIndex} from '$lib/server';
 
-export const load = async ({url}) => {
+export const load = async () => {
   const posts = await crawlPosts();
-  const curIndex = getCurrentPaginationIndex(url);
+  const curIndex = 1;
   const start = (curIndex - 1) * paginationSize;
   const end = curIndex * paginationSize;
   const paginatedPosts = posts.slice(start, end);
