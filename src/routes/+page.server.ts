@@ -1,7 +1,6 @@
+import {paginationSize} from '$lib';
 import crawlPosts from '$lib/crawlPosts';
 import {getCurrentPaginationIndex} from '$lib/server';
-
-const paginationSize = 10;
 
 export const load = async ({url}) => {
   const posts = await crawlPosts();
