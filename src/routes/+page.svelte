@@ -1,5 +1,4 @@
 <script lang="ts">
-  import '../app.css';
   import Profile from './Profile.svelte';
   import PostList from '$lib/PostList.svelte';
 
