@@ -8,7 +8,7 @@
   class={'flex flex-col border-2 rounded-md border-gray-30 transition px-4 py-2 hover:border-teal-400 hover:bg-teal-50'}>
   <div class="flex flex-row items-center justify-between mb-1">
     <span>
-      <a href={`/post/${post.date.split('-')[0]}/${post.lang}/${post.id}`} class="text-cyan-400 visited:text-blue-600">
+      <a href={`/post/${post.date.split('-')[0]}/${post.id}`} class="text-cyan-400 visited:text-blue-600">
         <h1 class="inline-block font-bold text-lg mr-2 underline">{post.title}</h1>
       </a>
     </span>

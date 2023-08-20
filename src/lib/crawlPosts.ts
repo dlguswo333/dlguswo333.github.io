@@ -1,6 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {getFrontmatterFromMarkdown, getSummaryFromMarkdown} from './markdown';
+import {postBasePath} from '$lib';
 
 type Frontmatter = {
   title: string;
@@ -22,12 +23,11 @@ type CachedPostMetadata = PostMetadata & {
 }
 
 const summaryLength = 100;
-const postBasePath = './markdown';
 export const crawlResultFilePath = './.posts.json';
 const regex = {
   wholeNumber: /^\d+$/,
   markdownExtension: /\.md$/i,
-  postFileNameFormat: /^(\d+)-(\d+)-([a-z]+)-([^.]+)\.md$/,
+  postFileNameFormat: /^((\d+)-(\d+)-([a-z]+)-([^.]+))\.md$/,
 } as const;
 
 export const compareStringDesc = (a: string, b: string) => (
@@ -71,10 +71,10 @@ export const getDateLangIdFromPostPath = (postPath: string) => {
   if (!regexResult) {
     throw new Error(`${postPath} does not folllow the post file name format!`);
   }
-  const [, month, day, lang, postId] = [...regexResult];
+  const [, fileName, month, day, lang] = [...regexResult];
   const date = `${year}-${month}-${day}`;
   return {
-    date, lang, id: postId,
+    date, lang, id: fileName,
   };
 };
 
