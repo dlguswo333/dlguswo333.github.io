@@ -17,9 +17,13 @@ type PostMetadata = Frontmatter & {
   id: string;
 }
 
+type CachedPostMetadata = PostMetadata & {
+  crawledTimestamp: number;
+}
+
 const summaryLength = 100;
 const postBasePath = './markdown';
-export const crawlResultFilePath = './posts.json';
+export const crawlResultFilePath = './.posts.json';
 const regex = {
   wholeNumber: /^\d+$/,
   markdownExtension: /\.md$/i,
@@ -29,6 +33,15 @@ const regex = {
 export const compareStringDesc = (a: string, b: string) => (
   b.localeCompare(a)
 );
+
+const fileExists = async (filePath: string) => {
+  try {
+    await fs.stat(filePath);
+    return true;
+  } catch {
+    return false;
+  }
+};
 
 export const getPostPaths = async () => {
   const postPaths = [];
@@ -93,12 +106,26 @@ export const crawlPost = async (postPath: string): Promise<PostMetadata> => {
   };
 };
 
-const crawlPosts = async () => {
+const crawlPosts = async (): Promise<PostMetadata[]> => {
+  let cachedPosts: {[postPath: string]: CachedPostMetadata} = {};
+  if (await fileExists(crawlResultFilePath)) {
+    const cacheFileContent = await fs.readFile(crawlResultFilePath, {encoding: 'utf-8'});
+    cachedPosts = JSON.parse(cacheFileContent) as {[k: string]: CachedPostMetadata};
+  }
   const posts = [];
   const postPaths = await getPostPaths();
   for (const postPath of postPaths) {
-    posts.push(await crawlPost(postPath));
+    const fileStat = await fs.stat(postPath);
+    if (cachedPosts[postPath]?.crawledTimestamp >= fileStat.mtimeMs) {
+      const {crawledTimestamp: _, ...clonedPost} = {...cachedPosts[postPath]};
+      posts.push(clonedPost);
+      continue;
+    }
+    const crawledResult = await crawlPost(postPath);
+    posts.push(crawledResult);
+    cachedPosts[postPath] = {...crawledResult, crawledTimestamp: fileStat.mtimeMs};
   }
+  await fs.writeFile(crawlResultFilePath, JSON.stringify(cachedPosts));
   return posts;
 };
 

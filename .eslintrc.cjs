@@ -33,6 +33,10 @@ module.exports = {
         arrow: {before: true, after: true}
       }
     }],
+    '@typescript-eslint/no-unused-vars': ['error', {
+      'varsIgnorePattern': '^_',
+      'argsIgnorePattern': '^_',
+    }],
   },
   overrides: [
     {
