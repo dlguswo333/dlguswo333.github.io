@@ -107,7 +107,8 @@ export const crawlPost = async (postPath: string): Promise<PostMetadata> => {
 };
 
 const crawlPosts = async (): Promise<PostMetadata[]> => {
-  let cachedPosts: {[postPath: string]: CachedPostMetadata} = {};
+  let cachedPosts: { [postPath: string]: CachedPostMetadata } = {};
+  let rewriteCacheFile = false;
   if (await fileExists(crawlResultFilePath)) {
     const cacheFileContent = await fs.readFile(crawlResultFilePath, {encoding: 'utf-8'});
     cachedPosts = JSON.parse(cacheFileContent) as {[k: string]: CachedPostMetadata};
@@ -121,11 +122,14 @@ const crawlPosts = async (): Promise<PostMetadata[]> => {
       posts.push(clonedPost);
       continue;
     }
+    rewriteCacheFile = true;
     const crawledResult = await crawlPost(postPath);
     posts.push(crawledResult);
     cachedPosts[postPath] = {...crawledResult, crawledTimestamp: fileStat.mtimeMs};
   }
-  await fs.writeFile(crawlResultFilePath, JSON.stringify(cachedPosts));
+  if (rewriteCacheFile) {
+    await fs.writeFile(crawlResultFilePath, JSON.stringify(cachedPosts));
+  }
   return posts;
 };
 
