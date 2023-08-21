@@ -3,7 +3,7 @@ import path from 'node:path';
 import {getFrontmatterFromMarkdown, getSummaryFromMarkdown} from './markdown';
 import {postBasePath} from '$lib';
 
-type Frontmatter = {
+export type Frontmatter = {
   title: string;
   toc: boolean | null;
   editedDate: string | null;
