@@ -1,11 +1,88 @@
 @import "./prism-dracula.css";
+
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&family=Noto+Sans+KR&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 #root {
     min-width: 320px;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.post h1,h2,h3,h4 {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.post h1 {
+    font-weight: bold;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+}
+
+.post h2 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.6rem;
+}
+
+.post h3 {
+    margin-top: 1.3rem;
+    margin-bottom: 0.3rem;
+    font-size: 1.4rem;
+}
+
+.post h4 {
+    margin-top: 1rem;
+    margin-bottom: 0.2rem;
+    font-size: 1.2rem;
+}
+
+.post p {
+    margin: 1.1rem 0;
+    /* Use the following rule to indent the first word. */
+    /* text-indent: 0.4rem; */
+}
+.post :not(pre) code {
+    background-color: #f0f0f0;
+    padding: 1px 3px;
+    border-radius: 4px;
+    color: #a420cf;
+}
+
+.post blockquote {
+    padding-left: 1rem;
+    padding-right: 0.5rem;
+    overflow: auto;
+    border-left: 3px solid #00a2ff;
+    border-radius: 0 5px 5px 0;
+    background-color: #f4f4f4;
+}
+
+.post a {
+    color: #00a2ff;
+}
+.post a:visited {
+    color: #a520ff;
+}
+
+.post li {
+    list-style-position: inside;
+}
+.post ol li {
+    list-style-type: decimal;
+}
+.post ul li {
+    list-style-type: circle;
+}
+
+
+.post code {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
 }
