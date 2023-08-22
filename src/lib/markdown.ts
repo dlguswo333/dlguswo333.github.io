@@ -78,9 +78,9 @@ export const getHtmlFromMarkdown = async (markdown: string) => {
     .use(remarkParse)
     .use(remarkFrontmatter)
     .use(remarkGfm)
-    .use(remarkRehype)
-    .use(rehypePrism)
-    .use(rehypeStringify)
+    .use(remarkRehype, {allowDangerousHtml: true})
+    .use(rehypePrism, {showLineNumbers: true})
+    .use(rehypeStringify, {allowDangerousHtml: true})
     .process(markdown);
 
   const html = String(result);
