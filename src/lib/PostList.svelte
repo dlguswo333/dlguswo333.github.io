@@ -7,7 +7,7 @@
   export let curIndex: number;
   export let maxIndex: number;
 </script>
-<main class="max-w-[1000px] flex flex-col items-center pb-3">
+<main class="max-w-[900px] flex flex-col items-center pb-3">
   <ul class="py-4">
     {#each posts as post}
       <li class="mb-5 last:mb-0 px-4">

@@ -4,7 +4,7 @@
 
   export let data;
 </script>
-<div class="flex flex-row flex-grow justify-center lg:pr-20">
+<div class="flex flex-row flex-grow justify-center lg:pr-[300px]">
   <Profile />
   <PostList posts={data.posts} curIndex={data.curIndex} maxIndex={data.maxIndex} />
   <!-- Placeholder element -->

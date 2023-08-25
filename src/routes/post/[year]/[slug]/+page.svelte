@@ -3,7 +3,7 @@
 
   export let data;
 </script>
-<div class="flex flex-row flex-grow justify-center">
+<div class="flex flex-row flex-grow justify-center lg:pr-[300px]">
   {#if data.tocData}
     <div class="">
       <TOC data={data.tocData} />
@@ -29,7 +29,7 @@
       </div>
       <hr class="bg-gray-400 my-4" />
     {/if}
-    <main class="post max-w-[1000px] py-2">
+    <main class="post max-w-[900px] py-2">
       {@html data.html}
     </main>
   </div>
