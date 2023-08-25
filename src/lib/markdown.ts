@@ -13,6 +13,13 @@ import rehypeStringify from 'rehype-stringify';
 import rehypePrism from 'rehype-prism-plus';
 import yaml from 'yaml';
 import type {Root, Content} from 'mdast';
+import type {Element} from 'hast';
+import type {TOCItem} from './types';
+import {maxHeadingDepthInToc} from '$lib';
+
+/** To prevent unintended overlap between heading IDs. */
+export const getHeadingPrefix = (index: number) => `${index}-`;
+const headingTagNames = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
 
 /**
  * Extract summary from markdown.
@@ -73,10 +80,25 @@ export const getFrontmatterFromMarkdown = async <T> (markdown: string) => {
 };
 
 /**
+ * Get text from heading node.
+ */
+const getTextFromHeading = (node: Element) => {
+  let text = '';
+  node.children.forEach((child) => {
+    if (child.type === 'text') {
+      text += child.value;
+    } else if (child.type === 'element') {
+      text += getTextFromHeading(child);
+    }
+  });
+  return text;
+};
+
+/**
  * Convert markdown to HTML. Does not include frontmatter.
  */
-export const getHtmlFromMarkdown = async (markdown: string) => {
-  const result = await unified()
+export const getHtmlFromMarkdown = async (markdown: string, includeToc: boolean) => {
+  const compiler = unified()
     .use(remarkParse)
     .use(remarkFrontmatter)
     .use(remarkGfm)
@@ -84,9 +106,34 @@ export const getHtmlFromMarkdown = async (markdown: string) => {
     .use(remarkRehype, {allowDangerousHtml: true})
     .use(rehypeMathjax)
     .use(rehypePrism, {showLineNumbers: true})
-    .use(rehypeStringify, {allowDangerousHtml: true})
-    .process(markdown);
+    .use(rehypeStringify, {allowDangerousHtml: true});
 
-  const html = String(result);
-  return html;
+  const headings: TOCItem[] = [];
+
+  const result = compiler.parse(markdown);
+  const root = await compiler.run(result);
+  if (includeToc) {
+    root.children.forEach((child) => {
+      if (child.type === 'element') {
+        if (headingTagNames.includes(child.tagName)) {
+          const headingDepth = Number(child.tagName[1]);
+          if (headingDepth > maxHeadingDepthInToc) {
+            return;
+          }
+          const headingText = getTextFromHeading(child);
+          const headingId = `${getHeadingPrefix(headings.length + 1)}${headingText}`.replaceAll(' ', '-');
+          if (child.properties) {
+            child.properties.id = headingId;
+          } else {
+            child.properties = {};
+            child.properties.id = headingId;
+          }
+          headings.push({depth: headingDepth, id: headingId, text: headingText});
+        }
+      }
+    });
+  }
+
+  const html = compiler.stringify(root);
+  return {html: String(html), tocData: includeToc ? headings : null};
 };

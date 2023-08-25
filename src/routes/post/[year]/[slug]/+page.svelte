@@ -1,7 +1,14 @@
 <script lang="ts">
+  import TOC from '$lib/TOC.svelte';
+
   export let data;
 </script>
 <div class="flex flex-row flex-grow justify-center">
+  {#if data.tocData}
+    <div class="">
+      <TOC data={data.tocData} />
+    </div>
+  {/if}
   <!-- min-width: 0 is needed to prevent this element grow bigger than the parent -->
   <div class="flex flex-col justify-center min-w-0">
     {#if data.frontmatter}

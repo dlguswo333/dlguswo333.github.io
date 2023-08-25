@@ -17,10 +17,10 @@ export const load = async ({params}) => {
     throw error(404);
   }
   try {
-    const html = await getHtmlFromMarkdown(rawContent);
     const {date, lang} = getDateLangIdFromPostPath(postFilePath);
     const frontmatter = await getFrontmatterFromMarkdown<Frontmatter>(rawContent);
-    return {html, frontmatter, date, lang};
+    const {html, tocData} = await getHtmlFromMarkdown(rawContent, !!frontmatter?.toc);
+    return {html, frontmatter, date, lang, tocData};
   } catch (e) {
     console.error(e);
     throw error(500);
