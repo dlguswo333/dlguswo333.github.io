@@ -1,6 +1,7 @@
 import {postBasePath} from '$lib';
-import {getDateLangIdFromPostPath, type Frontmatter} from '$lib/crawlPosts';
+import {getDateLangIdFromPostPath} from '$lib/crawlPosts';
 import {getFrontmatterFromMarkdown, getHtmlFromMarkdown} from '$lib/markdown.js';
+import type {Frontmatter} from '$lib/types';
 import {error} from '@sveltejs/kit';
 import fs from 'node:fs/promises';
 import path from 'node:path';

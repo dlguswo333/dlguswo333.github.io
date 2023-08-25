@@ -2,25 +2,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import {getFrontmatterFromMarkdown, getSummaryFromMarkdown} from './markdown';
 import {postBasePath} from '$lib';
-
-export type Frontmatter = {
-  title: string;
-  toc: boolean | null;
-  editedDate: string | null;
-  category: string | null;
-  tags: string[];
-}
-
-type PostMetadata = Frontmatter & {
-  summary: string | null;
-  lang: string;
-  date: string;
-  id: string;
-}
-
-type CachedPostMetadata = PostMetadata & {
-  crawledTimestamp: number;
-}
+import type {CachedPostMetadata, Frontmatter, PostMetadata} from './types';
 
 const summaryLength = 100;
 export const crawlResultFilePath = './.posts.json';
