@@ -99,7 +99,7 @@ This causes inline mathjax formulas take up blocks.
 Thus prevent it by apply the rule to post only.
 https://github.com/tailwindlabs/tailwindcss/blob/9a52f90fe9b6814aa8c156ccc348ef5b129f6a4e/src/css/preflight.css#L351-L361
  */
-.post svg {
+.post svg, img {
     display: unset;
 }
 
