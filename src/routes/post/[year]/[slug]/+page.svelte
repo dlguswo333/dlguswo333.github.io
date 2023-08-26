@@ -5,9 +5,7 @@
 </script>
 <div class="flex flex-row flex-grow justify-center lg:pr-[300px]">
   {#if data.tocData}
-    <div class="">
-      <TOC data={data.tocData} />
-    </div>
+    <TOC data={data.tocData} />
   {/if}
   <!-- min-width: 0 is needed to prevent this element grow bigger than the parent -->
   <div class="flex flex-col justify-center min-w-0">
