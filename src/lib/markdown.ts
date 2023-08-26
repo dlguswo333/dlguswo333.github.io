@@ -135,5 +135,5 @@ export const getHtmlFromMarkdown = async (markdown: string, includeToc: boolean)
   }
 
   const html = compiler.stringify(root);
-  return {html: String(html), tocData: includeToc ? headings : null};
+  return {html: String(html), tocData: includeToc ? headings : []};
 };
