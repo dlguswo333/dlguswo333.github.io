@@ -5,7 +5,7 @@
   const coefficient = 2 / 3;
   const constant = 0.3;
 </script>
-<aside class="w-[300px] overflow-hidden hidden mt-10 self-start md:!flex sticky md:top-0 flex-col justify-center items-center p-5">
+<aside class="w-[300px] overflow-hidden hidden mt-10 self-start md:!flex md:sticky md:top-14 flex-col justify-center items-center p-5">
   <ul class="w-full">
     {#each data as item}
       <li title={item.text}
