@@ -16,6 +16,7 @@
 
 .post h1,h2,h3,h4 {
     border-bottom: 1px solid #e0e0e0;
+    scroll-margin-top: 50px;
 }
 
 .post h1 {
