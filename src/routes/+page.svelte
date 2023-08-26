@@ -1,6 +1,6 @@
 <script lang="ts">
   import Profile from './Profile.svelte';
-  import PostList from '$lib/PostList.svelte';
+  import PostList from '$lib/components/PostList.svelte';
 
   export let data;
 </script>

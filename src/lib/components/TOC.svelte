@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type {TOCItem} from './types';
+  import type {TOCItem} from '$lib/types';
 
   export let data: TOCItem[];
   const coefficient = 2 / 3;

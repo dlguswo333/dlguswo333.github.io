@@ -1,5 +1,5 @@
 <script>
-  import HeaderLink from '$lib/HeaderLink.svelte';
+  import HeaderLink from '$lib/components/HeaderLink.svelte';
 </script>
 <header class="p-2 flex flex-row items-center justify-between border-b border-b-gray-300 bg-gray-50">
   <a href="/" class="inline-block h-8 w-8">
