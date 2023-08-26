@@ -65,6 +65,12 @@
     background-color: #f4f4f4;
 }
 
+.post img {
+    max-width: calc(100% - 50px);
+    max-height: 80vh;
+    align-self: center;
+}
+
 .post a {
     color: #00a2ff;
 }

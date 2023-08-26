@@ -3,7 +3,7 @@
 
   export let data;
 </script>
-<div class="flex flex-row flex-grow justify-center lg:pr-[300px]">
+<div class="flex flex-row flex-grow justify-center p-2 lg:p-0 lg:pr-[300px]">
   {#if data.tocData}
     <TOC data={data.tocData} />
   {/if}
