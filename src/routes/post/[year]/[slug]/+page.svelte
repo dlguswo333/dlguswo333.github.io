@@ -1,5 +1,5 @@
 <script lang="ts">
-  import MainHtml from '$lib/components/MainHtml.svelte';
+  import MainHtml from '$lib/components/MainSection.svelte';
   import TOC from '$lib/components/TOC.svelte';
 
   export let data;
@@ -28,6 +28,6 @@
       </div>
       <hr class="bg-gray-400 my-4" />
     {/if}
-    <MainHtml html={data.html} />
+    <MainHtml html={data.html} className="post" />
   </div>
 </div>
