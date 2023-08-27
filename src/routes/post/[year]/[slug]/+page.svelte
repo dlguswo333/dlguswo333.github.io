@@ -1,4 +1,5 @@
 <script lang="ts">
+  import MainHtml from '$lib/components/MainHtml.svelte';
   import TOC from '$lib/components/TOC.svelte';
 
   export let data;
@@ -27,8 +28,6 @@
       </div>
       <hr class="bg-gray-400 my-4" />
     {/if}
-    <main class="post max-w-[900px] py-2">
-      {@html data.html}
-    </main>
+    <MainHtml html={data.html} />
   </div>
 </div>
