@@ -1,10 +1,10 @@
 <script lang="ts">
-  import type crawlPosts from '$lib/crawlPosts';
+  import type {PostMetadata} from '$lib/types';
   import MainSection from './MainSection.svelte';
   import Pagination from './Pagination.svelte';
   import Postcard from './PostCard.svelte';
 
-  export let posts: Awaited<ReturnType<typeof crawlPosts>>;
+  export let posts: PostMetadata[];
   export let curIndex: number;
   export let maxIndex: number;
 </script>

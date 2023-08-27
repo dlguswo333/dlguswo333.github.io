@@ -1,7 +1,7 @@
 <script lang="ts">
-  import type crawlPosts from '$lib/crawlPosts';
+  import type {PostMetadata} from '$lib/types';
 
-  export let post: Awaited<ReturnType<typeof crawlPosts>>[0];
+  export let post: PostMetadata;
 </script>
 
 <section
