@@ -8,7 +8,7 @@
 @component
 Render raw html in main section.
 -->
-<main class={`max-w-[900px] py-2 ${className ? className : ''}`}>
+<main class={`max-w-[900px] w-full py-2 ${className ? className : ''}`}>
   <slot />
   {#if html}
     {@html html}
