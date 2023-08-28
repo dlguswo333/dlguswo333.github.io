@@ -12,9 +12,9 @@
         </h1>
         <ul>
           {#each posts as post}
-            <li class="flex flex-row justify-between items-center px-2 border-2 rounded-md border-transparent hover:border-gray-200">
+            <li class="flex flex-col md:flex-row justify-between md:items-center px-2 border-2 rounded-md border-transparent hover:border-gray-200">
               <a href={`/post/${post.date.split('-')[0]}/${post.id}`}
-                class="text-cyan-400 visited:text-purple-600 py-1 text-ellipsis whitespace-nowrap overflow-hidden">
+                class="text-cyan-400 visited:text-purple-600 max-w-full py-1 text-ellipsis whitespace-nowrap overflow-hidden">
                 {post.title}
               </a>
               <div class="flex-grow" />
