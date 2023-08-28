@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Category from '$lib/components/Category.svelte';
   import MainSection from '$lib/components/MainSection.svelte';
   import TOC from '$lib/components/TOC.svelte';
   import Tag from '$lib/components/Tag.svelte';
@@ -20,7 +21,9 @@
             (Edited {data.frontmatter.editedDate})
           {/if}
         </span>
-        <span class="bg-sky-300 px-2 py-0.5 rounded-lg shadow-md shadow-emerald-50 border-l-slate-100 text-white">/{data.frontmatter.category}</span>
+        {#if data.frontmatter.category}
+          <Category categoryName={data.frontmatter.category} />
+        {/if}
         <div>
           {#each data.frontmatter.tags as tag, index}
             <Tag tagName={tag} marginLeft={index === 0 ? 2 : 0} marginRight={1} />

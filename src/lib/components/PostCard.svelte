@@ -1,6 +1,7 @@
 <script lang="ts">
   import Tag from '$lib/components/Tag.svelte';
   import type {PostMetadata} from '$lib/types';
+  import Category from './Category.svelte';
 
   export let post: PostMetadata;
 </script>
@@ -23,7 +24,7 @@
   <div class="flex flex-row justify-between">
     <span>
       {#if post.category}
-        <span class="bg-sky-300 px-2 py-0.5 rounded-lg shadow-md shadow-emerald-50 border-l-slate-100 text-white">/{post.category}</span>
+        <Category categoryName={post.category} />
       {/if}
       <span>
         {#if post.tags}
