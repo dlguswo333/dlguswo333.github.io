@@ -7,7 +7,7 @@
   <MainSection>
     {#each data.tags as {tag, posts}}
       <section class="mb-8 w-full">
-        <h1 id={tag} class="text-3xl font-bold pb-2 mb-3 border-b-2">
+        <h1 id={tag} class="text-3xl font-bold pb-2 mb-3 border-b-2 scroll-mt-[50px]">
           {tag}
         </h1>
         <ul>
