@@ -16,6 +16,7 @@ import type {Root, Content} from 'mdast';
 import type {Element} from 'hast';
 import type {TOCItem} from './types';
 import {maxHeadingDepthInToc} from '$lib';
+import {removeXSSCharacters} from '$lib/string';
 
 /** To prevent unintended overlap between heading IDs. */
 export const getHeadingPrefix = (index: number) => `${index}-`;
@@ -121,7 +122,13 @@ export const getHtmlFromMarkdown = async (markdown: string, includeToc: boolean)
             return;
           }
           const headingText = getTextFromHeading(child);
-          const headingId = `${getHeadingPrefix(headings.length + 1)}${headingText}`.replaceAll(' ', '-');
+          // I don't know why but sveltekit thinks '"' chracter is not encoded
+          // Falsely report no element with matching id exists. encodeURIComponent does not work.
+          // Thus just remove those kinds of characters.
+          // There will be no empty id because of heading prefix.
+          const headingId = removeXSSCharacters(
+            `${getHeadingPrefix(headings.length + 1)}${headingText}`.replaceAll(' ', '-')
+          );
           if (child.properties) {
             child.properties.id = headingId;
           } else {
