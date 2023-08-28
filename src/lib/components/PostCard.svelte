@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Tag from '$lib/components/Tag.svelte';
   import type {PostMetadata} from '$lib/types';
 
   export let post: PostMetadata;
@@ -26,8 +27,8 @@
       {/if}
       <span>
         {#if post.tags}
-          {#each post.tags as tag}
-            <span class="mr-1 first:ml-2 last:mr-0 bg-green-100 px-2 py-0.5 rounded-xl shadow-md">#{tag}</span>
+          {#each post.tags as tag, index}
+            <Tag tagName={tag} marginLeft={index === 0 ? 2 : 0} marginRight={1} />
           {/each}
         {/if}
       </span>

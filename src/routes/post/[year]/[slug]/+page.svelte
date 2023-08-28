@@ -1,6 +1,7 @@
 <script lang="ts">
   import MainSection from '$lib/components/MainSection.svelte';
   import TOC from '$lib/components/TOC.svelte';
+  import Tag from '$lib/components/Tag.svelte';
 
   export let data;
 </script>
@@ -21,8 +22,8 @@
         </span>
         <span class="bg-sky-300 px-2 py-0.5 rounded-lg shadow-md shadow-emerald-50 border-l-slate-100 text-white">/{data.frontmatter.category}</span>
         <div>
-          {#each data.frontmatter.tags as tag}
-            <span class="mr-1 first:ml-2 last:mr-0 bg-green-100 px-2 py-0.5 rounded-xl shadow-md">#{tag}</span>
+          {#each data.frontmatter.tags as tag, index}
+            <Tag tagName={tag} marginLeft={index === 0 ? 2 : 0} marginRight={1} />
           {/each}
         </div>
       </div>
