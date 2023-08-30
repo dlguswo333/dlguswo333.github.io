@@ -1,19 +1,22 @@
 <script lang="ts">
   import {onMount} from 'svelte';
-  import {activeHeadingIndex} from '$lib/store';
+  import {activeHeadingIndex, shouldShowTOCButton} from '$lib/store';
   import throttleWithLast from '$lib/throttleWithLast';
 
   /** Raw html in `string` type */
   export let html: string | null = null;
   /** Additional class to add. */
   export let className: string | null = null;
+  /** If toc data exists, it means it needs show toc button. */
+  export let tocDataExists: boolean = false;
 
   let mainHtml: HTMLElement | null = null;
   const refreshInterval = 50;
   onMount(() => {
-    if (!className?.includes('post') || !mainHtml) {
+    if (!tocDataExists || !mainHtml) {
       return;
     }
+    $shouldShowTOCButton = true;
     const headings = [...mainHtml.querySelectorAll('h1,h2,h3,h4')];
     const onScroll = throttleWithLast(() => {
       headings.some((heading, index) => {
@@ -27,7 +30,10 @@
       });
     }, refreshInterval);
     document.addEventListener('scroll', onScroll);
-    return () => document.removeEventListener('scroll', onScroll);
+    return () => {
+      $shouldShowTOCButton = false;
+      document.removeEventListener('scroll', onScroll);
+    };
   });
 </script>
 <!--

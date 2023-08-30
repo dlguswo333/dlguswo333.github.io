@@ -32,6 +32,6 @@
       </div>
       <hr class="bg-gray-400 my-4" />
     {/if}
-    <MainSection html={data.html} className="post" />
+    <MainSection html={data.html} tocDataExists={!!data.tocData.length} className="post" />
   </div>
 </div>
