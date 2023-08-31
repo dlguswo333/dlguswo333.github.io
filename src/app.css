@@ -1,0 +1,169 @@
+@import "./prism-dracula.css";
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&family=Noto+Sans+KR&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#root {
+    min-width: 320px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+html {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.post * {
+    overflow-wrap: break-word;
+}
+
+.post h1,h2,h3,h4 {
+    border-bottom: 1px solid #e0e0e0;
+    scroll-margin-top: 50px;
+}
+
+.post h1 {
+    font-weight: bold;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+}
+
+.post h2 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.6rem;
+}
+
+.post h3 {
+    margin-top: 1.3rem;
+    margin-bottom: 0.3rem;
+    font-size: 1.4rem;
+}
+
+.post h4 {
+    margin-top: 1rem;
+    margin-bottom: 0.2rem;
+    font-size: 1.2rem;
+}
+
+.post p {
+    margin: 1.1rem 0;
+    /* Use the following rule to indent the first word. */
+    /* text-indent: 0.4rem; */
+}
+.post :not(pre) code {
+    background-color: #f0f0f0;
+    padding: 1px 3px;
+    border-radius: 4px;
+    color: #a420cf;
+}
+
+.post blockquote {
+    padding-left: 1rem;
+    padding-right: 0.5rem;
+    overflow: auto;
+    border-left: 3px solid #00a2ff;
+    border-radius: 0 5px 5px 0;
+    background-color: #f4f4f4;
+}
+
+.post img {
+    max-width: calc(100% - 50px);
+    max-height: 80vh;
+    align-self: center;
+}
+
+.post a {
+    color: #00a2ff;
+}
+.post a:visited {
+    color: #a520ff;
+}
+
+.post li {
+    list-style-position: inside;
+}
+.post ol li {
+    list-style-type: decimal;
+}
+.post ul li {
+    list-style-type: circle;
+}
+
+.post code {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+}
+
+/*
+I don't know why, but tailwind set svg display: block.
+This causes inline mathjax formulas take up blocks.
+Thus prevent it by apply the rule to post only.
+https://github.com/tailwindlabs/tailwindcss/blob/9a52f90fe9b6814aa8c156ccc348ef5b129f6a4e/src/css/preflight.css#L351-L361
+ */
+.post svg, img {
+    display: unset;
+}
+
+/* Below lines copied & pasted from https://www.npmjs.com/package/rehype-prism-plus */
+.post pre {
+    overflow-x: auto;
+}
+
+/**
+* Inspired by gatsby remark prism - https://www.gatsbyjs.com/plugins/gatsby-remark-prismjs/
+* 1. Make the element just wide enough to fit its content.
+* 2. Always fill the visible space in .code-highlight.
+*/
+.code-highlight {
+    float: left;
+    /* 1 */
+    min-width: 100%;
+    /* 2 */
+}
+
+.code-line {
+    display: block;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin-left: -16px;
+    margin-right: -16px;
+    border-left: 4px solid rgba(0, 0, 0, 0);
+    /* Set placeholder for highlight accent border color to transparent */
+}
+
+.code-line.inserted {
+    background-color: rgba(16, 185, 129, 0.2);
+    /* Set inserted line (+) color */
+}
+
+.code-line.deleted {
+    background-color: rgba(239, 68, 68, 0.2);
+    /* Set deleted line (-) color */
+}
+
+.highlight-line {
+    margin-left: -16px;
+    margin-right: -16px;
+    background-color: rgba(55, 65, 81, 0.5);
+    /* Set highlight bg color */
+    border-left: 4px solid rgb(59, 130, 246);
+    /* Set highlight accent border color */
+}
+
+.line-number::before {
+    display: inline-block;
+    width: 1rem;
+    text-align: right;
+    margin-right: 16px;
+    margin-left: -8px;
+    color: rgb(156, 163, 175);
+    /* Line number color */
+    content: attr(line);
+}

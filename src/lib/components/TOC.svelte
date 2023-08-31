@@ -1,0 +1,53 @@
+<script lang="ts">
+  import type {TOCItem} from '$lib/types';
+  import {activeHeadingIndex} from '$lib/store';
+  import {showTOC} from '$lib/store';
+  import {onMount} from 'svelte';
+
+  export let data: TOCItem[];
+
+  const coefficient = 2 / 3;
+  const constant = 0.3;
+
+  onMount(() => {
+    $showTOC = false;
+    const onResize = () => {
+      // md: size
+      if (window.innerWidth >= 840) {
+        $showTOC = false;
+      }
+    };
+    window.addEventListener('resize', onResize);
+    return () => {
+      $showTOC = false;
+      window.removeEventListener('resize', onResize);
+    };
+  });
+</script>
+<!--
+I don't know why, but setting max-height on 'aside' shows bad strange behavior.
+The scrollable height is not big enough to show the front child 'li' elements.
+-->
+<aside class={`w-[300px] overflow-hidden hidden mt-10 self-start md:!flex md:sticky md:top-14 flex-col justify-center items-center p-3
+  ${$showTOC ? '!w-[94vw] pt-2 pb-6 z-20 !flex fixed top-14 left-[50%] translate-x-[-50%] border-2 border-neutral-300 bg-neutral-50 shadow-lg rounded-md' : ''}`}>
+  {#if $showTOC}
+    <div class="flex self-end justify-items-end items-start">
+      <button class="flex items-center justify-start p-1 font-bold text-lg" aria-label="Close TOC"
+        on:click={() => {$showTOC = false;}}>
+        Close
+      </button>
+    </div>
+  {/if}
+  <ul class="w-full max-h-[80vh] overflow-auto">
+    {#each data as item, index}
+      <li title={item.text}
+        class={`flex border-l-4 border-transparent hover:border-gray-300 hover:bg-gray-50 ${item.depth === 1 ? 'font-bold' : ''} ${$activeHeadingIndex === index ? '!border-blue-500' : ''} ${$showTOC ? 'py-1.5' : ''}
+        `}
+        style={`padding-left: ${coefficient * (item.depth - 1) + constant}rem;`}>
+        <a href={`#${item.id}`} class="whitespace-nowrap overflow-hidden break-all overflow-ellipsis flex-grow">
+          {item.text}
+        </a>
+      </li>
+    {/each}
+  </ul>
+</aside>
