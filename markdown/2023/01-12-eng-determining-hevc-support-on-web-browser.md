@@ -94,7 +94,7 @@ As you can see from the link, this is source code of Chromium 108.
 
 <https://chromium.googlesource.com/chromium/src/+/refs/tags/108.0.5359.181/content/test/data/media/canplaytype_test.js>
 
-```cc
+```js
 // Copyright 2020 The Chromium Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.

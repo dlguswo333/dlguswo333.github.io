@@ -87,7 +87,6 @@ This is for performance not to re-render too many times,
 but it gives programmers too much frustration.
 
 <!-- NOTE jekyll cannot handle double braces properly. Thus escape with raw tag. -->
-{% raw %}
 ```jsx
 import { useState } from 'react';
 
@@ -108,7 +107,6 @@ export default function App() {
   </>;
 }
 ```
-{% endraw %}
 
 The above is an example of showing states are updated asynchronously.
 Place mouse cursor on the first div, and then move it onto the second div.
@@ -141,7 +139,6 @@ But actually things go like this:
 `didMouseLeave` state is `false` inside `onMouseEnter` callback.
 Things will be much more clear if we add bunch of console logs in the component.
 
-{% raw %}
 ```jsx
 import { useState } from 'react';
 
@@ -169,7 +166,6 @@ export default function App() {
   </>;
 }
 ```
-{% endraw %}
 
 ![react-states-update-async](/img/2023-03-31-what-i-dont-like-in-react/react-states-update-async.gif)
 
@@ -223,7 +219,6 @@ But be aware that `ref` changes do not incur re-render.
 >When you change the ref.current property, React does not re-render your component. React is not aware of when you change it because a ref is a plain JavaScript object.<br>
 ><https://react.dev/reference/react/useRef#caveats>
 
-{% raw %}
 ```jsx
 import { useState, useRef } from 'react';
 
@@ -248,7 +243,6 @@ export default function App() {
   </>;
 }
 ```
-{% endraw %}
 
 But the above does not 100% resemble the original component.
 The original component re-render upon solely on first div `mouseleave` event.
@@ -256,7 +250,6 @@ This component, does not.
 To replicate the original component, we need one `useState` and one `useRef`
 to save **the same state**.
 
-{% raw %}
 ```jsx
 import { useState, useRef } from 'react';
 
@@ -283,7 +276,6 @@ export default function App() {
   </>;
 }
 ```
-{% endraw %}
 
 ...I really don't like it.<br>
 Maybe defining a custom hook that has an `useState` and an `useRef`
@@ -321,7 +313,6 @@ In this section, I compare other SPA frameworks/libraries with the specific exam
 ### Svelte
 Svelte just works out of the box.
 
-{% raw %}
 ```jsx
 <script>
   let didMouseLeave = false;
@@ -338,7 +329,6 @@ Svelte just works out of the box.
   state: {state}
 </div>
 ```
-{% endraw %}
 <br>
 
 ### SolidJS
@@ -347,7 +337,6 @@ does not have virtual DOM, or asynchronous updates (though you can if you want).
 React developers may easily understand SolidJS code without learning it.
 SolidJS works out of the box.
 
-{% raw %}
 ```jsx
 function App() {
   const [didMouseLeave, setDidMouseLeave] = createSignal(false);
@@ -370,7 +359,6 @@ function App() {
   </>;
 }
 ```
-{% endraw %}
 
 SolidJS gurantees its granular render/update in its own document.
 >Solid's reactivity is synchronous which means, by the next line after any change,
