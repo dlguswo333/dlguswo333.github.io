@@ -3,9 +3,23 @@
   import MainSection from '$lib/components/MainSection.svelte';
   import TOC from '$lib/components/TOC.svelte';
   import Tag from '$lib/components/Tag.svelte';
+  import {onMount} from 'svelte';
+  import {name} from '$lib/index';
 
   export let data;
+  const postTitle = data.frontmatter?.title;
+  onMount(() => {
+    return () => {
+      // Sveltekit does not revert document title on dismount.
+      // See #4.
+      document.title = `${name}'s blog`;
+    };
+  });
 </script>
+<svelte:head>
+  <title>{(postTitle ? `${postTitle} : ` : '')}{name}'s blog</title>
+</svelte:head>
+
 <div class="flex flex-row flex-grow justify-center p-2 lg:p-0 lg:pr-[300px]">
   {#if data.tocData}
     <TOC data={data.tocData} />
@@ -14,7 +28,7 @@
   <div class="flex flex-col justify-center min-w-0">
     {#if data.frontmatter}
       <div class="max-w-[900px] flex flex-col items-center py-6 gap-3">
-        <h1 class="text-4xl font-bold text-center">{data.frontmatter.title}</h1>
+        <h1 class="text-4xl font-bold text-center">{postTitle}</h1>
         <span>
           {data.date}
           {#if data.frontmatter.editedDate}
