@@ -8,11 +8,14 @@
 
   export let data;
   const postTitle = data.frontmatter?.title;
+  const postLang = data.lang || 'en';
   onMount(() => {
+    document.documentElement.lang = postLang;
     return () => {
       // Sveltekit does not revert document title on dismount.
       // See #4.
       document.title = `${name}'s blog`;
+      document.documentElement.lang = 'en';
     };
   });
 </script>
