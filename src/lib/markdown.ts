@@ -122,10 +122,11 @@ export const getHtmlFromMarkdown = async (markdown: string, includeToc: boolean)
             return;
           }
           const headingText = getTextFromHeading(child);
-          // I don't know why but sveltekit thinks '"' chracter is not encoded
-          // Falsely report no element with matching id exists. encodeURIComponent does not work.
-          // Thus just remove those kinds of characters.
-          // There will be no empty id because of heading prefix.
+          // unifiedjs converts double quotes into &#x22; (XML character entity)
+          // while Sveltekit converts into &quot; (HTML entity)
+          // On actually browsers it does work,
+          // but SvelteKit does not detect and convert one into the other;
+          // thus it emits errors that elements with same ids cannot be found.
           const headingId = removeXSSCharacters(
             `${getHeadingPrefix(headings.length + 1)}${headingText}`.replaceAll(' ', '-')
           );
