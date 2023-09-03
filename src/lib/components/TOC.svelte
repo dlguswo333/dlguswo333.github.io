@@ -29,15 +29,7 @@ I don't know why, but setting max-height on 'aside' shows bad strange behavior.
 The scrollable height is not big enough to show the front child 'li' elements.
 -->
 <aside class={`w-[300px] overflow-hidden hidden mt-10 self-start md:!flex md:sticky md:top-14 flex-col justify-center items-center p-3
-  ${$showTOC ? '!w-[94vw] pt-2 pb-6 z-20 !flex fixed top-14 left-[50%] translate-x-[-50%] border-2 border-neutral-300 bg-neutral-50 shadow-lg rounded-md' : ''}`}>
-  {#if $showTOC}
-    <div class="flex self-end justify-items-end items-start">
-      <button class="flex items-center justify-start p-1 font-bold text-lg" aria-label="Close TOC"
-        on:click={() => {$showTOC = false;}}>
-        Close
-      </button>
-    </div>
-  {/if}
+  ${$showTOC ? '!w-[94vw] py-6 z-20 !flex fixed top-14 left-[50%] translate-x-[-50%] border-2 border-neutral-300 bg-neutral-50 shadow-lg rounded-md' : ''}`}>
   <ul class="w-full max-h-[80vh] overflow-auto">
     {#each data as item, index}
       <li title={item.text}
