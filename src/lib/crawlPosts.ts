@@ -9,7 +9,7 @@ export const crawlResultFilePath = './.posts.json';
 const regex = {
   wholeNumber: /^\d+$/,
   markdownExtension: /\.md$/i,
-  postFileNameFormat: /^((\d+)-(\d+)-([a-z]+)-([^.]+))\.md$/,
+  postFileNameFormat: /^((\d+)-(\d+)-([a-z]{2})-([^.]+))\.md$/,
 } as const;
 
 export const compareStringDesc = (a: string, b: string) => (
