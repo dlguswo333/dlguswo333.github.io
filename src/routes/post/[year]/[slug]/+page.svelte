@@ -4,15 +4,18 @@
   import TOC from '$lib/components/TOC.svelte';
   import Tag from '$lib/components/Tag.svelte';
   import {onMount} from 'svelte';
-  import {name} from '$lib/index';
+  import {defaultLang, name} from '$lib/index';
 
   export let data;
   const postTitle = data.frontmatter?.title;
+  const postLang = data.lang || defaultLang;
   onMount(() => {
+    document.documentElement.lang = postLang;
     return () => {
       // Sveltekit does not revert document title on dismount.
       // See #4.
       document.title = `${name}'s blog`;
+      document.documentElement.lang = defaultLang;
     };
   });
 </script>
