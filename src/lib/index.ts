@@ -5,3 +5,5 @@ export const blogRepositoryLink = 'https://github.com/dlguswo333/dlguswo333.gith
 export const paginationSize = 10;
 export const postBasePath = './markdown';
 export const maxHeadingDepthInToc = 3;
+/** Language format should follow BCP 47. */
+export const defaultLang = 'en';
