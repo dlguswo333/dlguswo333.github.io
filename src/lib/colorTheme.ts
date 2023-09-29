@@ -10,3 +10,10 @@ export const getCurrentTheme = () => {
 const rootElement = document.querySelector('div#root');
 const currentTheme = getCurrentTheme();
 currentTheme === 'dark' && rootElement?.classList.add('dark');
+
+export const toggleTheme = () => {
+  const currentTheme = getCurrentTheme();
+  const targetTheme: ColorTheme = currentTheme === 'light' ? 'dark' : 'light';
+  rootElement?.classList.add(targetTheme);
+  localStorage.setItem('color-theme', targetTheme);
+};
