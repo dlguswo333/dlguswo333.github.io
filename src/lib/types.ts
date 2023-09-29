@@ -22,3 +22,5 @@ export type TOCItem = {
   depth: number;
   id: string;
 };
+
+export type ColorTheme = 'light' | 'dark';
