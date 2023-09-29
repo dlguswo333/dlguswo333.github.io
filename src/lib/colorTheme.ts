@@ -1,16 +1,21 @@
 import type {ColorTheme} from '$lib/types';
+import {browser} from '$app/environment';
 
 export const getCurrentTheme = () => {
-  const storedValue = JSON.parse(localStorage.getItem('color-theme') || '');
   const systemTheme: ColorTheme = window.matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light';
-  const currentTheme: ColorTheme = storedValue === 'light' || storedValue === 'dark' ? storedValue : systemTheme;
-  return currentTheme;
+  try {
+    const storedValue = JSON.parse(localStorage.getItem('color-theme') || 'null');
+    const currentTheme: ColorTheme = storedValue === 'light' || storedValue === 'dark' ? storedValue : systemTheme;
+    return currentTheme;
+  } catch {
+    return systemTheme;
+  }
 };
 
 const rootElement = browser ? document.querySelector('div#root') : null;
 if (browser) {
-const currentTheme = getCurrentTheme();
-currentTheme === 'dark' && rootElement?.classList.add('dark');
+  const currentTheme = getCurrentTheme();
+  currentTheme === 'dark' && rootElement?.classList.add('dark');
 }
 
 export const toggleTheme = () => {
