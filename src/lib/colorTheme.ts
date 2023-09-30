@@ -12,7 +12,7 @@ export const getCurrentTheme = () => {
   }
 };
 
-const rootElement = browser ? document.querySelector('div#root') : null;
+const rootElement = browser ? document.querySelector('body') : null;
 if (browser) {
   const currentTheme = getCurrentTheme();
   rootElement?.classList.add(currentTheme);
