@@ -33,7 +33,7 @@ The scrollable height is not big enough to show the front child 'li' elements.
   <ul class="w-full max-h-[80vh] overflow-auto">
     {#each data as item, index}
       <li title={item.text}
-        class={`flex border-l-4 border-transparent hover:border-gray-300 hover:bg-gray-50 ${item.depth === 1 ? 'font-bold' : ''} ${$activeHeadingIndex === index ? '!border-blue-500' : ''} ${$showTOC ? 'py-1.5' : ''}
+        class={`flex border-l-4 border-transparent hover:border-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 ${item.depth === 1 ? 'font-bold' : ''} ${$activeHeadingIndex === index ? '!border-blue-500' : ''} ${$showTOC ? 'py-1.5' : ''}
         `}
         style={`padding-left: ${coefficient * (item.depth - 1) + constant}rem;`}>
         <a href={`#${item.id}`} class="whitespace-nowrap overflow-hidden break-all overflow-ellipsis flex-grow">

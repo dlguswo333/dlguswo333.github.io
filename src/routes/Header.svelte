@@ -4,7 +4,7 @@
   import TocIcon from '$lib/components/TOCIcon.svelte';
   import {showTOC, shouldShowTOCButton} from '$lib/store';
 </script>
-<header class="p-2 sticky top-0 flex flex-row items-center justify-between border-b border-b-gray-300 bg-gray-50">
+<header class="p-2 sticky top-0 flex flex-row items-center justify-between border-b border-b-gray-300 bg-gray-50 dark:bg-[#2c3039] dark:border-b-gray-700">
   <div class="flex flex-row items-center gap-1">
     <!-- Each item size must be the same for beauty. -->
     <a href="/" class="inline-block h-8 w-8">
