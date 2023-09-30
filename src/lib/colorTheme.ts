@@ -15,12 +15,13 @@ export const getCurrentTheme = () => {
 const rootElement = browser ? document.querySelector('div#root') : null;
 if (browser) {
   const currentTheme = getCurrentTheme();
-  currentTheme === 'dark' && rootElement?.classList.add('dark');
+  rootElement?.classList.add(currentTheme);
 }
 
 export const toggleTheme = () => {
   const currentTheme = getCurrentTheme();
   const targetTheme: ColorTheme = currentTheme === 'light' ? 'dark' : 'light';
+  rootElement?.classList.remove(currentTheme);
   rootElement?.classList.add(targetTheme);
   localStorage.setItem('color-theme', JSON.stringify(targetTheme));
 };
