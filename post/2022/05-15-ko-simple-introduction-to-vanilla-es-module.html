@@ -5,27 +5,41 @@
 		<link rel="icon" href="../../favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		
-		<link href="../../_app/immutable/assets/0.df00206b.css" rel="stylesheet">
-		<link rel="modulepreload" href="../../_app/immutable/entry/start.7b6d567d.js">
+		<link href="../../_app/immutable/assets/0.2e853844.css" rel="stylesheet">
+		<link rel="modulepreload" href="../../_app/immutable/entry/start.f884c089.js">
 		<link rel="modulepreload" href="../../_app/immutable/chunks/scheduler.db0ac06a.js">
-		<link rel="modulepreload" href="../../_app/immutable/chunks/singletons.df4fd5d3.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/singletons.2c0c51b2.js">
 		<link rel="modulepreload" href="../../_app/immutable/chunks/index.1bcf888f.js">
-		<link rel="modulepreload" href="../../_app/immutable/entry/app.adeff534.js">
-		<link rel="modulepreload" href="../../_app/immutable/chunks/index.22365a7a.js">
-		<link rel="modulepreload" href="../../_app/immutable/nodes/0.42888e61.js">
+		<link rel="modulepreload" href="../../_app/immutable/entry/app.546e4740.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/index.4a49f625.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/0.cd5a136d.js">
 		<link rel="modulepreload" href="../../_app/immutable/chunks/index.a82faf3f.js">
-		<link rel="modulepreload" href="../../_app/immutable/chunks/store.6cfcb23f.js">
-		<link rel="modulepreload" href="../../_app/immutable/nodes/5.4b164c11.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/GithubMark.58026925.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/store.53f04f50.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/5.7e60752c.js">
 		<link rel="modulepreload" href="../../_app/immutable/chunks/each.e59479a4.js">
-		<link rel="modulepreload" href="../../_app/immutable/chunks/Category.82655a77.js">
-		<link rel="modulepreload" href="../../_app/immutable/chunks/MainSection.aed08602.js"><title>Simple Introduction to Vanilla ES Module : dlguswo333&#39;s blog</title><!-- HEAD_svelte-etxm8u_START --><!-- HEAD_svelte-etxm8u_END -->
+		<link rel="modulepreload" href="../../_app/immutable/chunks/Category.4215e0eb.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/MainSection.a957b41b.js"><title>Simple Introduction to Vanilla ES Module : dlguswo333&#39;s blog</title><!-- HEAD_svelte-etxm8u_START --><!-- HEAD_svelte-etxm8u_END -->
 		<!-- [TODO] For portability I can erase the following elements and inject them from index.ts when building? -->
 		<title>dlguswo333's Blog</title>
 		<meta name="google-site-verification" content="GIhlBkE7qu5AWLVmQ4w2lBcxEw-AumQhdQf_2zR2X4s" />
 	</head>
 	<body data-sveltekit-preload-data="hover">
-		<div id="root">  <header class="p-2 sticky top-0 flex flex-row items-center justify-between border-b border-b-gray-300 bg-gray-50"><div><a href="/" class="inline-block h-8 w-8" data-svelte-h="svelte-htzscq"><span class="hidden">Go To Home</span> <img src="/favicon.svg" alt="Logo"></a> </div> <div class="flex flex-row items-center"><a href="/categories" class="h-8 flex items-center justify-center mr-2 last:mr-1 px-1 py-0.5 rounded-s hover:bg-gray-200">Categories</a> <a href="/tags" class="h-8 flex items-center justify-center mr-2 last:mr-1 px-1 py-0.5 rounded-s hover:bg-gray-200">Tags</a> <a href="/about" class="h-8 flex items-center justify-center mr-2 last:mr-1 px-1 py-0.5 rounded-s hover:bg-gray-200">About</a></div></header>  <div class="flex flex-row flex-grow justify-center p-2 lg:p-0 lg:pr-[300px]"> <aside class="w-[300px] overflow-hidden hidden mt-10 self-start md:!flex md:sticky md:top-14 flex-col justify-center items-center p-3
-  "><ul class="w-full max-h-[80vh] overflow-auto"></ul></aside>  <div class="flex flex-col justify-center min-w-0"><div class="max-w-[900px] flex flex-col items-center py-6 gap-3"><h1 class="text-4xl font-bold text-center">Simple Introduction to Vanilla ES Module</h1> <span>2022-05-15 (Edited 2022-09-04)</span> <button class="px-2 py-0.5 rounded-lg shadow-md shadow-emerald-50 border-l-slate-100 bg-sky-300 text-white hover:bg-sky-500 transition">/Programming</button> <div><button class="last:mr-0 bg-green-100 hover:bg-green-400 hover:text-white transition px-2 py-0.5 rounded-xl shadow-md" style="margin-right: 0.25rem; margin-left: 0.5rem">#javascript</button></div></div> <hr class="bg-gray-400 my-4">  <main class="max-w-[900px] w-full py-2 post"> <!-- HTML_TAG_START --><p>Webpack 같은 번들러를 이용하지 않고 코딩한 자바스크립트 파일을
+		<script>
+			const systemTheme= window.matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light';
+			const rootElement = document.querySelector('body');
+			try {
+				const storedValue = JSON.parse(localStorage.getItem('color-theme') || 'null');
+				const currentTheme = storedValue === 'light' || storedValue === 'dark' ? storedValue : systemTheme;
+				if(rootElement) {
+  				rootElement.classList.add(currentTheme);
+				}
+			} catch {
+				rootElement.classList.add(systemTheme);
+			}
+		</script>
+		<div id="root">  <header class="p-2 sticky top-0 flex flex-row items-center justify-between border-b border-b-gray-300 bg-gray-50 dark:bg-[#2c3039] dark:border-b-gray-700"><div class="flex flex-row items-center gap-1"> <a href="/" class="inline-block h-8 w-8" data-svelte-h="svelte-htzscq"><span class="hidden">Go To Home</span> <img src="/favicon.svg" alt="Logo"></a> <button type="button" title="Toggle color theme" class="group"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="h-8 w-8 transition"><rect x="3" y="3" width="94" height="94" stroke-width="6" rx="16" ry="16" class="stroke-gray-600 fill-none"></rect></svg></button> </div> <div class="flex flex-row items-center"><a href="/categories" class="h-8 flex items-center justify-center mr-2 last:mr-1 px-1 py-0.5 rounded hover:bg-gray-200 dark:hover:bg-slate-600 dark:hover:text-white">Categories</a> <a href="/tags" class="h-8 flex items-center justify-center mr-2 last:mr-1 px-1 py-0.5 rounded hover:bg-gray-200 dark:hover:bg-slate-600 dark:hover:text-white">Tags</a> <a href="/about" class="h-8 flex items-center justify-center mr-2 last:mr-1 px-1 py-0.5 rounded hover:bg-gray-200 dark:hover:bg-slate-600 dark:hover:text-white">About</a></div></header>  <div class="flex flex-row flex-grow justify-center p-2 lg:p-0 lg:pr-[300px]"> <aside class="w-[300px] overflow-hidden hidden mt-10 self-start md:!flex md:sticky md:top-14 flex-col justify-center items-center p-3
+  "><ul class="w-full max-h-[80vh] overflow-auto"></ul></aside>  <div class="flex flex-col justify-center min-w-0"><div class="max-w-[900px] flex flex-col items-center py-6 gap-3"><h1 class="text-4xl font-bold text-center">Simple Introduction to Vanilla ES Module</h1> <span>2022-05-15 (Edited 2022-09-04)</span> <button class="px-2 py-0.5 rounded-lg shadow-md shadow-emerald-50 border-l-slate-100 bg-sky-300 text-white hover:bg-sky-500 dark:shadow-emerald-900 transition">/Programming</button> <div><button class="last:mr-0 bg-green-100 hover:bg-green-400 hover:text-white dark:text-black transition px-2 py-0.5 rounded-xl shadow-md dark:shadow-green-900" style="margin-right: 0.25rem; margin-left: 0.5rem">#javascript</button></div></div> <hr class="bg-gray-400 my-4">  <main class="max-w-[900px] w-full py-2 post"> <!-- HTML_TAG_START --><p>Webpack 같은 번들러를 이용하지 않고 코딩한 자바스크립트 파일을
 그대로 모듈 시스템을 이용하고 싶을 때가 가끔 있습니다. 예를 들어
 간단한 테스트나 토이 프로젝트를 수행할 때 말이죠.</p>
 <!--more-->
@@ -57,12 +71,12 @@ ES Module을 이용하려면 웹 서버를 이용해 파일들을 Serve 해야 �
 <p>위 방법을 잘 따라오셨다면 웹 서버를 열고
 브라우저로 html 파일에 접속하면 <em>hello</em>가 콘솔에 찍혀 있을겁니다. :)</p>
 <h2>참조</h2>
-<p><a href="https://javascript.info/modules-intro">https://javascript.info/modules-intro</a></p><!-- HTML_TAG_END --></main></div></div> <footer class="p-2 py-5 text-sm flex gap-1 flex-col md:flex-row items-center justify-between border-t border-b-gray-300 bg-gray-50"><div>©️ 2021~2023 dlguswo333; All rights reserved.</div> <div class="flex items-center" data-svelte-h="svelte-egte91"><a class="inline-flex items-center" href="https://github.com/dlguswo333/dlguswo333.github.io"><img class="inline h-4 w-4 mr-1" src="/github-mark.svg" alt="github-mark"></a>
+<p><a href="https://javascript.info/modules-intro">https://javascript.info/modules-intro</a></p><!-- HTML_TAG_END --></main></div></div> <footer class="p-2 py-5 text-sm flex gap-1 flex-col md:flex-row items-center justify-between border-t border-gray-300 bg-gray-50 dark:border-gray-700 dark:bg-[#2c3039]"><div>©️ 2021~2023 dlguswo333; All rights reserved.</div> <div class="flex items-center"><a class="inline-flex items-center" href="https://github.com/dlguswo333/dlguswo333.github.io"><img class="inline h-4 w-4 mr-1" src="/github-mark.svg" alt="github-mark"></a>
     Built with Sveltekit.</div></footer>  
 			
 			<script>
 				{
-					__sveltekit_11j9ss2 = {
+					__sveltekit_9fvm1m = {
 						base: new URL("../..", location).pathname.slice(0, -1),
 						env: {}
 					};
@@ -72,8 +86,8 @@ ES Module을 이용하려면 웹 서버를 이용해 파일들을 Serve 해야 �
 					const data = [null,{"type":"data","data":{html:"\u003Cp>Webpack 같은 번들러를 이용하지 않고 코딩한 자바스크립트 파일을\n그대로 모듈 시스템을 이용하고 싶을 때가 가끔 있습니다. 예를 들어\n간단한 테스트나 토이 프로젝트를 수행할 때 말이죠.\u003C/p>\n\u003C!--more-->\n\u003Cp>웹팩이 있을 때는 임포트와 익스포트 구문만 제대로 써주면 문제가 없었는데,\n번들러가 웹 개발에 있어 필수 아닌 필수가 되었기에 번들러가 함께하는 개발에만 익숙해진\n사람들은 웹팩 없이 ECMAScript의 모듈 (ES Module)을 처음 써보는 거라면\n바닐라JS의 모듈 시스템이 굉장히 낯설게 느껴질 수 있습니다.\u003Cbr>\u003C/p>\n\u003Cp>따라서 이 포스트는 번들러 없이 JS와 HTML 파일만으로 ES Module을 사용하는 법을 간단히 소개하고자 합니다.\u003C/p>\n\u003Cp>먼저 엔트리 포인트가 될 코드를 생성합니다. \u003Ccode>index.js\u003C/code>로 루트에 생성하거나\n인라인으로 HTML 파일 내부에 script로 생성해줍니다. 단 scrip 태그의 \u003Ccode>type\u003C/code> 프로퍼티로\n\u003Ccode>module\u003C/code>을 지정합니다.\u003C/p>\n\u003Cpre class=\"language-html\">\u003Ccode class=\"language-html code-highlight\">\u003Cspan class=\"code-line line-number\" line=\"1\">\u003Cspan class=\"token tag\">\u003Cspan class=\"token tag\">\u003Cspan class=\"token punctuation\">&#x3C;\u003C/span>html\u003C/span>\u003Cspan class=\"token punctuation\">>\u003C/span>\u003C/span>\n\u003C/span>\u003Cspan class=\"code-line line-number\" line=\"2\">  \u003Cspan class=\"token tag\">\u003Cspan class=\"token tag\">\u003Cspan class=\"token punctuation\">&#x3C;\u003C/span>script\u003C/span> \u003Cspan class=\"token attr-name\">type\u003C/span>\u003Cspan class=\"token attr-value\">\u003Cspan class=\"token punctuation attr-equals\">=\u003C/span>\u003Cspan class=\"token punctuation\">\"\u003C/span>module\u003Cspan class=\"token punctuation\">\"\u003C/span>\u003C/span>\u003Cspan class=\"token punctuation\">>\u003C/span>\u003C/span>\u003Cspan class=\"token script\">\u003Cspan class=\"token language-javascript\">\n\u003C/span>\u003C/span>\u003C/span>\u003Cspan class=\"code-line line-number\" line=\"3\">\u003Cspan class=\"token script\">\u003Cspan class=\"token language-javascript\">    \u003Cspan class=\"token keyword module\">import\u003C/span> \u003Cspan class=\"token imports\">\u003Cspan class=\"token punctuation\">{\u003C/span>hello\u003Cspan class=\"token punctuation\">}\u003C/span>\u003C/span> \u003Cspan class=\"token keyword module\">from\u003C/span> \u003Cspan class=\"token string\">'./hello.js'\u003C/span>\u003Cspan class=\"token punctuation\">;\u003C/span>\n\u003C/span>\u003C/span>\u003C/span>\u003Cspan class=\"code-line line-number\" line=\"4\">\u003Cspan class=\"token script\">\u003Cspan class=\"token language-javascript\">    \u003Cspan class=\"token console class-name\">console\u003C/span>\u003Cspan class=\"token punctuation\">.\u003C/span>\u003Cspan class=\"token method function property-access\">log\u003C/span>\u003Cspan class=\"token punctuation\">(\u003C/span>hello\u003Cspan class=\"token punctuation\">)\u003C/span>\u003Cspan class=\"token punctuation\">;\u003C/span>\n\u003C/span>\u003C/span>\u003C/span>\u003Cspan class=\"code-line line-number\" line=\"5\">\u003Cspan class=\"token script\">\u003Cspan class=\"token language-javascript\">  \u003C/span>\u003C/span>\u003Cspan class=\"token tag\">\u003Cspan class=\"token tag\">\u003Cspan class=\"token punctuation\">&#x3C;/\u003C/span>script\u003C/span>\u003Cspan class=\"token punctuation\">>\u003C/span>\u003C/span>\n\u003C/span>\u003Cspan class=\"code-line line-number\" line=\"6\">\u003Cspan class=\"token tag\">\u003Cspan class=\"token tag\">\u003Cspan class=\"token punctuation\">&#x3C;/\u003C/span>html\u003C/span>\u003Cspan class=\"token punctuation\">>\u003C/span>\u003C/span>\n\u003C/span>\u003C/code>\u003C/pre>\n\u003Cp>이때 임포트할 다른 파일은 \u003Cstrong>상대경로\u003C/strong>를 이용해 path를 표시해줍니다.\n웹팩을 이용할 때는 웹팩에서 확장자를 생략해도 알아서 리솔브해주는 것이 가능했지만\n지금은 웹팩이 없으니 확장자 (\u003Ccode>*.js\u003C/code>)까지 명시해야 합니다.\u003C/p>\n\u003Cp>엔트리 포인트를 제외한 다른 파일은 번들러를 이용할 때와 동일하게 작성해주면 됩니다.\u003C/p>\n\u003Cpre class=\"language-js\">\u003Ccode class=\"language-js code-highlight\">\u003Cspan class=\"code-line line-number\" line=\"1\">\u003Cspan class=\"token keyword module\">export\u003C/span> \u003Cspan class=\"token keyword\">const\u003C/span> hello \u003Cspan class=\"token operator\">=\u003C/span> \u003Cspan class=\"token string\">'hello'\u003C/span>\u003Cspan class=\"token punctuation\">;\u003C/span>\n\u003C/span>\u003C/code>\u003C/pre>\n\u003Cblockquote>\n\u003Cp>⚠️ 모듈 시스템은 로컬 프로토콜 (\u003Ccode>file://\u003C/code>)에서는 동작하지 않습니다!\u003Cbr>\nES Module을 이용하려면 웹 서버를 이용해 파일들을 Serve 해야 합니다.\u003C/p>\n\u003C/blockquote>\n\u003Cp>위 방법을 잘 따라오셨다면 웹 서버를 열고\n브라우저로 html 파일에 접속하면 \u003Cem>hello\u003C/em>가 콘솔에 찍혀 있을겁니다. :)\u003C/p>\n\u003Ch2>참조\u003C/h2>\n\u003Cp>\u003Ca href=\"https://javascript.info/modules-intro\">https://javascript.info/modules-intro\u003C/a>\u003C/p>",frontmatter:{layout:"post",toc:false,editedDate:"2022-09-04",title:"Simple Introduction to Vanilla ES Module",category:["Programming"],tags:["javascript"],author:["이현재"]},date:"2022-05-15",lang:"ko",tocData:[]},"uses":{"params":["year","slug"]}}];
 
 					Promise.all([
-						import("../../_app/immutable/entry/start.7b6d567d.js"),
-						import("../../_app/immutable/entry/app.adeff534.js")
+						import("../../_app/immutable/entry/start.f884c089.js"),
+						import("../../_app/immutable/entry/app.546e4740.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element, {
 							node_ids: [0, 5],
