@@ -18,6 +18,11 @@ html {
     font-family: 'Noto Sans KR', sans-serif;
 }
 
+body.dark {
+    background-color: #242729;
+    color: #ebebeb;
+}
+
 .post * {
     overflow-wrap: break-word;
 }
@@ -25,6 +30,9 @@ html {
 .post h1,h2,h3,h4 {
     border-bottom: 1px solid #e0e0e0;
     scroll-margin-top: 50px;
+}
+body.dark .post h1,h2,h3,h4 {
+    border-color: #777;
 }
 
 .post h1 {
@@ -63,6 +71,10 @@ html {
     border-radius: 4px;
     color: #a420cf;
 }
+body.dark .post :not(pre) code {
+    background-color: #373737;
+    color: #00a2ff;
+}
 
 .post blockquote {
     padding-left: 1rem;
@@ -71,6 +83,9 @@ html {
     border-left: 3px solid #00a2ff;
     border-radius: 0 5px 5px 0;
     background-color: #f4f4f4;
+}
+body.dark .post blockquote {
+    background-color: #202d37;
 }
 
 .post img {
@@ -94,6 +109,10 @@ html {
 }
 .post ul li {
     list-style-type: circle;
+}
+
+.post pre {
+    border: 1px solid #585858;
 }
 
 .post code {

@@ -1,5 +1,7 @@
 <script lang="ts">
   import {name, email, githubUserName} from '$lib';
+  import GithubMark from '$lib/components/GithubMark.svelte';
+
   const profileImageSrc = `https://github.com/${githubUserName}.png`;
 </script>
 <aside class="max-w-[300px] hidden mt-10 self-start md:!flex flex-col justify-center items-center p-5">
@@ -13,7 +15,7 @@
       <a href={`mailto:${email}`} id="profile-email" class="text-blue-500">{email}</a>
     </li>
     <li>
-      <label for="profile-github"><img class="inline h-4 w-4" src="/github-mark.svg" alt="github-mark">:</label>
+      <label for="profile-github"><GithubMark />:</label>
       <a href={`https://github.com/${githubUserName}`} id="profile-github" class="text-blue-500">Github Link</a>
     </li>
   </ul>
