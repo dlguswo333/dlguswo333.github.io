@@ -2,8 +2,11 @@
   import type {ColorTheme} from '$lib/types';
   import {getCurrentTheme, toggleTheme} from '$lib/colorTheme';
   import {browser} from '$app/environment';
+  import {currentTheme as themeStore} from '$lib/store';
 
   let currentTheme: ColorTheme | null = browser ? getCurrentTheme() : null;
+
+  $: $themeStore = currentTheme;
 </script>
 <button type="button" title="Toggle color theme"
   class='group'
