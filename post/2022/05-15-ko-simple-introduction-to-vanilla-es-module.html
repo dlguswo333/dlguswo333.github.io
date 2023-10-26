@@ -5,21 +5,21 @@
 		<link rel="icon" href="../../favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		
-		<link href="../../_app/immutable/assets/0.2e853844.css" rel="stylesheet">
-		<link rel="modulepreload" href="../../_app/immutable/entry/start.fd5a1e65.js">
+		<link href="../../_app/immutable/assets/0.55bb544f.css" rel="stylesheet">
+		<link rel="modulepreload" href="../../_app/immutable/entry/start.19c3fec5.js">
 		<link rel="modulepreload" href="../../_app/immutable/chunks/scheduler.db0ac06a.js">
-		<link rel="modulepreload" href="../../_app/immutable/chunks/singletons.dc9ca619.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/singletons.9f8e411b.js">
 		<link rel="modulepreload" href="../../_app/immutable/chunks/index.1bcf888f.js">
-		<link rel="modulepreload" href="../../_app/immutable/entry/app.922c8a37.js">
-		<link rel="modulepreload" href="../../_app/immutable/chunks/index.4a49f625.js">
-		<link rel="modulepreload" href="../../_app/immutable/nodes/0.cd5a136d.js">
+		<link rel="modulepreload" href="../../_app/immutable/entry/app.2042d182.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/index.ffb65d84.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/0.b84cbffc.js">
 		<link rel="modulepreload" href="../../_app/immutable/chunks/index.a82faf3f.js">
-		<link rel="modulepreload" href="../../_app/immutable/chunks/GithubMark.58026925.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/GithubMark.7da6da40.js">
 		<link rel="modulepreload" href="../../_app/immutable/chunks/store.53f04f50.js">
-		<link rel="modulepreload" href="../../_app/immutable/nodes/5.a47ca943.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/5.0094eecc.js">
 		<link rel="modulepreload" href="../../_app/immutable/chunks/each.e59479a4.js">
-		<link rel="modulepreload" href="../../_app/immutable/chunks/Category.ce579307.js">
-		<link rel="modulepreload" href="../../_app/immutable/chunks/MainSection.a957b41b.js"><title>Simple Introduction to Vanilla ES Module : dlguswo333&#39;s blog</title><!-- HEAD_svelte-etxm8u_START --><!-- HEAD_svelte-etxm8u_END -->
+		<link rel="modulepreload" href="../../_app/immutable/chunks/Category.d3e95d86.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/MainSection.e5725b49.js"><title>Simple Introduction to Vanilla ES Module : dlguswo333&#39;s blog</title><!-- HEAD_svelte-etxm8u_START --><!-- HEAD_svelte-etxm8u_END -->
 		<!-- [TODO] For portability I can erase the following elements and inject them from index.ts when building? -->
 		<title>dlguswo333's Blog</title>
 		<meta name="google-site-verification" content="GIhlBkE7qu5AWLVmQ4w2lBcxEw-AumQhdQf_2zR2X4s" />
@@ -76,7 +76,7 @@ ES Module을 이용하려면 웹 서버를 이용해 파일들을 Serve 해야 �
 			
 			<script>
 				{
-					__sveltekit_15hm323 = {
+					__sveltekit_1b1cahh = {
 						base: new URL("../..", location).pathname.slice(0, -1),
 						env: {}
 					};
@@ -86,8 +86,8 @@ ES Module을 이용하려면 웹 서버를 이용해 파일들을 Serve 해야 �
 					const data = [null,{"type":"data","data":{html:"\u003Cp>Webpack 같은 번들러를 이용하지 않고 코딩한 자바스크립트 파일을\n그대로 모듈 시스템을 이용하고 싶을 때가 가끔 있습니다. 예를 들어\n간단한 테스트나 토이 프로젝트를 수행할 때 말이죠.\u003C/p>\n\u003C!--more-->\n\u003Cp>웹팩이 있을 때는 임포트와 익스포트 구문만 제대로 써주면 문제가 없었는데,\n번들러가 웹 개발에 있어 필수 아닌 필수가 되었기에 번들러가 함께하는 개발에만 익숙해진\n사람들은 웹팩 없이 ECMAScript의 모듈 (ES Module)을 처음 써보는 거라면\n바닐라JS의 모듈 시스템이 굉장히 낯설게 느껴질 수 있습니다.\u003Cbr>\u003C/p>\n\u003Cp>따라서 이 포스트는 번들러 없이 JS와 HTML 파일만으로 ES Module을 사용하는 법을 간단히 소개하고자 합니다.\u003C/p>\n\u003Cp>먼저 엔트리 포인트가 될 코드를 생성합니다. \u003Ccode>index.js\u003C/code>로 루트에 생성하거나\n인라인으로 HTML 파일 내부에 script로 생성해줍니다. 단 scrip 태그의 \u003Ccode>type\u003C/code> 프로퍼티로\n\u003Ccode>module\u003C/code>을 지정합니다.\u003C/p>\n\u003Cpre class=\"language-html\">\u003Ccode class=\"language-html code-highlight\">\u003Cspan class=\"code-line line-number\" line=\"1\">\u003Cspan class=\"token tag\">\u003Cspan class=\"token tag\">\u003Cspan class=\"token punctuation\">&#x3C;\u003C/span>html\u003C/span>\u003Cspan class=\"token punctuation\">>\u003C/span>\u003C/span>\n\u003C/span>\u003Cspan class=\"code-line line-number\" line=\"2\">  \u003Cspan class=\"token tag\">\u003Cspan class=\"token tag\">\u003Cspan class=\"token punctuation\">&#x3C;\u003C/span>script\u003C/span> \u003Cspan class=\"token attr-name\">type\u003C/span>\u003Cspan class=\"token attr-value\">\u003Cspan class=\"token punctuation attr-equals\">=\u003C/span>\u003Cspan class=\"token punctuation\">\"\u003C/span>module\u003Cspan class=\"token punctuation\">\"\u003C/span>\u003C/span>\u003Cspan class=\"token punctuation\">>\u003C/span>\u003C/span>\u003Cspan class=\"token script\">\u003Cspan class=\"token language-javascript\">\n\u003C/span>\u003C/span>\u003C/span>\u003Cspan class=\"code-line line-number\" line=\"3\">\u003Cspan class=\"token script\">\u003Cspan class=\"token language-javascript\">    \u003Cspan class=\"token keyword module\">import\u003C/span> \u003Cspan class=\"token imports\">\u003Cspan class=\"token punctuation\">{\u003C/span>hello\u003Cspan class=\"token punctuation\">}\u003C/span>\u003C/span> \u003Cspan class=\"token keyword module\">from\u003C/span> \u003Cspan class=\"token string\">'./hello.js'\u003C/span>\u003Cspan class=\"token punctuation\">;\u003C/span>\n\u003C/span>\u003C/span>\u003C/span>\u003Cspan class=\"code-line line-number\" line=\"4\">\u003Cspan class=\"token script\">\u003Cspan class=\"token language-javascript\">    \u003Cspan class=\"token console class-name\">console\u003C/span>\u003Cspan class=\"token punctuation\">.\u003C/span>\u003Cspan class=\"token method function property-access\">log\u003C/span>\u003Cspan class=\"token punctuation\">(\u003C/span>hello\u003Cspan class=\"token punctuation\">)\u003C/span>\u003Cspan class=\"token punctuation\">;\u003C/span>\n\u003C/span>\u003C/span>\u003C/span>\u003Cspan class=\"code-line line-number\" line=\"5\">\u003Cspan class=\"token script\">\u003Cspan class=\"token language-javascript\">  \u003C/span>\u003C/span>\u003Cspan class=\"token tag\">\u003Cspan class=\"token tag\">\u003Cspan class=\"token punctuation\">&#x3C;/\u003C/span>script\u003C/span>\u003Cspan class=\"token punctuation\">>\u003C/span>\u003C/span>\n\u003C/span>\u003Cspan class=\"code-line line-number\" line=\"6\">\u003Cspan class=\"token tag\">\u003Cspan class=\"token tag\">\u003Cspan class=\"token punctuation\">&#x3C;/\u003C/span>html\u003C/span>\u003Cspan class=\"token punctuation\">>\u003C/span>\u003C/span>\n\u003C/span>\u003C/code>\u003C/pre>\n\u003Cp>이때 임포트할 다른 파일은 \u003Cstrong>상대경로\u003C/strong>를 이용해 path를 표시해줍니다.\n웹팩을 이용할 때는 웹팩에서 확장자를 생략해도 알아서 리솔브해주는 것이 가능했지만\n지금은 웹팩이 없으니 확장자 (\u003Ccode>*.js\u003C/code>)까지 명시해야 합니다.\u003C/p>\n\u003Cp>엔트리 포인트를 제외한 다른 파일은 번들러를 이용할 때와 동일하게 작성해주면 됩니다.\u003C/p>\n\u003Cpre class=\"language-js\">\u003Ccode class=\"language-js code-highlight\">\u003Cspan class=\"code-line line-number\" line=\"1\">\u003Cspan class=\"token keyword module\">export\u003C/span> \u003Cspan class=\"token keyword\">const\u003C/span> hello \u003Cspan class=\"token operator\">=\u003C/span> \u003Cspan class=\"token string\">'hello'\u003C/span>\u003Cspan class=\"token punctuation\">;\u003C/span>\n\u003C/span>\u003C/code>\u003C/pre>\n\u003Cblockquote>\n\u003Cp>⚠️ 모듈 시스템은 로컬 프로토콜 (\u003Ccode>file://\u003C/code>)에서는 동작하지 않습니다!\u003Cbr>\nES Module을 이용하려면 웹 서버를 이용해 파일들을 Serve 해야 합니다.\u003C/p>\n\u003C/blockquote>\n\u003Cp>위 방법을 잘 따라오셨다면 웹 서버를 열고\n브라우저로 html 파일에 접속하면 \u003Cem>hello\u003C/em>가 콘솔에 찍혀 있을겁니다. :)\u003C/p>\n\u003Ch2>참조\u003C/h2>\n\u003Cp>\u003Ca href=\"https://javascript.info/modules-intro\">https://javascript.info/modules-intro\u003C/a>\u003C/p>",frontmatter:{layout:"post",toc:false,editedDate:"2022-09-04",title:"Simple Introduction to Vanilla ES Module",category:["Programming"],tags:["javascript"],author:["이현재"]},date:"2022-05-15",lang:"ko",tocData:[]},"uses":{"params":["year","slug"]}}];
 
 					Promise.all([
-						import("../../_app/immutable/entry/start.fd5a1e65.js"),
-						import("../../_app/immutable/entry/app.922c8a37.js")
+						import("../../_app/immutable/entry/start.19c3fec5.js"),
+						import("../../_app/immutable/entry/app.2042d182.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element, {
 							node_ids: [0, 5],
