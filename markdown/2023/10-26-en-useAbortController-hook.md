@@ -138,3 +138,133 @@ But this custom hook has some flaws.
   Same reason as above.
 
 # Advanced Custom Hook with AbortController
+## Return Callback and Abort Function
+The custom hook shouldn't call fetch request inside itself;
+it should wrap the fetch request with an `AbortController`
+and return it back to the caller, together with an abort function.
+
+```jsx
+const [search, abortSearch] = useAbortController(
+  url,
+  params,
+  setSearchResult,
+  onError,
+);
+
+// Use it like this:
+<button onClick={search}>Search</button>
+<button onClick={abortSearch}>Abort Search</button>
+```
+
+The custom hook should create two functions with `useCallback`.
+Also, `AbortController` instances should be shared between the two functions
+with a help from `useState`.
+
+```js
+const useAbortController = ((url, params, onFetchComplete, onError) => {
+  const [controller, setController] = useState(new AbortController());
+
+  const request = useCallback(async () => {
+    try {
+      const result = await axios.get(url, {
+        params,
+        signal: controller.signal
+      });
+      onFetchComplete(result);
+    } catch (e) {
+      onError(e);
+    }
+  }, [controller, url, params, onFetchComplete, onError]);
+
+  const abortRequest = useCallback(() => {
+    controller.abort();
+    // Create a new AbortController since you cannot reuse an AbortController.
+    setController(new AbortController());
+  }, [controller]);
+
+  return [callback, abort];
+});
+```
+
+However, there is a flaw in the hook;
+the `AbortController` is managed as a **state**.
+You cannot reuse the same controller after `AbortController.abort()` call.
+You need to create new one after calling `AbortController.abort()`.
+It means the two functions should depend on `controller` state.
+This presents us a problem; unnecessary rerenders.
+1. Call `abortRequest()` callback.
+1. `controller` state renews.
+1. `request` and `abortRequest` callbacks renews.
+1. Components which call the hook rerender, also do their children.
+
+Futhermore, we may have a problem if we call the callback inside `useEffect`.
+The effect should depend on `request`.
+When we abort the callback, the effect reruns whether we like it or not.
+Also, calling callback and return abort function inside `useEffect`
+results in an infinite rerenders.
+Since these behaviors are due to the internal logics of this hook,
+it should be avoided or it will confuse those who use the hook.
+
+```jsx
+const [search, abortSearch] = useAbortController(
+  url,
+  params,
+  setSearchResult,
+  onError,
+);
+
+useEffect(() => {
+  search();
+
+  return () => {
+    abortSearch();
+  }
+}, [search, abortSearch]);
+
+// All I want to do is cancel searching,
+// but search API is called when the button is pressed?
+<button onClick={abortSearch}>Cancel search</button>
+```
+
+## Manage AbortController with useRef
+Instead of managing `AbortController` with `useState`
+and suffer from rerenders, we got a better option: `useRef`.
+
+```js
+const useAbortController = ((url, params, onFetchComplete, onError) => {
+  const controllerRef = useRef(new AbortController());
+
+  const request = useCallback(async () => {
+    try {
+      const signal = controllerRef.current.signal;
+      const result = await fetch(url, {
+        params,
+        signal
+      });
+      onFetchComplete?.(result);
+    } catch (e) {
+      onError?.(e);
+    }
+  }, [url, params, onFetchComplete, onError]);
+
+  const abortRequest = useCallback(() => {
+    controllerRef.current.abort();
+    controllerRef.current = new AbortController();
+  }, []);
+
+  return [callback, abort];
+});
+```
+
+Now the hook does not incur any rerender or make you suffer from rerender.
+However **note** that the `signal` variable is created and used
+inside `request` callback.
+`abort` function changes `controllerRef.current`,
+which means `controllerRef.current` referred by `fetch`
+might not be the `AbortController` instance you want.
+It could be a new `AbortController`,
+then `fetch` may run even though you called `abortRequest`.
+Thus, we need to store `controllerRef.current` some place else
+before we make a `fetch` call.
+
+# Pass Callback as Parameter when you Call
