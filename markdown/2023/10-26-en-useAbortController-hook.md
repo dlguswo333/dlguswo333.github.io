@@ -97,7 +97,7 @@ useEffect(() => {
 # Custom Hook with AbortController
 If you want to reuse the code and make it as a custom hook, maybe you can do this:
 ```js
-useAbortController((url, params, onFetchComplete, onError) => {
+const useAbortController = ((url, params, onFetchComplete, onError) => {
   useEffect(() => {
     const controller = new AbortController();
     const search = async () => {
