@@ -126,15 +126,15 @@ useAbortController('/search', params, setSearchResult, onError)
 ```
 
 Be aware if you cannot gurantee the stabilities of each argument,
-the `useEffect` will rerun everytime the component rerenders,
+the `useEffect` will rerun everytime components rerender,
 resulting in unnecessary repeated request calls or infinite rerenders in the worst case.
 
-But this custom hook has some flaws.
-- You cannot call the `search` function on your demand<br>
+Also, this custom hook has some flaws.
+- **You cannot call the `search` function on your demand**<br>
   you might need to call the function on other circumstances,
   such as on button clicked.
   However Since the hook does not expose the request function, you just can't.
-- You cannot cancel the `search` function.<br>
+- **You cannot cancel the `search` function.**<br>
   Same reason as above.
 
 # Advanced Custom Hook with AbortController
@@ -178,7 +178,8 @@ const useAbortController = ((url, params, onFetchComplete, onError) => {
 
   const abortRequest = useCallback(() => {
     controller.abort();
-    // Create a new AbortController since you cannot reuse an AbortController.
+    // Create a new AbortController,
+    // since you cannot use same AbortController more than once.
     setController(new AbortController());
   }, [controller]);
 
@@ -446,7 +447,7 @@ const useAbortController = <Args extends unknown[], Ret>
 
 Now exported callbacks have specific typings
 but with ambiguous typings.
-This is because we did not specify typings for `useAbortController` returns.
+This is because we did not specify `useAbortController` return type.
 
 ![useAbortController-typescript-wrong-types](/img/2023-10-26-en-useAbortController-hook/useAbortController-typescript-1.png)
 
