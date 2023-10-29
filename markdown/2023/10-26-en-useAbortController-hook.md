@@ -237,7 +237,7 @@ const useAbortController = ((url, params, onFetchComplete, onError) => {
   const request = useCallback(async () => {
     try {
       const signal = controllerRef.current.signal;
-      const result = await fetch(url, {
+      const result = await axios.get(url, {
         params,
         signal
       });
@@ -259,7 +259,7 @@ const useAbortController = ((url, params, onFetchComplete, onError) => {
 Now the hook does not incur any rerender or make you suffer from rerender.
 However **note** that the `signal` variable is created and used
 inside `request` callback.
-`abort` function changes `controllerRef.current`,
+`abort` function reassigns `controllerRef.current`,
 which means `controllerRef.current` referred by `fetch`
 might not be the `AbortController` instance you want.
 It could be a new `AbortController`,
@@ -267,4 +267,236 @@ then `fetch` may run even though you called `abortRequest`.
 Thus, we need to store `controllerRef.current` some place else
 before we make a `fetch` call.
 
-# Pass Callback as Parameter when you Call
+# Pass AbortController to Callback as a Parameter
+To further increase flexibility, we may come up with an idea
+where `useAbortController` receives a callback, not an url.
+This lets you pass single parameter only,
+since you are now able to control `url`, `params`, `onFetchComplete`, `onError`
+inside the callback, freely.
+
+```js
+const searchWithAbortController = useCallback(
+  async (abortController) => {
+    try {
+      const result = await axios.get('/search', {
+        signal: abortController.signal
+      });
+      // Handle result
+    } catch (e) {
+      // Handle errors
+    }
+  }, []);
+
+const [search, abortSearch] = useAbortController(searchWithAbortController);
+```
+
+We can do that easily with the following code.
+This hook's role is to wrap a callback with an `AbortController` and that is all.
+The code got much simpler because we let callers control responses and errors.
+However callers' code may get complicated to handle those.
+It has pros and cons.
+
+```js
+const useAbortController = ((cb) => {
+  const controllerRef = useRef(new AbortController());
+
+  const callback = useCallback(() => {
+    const controller = controllerRef.current;
+    return cb(controller);
+  }, [cb]);
+
+  const abort = useCallback(() => {
+    controllerRef.current.abort();
+    controllerRef.current = new AbortController();
+  }, []);
+
+  return [callback, abort];
+});
+```
+
+## Pass Other Arguments as Parameters Together
+To keep things go further, we can pass
+callback's arguments as parameters, not just `AbortController`.
+
+```js
+const useAbortController = ((cb) => {
+  const controllerRef = useRef(new AbortController());
+
+  const callback = useCallback((...args) => {
+    const controller = controllerRef.current;
+    return cb(controller, ...args);
+  }, [cb]);
+
+  const abort = useCallback(() => {
+    controllerRef.current.abort();
+    controllerRef.current = new AbortController();
+  }, []);
+
+  return [callback, abort];
+});
+```
+
+This is quite useful pattern since we can call
+the callback function just like before it was wrapped with `useAbortController`.
+
+```js
+const searchWithAbortController = useCallback(
+  async (abortController, keyword) => {
+    try {
+      const result = await axios.get('/search', {
+        params: {keyword},
+        signal: abortController.signal
+      });
+      // Handle result
+    } catch (e) {
+      // Handle errors
+    }
+  }, []);
+
+const [search, abortSearch] = useAbortController(searchWithAbortController);
+
+// Like this. No need to care AbortController, just your arguments.
+search('keyword');
+```
+
+If you want `AbortController` to be the last parameter, simple send it to the last.
+
+```js
+const useAbortController = ((cb) => {
+  const controllerRef = useRef(new AbortController());
+
+  const callback = useCallback((...args) => {
+    const controller = controllerRef.current;
+    return cb(...args, controller);
+  }, [cb]);
+
+  const abort = useCallback(() => {
+    controllerRef.current.abort();
+    controllerRef.current = new AbortController();
+  }, []);
+
+  return [callback, abort];
+});
+
+const searchWithAbortController = useCallback(
+  async (keyword, abortController) => {
+    try {
+      const result = await axios.get('/search', {
+        params: {keyword},
+        signal: abortController.signal
+      });
+      // Handle result
+    } catch (e) {
+      // Handle errors
+    }
+  }, []);
+```
+
+### Typing with Typescript
+Now let us see how to type the hook with Typescript.
+Keeping types is vital for developer experience when you curry functions.
+Types will be lost if you do not take a good care of it.
+See the following Typescript code.
+It works but every type is written as `unknown`.
+We need more than this.
+
+```ts
+const useAbortController = (
+  cb: (controller: AbortController, ...args: unknown[]) => unknown
+) => {
+  const controllerRef = useRef(new AbortController());
+
+  const callback = useCallback((...cbArgs: unknown[]) => {
+    const controller = controllerRef.current;
+    return cb(controller, ...cbArgs);
+  }, [cb]);
+
+  const abort = useCallback(() => {
+    controllerRef.current.abort();
+    controllerRef.current = new AbortController();
+  }, []);
+
+  return [callback, abort];
+};
+```
+
+What we need is *generics*. By adding generic types to the hook,
+the resultant functions automatically infer concrete types.
+
+```ts
+const useAbortController = <Args extends unknown[], Ret>
+  (
+    cb: (controller: AbortController, ...args: Args) => Ret
+  ) => {
+  const controllerRef = useRef(new AbortController());
+
+  const callback = useCallback((...cbArgs: Args) => {
+    const controller = controllerRef.current;
+    return cb(controller, ...cbArgs);
+  }, [cb]);
+
+  const abort = useCallback(() => {
+    controllerRef.current.abort();
+    controllerRef.current = new AbortController();
+  }, []);
+
+  return [callback, abort];
+};
+```
+
+Now exported callbacks have specific typings
+but with ambiguous typings.
+This is because we did not specify typings for `useAbortController` returns.
+
+![useAbortController-typescript-wrong-types](/img/2023-10-26-en-useAbortController-hook/useAbortController-typescript-1.png)
+
+![useAbortController-typescript-wrong-types](/img/2023-10-26-en-useAbortController-hook/useAbortController-typescript-2.png)
+
+We can solve this by explicitly typing it:
+
+```ts
+const useAbortController = <Args extends unknown[], Ret>
+  (
+    cb: (controller: AbortController, ...args: Args) => Ret
+  ): [callback: (...args: Args) => Ret, abortCallback: () => void] => {
+```
+
+Or you can return the callback array `as const`.
+```ts
+  return [callback, abort] as const;
+```
+
+Now the callbacks have correct typings :)
+
+If you want `AbortController` to be the last parameter
+in your Typescript code, it is a little tricky write,
+but it is absolutely possible.
+
+```ts
+type ArgsWithController<T extends unknown[]> = [...T, AbortController];
+
+const useAbortController = <Args extends unknown[], Ret>
+  (
+    cb: (...args: ArgsWithController<Args>) => Ret
+  ): [callback: (...args: Args) => Ret, abortCallback: () => void] => {
+  const controllerRef = useRef(new AbortController());
+
+  const callback = useCallback((...cbArgs: Args) => {
+    const controller = controllerRef.current;
+    return cb(...cbArgs, controller);
+  }, [cb]);
+
+  const abort = useCallback(() => {
+    controllerRef.current.abort();
+    controllerRef.current = new AbortController();
+  }, []);
+
+  return [callback, abort];
+};
+```
+
+I want to point out that Typescript exists to help you.
+If you do not reuse the same logics or do not find it useful,
+you are 100% fine not to use Typescript.
+But once you write Typescript code that have concrete typings,
+it will save you for many times.
