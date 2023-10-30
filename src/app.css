@@ -101,8 +101,8 @@ body.dark .post blockquote {
     color: #a520ff;
 }
 
-.post li {
-    list-style-position: inside;
+.post ol,ul {
+    padding-left: 1.5rem;
 }
 .post ol li {
     list-style-type: decimal;
