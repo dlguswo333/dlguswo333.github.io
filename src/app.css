@@ -96,13 +96,18 @@ body.dark .post blockquote {
 
 .post a {
     color: #00a2ff;
+    text-decoration: underline;
 }
 .post a:visited {
     color: #a520ff;
 }
 
-.post li {
-    list-style-position: inside;
+.post a:hover {
+    filter: brightness(120%);
+}
+
+.post ol,ul {
+    padding-left: 1.5rem;
 }
 .post ol li {
     list-style-type: decimal;
@@ -117,6 +122,9 @@ body.dark .post blockquote {
 
 .post code {
     font-family: 'Fira Code', monospace;
+}
+
+.post pre code {
     font-size: 0.9rem;
 }
 
