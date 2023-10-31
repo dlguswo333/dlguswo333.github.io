@@ -96,9 +96,14 @@ body.dark .post blockquote {
 
 .post a {
     color: #00a2ff;
+    text-decoration: underline;
 }
 .post a:visited {
     color: #a520ff;
+}
+
+.post a:hover {
+    filter: brightness(120%);
 }
 
 .post ol,ul {
