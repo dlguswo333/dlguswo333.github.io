@@ -122,6 +122,9 @@ body.dark .post blockquote {
 
 .post code {
     font-family: 'Fira Code', monospace;
+}
+
+.post pre code {
     font-size: 0.9rem;
 }
 
