@@ -189,20 +189,20 @@ const useAbortController = ((url, params, onFetchComplete, onError) => {
 
 However, there is a flaw in the hook;
 the `AbortController` is managed as a **state**.
-You cannot reuse the same controller after `AbortController.abort()` call.
-You need to create new one after calling `AbortController.abort()`.
-It means the two functions should depend on `controller` state.
-This presents us a problem; unnecessary rerenders.
+You cannot reuse the same controller once you called `AbortController.abort()`.
+t means you need to create new one after calling `AbortController.abort()`.
+Thus the two functions should depend on `controller` state to get the latest `AbortController`.
+This dependency presents us a problem; unnecessary rerenders.
 1. Call `abortRequest()` callback.
 1. `controller` state renews.
 1. `request` and `abortRequest` callbacks renews.
 1. Components which call the hook rerender, also do their children.
 
 Futhermore, we may have a problem if we call the callback inside `useEffect`.
-The effect should depend on `request`.
+The effect should depend on `request` to use the latest value.
 When we abort the callback, the effect reruns whether we like it or not.
-Also, calling callback and return abort function inside `useEffect`
-results in an infinite rerenders.
+Also, calling callback and returning abort cleanup function inside the same `useEffect`
+result in an infinite rerenders.
 Since these behaviors are due to the internal logics of this hook,
 it should be avoided or it will confuse those who use the hook.
 
@@ -258,7 +258,7 @@ const useAbortController = ((url, params, onFetchComplete, onError) => {
 ```
 
 Now the hook does not incur any rerender or make you suffer from rerender.
-However **note** that the `signal` variable is created and used
+**Note** that the `signal` variable is created and used
 inside `request` callback.
 `abort` function reassigns `controllerRef.current`,
 which means `controllerRef.current` referred by `fetch`
@@ -396,7 +396,7 @@ const searchWithAbortController = useCallback(
 ### Typing with Typescript
 Now let us see how to type the hook with Typescript.
 Keeping types is vital for developer experience when you curry functions.
-Types will be lost if you do not take a good care of it.
+Types will be lost if you do not take a good care of it in curry functions.
 See the following Typescript code.
 It works but every type is written as `unknown`.
 We need more than this.
@@ -445,8 +445,8 @@ const useAbortController = <Args extends unknown[], Ret>
 };
 ```
 
-Now exported callbacks have specific typings
-but with ambiguous typings.
+Now exported callbacks have specifically typed parameters
+but themselves with ambiguous typings.
 This is because we did not specify `useAbortController` return type.
 
 ![useAbortController-typescript-wrong-types](/img/2023-10-26-en-useAbortController-hook/useAbortController-typescript-1.png)
