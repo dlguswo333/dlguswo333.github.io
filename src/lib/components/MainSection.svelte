@@ -1,6 +1,6 @@
 <script lang="ts">
   import {onMount} from 'svelte';
-  import {activeHeadingIndex, shouldShowTOCButton} from '$lib/store';
+  import {shouldShowTOCButton} from '$lib/store';
   import throttleWithLast from '$lib/throttleWithLast';
 
   /** Raw html in `string` type */
@@ -11,7 +11,7 @@
   export let tocDataExists: boolean = false;
 
   let mainHtml: HTMLElement | null = null;
-  const refreshInterval = 50;
+  const refreshInterval = 100;
   onMount(() => {
     if (!tocDataExists || !mainHtml) {
       return;
@@ -19,13 +19,28 @@
     $shouldShowTOCButton = true;
     const headings = [...mainHtml.querySelectorAll('h1,h2,h3,h4')];
     const onScroll = throttleWithLast(() => {
+      const viewportTop = window.scrollY;
+      const viewportBottom = viewportTop + window.innerHeight;
+      let firstHeading: undefined | Element;
+      let lastHeading: undefined | Element;
+
       headings.some((heading, index) => {
-        // Mark the last heading as active that sits before the middle line of window.
-        if (heading.getBoundingClientRect().top > window.innerHeight / 2) {
-          $activeHeadingIndex = Math.max(Number(index) - 1, 0);
+        const headingTop = heading.getBoundingClientRect().top;
+        const nextHeading = headings[index + 1];
+        const nextHeadingTop = nextHeading?.getBoundingClientRect().top;
+
+        const isThisFirstHeading =
+          headingTop < viewportTop && (!nextHeading || viewportTop < nextHeadingTop);
+        if (firstHeading === undefined && isThisFirstHeading) {
+          firstHeading = heading;
+        }
+
+        const isThisLastHeading =
+          headingTop < viewportBottom && (!nextHeading || viewportBottom < nextHeadingTop);
+        if (lastHeading === undefined && isThisLastHeading) {
+          lastHeading = heading;
+          // The first and last headings have been found thus no need to continue looping.
           return true;
-        } else if (index === headings.length - 1) {
-          $activeHeadingIndex = Number(index);
         }
       });
     }, refreshInterval);
