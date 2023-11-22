@@ -16,33 +16,55 @@
     if (!tocDataExists || !mainHtml) {
       return;
     }
+    if (!mainHtml) {
+      return;
+    }
     $shouldShowTOCButton = true;
     const headings = [...mainHtml.querySelectorAll('h1,h2,h3,h4')];
     const onScroll = throttleWithLast(() => {
-      const viewportTop = window.scrollY;
-      const viewportBottom = viewportTop + window.innerHeight;
-      let firstHeading: undefined | Element;
-      let lastHeading: undefined | Element;
+      // [TODO] Need more reliable way to get the value.
+      const tocItemHeight = 28;
+      let firstHeading: null | Element = null;
+      let lastHeading: null | Element = null;
+      let firstHeadingTop = 0;
+      let firstHeadingIndex = 0;
+      let lastHeadingTop = 0;
+      let lastHeadingIndex = 0;
+      let firstSectionHeight = 0;
+      let lastSectionHeight = 0;
 
       headings.some((heading, index) => {
         const headingTop = heading.getBoundingClientRect().top;
         const nextHeading = headings[index + 1];
-        const nextHeadingTop = nextHeading?.getBoundingClientRect().top;
+        const nextHeadingTop = nextHeading?.getBoundingClientRect().top ?? mainHtml?.getBoundingClientRect().bottom;
 
         const isThisFirstHeading =
-          headingTop < viewportTop && (!nextHeading || viewportTop < nextHeadingTop);
-        if (firstHeading === undefined && isThisFirstHeading) {
+          headingTop < 0 && (!nextHeading || 0 < nextHeadingTop);
+        if (firstHeading === null && isThisFirstHeading) {
+          firstHeadingIndex = index;
           firstHeading = heading;
+          firstHeadingTop = headingTop;
+          firstSectionHeight = nextHeadingTop - headingTop;
         }
 
         const isThisLastHeading =
-          headingTop < viewportBottom && (!nextHeading || viewportBottom < nextHeadingTop);
-        if (lastHeading === undefined && isThisLastHeading) {
+          headingTop < window.innerHeight && (!nextHeading || window.innerHeight < nextHeadingTop);
+        if (lastHeading === null && isThisLastHeading) {
+          lastHeadingIndex = index;
           lastHeading = heading;
+          lastHeadingTop = headingTop;
+          lastSectionHeight = nextHeadingTop - headingTop;
           // The first and last headings have been found thus no need to continue looping.
           return true;
         }
       });
+
+      const highlightTopOffset = (0 - firstHeadingTop) / firstSectionHeight;
+      const highlightBottomOffset = (window.innerHeight - lastHeadingTop) / lastSectionHeight;
+      const highlightTop = tocItemHeight * (highlightTopOffset + firstHeadingIndex);
+      const highlightBottom = tocItemHeight * (highlightBottomOffset + lastHeadingIndex);
+
+      console.log(highlightTop, highlightBottom);
     }, refreshInterval);
     document.addEventListener('scroll', onScroll);
     return () => {
