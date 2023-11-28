@@ -20,6 +20,8 @@
       return;
     }
     $shouldShowTOCButton = true;
+    $headingHighlight = null;
+
     const headings = [...mainHtml.querySelectorAll('h1,h2,h3,h4')];
     const onScroll = throttleWithLast(() => {
       // [TODO] Need more reliable way to get the value.
