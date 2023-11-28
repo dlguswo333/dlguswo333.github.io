@@ -1,6 +1,6 @@
 <script lang="ts">
   import {onMount} from 'svelte';
-  import {shouldShowTOCButton} from '$lib/store';
+  import {headingHighlight, shouldShowTOCButton} from '$lib/store';
   import throttleWithLast from '$lib/throttleWithLast';
 
   /** Raw html in `string` type */
@@ -64,7 +64,7 @@
       const highlightTop = tocItemHeight * (highlightTopOffset + firstHeadingIndex);
       const highlightBottom = tocItemHeight * (highlightBottomOffset + lastHeadingIndex);
 
-      console.log(highlightTop, highlightBottom);
+      $headingHighlight = {top: Math.floor(highlightTop), bottom: Math.floor(highlightBottom)};
     }, refreshInterval);
     document.addEventListener('scroll', onScroll);
     return () => {
