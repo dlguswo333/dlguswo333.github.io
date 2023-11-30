@@ -43,16 +43,18 @@ The scrollable height is not big enough to show the front child 'li' elements.
           class={`flex border-l-4 border-transparent hover:border-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 ${item.depth === 1 ? 'font-bold' : ''} ${$showTOC ? 'py-1.5' : ''}
         `}
         >
-          <a href={`#${item.id}`} class="py-0.5 whitespace-nowrap overflow-hidden break-all overflow-ellipsis flex-grow"
+          <a href={`#${item.id}`} class="relative z-10 py-0.5 whitespace-nowrap overflow-hidden break-all overflow-ellipsis flex-grow"
             style={`padding-left: ${coefficient * (item.depth - 1) + constant}rem;`}>
             {item.text}
           </a>
         </li>
       {/each}
     </ul>
-    <!-- [TODO] Need to improve styles -->
     {#if highlightTop !== undefined && highlightBottom !== undefined}
-      <div class={'absolute left-0 bg-blue-400 w-1'} style={`top: ${highlightTop}px; height:${highlightBottom - highlightTop}px`} />
+      <div class={'absolute left-0 flex'} style={`transition: top 0.1s ease-out, height 0.1s ease-out; top: ${highlightTop}px; height:${highlightBottom - highlightTop}px`}>
+        <div class="rounded-xl bg-blue-400 w-1 h-full" />
+        <div class="w-6 h-full bg-gradient-to-r from-blue-100 to-white" />
+      </div>
     {/if}
   </div>
 </aside>
