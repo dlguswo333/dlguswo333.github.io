@@ -24,3 +24,8 @@ export type TOCItem = {
 };
 
 export type ColorTheme = 'light' | 'dark';
+
+export type HeadingHighlight = {
+  top: number;
+  bottom: number;
+}
