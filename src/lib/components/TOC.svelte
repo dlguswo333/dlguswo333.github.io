@@ -1,6 +1,6 @@
 <script lang="ts">
   import type {TOCItem} from '$lib/types';
-  import {headingHighlight} from '$lib/store';
+  import {headingHighlight, tocItemHeight} from '$lib/store';
   import {showTOC} from '$lib/store';
   import {onMount} from 'svelte';
 
@@ -39,7 +39,8 @@ The scrollable height is not big enough to show the front child 'li' elements.
   <div class="relative w-full">
     <ul class="max-h-[80vh] overflow-auto">
       {#each data as item}
-        <li title={item.text}
+        <!-- I would like to bind the height for the first li only, but do not know easy way to do that. -->
+        <li title={item.text} bind:offsetHeight={$tocItemHeight}
           class={`flex border-l-4 border-transparent hover:border-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 ${item.depth === 1 ? 'font-bold' : ''} ${$showTOC ? 'py-1.5' : ''}
         `}
         >

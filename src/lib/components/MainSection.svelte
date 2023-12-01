@@ -1,6 +1,6 @@
 <script lang="ts">
   import {onMount} from 'svelte';
-  import {headingHighlight, shouldShowTOCButton} from '$lib/store';
+  import {headingHighlight, shouldShowTOCButton, tocItemHeight} from '$lib/store';
   import throttleWithLast from '$lib/throttleWithLast';
 
   /** Raw html in `string` type */
@@ -24,8 +24,6 @@
 
     const headings = [...mainHtml.querySelectorAll('h1,h2,h3,h4')];
     const onScroll = throttleWithLast(() => {
-      // [TODO] Need more reliable way to get the value.
-      const tocItemHeight = 28;
       let firstHeading: null | Element = null;
       let lastHeading: null | Element = null;
       let firstHeadingTop = 0;
@@ -63,8 +61,8 @@
 
       const highlightTopOffset = (0 - firstHeadingTop) / firstSectionHeight;
       const highlightBottomOffset = (window.innerHeight - lastHeadingTop) / lastSectionHeight;
-      const highlightTop = tocItemHeight * (highlightTopOffset + firstHeadingIndex);
-      const highlightBottom = tocItemHeight * (highlightBottomOffset + lastHeadingIndex);
+      const highlightTop = $tocItemHeight * (highlightTopOffset + firstHeadingIndex);
+      const highlightBottom = $tocItemHeight * (highlightBottomOffset + lastHeadingIndex);
 
       $headingHighlight = {top: Math.floor(highlightTop), bottom: Math.floor(highlightBottom)};
     }, refreshInterval);
