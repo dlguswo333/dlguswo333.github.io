@@ -75,6 +75,11 @@
       document.removeEventListener('scroll', onScroll);
     };
   });
+
+  $: if ($tocItemHeight && mainHtml) {
+    const headings = [...mainHtml.querySelectorAll('h1,h2,h3,h4')];
+    updateHeadingHighlight(headings);
+  }
 </script>
 <!--
 @component
