@@ -12,6 +12,51 @@
 
   let mainHtml: HTMLElement | null = null;
   const refreshInterval = 100;
+
+  const updateHeadingHighlight = (headings: Element[]) => {
+    let firstHeading: null | Element = null;
+    let lastHeading: null | Element = null;
+    let firstHeadingTop = 0;
+    let firstHeadingIndex = 0;
+    let lastHeadingTop = 0;
+    let lastHeadingIndex = 0;
+    let firstSectionHeight = 0;
+    let lastSectionHeight = 0;
+
+    headings.some((heading, index) => {
+      const headingTop = heading.getBoundingClientRect().top;
+      const nextHeading = headings[index + 1];
+      const nextHeadingTop = nextHeading?.getBoundingClientRect().top ?? mainHtml?.getBoundingClientRect().bottom;
+
+      const isThisFirstHeading =
+        headingTop < 0 && (!nextHeading || 0 < nextHeadingTop);
+      if (firstHeading === null && isThisFirstHeading) {
+        firstHeadingIndex = index;
+        firstHeading = heading;
+        firstHeadingTop = headingTop;
+        firstSectionHeight = nextHeadingTop - headingTop;
+      }
+
+      const isThisLastHeading =
+        headingTop < window.innerHeight && (!nextHeading || window.innerHeight < nextHeadingTop);
+      if (lastHeading === null && isThisLastHeading) {
+        lastHeadingIndex = index;
+        lastHeading = heading;
+        lastHeadingTop = headingTop;
+        lastSectionHeight = nextHeadingTop - headingTop;
+        // The first and last headings have been found thus no need to continue looping.
+        return true;
+      }
+    });
+
+    const highlightTopOffset = (0 - firstHeadingTop) / firstSectionHeight;
+    const highlightBottomOffset = (window.innerHeight - lastHeadingTop) / lastSectionHeight;
+    const highlightTop = $tocItemHeight * (highlightTopOffset + firstHeadingIndex);
+    const highlightBottom = $tocItemHeight * (highlightBottomOffset + lastHeadingIndex);
+
+    $headingHighlight = {top: Math.floor(highlightTop), bottom: Math.floor(highlightBottom)};
+  };
+
   onMount(() => {
     if (!tocDataExists || !mainHtml) {
       return;
@@ -23,49 +68,7 @@
     $headingHighlight = null;
 
     const headings = [...mainHtml.querySelectorAll('h1,h2,h3,h4')];
-    const onScroll = throttleWithLast(() => {
-      let firstHeading: null | Element = null;
-      let lastHeading: null | Element = null;
-      let firstHeadingTop = 0;
-      let firstHeadingIndex = 0;
-      let lastHeadingTop = 0;
-      let lastHeadingIndex = 0;
-      let firstSectionHeight = 0;
-      let lastSectionHeight = 0;
-
-      headings.some((heading, index) => {
-        const headingTop = heading.getBoundingClientRect().top;
-        const nextHeading = headings[index + 1];
-        const nextHeadingTop = nextHeading?.getBoundingClientRect().top ?? mainHtml?.getBoundingClientRect().bottom;
-
-        const isThisFirstHeading =
-          headingTop < 0 && (!nextHeading || 0 < nextHeadingTop);
-        if (firstHeading === null && isThisFirstHeading) {
-          firstHeadingIndex = index;
-          firstHeading = heading;
-          firstHeadingTop = headingTop;
-          firstSectionHeight = nextHeadingTop - headingTop;
-        }
-
-        const isThisLastHeading =
-          headingTop < window.innerHeight && (!nextHeading || window.innerHeight < nextHeadingTop);
-        if (lastHeading === null && isThisLastHeading) {
-          lastHeadingIndex = index;
-          lastHeading = heading;
-          lastHeadingTop = headingTop;
-          lastSectionHeight = nextHeadingTop - headingTop;
-          // The first and last headings have been found thus no need to continue looping.
-          return true;
-        }
-      });
-
-      const highlightTopOffset = (0 - firstHeadingTop) / firstSectionHeight;
-      const highlightBottomOffset = (window.innerHeight - lastHeadingTop) / lastSectionHeight;
-      const highlightTop = $tocItemHeight * (highlightTopOffset + firstHeadingIndex);
-      const highlightBottom = $tocItemHeight * (highlightBottomOffset + lastHeadingIndex);
-
-      $headingHighlight = {top: Math.floor(highlightTop), bottom: Math.floor(highlightBottom)};
-    }, refreshInterval);
+    const onScroll = throttleWithLast(() => updateHeadingHighlight(headings), refreshInterval);
     document.addEventListener('scroll', onScroll);
     return () => {
       $shouldShowTOCButton = false;
