@@ -31,7 +31,17 @@ But I was not satisfactory with what I had.
 - **I Wanted to try out `Svelete` and `Sveltekit`.**<br>
   I have heard that [svelte][svelte] is great. I have been using `react` for some years and wanted to experience new things.
 - **CSR + SSG Support**<br>
-  Client Side Rendering for smooth page transitions, and Server Side Generation for performance and search engine optimization. Jekyll supports SSG, for sure. But does it support CSR? It might, but would I be able to write Ruby codes to add CSR feature?
+  Client Side Rendering for smooth page transitions, and Server Side Generation for performance and search engine optimization. Jekyll supports SSG, for sure. But does it support CSR? It might, but am I fluent in Ruby enough to write CSR feature?
+
+# Setup a Project
+I wanted to start an empty git repository and npm project first and then add Sveltekit. But it did not work that way; I could run `vite`, but it showed browser's Not found error page. I don't know if there was misconfigurations in my `svelte.config.js` or `src/app.html`. Anyway I started a new boilerplate project with `npm create svelte@latest my-app`.
+
+## eslint
+I Installed Svelte extension for *vscode* and also setup eslint. eslint-cli did report code errors but vscode gui editor did not. I added the following field in vscode settings and vscode started to report lint errors found in `.svelte` files.
+```json
+    "eslint.validate": ["svelte"],
+```
+
 
 [svelte]: https://svelte.dev/
 [jekyll]: https://jekyllrb.com/
