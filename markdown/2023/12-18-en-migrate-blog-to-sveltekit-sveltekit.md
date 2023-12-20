@@ -42,6 +42,57 @@ I Installed Svelte extension for *vscode* and also setup eslint. eslint-cli did 
     "eslint.validate": ["svelte"],
 ```
 
+# Using Svelte
+I have been writing React code, so my experience on Svlete
+is focused on comparing it to React.
+To put it simple, Svelte is rather simple;
+I mean less verbose than React code.
+But I am reluctant to say that
+Svelte is better than React.
+It has pros and cons.
+
+## States, Effect
+You need to declare states and effect to implement logics
+and wrap them in callbacks and memos for performance.
+But you don't need to do that in Svelte.
+You can write plain `let` variables and reference or
+update them directly.
+There is no need to worry about rerendering.
+
+To create an effect on value updates,
+write function body that need to be executed and
+add dollar sign `$` label to it.
+It will run **reactively** whenever values change.
+
+```jsx
+let count = 0;
+$: {
+  console.log(count);
+}
+$: if(count > 10) {
+  console.log('count is over ten!');
+}
+```
+
+But the point is, the value referenced should be
+on the left side of assignments.
+It's like Svelte detects reference by
+whether values' names are on the left hand side of assignments.
+
+> A simple rule of thumb: the name of the updated variable must appear on the left hand side of the assignment.<br>
+> https://learn.svelte.dev/tutorial/updating-arrays-and-objects
+
+> This holds true for Svelte@4,
+> but it may change in upcoming Svelte@5.<br>
+> See [Svelte runes][svelte-rune] for more.
+
+<!-- [TODO] stores -->
+<!-- [TODO] on:callbacks -->
+
+But I am not still used to writing dollar sign `$`
+in front of Svelte stores.
+
 
 [svelte]: https://svelte.dev/
 [jekyll]: https://jekyllrb.com/
+[svelte-rune]: https://svelte.dev/blog/runes
