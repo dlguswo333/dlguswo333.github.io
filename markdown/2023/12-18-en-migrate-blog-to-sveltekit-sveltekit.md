@@ -45,9 +45,3 @@ I Installed Svelte extension for *vscode* and also setup eslint. eslint-cli did 
 
 [svelte]: https://svelte.dev/
 [jekyll]: https://jekyllrb.com/
-[tailwind]: https://tailwindcss.com/docs
-[remark-frontmatter]: https://unifiedjs.com/explore/package/remark-frontmatter/
-[unfiedjs]: https://github.com/unifiedjs/unified
-[mdsvex]: https://mdsvex.com/
-[rehype-prism-plus]: https://github.com/timlrx/rehype-prism-plus
-[rehype-raw]: https://unifiedjs.com/explore/package/rehype-raw/
