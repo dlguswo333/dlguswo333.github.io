@@ -47,7 +47,7 @@ Here is a quote from tailwind documentation:
 > it will only find classes that exist as complete unbroken strings in your source files.
 >
 > If you use string interpolation or concatenate partial class names together,
-> Tailwind will not find them and therefore will not generate the corresponding CSS.
+> Tailwind will not find them and therefore will not generate the corresponding CSS.<br>
 > https://tailwindcss.com/docs/content-configuration#dynamic-class-names
 
 # Supporting Pre-defined Themes
@@ -70,12 +70,13 @@ Then tailwind lets you use dark theme like the code below.
 ---
 
 When you support themes in your webpages, the biggest challenge is to support themes without flickering.
-Flickering might occur if the theme switching mechanisms execute slower than your webpage loads.
+Flickering occurs if the theme switching mechanisms execute slower than your webpage loads.
 We need to make sure that the theme applies as fast as your webpage loads.
 
-Let me take an example of https://svelte.dev website. They implement theme switch like this.
-It prioritize a value stored in `localStorage` (user settings),
-and then use CSS attribute (system settings).
+Let me take an example of https://svelte.dev website.
+They support theme like below.
+It prioritizes a value stored in `localStorage` (user settings),
+and then CSS attribute (system settings).
 
 ```html
 <body data-sveltekit-preload-code="hover">
@@ -91,12 +92,14 @@ and then use CSS attribute (system settings).
 ```
 
 Notice that the script is inserted right after opening body tag.
-This is to ensure the execution order: `setup theme -> render HTML`.
-**You need to inject the script code before any other HTML elements that are being rendered on screen**.
+This is to ensure the execution order of `setup theme -> render HTML`.
+**You need to inject the script code before any other HTML element that are being rendered on screen**.
 
-I wanted to create a separate color theme script file and reference it from `app.html` in Sveltekit.
+I wanted to create a separate file for theme script codes
+and reference it from `app.html` in Sveltekit.
 but it seemed like there is no easy way to do that.<br>
-The emitted compiled output contains the script tag as it is; no transpiling, no path substitution.
+The emitted compiled output html contains the script tag as it is;
+no transpiling, no src path substitution.
 
 ```html
 <!-- Source app.html -->
