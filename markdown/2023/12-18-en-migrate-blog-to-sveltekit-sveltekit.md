@@ -86,12 +86,35 @@ whether values' names are on the left hand side of assignments.
 > but it may change in upcoming Svelte@5.<br>
 > See [Svelte runes][svelte-rune] for more.
 
-<!-- [TODO] stores -->
+## Stores
+Unlike React, Svelte provides built-in global store feature out of the box. 
+
+> A store is an object that allows reactive access to a value via a simple store contract.
+> The svelte/store module contains minimal store implementations which fulfil this contract.<br>
+> https://svelte.dev/docs/svelte-components
+
+To reference inner value, you can access it by adding a dollar sign in front of it;
+whether you read it or assign it. This let Svelte to subcribe to the store.
+
+
+```jsx
+  export const currentTheme = writable<ColorTheme | null>(null);
+
+  const getGithubImgSrc = (currentTheme: typeof $themeStore) => {
+    return currentTheme === 'dark' ? '/github-mark-white.svg' : '/github-mark.svg';
+  };
+  let githubImgSrc = getGithubImgSrc($themeStore);
+  $: githubImgSrc = getGithubImgSrc($themeStore);
+```
+
+But I am not still used to writing dollar sign `$` in front of Svelte stores.
+In that case, I have an alternative; using `set`, `update` and `subscribe` methods on the store.
+Check out Svelte/store docs for more: [link](https://svelte.dev/docs/svelte-store)
+
+This built-in global storage shines Svelte over the React.
+You do not need to list all the third-party packages and spend time pulling one out of them.
+
 <!-- [TODO] on:callbacks -->
-
-But I am not still used to writing dollar sign `$`
-in front of Svelte stores.
-
 
 [svelte]: https://svelte.dev/
 [jekyll]: https://jekyllrb.com/
