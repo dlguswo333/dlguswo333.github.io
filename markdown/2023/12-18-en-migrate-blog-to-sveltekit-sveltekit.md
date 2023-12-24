@@ -153,7 +153,22 @@ Your name:
 There are so many directives of a variety in Svelte,
 you definitely want to check out official [documentation][svelte-element-directive].
 
-<!-- [TODO] lifecycle -->
+## Lifecycle
+`onMount` is a function which executes a function handed as a parameter
+when Svelte component renders for the first time.
+
+```jsx
+onMount(() => {
+  console.log('First render');
+});
+
+useEffect(() => {
+  console.log('First render');
+}, []);
+```
+
+Those two codes from Svelete and React basically do the same thing.
+They are useful when you need to execute some logics to initialize components.
 
 [svelte]: https://svelte.dev/
 [jekyll]: https://jekyllrb.com/
