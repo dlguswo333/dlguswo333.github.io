@@ -150,6 +150,19 @@ Your name:
 <input bind:value={name}>
 ```
 
+Also there is a directive `bind:this` which does the same thing with `ref` property in React.
+
+```jsx
+<script>
+  import {onMount} from 'svelte';
+  let inputElement;
+  onMount(() => {
+    inputElement.placeholder = 'placeholder added with onMount';
+  })
+</script>
+<input bind:this={inputElement} />
+```
+
 There are so many directives of a variety in Svelte,
 you definitely want to check out official [documentation][svelte-element-directive].
 
