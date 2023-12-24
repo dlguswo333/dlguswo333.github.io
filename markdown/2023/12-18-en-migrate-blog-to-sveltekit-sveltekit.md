@@ -87,7 +87,7 @@ whether values' names are on the left hand side of assignments.
 > See [Svelte runes][svelte-rune] for more.
 
 ## Stores
-Unlike React, Svelte provides built-in global store feature out of the box. 
+Unlike React, Svelte provides built-in global store feature out of the box.
 
 > A store is an object that allows reactive access to a value via a simple store contract.
 > The svelte/store module contains minimal store implementations which fulfil this contract.<br>
@@ -114,8 +114,48 @@ Check out Svelte/store docs for more: [link](https://svelte.dev/docs/svelte-stor
 This built-in global storage shines Svelte over the React.
 You do not need to list all the third-party packages and spend time pulling one out of them.
 
-<!-- [TODO] on:callbacks -->
+## Callbacks
+To add callbacks onto html elements in React, you add attributes such as `onClick`, `onBlur`, ...
+In Svelte, things go similar in that you add attributes on html elements.
+To add event listeners, you add `on:eventname` attributes and they are called `element directives`.
+
+```jsx
+<script>
+	let count = 0;
+
+	/** @param {MouseEvent} event */
+	function handleClick(event) {
+		count += 1;
+	}
+</script>
+
+<button on:click={handleClick}>
+	count: {count}
+</button>
+```
+
+There are directives other than `on:...`. For example, with `bind:value` property,
+you can bind a variable to the html element's `value`.
+
+```jsx
+<script>
+  let name = '';
+
+  $: {
+    console.log(name);
+  }
+</script>
+
+Your name:
+<input bind:value={name}>
+```
+
+There are so many directives of a variety in Svelte,
+you definitely want to check out official [documentation][svelte-element-directive].
+
+<!-- [TODO] lifecycle -->
 
 [svelte]: https://svelte.dev/
 [jekyll]: https://jekyllrb.com/
 [svelte-rune]: https://svelte.dev/blog/runes
+[svelte-element-directive]: https://svelte.dev/docs/element-directives
