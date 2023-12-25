@@ -2,7 +2,7 @@
 toc: true
 title: "Let's Migrate Github Blog to Sveltekit: Sveltekit"
 category: ["Programming"]
-tags: [web, svelte, sveltekit, javascript, typescript, migrate-blog-to-sveltekit]
+tags: [web, svelte, sveltekit, javascript, migrate-blog-to-sveltekit]
 author:
   - 이현재
 ---
