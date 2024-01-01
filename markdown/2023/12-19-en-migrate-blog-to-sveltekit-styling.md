@@ -2,7 +2,7 @@
 toc: true
 title: "Let's Migrate Github Blog to Sveltekit: Styling"
 category: ["Programming"]
-tags: [web, svelte, sveltekit, javascript, typescript, migrate-blog-to-sveltekit, css, tailwind]
+tags: [migrate-blog-to-sveltekit, web, svelte, sveltekit, javascript, css, tailwind]
 author:
   - 이현재
 ---
@@ -11,27 +11,29 @@ author:
 I have never used [tailwind][tailwind] but heard it is great.
 I chose tailwind to add styles to the blog. The reasons behind are these advantages:
 
-- No need to name class names<br>
+- **No need to name class names**<br>
     Programmers always have tough times naming things. CSS class names are no exception.
     I myself think CSS classes are tricky as there are many classes that do the similar things
     but have something that are different from each other.
-- No need to manage CSS files<br>
-    When building an Web App with CSS files, I need to focus on two files: one for JavaScripts, another for styles.
+- **No need to manage CSS files**<br>
+    When building an Web App with CSS files, I need to focus on two files:
+    one for JavaScripts, another for styles.
     With tailwind I can focus one single file solely as tailwind codes are integrated into JavaScript files.
-- Pre-defined classes are very useful and pretty already.<br>
+- **Pre-defined classes are very useful and pretty as they are.**<br>
     This came to me with great advantages. I have used tailwind's pre-defined styles (classes) quite frequently
-    and I hardly had to resort to vanilla CSS. Especially, **they are beautiful on their own**. I am terrible at choosing colors.
-    When I found nice looking color themes online and applied them to my projects, they look awful and I didn't know why.
+    and I hardly had to resort to vanilla CSS. Especially, **they are beautiful on their own**.
+    I am terrible at choosing colors.
+    When I found nice looking color themes online and applied them to my projects,
+    they looked awful and I didn't know why.
     Ctrl+C/Ctrl+V magic does not work when it comes to me, and styling.
     But tailwind, the colors, red, slate, blue and etc, they look awesome and pretty.
 
-I followed tailwind's guide to setup in my project: [link](https://tailwindcss.com/docs/guides/sveltekit).
+I followed tailwind's guide to setup in my project: [link][tailwind-guide].
 
 ## Caveat
 ### Class names in the tailwind code should be **statically** extractable.
-What we mean by 'static' is that class names should be retrievable without executing the code;
+What we mean by 'static' is that class names should be extractable without executing the code;
 the class names should be written in the code as complete unbroken strings.
-You may also use inline styles to evade the problem.
 
 ```jsx
     {/** This don't work since the class names cannot be statically extractable. */}
@@ -50,13 +52,19 @@ Here is a quote from tailwind documentation:
 > Tailwind will not find them and therefore will not generate the corresponding CSS.<br>
 > https://tailwindcss.com/docs/content-configuration#dynamic-class-names
 
+You may also use inline styles to evade the problem.
+
+```jsx
+    <div style={`color: ${shouldHighlight ? 'red' : 'black'}`} ...>
+```
+
 # Supporting Pre-defined Themes
 My blog supports two themes, light and dark themes.
 tailwind supports `dark` variant. It determines themes based on `prefers-color-scheme` CSS feature,
 but the problem is that it does not let users to manually switch themes in an easy way.
 
-But that might be enough, but why not improve it?
-tailwind also supports themes based on exsitence of `dark` class name in parent HTML elements.
+Some may say it is good enough already, but why not improve it?
+tailwind also supports themes based on existence of `dark` class name in parent HTML elements.
 See [docs](https://tailwindcss.com/docs/dark-mode#toggling-dark-mode-manually)
 on how to configure tailwind for this.
 
@@ -67,9 +75,8 @@ Then tailwind lets you use dark theme like the code below.
 </div>
 ```
 
----
-
-When you support themes in your webpages, the biggest challenge is to support themes without flickering.
+When you support themes in your webpages, one important challenge is
+to render themes without flickering when the webpages reload.
 Flickering occurs if the theme switching mechanisms execute slower than your webpage loads.
 We need to make sure that the theme applies as fast as your webpage loads.
 
@@ -98,7 +105,7 @@ This is to ensure the execution order of `setup theme -> render HTML`.
 I wanted to create a separate file for theme script codes
 and reference it from `app.html` in Sveltekit.
 but it seemed like there is no easy way to do that.<br>
-The emitted compiled output html contains the script tag as it is;
+The emitted compiled output html contains the script tag as is;
 no transpiling, no src path substitution.
 
 ```html
@@ -120,3 +127,4 @@ or just inline the code.
 I chose to inline the code because the code is short, and needs to be executed anyway.
 
 [tailwind]: https://tailwindcss.com/docs
+[tailwind-guide]: https://tailwindcss.com/docs/guides/sveltekit
