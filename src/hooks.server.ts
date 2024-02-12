@@ -3,7 +3,7 @@ import {defaultLang} from '$lib';
 // server Hooks do not run on client side navigation,
 // thus be careful to correctly set lang field on client side navigation.
 const getLangFromPathname = (pathname: string) => {
-  const postPathNameFormat = /^\/post\/\d+\/\d+-\d+-([a-z]{2})-([^\/]+)\/?$/;
+  const postPathNameFormat = /^\/post\/\d+\/\d+-\d+-([a-z]{2})-([^/]+)\/?$/;
   const regexResult = postPathNameFormat.exec(pathname);
   if (!regexResult) {
     return defaultLang;
