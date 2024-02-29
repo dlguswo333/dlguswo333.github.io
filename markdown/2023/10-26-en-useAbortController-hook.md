@@ -9,7 +9,7 @@ author:
 
 If you are developing a React project and trying to make a fetch request,
 you are often said to call your request API inside `useEffect`.
-This is beacuse fetching data is most likely to be closely linked
+This is because fetching data is most likely to be closely linked
 to lifecycles of your React components.
 
 >**Fetching data with Effects**<br>
