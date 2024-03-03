@@ -28,7 +28,7 @@ body.dark {
 }
 
 .post h1,.post h2,.post h3,.post h4 {
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid #d0d0d0;
     scroll-margin-top: 50px;
 }
 body.dark .post h1,body.dark .post h2,body.dark .post h3,body.dark .post h4 {
