@@ -59,6 +59,10 @@ Here is my blog's humble design.
 - `/tags`<br>
     Contains all the tags and posts with each category. No pagination.
 
+>Category and tag are different.
+>category : post is 1:N relation but tag : post is M : N relation.
+>A post may have up to one category but many tags.
+
 # Sveltekit Routing
 As I mentioned earlier[link][svelte-routing]
 Basically you create a folder `src/routes` which will be your app's root
@@ -67,7 +71,53 @@ and each nested folder will be also a nested path.
 >You can change `src/routes` to a different directory by editing the project config.
 >See `routes` option in Sveltekit config [document][svelte-document].
 
+In each route, you make `+page.svelte` file; it becames a visitable page.
+It means `+page.svelte` file at `src/routes` directory creates the root page.
+
+>Every `+page.svelte` file inside `src/routes` creates a page in your app.<br>
+><https://learn.svelte.dev/tutorial/pages>
+
+The key point of `+page.svelte` is that it does not show up at nested paths.
+Say you have a header component that will be visible at every path.
+Even if you do, you do not need to include the header component in every `+page.svelte` file,
+you can do that with single `+layout.svelte` file.
+
+`+layout.svelte` is a file where you can declare the common component at the path and its all child paths.
+
+```jsx
+<Header />
+<Slot />
+```
+
+`<Slot /> is where each `+page.svelte` will be rendered.
+
+But a question arises here: Where should the header component file be placed?
+Sveletekit document tells us to put it to the uppermost directory where it is used.
+If the uppermost path is `/`, it would be best to be placed at `src/routes/` directory.
+
+Also, if the same component is shared among different paths (eg. `/post/author`, `/about/me`),
+it recommends placing the file to someplace else so referers can easily import them such as `lib` folder.
+
+>[!quote]
+>Because SvelteKit uses directory-based routing, it's easy to place modules and components alongside the routes that use them. A good rule of thumb is 'put code close to where it's used'.<br>
+>...<br>
+>Sometimes, code is used in multiple places. When this happens, it's useful to have a place to put them that can be accessed by all routes without needing to prefix imports with `../../../../`. In SvelteKit, that place is the `src/lib` directory. Anything inside this directory can be accessed by any module in `src` via the `$lib` alias.<br>
+><https://learn.svelte.dev/tutorial/lib>
+
+
+## `trailingSlash`
+It's also important to note that sometimes, trailing slash matters.
+To put it simple with an example,
+it's about which one path `/a` or `/a/` should be accessible and
+html file being served at the path should be placed as `/a/index.html` or `/a.html`.
+It's not just about which URL is *looking cool*, your link may be broken with 404 error.
+
+Check out Sveletekit's `trailingSlash` layout option [document][svlete-trailing-slash].
+Also [this github repository][trailing-slash-guide]. This trailing slash guide is highly valuable.
+
 [app-router]: https://nextjs.org/docs/app/building-your-application/routing
 [svelte-routing]: https://kit.svelte.dev/docs/routing
 [svelte-document]: https://kit.svelte.dev/docs/configuration
+[svlete-trailing-slash]: https://kit.svelte.dev/docs/page-options#trailingslash
 [iso-639-2-code]: https://www.loc.gov/standards/iso639-2/php/code_list.php
+[trailing-slash-guide]: https://github.com/slorber/trailing-slash-guide
