@@ -17,6 +17,6 @@
     {/each}
   </ul>
   <Pagination curIndex={curIndex} maxIndex={maxIndex} maxDisplaySize={6}
-    getHref={(num) => num === 1 ? '/' : `/posts/${num}`}
+    getHref={(num) => num === 1 ? '/' : `/posts/${num}/`}
   />
 </MainSection>
