@@ -10,7 +10,7 @@
   class={'flex flex-col border-2 rounded-md transition px-4 py-2 border-gray-300 hover:border-teal-400 hover:bg-teal-50 dark:border-gray-400 dark:hover:bg-teal-900 dark:hover:border-teal-500'}>
   <div class="flex flex-row items-center justify-between mb-1">
     <span>
-      <a href={`/post/${post.date.split('-')[0]}/${post.id}`} class="text-cyan-400 visited:text-purple-600">
+      <a href={`/post/${post.date.split('-')[0]}/${post.id}/`} class="text-cyan-400 visited:text-purple-600">
         <h1 class="inline-block font-bold text-lg mr-2 underline">{post.title}</h1>
       </a>
     </span>

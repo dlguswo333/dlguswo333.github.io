@@ -21,8 +21,8 @@
     {/if}
   </div>
   <div class="flex flex-row items-center">
-    <HeaderLink href='/categories' text='Categories' />
-    <HeaderLink href='/tags' text='Tags' />
-    <HeaderLink href='/about' text='About' />
+    <HeaderLink href='/categories/' text='Categories' />
+    <HeaderLink href='/tags/' text='Tags' />
+    <HeaderLink href='/about/' text='About' />
   </div>
 </header>
