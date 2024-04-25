@@ -1,6 +1,8 @@
 import {blogFullUrl} from '$lib';
 import crawlPosts from '$lib/crawlPosts';
 
+export const prerender = true;
+
 export async function GET () {
   const postList = await crawlPosts();
   // Refer to src/routes/categories/+page.svelte, 2e139c97
