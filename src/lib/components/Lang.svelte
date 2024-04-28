@@ -4,8 +4,6 @@
   export let url: string;
   export let marginLeft: number = 1;
   export let marginRight: number = 1;
-  console.log(lang, url);
-// const onClick = () => goto(url);
 </script>
 <a
   class={
