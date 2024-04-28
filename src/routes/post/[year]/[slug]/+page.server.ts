@@ -1,5 +1,5 @@
 import {postBasePath} from '$lib';
-import {getDateLangIdFromPostPath} from '$lib/crawlPosts';
+import {getAvailableLanguagesOfPost, getDateLangIdFromPostPath} from '$lib/crawlPosts';
 import {getFrontmatterFromMarkdown, getHtmlFromMarkdown} from '$lib/markdown.js';
 import type {Frontmatter} from '$lib/types';
 import {error} from '@sveltejs/kit';
@@ -20,7 +20,8 @@ export const load = async ({params}) => {
     const {date, lang} = getDateLangIdFromPostPath(postFilePath);
     const frontmatter = await getFrontmatterFromMarkdown<Frontmatter>(rawContent);
     const {html, tocData} = await getHtmlFromMarkdown(rawContent, !!frontmatter?.toc);
-    return {html, frontmatter, date, lang, tocData};
+    const langs = getAvailableLanguagesOfPost(postFilePath);
+    return {html, frontmatter, date, lang, tocData, langs};
   } catch (e) {
     console.error(e);
     throw error(500);
