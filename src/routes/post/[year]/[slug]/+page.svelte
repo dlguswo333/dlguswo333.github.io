@@ -5,11 +5,20 @@
   import Tag from '$lib/components/Tag.svelte';
   import {onMount} from 'svelte';
   import {defaultLang, name} from '$lib/index';
+  import Lang from '$lib/components/Lang.svelte';
+  import {page} from '$app/stores';
+  import {afterNavigate} from '$app/navigation';
 
   export let data;
-  const postTitle = data.frontmatter?.title;
-  const postLang = data.lang || defaultLang;
+  // Since Sveltekit may reuse components, some components may not be destroyed and recreated.
+  // But data props change. See: https://github.com/dlguswo333/dlguswo333.github.io/issues/44
+
+  $: postTitle = data.frontmatter?.title;
+  $: postLang = data.lang || defaultLang;
+  $: postAvailableLangs = data.langs;
+
   onMount(() => {
+    // Update document lang property on mount.
     document.documentElement.lang = postLang;
     return () => {
       // Sveltekit does not revert document title on dismount.
@@ -17,6 +26,11 @@
       document.title = `${name}'s blog`;
       document.documentElement.lang = defaultLang;
     };
+  });
+
+  afterNavigate(() => {
+    // Update document lang property even in the case the component do not re-mount.
+    document.documentElement.lang = postLang;
   });
 </script>
 <svelte:head>
@@ -46,6 +60,18 @@
             <Tag tagName={tag} marginLeft={index === 0 ? 2 : 0} marginRight={1} />
           {/each}
         </div>
+        {#if postAvailableLangs.length > 1}
+          <div>
+            🌐
+            {#each postAvailableLangs as lang}
+              <Lang
+                lang={lang}
+                getIsActive={(lang) => postLang === lang}
+                url={`${$page.url.pathname.replace(postLang, lang)}`}
+              />
+            {/each}
+          </div>
+        {/if}
       </div>
       <hr class="bg-gray-400 my-4" />
     {/if}
