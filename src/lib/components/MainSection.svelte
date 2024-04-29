@@ -1,5 +1,5 @@
 <script lang="ts">
-  import {onMount} from 'svelte';
+  import {afterNavigate, beforeNavigate} from '$app/navigation';
   import {headingHighlight, shouldShowTOCButton, tocItemHeight} from '$lib/store';
   import throttleWithLast from '$lib/throttleWithLast';
 
@@ -12,8 +12,10 @@
 
   let mainHtml: HTMLElement | null = null;
   const refreshInterval = 100;
+  let headings: Element[] = [];
+  const onScroll = throttleWithLast(() => updateHeadingHighlight(), refreshInterval);
 
-  const updateHeadingHighlight = (headings: Element[]) => {
+  const updateHeadingHighlight = () => {
     let firstHeading: null | Element = null;
     let lastHeading: null | Element = null;
     let firstHeadingTop = 0;
@@ -57,7 +59,8 @@
     $headingHighlight = {top: Math.floor(highlightTop), bottom: Math.floor(highlightBottom)};
   };
 
-  onMount(() => {
+  // Setup.
+  afterNavigate(() => {
     if (!tocDataExists || !mainHtml) {
       return;
     }
@@ -67,18 +70,21 @@
     $shouldShowTOCButton = true;
     $headingHighlight = null;
 
-    const headings = [...mainHtml.querySelectorAll('h1,h2,h3,h4')];
-    const onScroll = throttleWithLast(() => updateHeadingHighlight(headings), refreshInterval);
+    headings = [...mainHtml.querySelectorAll('h1,h2,h3,h4')];
     document.addEventListener('scroll', onScroll);
     return () => {
-      $shouldShowTOCButton = false;
-      document.removeEventListener('scroll', onScroll);
     };
   });
 
+  // Dis-setup.
+  beforeNavigate(() => {
+    $shouldShowTOCButton = false;
+    document.removeEventListener('scroll', onScroll);
+  });
+
   $: if ($tocItemHeight && mainHtml) {
-    const headings = [...mainHtml.querySelectorAll('h1,h2,h3,h4')];
-    updateHeadingHighlight(headings);
+    headings = [...mainHtml.querySelectorAll('h1,h2,h3,h4')];
+    updateHeadingHighlight();
   }
 </script>
 <!--
