@@ -89,7 +89,7 @@ you can do that with single `+layout.svelte` file.
 <Slot />
 ```
 
-`<Slot /> is where each `+page.svelte` will be rendered.
+`<Slot />` is where each `+page.svelte` will be rendered.
 
 But a question arises here: Where should the header component file be placed?
 Sveletekit document tells us to put it to the topmost directory where it is used.

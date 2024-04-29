@@ -10,7 +10,7 @@ author:
 ---
 
 <p align="center">
-  <img height="50" src="https://www.chromium.org/_assets/customLogo.png" alt="chromium-logo">
+  <img height="50" src="https://www.chromium.org/_assets/icon-chromium-96.png" alt="chromium-logo">
 </p>
 
 # 1. Abstraction

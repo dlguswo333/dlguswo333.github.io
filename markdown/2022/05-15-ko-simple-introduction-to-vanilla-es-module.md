@@ -23,7 +23,7 @@ Webpack 같은 번들러를 이용하지 않고 코딩한 자바스크립트 파
 따라서 이 포스트는 번들러 없이 JS와 HTML 파일만으로 ES Module을 사용하는 법을 간단히 소개하고자 합니다.
 
 먼저 엔트리 포인트가 될 코드를 생성합니다. `index.js`로 루트에 생성하거나
-인라인으로 HTML 파일 내부에 script로 생성해줍니다. 단 scrip 태그의 `type` 프로퍼티로
+인라인으로 HTML 파일 내부에 script로 생성해줍니다. 단 script 태그의 `type` 프로퍼티로
 `module`을 지정합니다.
 
 ```html
