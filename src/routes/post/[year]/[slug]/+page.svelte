@@ -6,7 +6,6 @@
   import {onMount} from 'svelte';
   import {defaultLang, name} from '$lib/index';
   import Lang from '$lib/components/Lang.svelte';
-  import {page} from '$app/stores';
   import {afterNavigate} from '$app/navigation';
 
   export let data;
@@ -67,7 +66,7 @@
               <Lang
                 lang={lang}
                 getIsActive={(lang) => postLang === lang}
-                url={`${$page.url.pathname.replace(postLang, lang)}`}
+                url={`/post/${data.date.split('-')[0]}/${data.id.replace(postLang, lang)}/`}
               />
             {/each}
           </div>
