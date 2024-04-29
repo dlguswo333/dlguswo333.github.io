@@ -115,4 +115,22 @@ const crawlPosts = async (): Promise<PostMetadata[]> => {
   return posts;
 };
 
+/** Get available language list of the post according to fileNames */
+export const getAvailableLanguagesOfPost = async (postFilePath: string): Promise<string[]> => {
+  const {date, id} = getDateLangIdFromPostPath(postFilePath);
+  const crawledResult = await crawlPosts();
+  const removeDateLangFromId = (id: string) => {
+    const regexResult = regex.postFileNameFormat.exec(`${id}.md`);
+    if (!regexResult) {
+      throw new Error(`${id} does not follow the post file name format!`);
+    }
+    const idWithoutDateLang = regexResult[5];
+    return idWithoutDateLang;
+  };
+  const idWithoutDateLang = removeDateLangFromId(id);
+  const matchingPosts = crawledResult.filter((candidate) =>
+    date === candidate.date && idWithoutDateLang === removeDateLangFromId(candidate.id));
+  return matchingPosts.map(({lang}) => lang);
+};
+
 export default crawlPosts;
