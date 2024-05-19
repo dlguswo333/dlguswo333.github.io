@@ -65,7 +65,7 @@ if (getIsBird(animal)) {
 }
 ```
 
-![no-type-predicate-function-error](/img/05-18-ko-typescript-5-5-0-notable-changes/no-type-predicate-function-error.png)
+![no-type-predicate-function-error](/img/2024-05-18-ko-typescript-5-5-notable-changes/no-type-predicate-function-error.png)
 
 로직 상으로는 문제가 전혀 없습니다. 타입 검사 후 `animal`이 `Bird` 타입임이 보장되며,
 중간에 `animal` 변수가 변한 것도 아닙니다.
@@ -86,7 +86,7 @@ if (getIsBird(animal)) {
 추론이 잘 되고 있는지는 LSP의 함수 Definition으로도 확인할 수 있습니다.
 추론 되었다면 함수의 리턴 타입에 Type Predicate가 명시됩니다.
 
-![inferred-type-predicate](/img/05-18-ko-typescript-5-5-0-notable-changes/inferred-type-predicate.png)
+![inferred-type-predicate](/img/2024-05-18-ko-typescript-5-5-notable-changes/inferred-type-predicate.png)
 
 ## 이점
 가장 명확한 장점은 이제 Type Predicate를 명시하지 않아도 된다는 점입니다.
@@ -225,11 +225,7 @@ const filteredAnimals = removeBirds(animals);
 filteredAnimals.push(newBird); // Error since 5.5!
 ```
 
-
-
-![unwanted-inferred-type-predicate](/img/05-18-ko-typescript-5-5-0-notable-changes/unwanted-inferred-type-predicate.png)
-
-
+![unwanted-inferred-type-predicate](/img/2024-05-18-ko-typescript-5-5-notable-changes/unwanted-inferred-type-predicate.png)
 
 이와 같은 경우에는 Explicit Type으로 해결할 수 있습니다.
 
