@@ -37,7 +37,7 @@
     <span>{post.lang}</span>
   </div>
   {#if post.summary}
-    <div class="mt-4">
+    <div class="mt-4" style={'overflow-wrap: anywhere;'}>
       {post.summary}
     </div>
   {/if}
