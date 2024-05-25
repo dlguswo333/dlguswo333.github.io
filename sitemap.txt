@@ -1,4 +1,5 @@
 https://dlguswo333.github.io/post/2024/05-18-ko-typescript-5-5-notable-changes/
+https://dlguswo333.github.io/post/2024/05-18-en-typescript-5-5-notable-changes/
 https://dlguswo333.github.io/post/2024/03-22-en-install-plugin-from-subdirectory-with-lazy-nvim/
 https://dlguswo333.github.io/post/2024/03-16-en-migrate-blog-to-sveltekit-routing/
 https://dlguswo333.github.io/post/2024/02-12-ko-windows11-hangul-ime-issue/
