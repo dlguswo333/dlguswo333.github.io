@@ -171,7 +171,7 @@ If the returned value is `true` it does mean that `animal` is of `Bird` type.<br
 If you read the pull request of Inferred Type Predicate,
 Type Guard must be _if and only if_.
 Thus `return 'fly' in animal && Math.random() > 0.5` code
-may return different boolean values according to the right hand side operator
+may return different boolean values according to the right hand side operand
 even though it is handed a `Bird` parameter;
 as a result it is not a Type Guard function.
 Nevertheless it does not quite explain why `&& true` is not a Type Guard expression.
