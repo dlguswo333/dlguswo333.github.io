@@ -18,7 +18,9 @@ export const load = async () => {
       }
     });
   });
-  const sortedTags = Object.keys(tags).sort();
+  const sortedTags = Object.keys(tags).sort((a, b) => 
+    a.toLowerCase().localeCompare(b.toLowerCase())
+  );
 
   const tocData: TOCItem[] = sortedTags.map(category => ({
     id: category,
