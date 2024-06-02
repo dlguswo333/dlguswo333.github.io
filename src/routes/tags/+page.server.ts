@@ -22,9 +22,9 @@ export const load = async () => {
     a.toLowerCase().localeCompare(b.toLowerCase())
   );
 
-  const tocData: TOCItem[] = sortedTags.map(category => ({
-    id: category,
-    text: category,
+  const tocData: TOCItem[] = sortedTags.map(tag => ({
+    id: tag,
+    text: tag,
     depth: 1,
   }));
 
