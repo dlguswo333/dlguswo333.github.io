@@ -1,5 +1,5 @@
 import crawlPosts from '$lib/crawlPosts';
-import type {PostMetadata} from '$lib/types';
+import type {PostMetadata, TOCItem} from '$lib/types';
 
 export const load = async () => {
   // Since posts are crawled in time order,
@@ -19,7 +19,15 @@ export const load = async () => {
     });
   });
   const sortedTags = Object.keys(tags).sort();
+
+  const tocData: TOCItem[] = sortedTags.map(category => ({
+    id: category,
+    text: category,
+    depth: 1,
+  }));
+
   return {
     tags: sortedTags.map(tag => ({tag, posts: tags[tag]})),
+    tocData,
   };
 };
