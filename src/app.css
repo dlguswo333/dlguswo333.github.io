@@ -68,11 +68,11 @@ body.dark .post h1,body.dark .post h2,body.dark .post h3,body.dark .post h4 {
     background-color: #f0f0f0;
     padding: 1px 3px;
     border-radius: 4px;
-    color: #a420cf;
+    color: #05a220;
 }
 body.dark .post :not(pre) code {
     background-color: #373737;
-    color: #00a2ff;
+    color: #00e333;
 }
 
 .post blockquote {
