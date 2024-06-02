@@ -1,10 +1,14 @@
 <script lang="ts">
   import MainSection from '$lib/components/MainSection.svelte';
+  import TOC from '$lib/components/TOC.svelte';
 
   export let data;
 </script>
-<div class="flex flex-row flex-grow justify-center p-2 lg:p-0">
-  <MainSection>
+<div class="flex flex-row flex-grow justify-center p-2 lg:p-0 lg:pr-[300px]">
+  {#if data.tocData}
+    <TOC data={data.tocData} />
+  {/if}
+  <MainSection tocDataExists={!!data.tocData.length}>
     {#each data.categories as {category, posts}}
       <section class="mb-8 w-full">
         <h1 id={category} class="text-3xl font-bold pb-2 mb-3 border-b-2 scroll-mt-[50px]">
