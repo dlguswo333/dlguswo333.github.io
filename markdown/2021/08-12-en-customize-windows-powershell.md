@@ -4,7 +4,7 @@ toc: true
 editedDate: 2022-06-18
 title: "Customize Windows Powershell"
 category: ["Programming"]
-tags: [Windows, Powershell, Git]
+tags: [windows, powershell, git]
 author:
   - 이현재
 ---
