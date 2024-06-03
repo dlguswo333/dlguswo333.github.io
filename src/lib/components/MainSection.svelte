@@ -54,7 +54,10 @@
     const highlightTopOffset = (0 - firstHeadingTop) / firstSectionHeight;
     const highlightBottomOffset = (window.innerHeight - lastHeadingTop) / lastSectionHeight;
     const highlightTop = $tocItemHeight * (highlightTopOffset + firstHeadingIndex);
-    const highlightBottom = $tocItemHeight * (highlightBottomOffset + lastHeadingIndex);
+    const highlightBottom = $tocItemHeight * Math.min(
+      lastHeadingIndex + highlightBottomOffset,
+      lastHeadingIndex + 1 // Prevent highlight overflows parent underneath.
+    );
 
     $headingHighlight = {top: Math.floor(highlightTop), bottom: Math.floor(highlightBottom)};
   };
