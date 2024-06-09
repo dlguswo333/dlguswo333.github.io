@@ -7,7 +7,7 @@
   export let data: TOCItem[];
 
   const coefficient = 2 / 3;
-  const constant = 0.3;
+  const constant = 0.4;
 
   onMount(() => {
     $showTOC = false;
@@ -53,8 +53,8 @@ The scrollable height is not big enough to show the front child 'li' elements.
     </ul>
     {#if highlightTop !== undefined && highlightBottom !== undefined}
       <div class={'absolute left-0 flex'} style={`transition: top 0.1s ease-out, height 0.1s ease-out; top: ${highlightTop}px; height:${highlightBottom - highlightTop}px`}>
-        <div class="rounded-xl bg-blue-400 dark:bg-purple-500 w-1 h-full" />
-        <div class="w-6 h-full bg-gradient-to-r from-blue-100 dark:from-fuchsia-900 to-transparent" />
+        <div class="z-10 rounded-xl bg-blue-400 dark:bg-purple-500 w-1 h-full" />
+        <div class="z-5 absolute left-0.5 w-6 h-full bg-gradient-to-r from-blue-100 dark:from-fuchsia-900 to-transparent" />
       </div>
     {/if}
   </div>
