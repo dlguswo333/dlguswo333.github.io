@@ -23,7 +23,7 @@ author:
 
 <https://www.airport.kr/ap_lp/ko/dep/process/smart/smart.do>
 
-<img src="/img/2023-10-09-ko-incheon-airport-smart-pass-review/smartpass-screenshot.webp" alt="smartpass-screenshot" style="max-height: min(600px, 60vh);margin:auto;display:block;">
+![smartpass-screenshot](/img/2023-10-09-ko-incheon-airport-smart-pass-review/smartpass-screenshot.webp)
 
 ID 생성, 본인 인증, 여권 스캔, 얼굴 인식, 탑승권 확인 등의 절차를
 출국장 대기 전 미리 수행해 출국장 대기 심사를 크게 단축할 수 있습니다.
