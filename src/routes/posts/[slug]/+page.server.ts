@@ -1,8 +1,8 @@
 import {paginationSize} from '$lib';
 import crawlPosts from '$lib/crawlPosts';
-import {error} from '@sveltejs/kit';
+import {error, type Load} from '@sveltejs/kit';
 
-export const load = async ({params}) => {
+export const load: Load = async ({params}) => {
   const posts = await crawlPosts();
   const curIndex = Number(params.slug);
   if (Number.isNaN(curIndex) || !Number.isInteger(curIndex) || curIndex <= 0) {

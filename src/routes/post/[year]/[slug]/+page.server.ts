@@ -2,12 +2,15 @@ import {postBasePath} from '$lib';
 import {getAvailableLanguagesOfPost, getDateLangIdFromPostPath} from '$lib/crawlPosts';
 import {getFrontmatterFromMarkdown, getHtmlFromMarkdown} from '$lib/markdown.js';
 import type {Frontmatter} from '$lib/types';
-import {error} from '@sveltejs/kit';
+import {error, type Load} from '@sveltejs/kit';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
-export const load = async ({params}) => {
+export const load: Load = async ({params}) => {
   const {year, slug} = params;
+  if (year === undefined || slug === undefined) {
+    throw error(404);
+  }
   const postFilePath = `${path.join(postBasePath, year, slug)}.md`;
   let rawContent: string | null;
   try {
