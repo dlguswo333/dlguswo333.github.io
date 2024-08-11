@@ -23,7 +23,7 @@ export const load: Load = async ({params}) => {
     const {date, lang, id} = getDateLangIdFromPostPath(postFilePath);
     const frontmatter = await getFrontmatterFromMarkdown<Frontmatter>(rawContent);
     const {html, tocData} = await getHtmlFromMarkdown(rawContent, !!frontmatter?.toc);
-    const langs = getAvailableLanguagesOfPost(postFilePath);
+    const langs = await getAvailableLanguagesOfPost(postFilePath);
     return {html, frontmatter, date, lang, id, tocData, langs};
   } catch (e) {
     console.error(e);
