@@ -1,1 +1,2 @@
-echo husky script
+lint-staged 
+
