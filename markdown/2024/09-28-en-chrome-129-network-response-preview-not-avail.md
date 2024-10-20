@@ -1,6 +1,7 @@
 ---
 layout: post
 toc: true
+editedDate: 2024-10-20
 title: "Chrome 129 does not Show Network Response Preview"
 category: ["Programming"]
 tags: [web]
@@ -109,9 +110,18 @@ but does it show you the data in plaintext in **Preview tab**.<br>
 ...I think they need to be in opposite, but back to the point,
 Chrome 128 does show you the data in development tool.
 
-# Old Mechanism Seems to be Coming back
+# Chromium 130 Has Reverted the Mechanism
 Also from the Chromium issue tracker, it seems like the strict mechanism is getting reverted
 and Development tool would show us the text contents even though the header does not tell it is in text.
 
 <https://chromium-review.googlesource.com/5895184>
 
+And since Chromium 130, it seems the mechanism has been reverted.
+However, `Content-Type: application/octet-stream` still does not show the response.
+(I have been falsely leading the post; sorry about that), but you need to add `charset: utf-8;`.
+It seems `charset` signature tells dev tool how to decode into human-readable texts.
+`Content-Type: application/octet-stream;charset: utf-8;` would show the response just like old times.
+
+![chromium-130](/img/2024-09-28-en-chrome-129-network-response-preview-not-avail/chromium-130.png)
+
+On Chromium 129, Even though you append `charset: utf-8`, dev tool would not show the response.
