@@ -117,8 +117,8 @@ and Development tool would show us the text contents even though the header does
 <https://chromium-review.googlesource.com/5895184>
 
 And since Chromium 130, it seems the mechanism has been reverted.
-However, `Content-Type: application/octet-stream` still does not show the response.
-(I have been falsely leading the post; sorry about that), but you need to add `charset: utf-8;`.
+However, `Content-Type: application/octet-stream` still does not show the response
+(I have been misleading the post; sorry about that). but you need to add `charset: utf-8;`.
 It seems `charset` signature tells dev tool how to decode into human-readable texts.
 `Content-Type: application/octet-stream;charset: utf-8;` would show the response just like old times.
 
