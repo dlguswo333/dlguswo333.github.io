@@ -27,7 +27,7 @@ const headingTagNames = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
  */
 export const getSummaryFromMarkdown = async (markdown: string, targetLength: number) => {
   let summary: string | null = null;
-  const visit = (node: Content) => {
+  const visit = (node: Content | Root) => {
     if (summary && summary.length >= targetLength) {
       return;
     }
@@ -46,15 +46,15 @@ export const getSummaryFromMarkdown = async (markdown: string, targetLength: num
     }
     node.children.forEach(visit);
   };
-  await unified()
+  const compiler = unified()
     .use(remarkParse)
     .use(remarkFrontmatter)
     .use(() => (root: Root) => {
-      root.children.forEach(visit);
-    })
-    .use(remarkRehype)
-    .use(rehypeStringify)
-    .process(markdown);
+      visit(root);
+    });
+  const root = compiler.parse(markdown);
+  compiler.run(root);
+    
   return summary as string | null;
 };
 
