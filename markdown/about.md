@@ -7,6 +7,10 @@ and providing users UI and UX in a uniform way no matter what client devices are
 The most common way to do that is through Web,
 and Web Frontend is at the front.
 
+My skills are mostly based on Web Frontend. I do Javascript and love Typescript.
+With the languages I also do things in Node.JS other than Web Frontend.
+But I also like to learn other things that intrigues me.
+
 Visit my [Github page](https://dlguswo333.github.io) if you want to know more about what I have done, and who I am.<br>
 
 ---
