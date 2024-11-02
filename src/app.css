@@ -166,6 +166,13 @@ https://github.com/tailwindlabs/tailwindcss/blob/9a52f90fe9b6814aa8c156ccc348ef5
     display: unset;
 }
 
+.post hr {
+    border-color: #d0d0d0;
+}
+body.dark .post hr {
+    border-color: #777;
+}
+
 /* Below lines copied & pasted from https://www.npmjs.com/package/rehype-prism-plus */
 .post pre {
     overflow-x: auto;
