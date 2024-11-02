@@ -1,6 +1,7 @@
 ---
 layout: post
 toc: false
+editedDate: 2024-11-02
 title: "React may Rerender before Async Callback Resolves"
 category: ["Programming"]
 tags: [web, react, javascript]
@@ -115,12 +116,12 @@ export default CacheComp;
 It outputs `log-0` => `rerender` => `log-1`.
 
 Is this expected behavior? I think not.
-before even `onClick` function finishes (= the promise returned by `updateState` resolves),
-React updates states (= rerender by `setState(newValue)`).
+Before even `onClick` function finishes (= the promise returned by `updateState` resolves),
+React updates states (= rerender by `setState(cachedValue)`).
 
 I have no idea what is the root cause for this phenomenon,
 but it has something to do that `updateState` function is `async` function but
-the statements it executes when cache hits occur are actually `sync`.
+the statements it executes when cache hits occur are actually *synchronous*.
 
 ```jsx
   // If cache hits...
@@ -137,6 +138,7 @@ In the meantime, React decided to rerender for some reasons.
 ---
 
 Think of another example where multiple states are defined and get updated.
+Both have cache integrated.
 
 ```jsx
 const MultiCacheComp = () => {
@@ -188,12 +190,39 @@ const MultiCacheComp = () => {
 It outputs `log-0` => `rerender` => `log-1`.
 But if cache misses occur, it outputs `log-0` => `rerender` => `log-1` => `rerender`.
 
+What does it mean? Well, I don't know.
+But it looks obvious that synchronous states are clustered together, inducing one rerender.<br>
+But if cache misses occur, one click makes React rerender twice.
+From that, if you have an `useEffect` dependent on the two states, it will run twice.
+This might be problematic if you have another api call in `useEffect`; the api will run twice!
+
+It might be best not to assume React would work the way we want.
+This might be the best option since React is an UI library; it needs to show what's happening instantly.
+If you want these two `setStates` are clustered into one rerender, call them together.
+
+```tsx
+  const updateState = async () => {
+    let value1 = cache(state1);
+    if (!value1) {
+      value1 = await api(state1);
+    }
+
+    let value2 = cache(state2);
+    if (!value2) {
+      value2 = await api(state2);
+    }
+    setState1(value1);
+    setState2(value2);
+  };
+```
+<br>
+
 ---
 
 These examples may seem too unnatural compared to codes on the real world.
 But believe me, I encountered this problem while developing for real use cases.
-If **we have some codes that need to run before rerendering**,
-then we have a problem.
+If **you have some codes that need to run before rerendering**,
+then you might encounter this problem.
 
 These kinds of caveats hit us so hard wasting our times.
 But don't get me wrong. I do think this is not a React's problem.
