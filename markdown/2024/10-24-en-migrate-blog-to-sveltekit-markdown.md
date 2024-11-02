@@ -62,6 +62,8 @@ If you read unifiedjs's documentation, `compiler.parse()` returns a syntax tree
 and `compiler.run` returns a syntax tree with transformation applied.
 `compiler.stringify` gives you a final output; in the code below it is HTML code in JS string.
 Then you inject the string into Svelte with `{@html}` tag.
+As mentioned in the code, you are injecting raw `html` code into your page.
+Be careful not to inject some malicious script codes in your Markdown.
 ```ts
 const root = await compiler.run(compiler.parse(markdown));
 const html = compiler.stringify(root); // <p>This is serialized html</p> ...
