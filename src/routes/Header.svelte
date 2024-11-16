@@ -3,6 +3,13 @@
   import HeaderLink from '$lib/components/HeaderLink.svelte';
   import TocIcon from '$lib/components/TOCIcon.svelte';
   import {showTOC, shouldShowTOCButton} from '$lib/store';
+  import {page} from '$app/stores';
+
+  $: links = [
+    {href: '/categories/', text: 'Categories', isActive: $page.url.pathname.startsWith('/categories/')},
+    {href: '/tags/', text: 'Tags', isActive: $page.url.pathname.startsWith('/tags/')},
+    {href: '/about/', text: 'About', isActive: $page.url.pathname.startsWith('/about/')}
+  ];
 </script>
 <header class="z-10 p-2 sticky top-0 flex flex-row items-center justify-between border-b border-b-gray-300 bg-gray-50 dark:bg-[#2c3039] dark:border-b-gray-700">
   <div class="flex flex-row items-center gap-1">
@@ -21,8 +28,8 @@
     {/if}
   </div>
   <div class="flex flex-row items-center">
-    <HeaderLink href='/categories/' text='Categories' />
-    <HeaderLink href='/tags/' text='Tags' />
-    <HeaderLink href='/about/' text='About' />
+    {#each links as {href, text, isActive}}
+      <HeaderLink href={href} text={text} isActive={isActive} />
+    {/each}
   </div>
 </header>
