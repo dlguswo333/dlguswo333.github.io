@@ -20,3 +20,13 @@ Visit my [github.io page](https://dlguswo333.github.io) if you want to know more
 
 ## Experience
 - Web Frontend developer in Kakao Corporation, 2021-
+
+## Project
+### tiShare
+![tishare](/img/about/tishare.webp)
+tiShare aims to send files or folders between devices easily, with cross-platform support.
+
+Desktop built with React, Module CSS, and Electron. Windows and Linux.<br>
+Mobile built with Kotlin. Android only.
+
+[tiShare documentation](https://dlguswo333.github.io/tishare-docs/)
