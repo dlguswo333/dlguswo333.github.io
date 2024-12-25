@@ -83,5 +83,5 @@ which should appear on light theme, and `hidden dark:block` classes to the ones 
 Now flickering went away on refresh!
 I could remove the empty button because there are no flickering and mismatch renderings.
 As a matter of facts, it is not that difficult.
-On the contrary, I could have applied this solution without realzing
-if I perceived the component as one of other normal components that support light/dark themes.
+On the contrary, I could have applied this solution without realizing
+if I had perceived the component as just another normal component that supports light/dark themes.
