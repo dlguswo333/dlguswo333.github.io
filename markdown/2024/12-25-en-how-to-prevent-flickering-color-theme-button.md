@@ -59,7 +59,7 @@ it is just too much to lose just because of the flickering theme button.
 
 The solution is quite simple.
 To figure out how other websites mitigated this issue
-I referred to react official documentation site [react.dev](react.dev).
+I referred to react official documentation site [react.dev](https://react.dev).
 react.dev also branches off renderings in according to the current selected theme just like I did,
 but unlike I did with Javascript it branches off with CSS classes.
 This solution is ready-to-apply to my blog which prepares for theme rendering synchronously with inline scripts.
