@@ -41,7 +41,7 @@ The scrollable height is not big enough to show the front child 'li' elements.
       {#each data as item}
         <!-- I would like to bind the height for the first li only, but do not know easy way to do that. -->
         <li title={item.text} bind:offsetHeight={$tocItemHeight}
-          class={`flex border-l-4 border-transparent hover:border-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 ${item.depth === 1 ? 'font-bold' : ''} ${$showTOC ? 'py-1.5' : ''}
+          class={`flex ml-1 hover:bg-gray-100 dark:hover:bg-gray-700 ${item.depth === 1 ? 'font-bold' : ''} ${$showTOC ? 'py-1.5' : ''}
         `}
         >
           <a href={`#${item.id}`} class="relative z-10 py-0.5 whitespace-nowrap overflow-hidden break-all overflow-ellipsis flex-grow"
@@ -51,6 +51,7 @@ The scrollable height is not big enough to show the front child 'li' elements.
         </li>
       {/each}
     </ul>
+    <div class="absolute top-0 left-0 z-5 rounded-xl bg-gray-200 dark:bg-gray-500/25 w-1 h-full" />
     {#if highlightTop !== undefined && highlightBottom !== undefined}
       <div class={'absolute left-0 flex'} style={`transition: top 0.1s ease-out, height 0.1s ease-out; top: ${highlightTop}px; height:${highlightBottom - highlightTop}px`}>
         <div class="z-10 rounded-xl bg-blue-400 dark:bg-purple-500 w-1 h-full" />
