@@ -34,7 +34,7 @@
 I don't know why, but setting max-height on 'aside' shows bad strange behavior.
 The scrollable height is not big enough to show the front child 'li' elements.
 -->
-<aside class={`w-[300px] overflow-hidden hidden mt-10 self-start md:!flex md:sticky md:top-14 flex-col justify-center items-center p-3
+<aside class={`w-[330px] overflow-hidden hidden mt-10 self-start md:!flex md:sticky md:top-14 flex-col justify-center items-center p-3
   ${$showTOC ? '!w-[94vw] py-6 z-20 !flex fixed top-14 left-[50%] translate-x-[-50%] border-2 border-neutral-300 bg-neutral-50 shadow-lg rounded-md dark:bg-neutral-800' : ''}`}>
   <div class="relative w-full overflow-auto">
     <ul class="max-h-[80vh]">

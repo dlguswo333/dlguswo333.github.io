@@ -3,6 +3,7 @@ import type {ColorTheme, HeadingHighlight} from './types';
 
 export const headingHighlight = writable<HeadingHighlight | null>(null);
 
+/** Whether the screen size is small and should show TOC */
 export const showTOC = writable(false);
 
 export const tocItemHeight = writable(0);
