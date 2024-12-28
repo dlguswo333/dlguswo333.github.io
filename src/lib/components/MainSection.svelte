@@ -1,5 +1,5 @@
 <script lang="ts">
-  import {afterNavigate, beforeNavigate} from '$app/navigation';
+  import {onMount} from 'svelte';
   import {headingHighlight, shouldShowTOCButton, tocItemHeight} from '$lib/store';
   import throttleWithLast from '$lib/throttleWithLast';
 
@@ -63,7 +63,7 @@
   };
 
   // Setup.
-  afterNavigate(() => {
+  onMount(() => {
     if (!tocDataExists || !mainHtml) {
       return;
     }
@@ -76,13 +76,9 @@
     headings = [...mainHtml.querySelectorAll('h1,h2,h3,h4')];
     document.addEventListener('scroll', onScroll);
     return () => {
+      $shouldShowTOCButton = false;
+      document.removeEventListener('scroll', onScroll);
     };
-  });
-
-  // Dis-setup.
-  beforeNavigate(() => {
-    $shouldShowTOCButton = false;
-    document.removeEventListener('scroll', onScroll);
   });
 
   $: if ($tocItemHeight && mainHtml) {
