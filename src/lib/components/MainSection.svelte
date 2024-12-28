@@ -97,6 +97,7 @@ Render raw html in main section.
 <main class={`max-w-[900px] w-full py-2 ${className ? className : ''}`} bind:this={mainHtml}>
   <slot />
   {#if html}
+    <!-- eslint-disable-next-line svelte/no-at-html-tags -->
     {@html html}
   {/if}
 </main>
