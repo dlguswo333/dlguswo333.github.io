@@ -31,7 +31,7 @@
       const nextHeadingTop = nextHeading?.getBoundingClientRect().top ?? mainHtml?.getBoundingClientRect().bottom;
 
       const isThisFirstHeading =
-        headingTop < 0 && (!nextHeading || 0 < nextHeadingTop);
+        headingTop <= 0 && (!nextHeading || 0 < nextHeadingTop);
       if (firstHeading === null && isThisFirstHeading) {
         firstHeadingIndex = index;
         firstHeading = heading;
