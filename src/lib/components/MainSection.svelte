@@ -77,13 +77,13 @@
     document.addEventListener('scroll', onScroll);
     return () => {
       $shouldShowTOCButton = false;
+      $headingHighlight = null;
       document.removeEventListener('scroll', onScroll);
     };
   });
 
   $: if ($tocItemHeight && mainHtml) {
     headings = [...mainHtml.querySelectorAll('h1,h2,h3,h4')];
-    updateHeadingHighlight();
   }
 </script>
 <!--
