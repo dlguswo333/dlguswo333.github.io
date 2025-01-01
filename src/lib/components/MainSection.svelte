@@ -13,7 +13,7 @@
   let mainHtml: HTMLElement | null = null;
   const refreshInterval = 100;
   let headings: Element[] = [];
-  const onScroll = throttleWithLast(() => updateHeadingHighlight(), refreshInterval);
+  const throttledUpdateHeadingHighlight = throttleWithLast(() => updateHeadingHighlight(), refreshInterval);
 
   const updateHeadingHighlight = () => {
     let firstHeading: null | Element = null;
@@ -74,16 +74,22 @@
     $headingHighlight = null;
 
     headings = [...mainHtml.querySelectorAll('h1,h2,h3,h4')];
-    document.addEventListener('scroll', onScroll);
+    document.addEventListener('scroll', throttledUpdateHeadingHighlight);
     return () => {
       $shouldShowTOCButton = false;
       $headingHighlight = null;
-      document.removeEventListener('scroll', onScroll);
+      document.removeEventListener('scroll', throttledUpdateHeadingHighlight);
     };
   });
 
   $: if ($tocItemHeight && mainHtml) {
     headings = [...mainHtml.querySelectorAll('h1,h2,h3,h4')];
+    // Need to call update highlight function manually here for following situations:
+    // However, calling the function right away may have undesirable effects because the height might change,
+    // maybe due to images not loaded yet. Need to call after some interval.
+    // - Refreshing the page remembers the scroll position.
+    // - On small screens where TOC does not render each TOC item have height of zero.
+    throttledUpdateHeadingHighlight();
   }
 </script>
 <!--
