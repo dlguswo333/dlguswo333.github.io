@@ -8,7 +8,7 @@
   </div>
   <div class="flex items-center">
     <a class="inline-flex items-center" href={blogRepositoryLink}>
-      <GithubMark className="mr-1" />
+      <GithubMark className="mr-1" hoverable={true} />
     </a>
     Built with Sveltekit.
   </div>
