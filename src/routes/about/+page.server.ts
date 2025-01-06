@@ -11,13 +11,13 @@ export const load = async () => {
     rawContent = await fs.readFile(postFilePath, {encoding: 'utf-8'});
   } catch (e) {
     console.error(e);
-    throw error(404);
+    error(404);
   }
   try {
     const {html} = await getHtmlFromMarkdown(rawContent, false);
     return {html};
   } catch (e) {
     console.error(e);
-    throw error(500);
+    error(500);
   }
 };

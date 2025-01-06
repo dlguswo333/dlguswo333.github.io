@@ -20,8 +20,9 @@
 		"prepare": "husky"
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-static": "^2.0.3",
-		"@sveltejs/kit": "^1.30.4",
+		"@sveltejs/adapter-static": "^3.0.8",
+		"@sveltejs/kit": "^2.15.1",
+		"@sveltejs/vite-plugin-svelte": "^3.1.2",
 		"@types/node": "^20.8.9",
 		"@typescript-eslint/eslint-plugin": "^7.18.0",
 		"autoprefixer": "^10.4.16",
@@ -42,12 +43,12 @@
 		"remark-parse": "^10.0.2",
 		"remark-rehype": "^10.1.0",
 		"svelte": "^4.2.19",
-		"svelte-check": "^3.5.2",
+		"svelte-check": "^4.1.1",
 		"tailwindcss": "^3.3.5",
 		"tslib": "^2.6.2",
 		"typescript": "^5.5.4",
 		"unified": "^10.1.2",
-		"vite": "^4.5.3",
+		"vite": "^5.4.11",
 		"yaml": "^2.3.3"
 	}
 }

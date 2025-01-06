@@ -7,14 +7,14 @@ export const getCurrentPaginationIndex = (url: URL) => {
   }
   const result = /$\/posts\/(\d+)/.exec(pathname);
   if (!result) {
-    throw error(404);
+    error(404);
   }
   const paginationNumber = Number([...result][1]);
   if (Number.isNaN(paginationNumber) ||
     !Number.isInteger(paginationNumber) ||
     paginationNumber <= 0
   ) {
-    throw error(404);
+    error(404);
   }
   return paginationNumber;
 };
