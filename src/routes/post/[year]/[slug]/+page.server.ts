@@ -9,7 +9,7 @@ import path from 'node:path';
 export const load: Load = async ({params}) => {
   const {year, slug} = params;
   if (year === undefined || slug === undefined) {
-    throw error(404);
+    error(404);
   }
   const postFilePath = `${path.join(postBasePath, year, slug)}.md`;
   let rawContent: string | null;
@@ -17,7 +17,7 @@ export const load: Load = async ({params}) => {
     rawContent = await fs.readFile(postFilePath, {encoding: 'utf-8'});
   } catch (e) {
     console.error(e);
-    throw error(404);
+    error(404);
   }
   try {
     const {date, lang, id} = getDateLangIdFromPostPath(postFilePath);
@@ -27,6 +27,6 @@ export const load: Load = async ({params}) => {
     return {html, frontmatter, date, lang, id, tocData, langs};
   } catch (e) {
     console.error(e);
-    throw error(500);
+    error(500);
   }
 };
