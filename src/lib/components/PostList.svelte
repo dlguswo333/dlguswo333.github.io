@@ -4,9 +4,13 @@
   import Pagination from './Pagination.svelte';
   import Postcard from './PostCard.svelte';
 
-  export let posts: PostMetadata[];
-  export let curIndex: number;
-  export let maxIndex: number;
+  interface Props {
+    posts: PostMetadata[];
+    curIndex: number;
+    maxIndex: number;
+  }
+
+  let {posts, curIndex, maxIndex}: Props = $props();
 </script>
 <MainSection className="flex flex-col items-center pb-3">
   <ul class="py-4">

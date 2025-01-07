@@ -1,9 +1,19 @@
 <script lang="ts">
-  export let lang: string;
-  export let getIsActive: (lang: string) => boolean;
-  export let url: string;
-  export let marginLeft: number = 1;
-  export let marginRight: number = 1;
+  interface Props {
+    lang: string;
+    getIsActive: (lang: string) => boolean;
+    url: string;
+    marginLeft?: number;
+    marginRight?: number;
+  }
+
+  let {
+    lang,
+    getIsActive,
+    url,
+    marginLeft = 1,
+    marginRight = 1,
+  }: Props = $props();
 </script>
 <a
   class={

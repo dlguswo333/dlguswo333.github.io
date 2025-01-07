@@ -2,8 +2,12 @@
   import type {TOCItem} from '$lib/types';
   import {tocItemHeight, showTOC} from '$lib/store';
 
-  export let item: TOCItem;
-  export let shouldBind: boolean;
+  interface Props {
+    item: TOCItem;
+    shouldBind: boolean;
+  }
+
+  let {item, shouldBind}: Props = $props();
 
   const coefficient = 2 / 3;
   const constant = 0.4;

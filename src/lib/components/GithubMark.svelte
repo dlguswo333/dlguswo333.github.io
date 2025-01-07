@@ -1,7 +1,11 @@
 <script lang="ts">
   import {getClasses} from '$lib/string';
-  export let className: string = '';
-  export let hoverable: boolean | undefined = undefined;
+  interface Props {
+    className?: string;
+    hoverable?: boolean | undefined;
+  }
+
+  let {className = '', hoverable = undefined}: Props = $props();
   const classes = getClasses(
     'h-4 w-4 fill-[#24292f] dark:fill-[#fff]',
     {

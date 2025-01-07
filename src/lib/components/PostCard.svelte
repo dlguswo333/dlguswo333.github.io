@@ -3,7 +3,11 @@
   import type {PostMetadata} from '$lib/types';
   import Category from './Category.svelte';
 
-  export let post: PostMetadata;
+  interface Props {
+    post: PostMetadata;
+  }
+
+  let {post}: Props = $props();
 </script>
 
 <section

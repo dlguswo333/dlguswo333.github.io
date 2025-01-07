@@ -1,7 +1,11 @@
 <script lang="ts">
-  export let href: string;
-  export let text: string;
-  export let isActive: boolean;
+  interface Props {
+    href: string;
+    text: string;
+    isActive: boolean;
+  }
+
+  let {href, text, isActive}: Props = $props();
 </script>
 <a href={href} class={
   `h-8 flex items-center justify-center mr-2 last:mr-1 px-1 py-0.5 rounded dark:active:bg-cyan-900 active:bg-cyan-50

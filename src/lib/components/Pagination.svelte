@@ -1,8 +1,17 @@
 <script lang="ts">
-  export let curIndex: number;
-  export let maxIndex: number;
-  export let maxDisplaySize: number;
-  export let getHref: (num: number) => string;
+  interface Props {
+    curIndex: number;
+    maxIndex: number;
+    maxDisplaySize: number;
+    getHref: (num: number) => string;
+  }
+
+  let {
+    curIndex,
+    maxIndex,
+    maxDisplaySize = $bindable(),
+    getHref,
+  }: Props = $props();
 
   // It is nonsense displayed paginations are less than 5.
   maxDisplaySize = Math.min(5, maxDisplaySize);

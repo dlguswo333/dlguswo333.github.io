@@ -1,9 +1,11 @@
 <script lang="ts">
   import {toggleTheme} from '$lib/colorTheme';
 </script>
+<!-- [FIXME] -->
+<!-- svelte-ignore a11y_consider_explicit_label -->
 <button type="button" title="Toggle color theme"
   class='group'
-  on:click={() => {
+  onclick={() => {
     toggleTheme();
   }}>
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"

@@ -1,11 +1,17 @@
 <script lang="ts">
+  import {run} from 'svelte/legacy';
+
   import TocItemComponent from './TOCItemComponent.svelte';
   import type {TOCItem} from '$lib/types';
   import {headingHighlight} from '$lib/store';
   import {showTOC} from '$lib/store';
   import {onMount} from 'svelte';
 
-  export let data: TOCItem[];
+  interface Props {
+    data: TOCItem[];
+  }
+
+  let {data}: Props = $props();
 
 
   onMount(() => {
@@ -22,12 +28,12 @@
       window.removeEventListener('resize', onResize);
     };
   });
-  let highlightTop: number | undefined = undefined;
-  let highlightBottom: number | undefined = undefined;
-  $: {
+  let highlightTop: number | undefined = $state(undefined);
+  let highlightBottom: number | undefined = $state(undefined);
+  run(() => {
     highlightTop = $headingHighlight?.top;
     highlightBottom = $headingHighlight?.bottom;
-  }
+  });
 </script>
 <!--
 I don't know why, but setting max-height on 'aside' shows bad strange behavior.
@@ -40,12 +46,12 @@ The scrollable height is not big enough to show the front child 'li' elements.
       {#each data as item, ind}
         <TocItemComponent item={item} shouldBind={ind === 0} />
       {/each}
-      <div class="absolute top-0 left-0 z-5 rounded-xl bg-gray-200 dark:bg-gray-500/25 w-1 h-full" />
+      <div class="absolute top-0 left-0 z-5 rounded-xl bg-gray-200 dark:bg-gray-500/25 w-1 h-full"></div>
     </ul>
     {#if highlightTop !== undefined && highlightBottom !== undefined}
       <div class={'absolute left-0 flex'} style={`transition: top 0.1s ease-out, height 0.1s ease-out; top: ${highlightTop}px; height:${highlightBottom - highlightTop}px`}>
-        <div class="z-10 rounded-xl bg-blue-400 dark:bg-purple-500 w-1 h-full" />
-        <div class="z-5 absolute left-0.5 w-6 h-full bg-gradient-to-r from-blue-100 dark:from-fuchsia-900 to-transparent" />
+        <div class="z-10 rounded-xl bg-blue-400 dark:bg-purple-500 w-1 h-full"></div>
+        <div class="z-5 absolute left-0.5 w-6 h-full bg-gradient-to-r from-blue-100 dark:from-fuchsia-900 to-transparent"></div>
       </div>
     {/if}
   </div>
