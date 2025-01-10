@@ -1,9 +1,8 @@
 <script lang="ts">
   import {toggleTheme} from '$lib/colorTheme';
+  const description = 'Toggle color theme';
 </script>
-<!-- [FIXME] -->
-<!-- svelte-ignore a11y_consider_explicit_label -->
-<button type="button" title="Toggle color theme"
+<button type="button" title={description} aria-label={description}
   class='group'
   onclick={() => {
     toggleTheme();
