@@ -1,6 +1,4 @@
 <script lang="ts">
-  import {run} from 'svelte/legacy';
-
   import TocItemComponent from './TOCItemComponent.svelte';
   import type {TOCItem} from '$lib/types';
   import {headingHighlight} from '$lib/store';
@@ -30,7 +28,7 @@
   });
   let highlightTop: number | undefined = $state(undefined);
   let highlightBottom: number | undefined = $state(undefined);
-  run(() => {
+  $effect(() => {
     highlightTop = $headingHighlight?.top;
     highlightBottom = $headingHighlight?.bottom;
   });

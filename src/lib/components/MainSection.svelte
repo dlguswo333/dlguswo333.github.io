@@ -1,6 +1,4 @@
 <script lang="ts">
-  import {run} from 'svelte/legacy';
-
   import {onMount} from 'svelte';
   import {headingHighlight, shouldShowTOCButton, tocItemHeight} from '$lib/store';
   import throttleWithLast from '$lib/throttleWithLast';
@@ -97,7 +95,7 @@
     };
   });
 
-  run(() => {
+  $effect(() => {
     if ($tocItemHeight && mainHtml) {
       headings = [...mainHtml.querySelectorAll('h1,h2,h3,h4')];
       // Need to call update highlight function manually here for following situations:
