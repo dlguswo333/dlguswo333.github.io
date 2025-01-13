@@ -8,13 +8,13 @@
   import Lang from '$lib/components/Lang.svelte';
   import {afterNavigate} from '$app/navigation';
 
-  export let data;
+  let {data} = $props();
   // Since Sveltekit may reuse components, some components may not be destroyed and recreated.
   // But data props change. See: https://github.com/dlguswo333/dlguswo333.github.io/issues/44
 
-  $: postTitle = data.frontmatter?.title;
-  $: postLang = data.lang || defaultLang;
-  $: postAvailableLangs = data.langs;
+  let postTitle = $derived(data.frontmatter?.title);
+  let postLang = $derived(data.lang || defaultLang);
+  let postAvailableLangs = $derived(data.langs);
 
   onMount(() => {
     // Update document lang property on mount.

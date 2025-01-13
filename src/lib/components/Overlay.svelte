@@ -13,4 +13,4 @@
   });
 </script>
 <div class="fixed w-full h-full backdrop-blur-lg bg-[#333a] z-10"
-  on:mousedown={hideOverlay} role="button" aria-pressed="false" aria-label="Hide TOC" tabindex="0" />
+  onmousedown={hideOverlay} role="button" aria-pressed="false" aria-label="Hide TOC" tabindex="0"></div>

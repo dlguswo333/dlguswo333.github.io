@@ -1,3 +1,6 @@
+// Global stores go into this file.
+// But with Svelte v5, they may be migrated into runes.
+// https://svelte.dev/docs/svelte/stores#When-to-use-stores
 import {writable, derived} from 'svelte/store';
 import type {ColorTheme, HeadingHighlight} from './types';
 

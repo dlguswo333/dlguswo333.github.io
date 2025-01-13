@@ -2,7 +2,7 @@
   import MainSection from '$lib/components/MainSection.svelte';
   import TOC from '$lib/components/TOC.svelte';
 
-  export let data;
+  let {data} = $props();
 </script>
 <div class="flex flex-row flex-grow justify-center p-2 lg:p-0 lg:pr-[300px]">
   {#if data.tocData}
@@ -21,7 +21,7 @@
                 class="text-sky-500 visited:text-purple-600 max-w-full py-1 text-ellipsis whitespace-nowrap overflow-hidden">
                 {post.title}
               </a>
-              <div class="flex-grow" />
+              <div class="flex-grow"></div>
               <span class="basis-[fit-content] whitespace-nowrap">
                 {#if post.editedDate}
                   (E. {post.editedDate})

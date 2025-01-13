@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import {blogRepositoryLink, name} from '$lib';
   import GithubMark from '$lib/components/GithubMark.svelte';
 </script>

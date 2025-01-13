@@ -3,16 +3,29 @@
   import {headingHighlight, shouldShowTOCButton, tocItemHeight} from '$lib/store';
   import throttleWithLast from '$lib/throttleWithLast';
 
-  /** Raw html in `string` type */
-  export let html: string | null = null;
-  /** Additional class to add. */
-  export let className: string | null = null;
-  /** If toc data exists, it means it needs show toc button. */
-  export let tocDataExists: boolean = false;
+  
+  
+  
+  interface Props {
+    /** Raw html in `string` type */
+    html?: string | null;
+    /** Additional class to add. */
+    className?: string | null;
+    /** If toc data exists, it means it needs show toc button. */
+    tocDataExists?: boolean;
+    children?: import('svelte').Snippet;
+  }
 
-  let mainHtml: HTMLElement | null = null;
+  let {
+    html = null,
+    className = null,
+    tocDataExists = false,
+    children,
+  }: Props = $props();
+
+  let mainHtml: HTMLElement | null = $state(null);
   const refreshInterval = 100;
-  let headings: Element[] = [];
+  let headings: Element[] = $state([]);
   const throttledUpdateHeadingHighlight = throttleWithLast(() => updateHeadingHighlight(), refreshInterval);
 
   const updateHeadingHighlight = () => {
@@ -82,22 +95,24 @@
     };
   });
 
-  $: if ($tocItemHeight && mainHtml) {
-    headings = [...mainHtml.querySelectorAll('h1,h2,h3,h4')];
-    // Need to call update highlight function manually here for following situations:
-    // However, calling the function right away may have undesirable effects because the height might change,
-    // maybe due to images not loaded yet. Need to call after some interval.
-    // - Refreshing the page remembers the scroll position.
-    // - On small screens where TOC does not render each TOC item have height of zero.
-    throttledUpdateHeadingHighlight();
-  }
+  $effect(() => {
+    if ($tocItemHeight && mainHtml) {
+      headings = [...mainHtml.querySelectorAll('h1,h2,h3,h4')];
+      // Need to call update highlight function manually here for following situations:
+      // However, calling the function right away may have undesirable effects because the height might change,
+      // maybe due to images not loaded yet. Need to call after some interval.
+      // - Refreshing the page remembers the scroll position.
+      // - On small screens where TOC does not render each TOC item have height of zero.
+      throttledUpdateHeadingHighlight();
+    }
+  });
 </script>
 <!--
 @component
 Render raw html in main section.
 -->
 <main class={`max-w-[900px] w-full py-2 ${className ? className : ''}`} bind:this={mainHtml}>
-  <slot />
+  {@render children?.()}
   {#if html}
     <!-- eslint-disable-next-line svelte/no-at-html-tags -->
     {@html html}

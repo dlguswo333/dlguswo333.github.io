@@ -1,9 +1,10 @@
 <script lang="ts">
   import {toggleTheme} from '$lib/colorTheme';
+  const description = 'Toggle color theme';
 </script>
-<button type="button" title="Toggle color theme"
+<button type="button" title={description} aria-label={description}
   class='group'
-  on:click={() => {
+  onclick={() => {
     toggleTheme();
   }}>
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"
