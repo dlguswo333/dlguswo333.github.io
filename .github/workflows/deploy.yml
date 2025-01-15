@@ -2,8 +2,10 @@
 name: Deploy static content to Pages
 
 on:
-  # Runs on pushes targeting the default branch
-  push:
+  # Runs on code-check completed on the default branch
+  workflow_run:
+    workflows: ["code-check"]
+    types: [completed]
     branches: ["main"]
 
   # Allows you to run this workflow manually from the Actions tab
@@ -28,6 +30,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
