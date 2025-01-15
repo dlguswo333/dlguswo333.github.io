@@ -4,7 +4,7 @@ name: Deploy static content to Pages
 on:
   # Runs on code-check completed on the default branch
   workflow_run:
-    workflows: ["code-check"]
+    workflows: ["Code Check"]
     types: [completed]
     branches: ["main"]
 
