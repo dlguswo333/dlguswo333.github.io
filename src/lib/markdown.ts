@@ -12,7 +12,7 @@ import rehypeMathjax from 'rehype-mathjax';
 import rehypeStringify from 'rehype-stringify';
 import rehypePrism from 'rehype-prism-plus';
 import yaml from 'yaml';
-import type {Root, Content} from 'mdast';
+import type {Root, RootContent} from 'mdast';
 import type {Element} from 'hast';
 import type {TOCItem} from './types';
 import {maxHeadingDepthInToc} from '$lib';
@@ -27,7 +27,7 @@ const headingTagNames = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
  */
 export const getSummaryFromMarkdown = async (markdown: string, targetLength: number) => {
   let summary: string | null = null;
-  const visit = (node: Content | Root) => {
+  const visit = (node: RootContent | Root) => {
     if (summary && summary.length >= targetLength) {
       return;
     }
