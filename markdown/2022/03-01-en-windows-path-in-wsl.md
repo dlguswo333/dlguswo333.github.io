@@ -62,12 +62,12 @@ or vice versa.
 
 Say you access a wsl file path from your Windows.
 Then the filepath will be like this:
-```
+```text
 \\wsl.localhost\Ubuntu-20.04\home\dlguswo333
 ```
 
 On the other hand, if you access a Windows file path from wsl:
-```
+```text
 /mnt/c/Users/dlguswo333/workspace
 ```
 
