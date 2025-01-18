@@ -10,6 +10,7 @@
   const onClick = () => goto(`/tags#${tagName}`);
 </script>
 <button onclick={onClick}
+  type="button"
   class="my-0.5 last:mr-0 bg-transparent rounded-sm overflow-hidden"
   style:margin-left={`${marginLeft * 0.25}rem`}
   style:margin-right={`${marginRight * 0.25}rem`}
