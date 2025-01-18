@@ -11,7 +11,9 @@
 </script>
 
 <section
-  class={'flex flex-col border-2 rounded-md transition px-4 py-2 border-gray-300 hover:border-teal-400 hover:bg-teal-50 dark:border-gray-600 dark:hover:bg-teal-900 dark:hover:border-teal-500'}>
+  class={`flex flex-col px-4 py-2 transition border rounded-md hover:bg-teal-50 dark:hover:bg-teal-700/20
+    border-gray-200 hover:border-teal-200 dark:border-gray-600 dark:hover:border-teal-600
+    shadow-sm hover:shadow-md shadow-gray-300 dark:shadow-gray-900 dark:hover:shadow-teal-900/50`}>
   <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-1">
     <span>
       <a href={`/post/${post.date.split('-')[0]}/${post.id}/`} class="text-sky-500 visited:text-purple-600">
