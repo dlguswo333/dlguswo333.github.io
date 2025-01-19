@@ -3,7 +3,7 @@ layout: post
 toc: true
 title: "사파리에서 우클릭으로 클릭 이벤트가 발동되는 이슈"
 category: ["Programming"]
-tags: [web, browser, html, javascript]
+tags: [web, html, javascript]
 author:
   - 이현재
 ---
