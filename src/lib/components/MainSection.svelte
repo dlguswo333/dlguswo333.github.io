@@ -29,6 +29,9 @@
   const throttledUpdateHeadingHighlight = throttleWithLast(() => updateHeadingHighlight(), refreshInterval);
 
   const updateHeadingHighlight = () => {
+    if (!$tocItemHeight) {
+      return;
+    }
     let firstHeading: null | Element = null;
     let lastHeading: null | Element = null;
     let firstHeadingTop = 0;
