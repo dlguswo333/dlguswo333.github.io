@@ -11,7 +11,7 @@
 </script>
 
 <section
-  class={`flex flex-col px-4 py-2 transition border rounded-md hover:bg-teal-50 dark:hover:bg-teal-700/20
+  class={`flex flex-col px-4 py-3 md:py-2 transition border rounded-md hover:bg-teal-50 dark:hover:bg-teal-700/20
     border-gray-200 hover:border-teal-200 dark:border-gray-600 dark:hover:border-teal-600
     shadow-sm hover:shadow-md shadow-gray-300 dark:shadow-gray-900 dark:hover:shadow-teal-900/50`}>
   <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-1">
