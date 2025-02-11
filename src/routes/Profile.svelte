@@ -12,11 +12,11 @@
     </li>
     <li>
       <label for="profile-email">@:</label>
-      <a href={`mailto:${email}`} id="profile-email" class="text-blue-500">{email}</a>
+      <a href={`mailto:${email}`} id="profile-email" class="text-blue-500 hover:underline">{email}</a>
     </li>
     <li>
       <label for="profile-github"><GithubMark />:</label>
-      <a href={`https://github.com/${githubUserName}`} id="profile-github" class="text-blue-500">Github Link</a>
+      <a href={`https://github.com/${githubUserName}`} id="profile-github" class="text-blue-500 hover:underline">Github Link</a>
     </li>
   </ul>
 </aside>
