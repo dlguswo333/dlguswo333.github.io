@@ -3,9 +3,6 @@
   import {headingHighlight, shouldShowTOCButton, tocItemHeight} from '$lib/store';
   import throttleWithLast from '$lib/throttleWithLast';
 
-  
-  
-  
   interface Props {
     /** Raw html in `string` type */
     html?: string | null;
@@ -25,6 +22,7 @@
 
   let mainHtml: HTMLElement | null = $state(null);
   const refreshInterval = 100;
+  const headingSelector = ':scope > h1, :scope > h2, :scope > h3, :scope > h4';
   let headings: Element[] = $state([]);
   const throttledUpdateHeadingHighlight = throttleWithLast(() => updateHeadingHighlight(), refreshInterval);
 
@@ -89,7 +87,7 @@
     $shouldShowTOCButton = true;
     $headingHighlight = null;
 
-    headings = [...mainHtml.querySelectorAll('h1,h2,h3,h4')];
+    headings = [...mainHtml.querySelectorAll(headingSelector)];
     document.addEventListener('scroll', throttledUpdateHeadingHighlight);
     return () => {
       $shouldShowTOCButton = false;
@@ -100,7 +98,7 @@
 
   $effect(() => {
     if ($tocItemHeight && mainHtml) {
-      headings = [...mainHtml.querySelectorAll('h1,h2,h3,h4')];
+      headings = [...mainHtml.querySelectorAll(headingSelector)];
       // Need to call update highlight function manually here for following situations:
       // However, calling the function right away may have undesirable effects because the height might change,
       // maybe due to images not loaded yet. Need to call after some interval.
