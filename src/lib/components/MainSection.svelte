@@ -22,7 +22,7 @@
 
   let mainHtml: HTMLElement | null = $state(null);
   const refreshInterval = 100;
-  const headingSelector = ':scope > h1, :scope > h2, :scope > h3, :scope > h4';
+  const headingSelector = 'h1:not(*[data-footnotes] *), h2:not(*[data-footnotes] *), h3:not(*[data-footnotes] *), h4:not(*[data-footnotes] *)';
   let headings: Element[] = $state([]);
   const throttledUpdateHeadingHighlight = throttleWithLast(() => updateHeadingHighlight(), refreshInterval);
 
