@@ -11,6 +11,7 @@ import remarkMath from 'remark-math';
 import rehypeMathjax from 'rehype-mathjax';
 import rehypeStringify from 'rehype-stringify';
 import rehypePrism from 'rehype-prism-plus';
+import rehypeGithubAlert from 'rehype-github-alert';
 import yaml from 'yaml';
 import type {Root, RootContent} from 'mdast';
 import type {Element} from 'hast';
@@ -54,7 +55,7 @@ export const getSummaryFromMarkdown = async (markdown: string, targetLength: num
     });
   const root = compiler.parse(markdown);
   compiler.run(root);
-    
+
   return summary as string | null;
 };
 
@@ -107,6 +108,7 @@ export const getHtmlFromMarkdown = async (markdown: string, includeToc: boolean)
     .use(remarkRehype, {allowDangerousHtml: true})
     .use(rehypeMathjax)
     .use(rehypePrism, {showLineNumbers: true})
+    .use(rehypeGithubAlert)
     .use(rehypeStringify, {allowDangerousHtml: true});
 
   const headings: TOCItem[] = [];
