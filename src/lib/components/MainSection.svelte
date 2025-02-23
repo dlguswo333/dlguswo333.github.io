@@ -2,6 +2,7 @@
   import {onMount} from 'svelte';
   import {headingHighlight, shouldShowTOCButton, tocItemHeight} from '$lib/store';
   import throttleWithLast from '$lib/throttleWithLast';
+  import {maxHeadingDepthInToc} from '$lib';
 
   interface Props {
     /** Raw html in `string` type */
@@ -22,7 +23,12 @@
 
   let mainHtml: HTMLElement | null = $state(null);
   const refreshInterval = 100;
-  const headingSelector = 'h1:not(*[data-footnotes] *), h2:not(*[data-footnotes] *), h3:not(*[data-footnotes] *), h4:not(*[data-footnotes] *)';
+  const getHeadingSelector = () => {
+    return Array.from({length: maxHeadingDepthInToc})
+      .map((_, ind) => (`h${ind + 1}:not(*[data-footnotes])`))
+      .join(', ');
+  };
+  const headingSelector = getHeadingSelector();
   let headings: Element[] = $state([]);
   const throttledUpdateHeadingHighlight = throttleWithLast(() => updateHeadingHighlight(), refreshInterval);
 
