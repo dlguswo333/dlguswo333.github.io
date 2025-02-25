@@ -271,7 +271,7 @@ so the shadcn-ui website build time was reduced by only 17%.
 However, the performance improvement during actual use is significant enough to be noticeable.
 Web pages load instantly, and the operation is smooth.
 
-## Sleep Issues Are Gone Compared to the Past
+## Sleep Issues are Gone Compared to the Past
 When it comes to AMD laptops, you can't skip sleep mode issues.
 Surprisingly, after using it for nearly a week, I haven't experienced any sleep mode issues in Windows.
 I did have one occasion where the screen didn't turn on,
