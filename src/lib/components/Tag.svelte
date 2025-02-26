@@ -16,9 +16,9 @@
   style:margin-right={`${marginRight * 0.25}rem`}
   style:filter="drop-shadow(0px 2px 3px rgb(100 140 120 / .5))"
 >
-  <div class="bg-green-100 hover:bg-green-400 hover:text-white dark:text-black transition px-2 pl-3 py-0.5"
+  <span class="inline-block bg-green-100 hover:bg-green-400 hover:text-white dark:text-black transition px-2 pl-3 py-0.5"
     style:clip-path="polygon(8px 0, 0 50%, 8px 100%, 100% 100%, 100% 0)"
   >
     #{tagName}
-  </div>
+  </span>
 </button>
