@@ -15,11 +15,14 @@
     border-gray-200 hover:border-teal-200 dark:border-gray-600 dark:hover:border-teal-600
     shadow-sm hover:shadow-md shadow-gray-300 dark:shadow-gray-900 dark:hover:shadow-teal-900/50`}>
   <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-1">
-    <span>
-      <a href={`/post/${post.date.split('-')[0]}/${post.id}/`} class="text-sky-500 visited:text-purple-600 hover:brightness-125 mr-2">
-        <h1 class="inline-block font-bold text-lg underline">{post.title}</h1>
-      </a>
-    </span>
+    <div class="inline-block">
+      <h1 class="inline-block font-bold text-lg underline">
+        <a href={`/post/${post.date.split('-')[0]}/${post.id}/`}
+          class="text-sky-500 visited:text-purple-600 hover:brightness-125 mr-2">
+          {post.title}
+        </a>
+      </h1>
+    </div>
     <span class="text-sm flex flex-row self-stretch justify-between">
       <span class="">
         {post.date}
