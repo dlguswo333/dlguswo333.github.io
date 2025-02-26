@@ -25,7 +25,7 @@
   const refreshInterval = 100;
   const getHeadingSelector = () => {
     return Array.from({length: maxHeadingDepthInToc})
-      .map((_, ind) => (`h${ind + 1}:not(*[data-footnotes])`))
+      .map((_, ind) => (`h${ind + 1}:not(*[data-footnotes] *)`))
       .join(', ');
   };
   const headingSelector = getHeadingSelector();
