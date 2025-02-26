@@ -9,7 +9,7 @@
     © {startYear}-{endYear} {name}; All rights reserved.
   </div>
   <div class="flex items-center">
-    <a class="inline-flex items-center" href={blogRepositoryLink}>
+    <a class="inline-flex items-center" href={blogRepositoryLink} title="Go to blog repository">
       <GithubMark className="mr-1" hoverable={true} />
     </a>
     Built with Sveltekit.
