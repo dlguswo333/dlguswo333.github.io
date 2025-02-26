@@ -9,9 +9,9 @@
   import {afterNavigate} from '$app/navigation';
 
   let {data} = $props();
-  // Since Sveltekit may reuse components, some components may not be destroyed and recreated.
-  // But data props change. See: https://github.com/dlguswo333/dlguswo333.github.io/issues/44
 
+  // [workaround] Since Sveltekit may reuse components, some components may not be destroyed and recreated.
+  // But data props will update. See: https://github.com/dlguswo333/dlguswo333.github.io/issues/44
   let postTitle = $derived(data.frontmatter?.title);
   let postLang = $derived(data.lang || defaultLang);
   let postAvailableLangs = $derived(data.langs);
