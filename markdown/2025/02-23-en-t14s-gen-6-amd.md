@@ -108,6 +108,7 @@ Due to the high initial price and KRW/USD, I continued eye-shopping.
 Finally, on January 28, 2025, I found the price had become slightly cheaper and made the purchase immediately.
 The specifications are as follows. The purchase price was 1,788,627₩,
 excluding an additional 36,960₩ for one year of Accidental Damage Protection (ADP).
+This is the first device that I have used with 32GB RAM.
 
 - Processor: AMD Ryzen AI 7 PRO 360
 - Operating System: None
