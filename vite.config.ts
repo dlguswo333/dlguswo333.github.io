@@ -2,7 +2,7 @@ import {sveltekit} from '@sveltejs/kit/vite';
 import {defineConfig, type PluginOption, type WebSocketServer} from 'vite';
 import {customEvent} from './src/lib';
 
-/** Handle /posts/[slug]. */
+/** Handle /posts/[year]/[slug] on markdown file change. */
 const handlePostPage = (filePath: string, {ws}: {ws: WebSocketServer}) => {
   const markdownFilePathRegex = /(\d+\/\d+-\d+-[a-z]{2}-[^.]+)\.md$/;
   const matchResult = filePath.match(markdownFilePathRegex);
