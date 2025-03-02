@@ -8,3 +8,6 @@ export const postBasePath = './markdown';
 export const maxHeadingDepthInToc = 3;
 /** Language format should follow BCP 47. */
 export const defaultLang = 'en';
+export const customEvent = {
+  reload: 'custom:reload',
+};
