@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html lang="%lang%">
-	<head>
-		<meta charset="utf-8">
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Noto+Sans+KR:wght@100..900">
-		<link rel="icon" href="%sveltekit.assets%/favicon.ico">
-		<meta name="viewport" content="width=device-width">
-		%sveltekit.head%
-		<meta name="google-site-verification" content="GIhlBkE7qu5AWLVmQ4w2lBcxEw-AumQhdQf_2zR2X4s">
-	</head>
-	<body data-sveltekit-preload-data="hover">
-		<script>
-			const systemTheme= window.matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light';
-			const rootElement = document.querySelector('body');
-			try {
-				const storedValue = JSON.parse(localStorage.getItem('color-theme') || 'null');
-				const currentTheme = storedValue === 'light' || storedValue === 'dark' ? storedValue : systemTheme;
-				if(rootElement) {
-  				rootElement.classList.add(currentTheme);
-				}
-			} catch {
-				rootElement.classList.add(systemTheme);
-			}
-		</script>
-		<div id="root">%sveltekit.body%</div>
-	</body>
+    <head>
+        <meta charset="utf-8">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Noto+Sans+KR:wght@100..900">
+        <link rel="icon" href="%sveltekit.assets%/favicon.ico">
+        <meta name="viewport" content="width=device-width">
+        %sveltekit.head%
+        <meta name="google-site-verification" content="GIhlBkE7qu5AWLVmQ4w2lBcxEw-AumQhdQf_2zR2X4s">
+    </head>
+    <body data-sveltekit-preload-data="hover">
+        <script>
+            const systemTheme= window.matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light';
+            const rootElement = document.querySelector('body');
+            try {
+                const storedValue = JSON.parse(localStorage.getItem('color-theme') || 'null');
+                const currentTheme = storedValue === 'light' || storedValue === 'dark' ? storedValue : systemTheme;
+                if(rootElement) {
+                    rootElement.classList.add(currentTheme);
+                }
+            } catch {
+                rootElement.classList.add(systemTheme);
+            }
+        </script>
+        <div id="root">%sveltekit.body%</div>
+    </body>
 </html>
