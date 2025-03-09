@@ -1,4 +1,5 @@
-@import "./prism-dracula.css";
+@import "./prism-dracula.scss";
+@import "./prism-one-light.scss";
 
 @tailwind base;
 @tailwind components;
