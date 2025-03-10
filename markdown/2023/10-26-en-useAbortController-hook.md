@@ -190,7 +190,7 @@ const useAbortController = ((url, params, onFetchComplete, onError) => {
 However, there is a flaw in the hook;
 the `AbortController` is managed as a **state**.
 You cannot reuse the same controller once you called `AbortController.abort()`.
-t means you need to create new one after calling `AbortController.abort()`.
+It means you need to create new one after calling `AbortController.abort()`.
 Thus the two functions should depend on `controller` state to get the latest `AbortController`.
 This dependency presents us a problem; unnecessary rerenders.
 1. Call `abortRequest()` callback.

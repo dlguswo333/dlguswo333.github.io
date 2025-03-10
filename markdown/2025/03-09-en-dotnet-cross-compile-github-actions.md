@@ -91,7 +91,7 @@ Then the build artifacts (=executables) can be found from the action run page.
 
 You may download the artifacts manually or
 use [action-gh-release](https://github.com/softprops/action-gh-release)
-action to upload the assets to the release page in a continous integration way.
+action to upload the assets to the release page in a continuous integration way.
 
 By the way, isn't it intriguing that Windows takes much more time to build than Linux does...?
 
