@@ -209,7 +209,7 @@ const App = () => {
 Yes, you do need to go deeper sometimes.
 There are some cases you can't solve the problem just by scratching the surface.
 If you keep scratching the surface, you might confuse the basic principles
-and end up blaming everything just like I did with React mechanisms.
+and end up looking for the cause in the wrong places just like I did with React mechanisms.
 
 Frankly, when I understood this issue, all those things including my past experience came together.
 I think this isn't the first time I met this kind of issues.<br>
