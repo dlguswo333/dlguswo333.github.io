@@ -227,6 +227,7 @@ It's just with React you need to go deeper... a few times!
 
 # Postscript: How I Solved the Issue
 There are several ways to mitigate or solve the problem.
+Let's bring the prototype example again.
 
 First, the problem arose because we execute the code too fast;
 then we can workaround the issue by wrapping the code in `setTimeout`!
@@ -245,6 +246,7 @@ If it's too small it will not work.
 If it's too big it may be too late for that code.
 Thus, this is a temporary workaround, not a proper solution.
 
+Now let's talk about more legitimate solution.
 If the goal of your code is to execute the logic when your children components render,
 Why not just move your code to the children themselves?
 
