@@ -224,3 +224,71 @@ But you do need to go deeper into libraries in other tools or frameworks sometim
 So I don't think React is behind all this.
 More you get experienced and complicated things you make, more you are likely to meet tricky problems.
 It's just with React you need to go deeper... a few times!
+
+# Postscript: How I Solved the Issue
+There are several ways to mitigate or solve the problem.
+
+First, the problem arose because we execute the code too fast;
+then we can workaround the issue by wrapping the code in `setTimeout`!
+
+```jsx
+  useEffect(() => {
+    setTimeout(() => {
+      const getTextContent = () => ref.current.textContent.trim();
+      console.log('useEffect', `'${getTextContent()}'`);
+    }, INTERVAL);
+  });
+```
+
+However you need to have the adequate `INTERVAL` value.
+If it's too small it will not work.
+If it's too big it may be too late for that code.
+Thus, this is a temporary workaround, not a proper solution.
+
+If the goal of your code is to execute the logic when your children components render,
+Why not just move your code to the children themselves?
+
+```jsx
+const Inner = ({rootRef}) => {
+  const [ready, setReady] = useState(false);
+
+  useLayoutEffect(() => {
+    console.log('useLayoutEffect');
+    setReady(true);
+  }, []);
+
+  useEffect(() => {
+    const getTextContent = () => rootRef.current.textContent.trim();
+    console.log('useEffect', `'${getTextContent()}'`);
+  });
+
+  if (!ready) {
+    return null;
+  }
+  console.log('I am ready!');
+  return <>
+    <div>I am ready!</div>
+  </>;
+};
+
+const App = () => {
+  const ref = useRef();
+
+  useEffect(() => {
+    const getTextContent = () => ref.current.textContent.trim();
+    console.log('useEffect', `'${getTextContent()}'`);
+  });
+
+  return <div ref={ref}>
+    <Inner rootRef={ref} />
+  </div>;
+};
+```
+
+The code went to more appropriate position;
+it is to fire when the component `Inner` renders anyway.
+So it's better to be in `Inner`, not its parent.
+
+But this solution can be a little tricky to implement when some of your components are from
+external libaries.
+But I believe you will find a way, such as creating a wrapper component.
