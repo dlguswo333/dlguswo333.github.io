@@ -29,7 +29,7 @@ They might need several milliseconds to render fully.
 
 If applications do not work as expected, you need to inspect your code first.
 If you can't find possible bugs from your code, sometimes,
-You need to go into libraries' codes and see if they will work as you want.
+you need to go into libraries' codes and see if they will work as you want.
 This is so sad, but sometimes you can't treat them as some kind of cognitive barriers,
 or abtrations layers.
 I'm not saying they have bugs and they are to be blamed
@@ -161,13 +161,13 @@ Since the state `ready` in `Inner` has been changed, `Inner` is going to rerende
 but not yet! we got more jobs to do in this render path.
 We need to execute `useEffect` from `App`.
 
-The effect tries to get the text content, but there is no text content,
+The effect tries to get the text content, but there is no text content;
 `Inner` is not ready yet!
 Thus the empty text will be logged into the console.
 
 After all the effects and other chores, React will rerender `Inner` component as queued.
 This time `Inner` is ready, rendering a `div` with the text *'I am ready!'*!<br>
-But `App` hasn't rerendered this time. No state change, no context change, no effect run.
+But `App` doesn't rerender this time. No state change, no context change, no effect run.
 So, the parent component `App` fails to get the latest text content.
 
 This is the console output after we render `App`.
@@ -176,6 +176,8 @@ useLayoutEffect
 useEffect ''
 I am ready!
 ```
+
+<br>
 
 Nothing went wrong, `useLayoutEffect` ran before `useEffect`
 and only components which need rerender rerendered.
@@ -217,7 +219,7 @@ Thanks to this time, if I meet this kind of problems again I think I would find 
 
 ---
 
-I think this is kind like [What I don't like in react](/post/2023/03-31-en-what-i-dont-like-in-react).
+I think this is kind like [What I don't like in React](/post/2023/03-31-en-what-i-dont-like-in-react).
 But you do need to go deeper into libraries in other tools or frameworks sometimes.
 So I don't think React is behind all this.
 More you get experienced and complicated things you make, more you are likely to meet tricky problems.
