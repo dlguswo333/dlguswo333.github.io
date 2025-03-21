@@ -276,11 +276,6 @@ const Inner = ({rootRef}) => {
 const App = () => {
   const ref = useRef();
 
-  useEffect(() => {
-    const getTextContent = () => ref.current.textContent.trim();
-    console.log('useEffect', `'${getTextContent()}'`);
-  });
-
   return <div ref={ref}>
     <Inner rootRef={ref} />
   </div>;
@@ -292,5 +287,5 @@ it is to fire when the component `Inner` renders anyway.
 So it's better to be in `Inner`, not its parent.
 
 But this solution can be a little tricky to implement when some of your components are from
-external libaries.
+external libaries. You can't inject code into libraries easily.
 But I believe you will find a way, such as creating a wrapper component.
