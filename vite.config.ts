@@ -40,4 +40,14 @@ export default defineConfig({
     sveltekit(),
     reloadPlugin()
   ],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        // This specification not needed after migrating to Vite 6.
+        // https://sass-lang.com/documentation/breaking-changes/legacy-js-api/
+        // https://v5.vite.dev/config/shared-options.html#css-preprocessoroptions
+        api: 'modern-compiler',
+      },
+    },
+  },
 });
