@@ -221,6 +221,13 @@ body.dark .post hr {
     border-color: #777;
 }
 
+/** Fix mathjax overflows parent container. */
+.post .MathJax {
+    display: inline-block;
+    max-width: 100%;
+    overflow-x: auto;
+}
+
 /* Below lines copied & pasted from https://www.npmjs.com/package/rehype-prism-plus */
 .post pre {
     overflow-x: auto;
