@@ -2,11 +2,12 @@ import {postBasePath} from '$lib';
 import {getAvailableLanguagesOfPost, getDateLangIdFromPostPath} from '$lib/crawlPosts';
 import {getFrontmatterFromMarkdown, getHtmlFromMarkdown} from '$lib/markdown.js';
 import type {Frontmatter} from '$lib/types';
-import {error, type Load} from '@sveltejs/kit';
+import {error} from '@sveltejs/kit';
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import type {PageServerLoad} from './$types';
 
-export const load: Load = async ({params}) => {
+export const load: PageServerLoad = async ({params}) => {
   const {year, slug} = params;
   if (year === undefined || slug === undefined) {
     error(404);
