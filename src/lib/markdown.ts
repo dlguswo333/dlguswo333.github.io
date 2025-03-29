@@ -126,9 +126,9 @@ export const getHtmlFromMarkdown = async (markdown: string, includeToc: boolean)
           const headingText = getTextFromHeading(child);
           // unifiedjs converts double quotes into &#x22; (XML character entity)
           // while Sveltekit converts into &quot; (HTML entity)
-          // On actually browsers it does work,
-          // but SvelteKit does not detect and convert one into the other;
-          // thus it emits errors that elements with same ids cannot be found.
+          // On actual browsers they work fine,
+          // but SvelteKit does not detect and discern one from the other;
+          // thus it emits errors that elements with same ids cannot be found while building.
           const headingId = removeXSSCharacters(
             `${getHeadingPrefix(headings.length + 1)}${headingText}`.replaceAll(' ', '-')
           );
