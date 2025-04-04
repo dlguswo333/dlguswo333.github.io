@@ -1,6 +1,6 @@
 ---
 toc: false
-title: "Vite Library Mode and Assets Inline"
+title: "Vite: Library Mode and Assets Inline"
 category: ["Programming"]
 tags: [javascript, web, vite]
 author:
