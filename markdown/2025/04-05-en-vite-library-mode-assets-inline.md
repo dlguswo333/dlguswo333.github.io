@@ -9,7 +9,7 @@ author:
 
 vite is used mostly for bundling *end applications*,
 but it can be also used for building a library, like a UI component library.
-There is a documention on official vite webpage and it's pretty straight forward.<br>
+There is a documentation on official vite webpage and it's pretty straight forward.<br>
 <https://vite.dev/guide/build#library-mode>
 
 <br>
