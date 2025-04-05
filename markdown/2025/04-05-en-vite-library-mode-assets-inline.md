@@ -15,7 +15,7 @@ There is a documentation on official vite webpage and it's pretty straight forwa
 <br>
 
 But you need to be careful when you work in library mode with vite.
-As of now, April 2025, vite v6.2.5, limiting inlining assets does not work correctly.
+As of April 2025, vite v6.2.5, limiting inlining assets does not work correctly.
 Here is the related Github issue link: <https://github.com/vitejs/vite/issues/3295>
 
 If you inline assets, separate asset files may become embedded right where they were referenced.
@@ -53,13 +53,13 @@ $$
 x >= \frac{4}{3}n
 $$
 
-Therefore, base64 can be said to be inherently inefficient compared to binary format
-when it comes file size.
+Therefore, when it comes to file size,
+base64 can be said to be inherently inefficient compared to binary format.
 
 <br>
 
 Moreover, inlining assets means you can't do *'declare once, use everywhere'*.
-It may be different per different asset type and how vite handles them,
+It may be different per asset type,
 but when it comes to image assets in a css file, vite duplicates them.
 Let's see how vite works by doing some experiment.
 
@@ -127,7 +127,7 @@ export default App;
 
 <br>
 
-If we build it, what does happen? Let's build it and see the result.
+If we build it, what does happen? Let's see the build result.
 ```text
 > vite build
 
@@ -139,7 +139,7 @@ dist/react-playground.js      76.75 kB │ gzip:    19.14 kB │ map: 206.87 kB
 
 <br>
 
-vite built it successfully and the css output file is **2MB**!
+vite built it successfully but the css output file is **2MB**!
 It bloats! With repeated same base64 cat images!
 ```css
 .bg1{background:url(data:image/jpeg;base64,/9j/4...)}
