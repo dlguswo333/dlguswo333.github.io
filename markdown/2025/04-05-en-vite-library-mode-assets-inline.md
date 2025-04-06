@@ -9,6 +9,8 @@ author:
 
 vite is used mostly for bundling *end applications*,
 but it can be also used for building a library, like a UI component library.
+What makes library mode special is that you can specify the entrypoint file
+while in normal mode your entrypoint is forced to be a HTML file.
 There is a documentation on official vite webpage and it's pretty straight forward.<br>
 <https://vite.dev/guide/build#library-mode>
 
