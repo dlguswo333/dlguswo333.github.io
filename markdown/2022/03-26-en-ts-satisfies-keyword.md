@@ -77,7 +77,7 @@ This is because the type of the variable is `SMARTPHONE_MAP_TYPE`,
 where there is no information about what is in the object.
 **All the information about what's inside the variable
 has been deprecated.** All it knows about the keys is that
-they are string type. Please take a look at the type hints
+they are string type. Take a look at the type hints
 and find out what are the differences.
 
 ![without-type](/img/2022-03-26-ts-satisfies-keyword/without-type.png)
@@ -132,7 +132,7 @@ Luckily, Typescript is going to introduce `satisfies` keyword
 in the near future, ~~maybe in `4.7` version.~~
 
 > ⚠️ 09/04/2022 Update<br>
-> `satisfies` keyword PR finally got merged in main brnach ([PR link](https://github.com/microsoft/TypeScript/pull/46827))
+> `satisfies` keyword PR finally got merged in main branch ([PR link](https://github.com/microsoft/TypeScript/pull/46827))
 > and is expected to be released in `4.9` version. Check their [iteration plan](https://github.com/microsoft/TypeScript/issues/50457) for more information.
 
 ```ts
