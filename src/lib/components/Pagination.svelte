@@ -26,19 +26,21 @@
   }
 </script>
 
+
 <ul class="m-2 flex flex-row items-center">
   {#each displayIndices as index}
+    {#snippet anchor()}
+      <a href={getHref(index)} class="font-semibold flex justify-between items-center px-2 py-1 dark:text-gray-200">
+        {index}
+      </a>
+    {/snippet}
     {#if curIndex === index}
-      <li class="flex justify-center items-center mr-3 last:mr-0 rounded-lg shadow-md bg-sky-400">
-        <a href={getHref(index)} class="flex justify-between items-center px-2 py-1 text-slate-50 font-semibold">
-          {index}
-        </a>
+      <li class="flex justify-center items-center mr-3 last:mr-0 rounded-lg border-2 border-gray-400">
+        {@render anchor()}
       </li>
     {:else}
-      <li class="flex justify-center items-center mr-3 last:mr-0 rounded-lg shadow-md transition bg-sky-200 hover:bg-purple-500 dark:bg-sky-800 dark:hover:bg-purple-500">
-        <a href={getHref(index)} class="flex justify-between items-center px-2 py-1 text-white dark:text-gray-400 dark:hover:text-white font-semibold">
-          {index}
-        </a>
+      <li class="flex justify-center items-center mr-3 last:mr-0 rounded-lg transition hover:bg-gray-200 dark:hover:bg-gray-700">
+        {@render anchor()}
       </li>
     {/if}
   {/each}
