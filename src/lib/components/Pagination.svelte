@@ -35,7 +35,7 @@
       </a>
     {/snippet}
     {#if curIndex === index}
-      <li class="flex justify-center items-center mr-3 last:mr-0 rounded-lg border-2 border-gray-400">
+      <li class="flex justify-center items-center mr-3 last:mr-0 rounded-lg border-2 border-gray-400" aria-current="page">
         {@render anchor()}
       </li>
     {:else}
