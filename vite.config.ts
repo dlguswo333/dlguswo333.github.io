@@ -40,4 +40,7 @@ export default defineConfig({
     sveltekit(),
     reloadPlugin()
   ],
+  build: {
+    target: 'es2018',
+  },
 });
