@@ -137,4 +137,4 @@ You can find more about `return await` and `Promise` from the links below. I was
 
 - [nodebestpractices/sections/errorhandling/returningpromises.md at master · goldbergyoni/nodebestpractices](https://github.com/goldbergyoni/nodebestpractices/blob/master/sections/errorhandling/returningpromises.md)
 - [Faster async functions and promises · V8](https://v8.dev/blog/fast-async#improved-developer-experience)
-
+- [eslint deprecated _no-return-await_ rule](https://eslint.org/docs/latest/rules/no-return-await)
