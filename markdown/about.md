@@ -20,6 +20,10 @@ Visit my [github.io page](https://dlguswo333.github.io) if you want to know more
 
 ## Experience
 - Web Frontend developer in Kakao Corporation, 2021-
+    - Web cloud storage service
+    - E2E encryption using Web Crypto API
+    - Chrome extension including migration from MV2 to MV3
+    - WebView including in-app purchase
 
 ## Project
 ### tiShare
