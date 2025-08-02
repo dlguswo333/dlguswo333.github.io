@@ -51,7 +51,7 @@ sudo dnf install fcitx5-configtool
 페도라 업데이트 후 한글 입력을 정상적으로 할 수 있었습니다.
 
 만약 electron, chrome과 같은 chromium 기반의 앱에 한글 입력이 되지 않는다면
-아래 스크립트를 실행해 환경 변수를 추가합니다.
+아래 스크립트를 실행해 환경 변수를 추가합니다. [참조 링크](https://blog.litehell.info/post/fcitx5_for_101_key_keyboard_kde_laptop/)
 ```shell
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
