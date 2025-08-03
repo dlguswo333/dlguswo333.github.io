@@ -68,17 +68,6 @@ body.dark .post h1,body.dark .post h2,body.dark .post h3,body.dark .post h4 {
     /* Use the following rule to indent the first word. */
     /* text-indent: 0.4rem; */
 }
-.post :not(pre) code {
-    background-color: #f0f0f0;
-    padding: 1px 3px;
-    border-radius: 4px;
-    color: #05a220;
-}
-body.dark .post :not(pre) code {
-    background-color: #373737;
-    color: #00e333;
-}
-
 .post blockquote {
     padding-left: 1rem;
     padding-right: 0.5rem;
@@ -192,16 +181,29 @@ body.dark .post .markdown-alert {
     border-width: 0 1px 0 0;
 }
 
-.post pre {
-    border: 1px solid #585858;
-}
-
 .post code {
     font-family: 'Fira Code', monospace;
 }
 
+.post :not(pre) code {
+    background-color: #f0f0f0;
+    padding: 1px 3px;
+    border-radius: 4px;
+    color: #05a220;
+}
+body.dark .post :not(pre) code {
+    background-color: #373737;
+    color: #00e333;
+}
+
+.post pre {
+    border: 1px solid #585858;
+}
 .post pre code {
     font-size: 0.9rem;
+}
+body.dark .post pre code *::selection {
+    background-color: #585858;
 }
 
 /*
