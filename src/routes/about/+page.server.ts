@@ -14,8 +14,8 @@ export const load = async () => {
     error(404);
   }
   try {
-    const {html} = await getHtmlFromMarkdown(rawContent, false);
-    return {html};
+    const {html, root} = await getHtmlFromMarkdown(rawContent, false);
+    return {html, root};
   } catch (e) {
     console.error(e);
     error(500);

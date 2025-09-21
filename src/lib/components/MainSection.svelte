@@ -3,10 +3,13 @@
   import {headingHighlight, shouldShowTOCButton, tocItemHeight} from '$lib/store';
   import throttleWithLast from '$lib/throttleWithLast';
   import {maxHeadingDepthInToc} from '$lib';
+  import Markdowner from '../../routes/Markdowner.svelte';
+  import type {Root, Parent} from 'hast';
 
   interface Props {
     /** Raw html in `string` type */
     html?: string | null;
+    root?: Root | Parent | null;
     /** Additional class to add. */
     className?: string | null;
     /** If toc data exists, it means it needs show toc button. */
@@ -16,6 +19,7 @@
 
   let {
     html = null,
+    root = null,
     className = null,
     tocDataExists = false,
     children,
@@ -124,7 +128,9 @@ Render raw html in main section.
 -->
 <main class={`max-w-[900px] w-full py-2 ${className ? className : ''}`} bind:this={mainHtml}>
   {@render children?.()}
-  {#if html}
+  {#if root}
+    <Markdowner node={root} />
+  {:else if html}
     <!-- eslint-disable-next-line svelte/no-at-html-tags -->
     {@html html}
   {/if}
