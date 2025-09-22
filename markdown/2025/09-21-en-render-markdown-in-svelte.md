@@ -138,5 +138,7 @@ The image below compares results rendered in raw HTML and in Svelte component.
 As you can see they show the same output.
 ![compare](/img/2025-09-21-en-render-markdown-in-svelte/compare.png)
 
+However I wouldn't do this because there can be many edge cases. What if some properties are nested arrays? How about nested objects? There are too many edge cases that need to be handled.
+
 [migrate-blog-to-sveltekit]: /tags/#migrate-blog-to-sveltekit
 [svelte-html-syntax]: https://svelte.dev/docs/svelte/@html
