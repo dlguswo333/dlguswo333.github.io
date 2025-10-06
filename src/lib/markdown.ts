@@ -8,6 +8,7 @@ import remarkRehype from 'remark-rehype';
 import remarkFrontmatter from 'remark-frontmatter';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
+import rehypeRaw from 'rehype-raw';
 import rehypeMathjax from 'rehype-mathjax';
 import rehypeStringify from 'rehype-stringify';
 import rehypePrism from 'rehype-prism-plus';
@@ -106,6 +107,7 @@ export const getHtmlFromMarkdown = async (markdown: string, includeToc: boolean)
     .use(remarkGfm)
     .use(remarkMath)
     .use(remarkRehype, {allowDangerousHtml: true})
+    .use(rehypeRaw)
     .use(rehypeMathjax)
     .use(rehypePrism, {showLineNumbers: true})
     .use(rehypeGithubAlert)
