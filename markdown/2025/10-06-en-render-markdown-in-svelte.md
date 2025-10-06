@@ -240,11 +240,10 @@ It turns out that Svelte may not know what namespace it should be in
 when rendering arbitary SVG elements with `<svelte:element />`.
 
 >Svelte tries its best to infer the correct namespace from the element’s surroundings, but it’s not always possible.\
->[svelte-element]
+><https://svelte.dev/docs/svelte/svelte-element>
 
 So I created a separate twin Markdown renderer component with `<svelte:options namespace="svg" />` in it.
 
 
 [migrate-blog-to-sveltekit]: /tags/#migrate-blog-to-sveltekit
 [svelte-html-syntax]: https://svelte.dev/docs/svelte/@html
-[svelte-element]: https://svelte.dev/docs/svelte/svelte-element
