@@ -8,7 +8,6 @@
 
   interface Props {
     /** Raw html in `string` type */
-    html?: string | null;
     root?: Root | Parent | null;
     /** Additional class to add. */
     className?: string | null;
@@ -18,7 +17,6 @@
   }
 
   let {
-    html = null,
     root = null,
     className = null,
     tocDataExists = false,
@@ -109,9 +107,9 @@
   $effect(() => {
     // [workaround] Found out the highlight does not work when changing language
     // This is most likely due to Svelte not recreating elements thus not running logics.
-    // Thus depend on html props for reactivity.
+    // Thus depend on root props for reactivity.
     // See: https://github.com/dlguswo333/dlguswo333.github.io/issues/44
-    if ($tocItemHeight && mainHtml && html) {
+    if ($tocItemHeight && mainHtml && root) {
       headings = [...mainHtml.querySelectorAll(headingSelector)];
       // Need to call update highlight function manually here for following situations:
       // However, calling the function right away may have undesirable effects because the height might change,
@@ -130,8 +128,5 @@ Render raw html in main section.
   {@render children?.()}
   {#if root}
     <Markdowner node={root} />
-  {:else if html}
-    <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-    {@html html}
   {/if}
 </main>

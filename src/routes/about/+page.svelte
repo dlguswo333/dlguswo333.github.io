@@ -6,5 +6,5 @@
 </script>
 <div class="flex flex-row flex-grow justify-center p-2 lg:p-0 lg:pr-[300px]">
   <Profile />
-  <MainSection html={data.html} className="post" root={data.root} />
+  <MainSection root={data.root} className="post" />
 </div>

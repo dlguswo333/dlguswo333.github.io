@@ -74,6 +74,6 @@
       </div>
       <hr class="bg-gray-400 my-4" />
     {/if}
-    <MainSection html={data.html} tocDataExists={!!data.tocData.length} className="post" />
+    <MainSection root={data.root} tocDataExists={!!data.tocData.length} className="post" />
   </div>
 </div>
