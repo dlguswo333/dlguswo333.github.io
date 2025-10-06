@@ -1,7 +1,8 @@
+<!-- [NOTE] SVG needs to be rendered with special option in Svelte. -->
+<svelte:options namespace="svg" />
 <script lang="ts">
   import type {Parent, RootContent} from 'hast';
-  import Self from './Markdowner.svelte';
-  import SelfSvg from './MarkdownerSvg.svelte';
+  import Self from './MarkdownerSvg.svelte';
   import {convertHastNodeProperties} from '$lib/markdown';
 
   interface Props {
@@ -26,13 +27,9 @@
   {#if voidElements.includes(node.tagName)}
     <svelte:element this={node.tagName} {...convertHastNodeProperties(node.properties)} />
   {:else}
-    {#if node.tagName === 'svg'}
-      <SelfSvg node={node} />
-    {:else}
-      <svelte:element this={node.tagName} {...convertHastNodeProperties(node.properties)}>
-        {@render Child()}
-      </svelte:element>
-    {/if}
+    <svelte:element this={node.tagName} {...convertHastNodeProperties(node.properties)}>
+      {@render Child()}
+    </svelte:element>
   {/if}
 {:else if 'value' in node}
   {node.value}
