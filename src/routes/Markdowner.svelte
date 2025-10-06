@@ -1,11 +1,13 @@
 <script lang="ts">
   import type {Parent, RootContent} from 'hast';
   import Self from './Markdowner.svelte';
+  import {convertHastNodeProperties} from '$lib/markdown';
 
   interface Props {
     node: Parent | RootContent;
   }
   const {node}: Props = $props();
+  const voidElements = ['br', 'hr', 'img', 'input', 'link'];
 </script>
 
 {#snippet Child()}
@@ -20,7 +22,13 @@
   <!-- eslint-disable-next-line svelte/no-at-html-tags -->
   {@html node.value}
 {:else if 'tagName' in node}
-  <svelte:element this={node.tagName} {...node.properties}>{@render Child()}</svelte:element>
+  {#if voidElements.includes(node.tagName)}
+    <svelte:element this={node.tagName} {...convertHastNodeProperties(node.properties)} />
+  {:else}
+    <svelte:element this={node.tagName} {...convertHastNodeProperties(node.properties)}>
+      {@render Child()}
+    </svelte:element>
+  {/if}
 {:else if 'value' in node}
   {node.value}
 {:else}

@@ -14,7 +14,7 @@ import rehypePrism from 'rehype-prism-plus';
 import rehypeGithubAlert from 'rehype-github-alert';
 import yaml from 'yaml';
 import type {Root, RootContent} from 'mdast';
-import type {Element} from 'hast';
+import type {Element, Properties} from 'hast';
 import type {TOCItem} from './types';
 import {maxHeadingDepthInToc} from '$lib';
 import {removeXSSCharacters} from '$lib/string';
@@ -146,4 +146,17 @@ export const getHtmlFromMarkdown = async (markdown: string, includeToc: boolean)
 
   const html = compiler.stringify(root);
   return {html: String(html), tocData: includeToc ? headings : [], root};
+};
+
+/** Convert hast node properties into html compatible. */
+export const convertHastNodeProperties = (properties: Properties) => {
+  const converted: Properties = {};
+  for (const [key, val] of Object.entries(properties)) {
+    if (key === 'className') {
+      converted['class'] = (val as string[]).join(' ');
+    } else {
+      converted[key] = val;
+    }
+  }
+  return converted;
 };
