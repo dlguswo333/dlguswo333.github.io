@@ -8,13 +8,14 @@ import remarkRehype from 'remark-rehype';
 import remarkFrontmatter from 'remark-frontmatter';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
+import rehypeRaw from 'rehype-raw';
 import rehypeMathjax from 'rehype-mathjax';
 import rehypeStringify from 'rehype-stringify';
 import rehypePrism from 'rehype-prism-plus';
 import rehypeGithubAlert from 'rehype-github-alert';
 import yaml from 'yaml';
 import type {Root, RootContent} from 'mdast';
-import type {Element} from 'hast';
+import type {Element, Properties} from 'hast';
 import type {TOCItem} from './types';
 import {maxHeadingDepthInToc} from '$lib';
 import {removeXSSCharacters} from '$lib/string';
@@ -106,6 +107,7 @@ export const getHtmlFromMarkdown = async (markdown: string, includeToc: boolean)
     .use(remarkGfm)
     .use(remarkMath)
     .use(remarkRehype, {allowDangerousHtml: true})
+    .use(rehypeRaw)
     .use(rehypeMathjax)
     .use(rehypePrism, {showLineNumbers: true})
     .use(rehypeGithubAlert)
@@ -145,5 +147,18 @@ export const getHtmlFromMarkdown = async (markdown: string, includeToc: boolean)
   }
 
   const html = compiler.stringify(root);
-  return {html: String(html), tocData: includeToc ? headings : []};
+  return {html: String(html), tocData: includeToc ? headings : [], root};
+};
+
+/** Convert hast node properties into html compatible. */
+export const convertHastNodeProperties = (properties: Properties) => {
+  const converted: Properties = {};
+  for (const [key, val] of Object.entries(properties)) {
+    if (key === 'className') {
+      converted['class'] = (val as string[]).join(' ');
+    } else {
+      converted[key.replace(/([A-Z])/g, '-$1').toLowerCase()] = val;
+    }
+  }
+  return converted;
 };
