@@ -155,7 +155,7 @@ export const convertHastNodeProperties = (properties: Properties) => {
     if (key === 'className') {
       converted['class'] = (val as string[]).join(' ');
     } else {
-      converted[key] = val;
+      converted[key.replace(/([A-Z])/g, '-$1').toLowerCase()] = val;
     }
   }
   return converted;
