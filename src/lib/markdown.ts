@@ -107,10 +107,10 @@ export const getHtmlFromMarkdown = async (markdown: string, includeToc: boolean)
     .use(remarkGfm)
     .use(remarkMath)
     .use(remarkRehype, {allowDangerousHtml: true})
-    .use(rehypeRaw)
     .use(rehypeMathjax)
     .use(rehypePrism, {showLineNumbers: true})
     .use(rehypeGithubAlert)
+    .use(rehypeRaw) // rehype-raw better come as the last.
     .use(rehypeStringify, {allowDangerousHtml: true});
 
   const headings: TOCItem[] = [];
