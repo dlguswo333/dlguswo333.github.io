@@ -229,8 +229,16 @@ Notice that `<kbd>` are transformed into single node with a child text node `'He
 ]
 ```
 
+>[!note]
+>*rehype-raw* seems to be the best if it comes before any other rehype plugin
+>because it builds proper AST.
+>However I placed the plugin at the last
+>because it deletes non-standard information which other plugins might depend on.
+>One of such examples is code highlight from *rehype-prism-plugin*.\
+><https://github.com/timlrx/rehype-prism-plus/issues/54#issuecomment-1326635675>
+
 ## Fix SVG not Rendered Correctly
-I found that for some reason SVG are not rendered correctly. 
+I found that for some reason SVG are not rendered correctly.
 Even though it has a proper `d` property it does not show up in the inspection tool as if it wasn't set up.
 ![svg d property](/img/2025-10-06-en-render-markdown-in-svelte/svg_d_property.png)
 
