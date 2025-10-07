@@ -157,7 +157,13 @@ export const convertHastNodeProperties = (properties: Properties) => {
     if (key === 'className') {
       converted['class'] = (val as string[]).join(' ');
     } else {
-      converted[key.replace(/([A-Z])/g, '-$1').toLowerCase()] = val;
+      /** [NOTE] Some keys need to be transformed carefully. */
+      const map: Record<string, string> = {
+        'xLinkHref': 'href',
+        'xmlnsXLink': 'xmlns',
+        'viewBox': 'viewBox',
+      } as const;
+      converted[map[key] ?? key.replace(/([A-Z])/g, '-$1').toLowerCase()] = val;
     }
   }
   return converted;
