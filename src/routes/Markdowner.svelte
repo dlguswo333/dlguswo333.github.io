@@ -35,7 +35,9 @@
     {/if}
   {/if}
 {:else if 'value' in node}
-  {node.value}
+  {#if node.type !== 'comment'}
+    {node.value}
+  {/if}
 {:else}
   {@render Child()}
 {/if}
