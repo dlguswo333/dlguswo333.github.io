@@ -3,6 +3,7 @@
   import Self from './Markdowner.svelte';
   import SelfSvg from './MarkdownerSvg.svelte';
   import {convertHastNodeProperties} from '$lib/markdown';
+  import {getHtmlAttributes} from '$lib/string';
 
   interface Props {
     node: Parent | RootContent;
@@ -28,6 +29,13 @@
   {:else}
     {#if node.tagName === 'svg'}
       <SelfSvg node={node} />
+    {:else if node.tagName === 'style'}
+      <!-- [workaround]
+        Svelte preprocessor tries to parse style tag for no reason; need to obfuscate it.
+        https://github.com/sveltejs/svelte-preprocess/issues/507
+      -->
+      <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+      {@html '<styl' + `e ${getHtmlAttributes(convertHastNodeProperties(node.properties))}>${node.children.map(child => child.type === 'text' ? child.value : '')}</styl` + 'e>'}
     {:else}
       <svelte:element this={node.tagName} {...convertHastNodeProperties(node.properties)}>
         {@render Child()}
