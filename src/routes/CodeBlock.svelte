@@ -7,6 +7,9 @@
   let {children, preProperties}: Props = $props();
   const copy = () => {
     try {
+      if (!preElement.textContent) {
+        throw new Error('Text does not exist');
+      }
       navigator.clipboard.writeText(preElement.textContent);
     } catch {
       alert('Writing to clipboard failed. Please check if your browser supports clipboard.');
