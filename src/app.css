@@ -185,20 +185,17 @@ body.dark .post .markdown-alert {
     font-family: 'Fira Code', monospace;
 }
 
-.post :not(pre) code {
+.post code:not(pre code) {
     background-color: #f0f0f0;
     padding: 1px 3px;
     border-radius: 4px;
     color: #05a220;
 }
-body.dark .post :not(pre) code {
+body.dark .post code:not(pre code) {
     background-color: #373737;
     color: #00e333;
 }
 
-.post pre {
-    border: 1px solid #585858;
-}
 .post pre code {
     font-size: 0.9rem;
 }
