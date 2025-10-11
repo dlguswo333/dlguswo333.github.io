@@ -4,6 +4,7 @@
   import SelfSvg from './MarkdownerSvg.svelte';
   import {convertHastNodeProperties} from '$lib/markdown';
   import {getHtmlAttributes} from '$lib/string';
+  import CodeBlock from './CodeBlock.svelte';
 
   interface Props {
     node: Parent | RootContent;
@@ -36,6 +37,10 @@
       -->
       <!-- eslint-disable-next-line svelte/no-at-html-tags -->
       {@html '<styl' + `e ${getHtmlAttributes(convertHastNodeProperties(node.properties))}>${node.children.map(child => child.type === 'text' ? child.value : '')}</styl` + 'e>'}
+    {:else if node.tagName === 'pre'}
+      <CodeBlock preProperties={convertHastNodeProperties(node.properties)}>
+        {@render Child()}
+      </CodeBlock>
     {:else}
       <svelte:element this={node.tagName} {...convertHastNodeProperties(node.properties)}>
         {@render Child()}
