@@ -65,9 +65,9 @@ pre[class*="language-"] *::selection {
 /* Code blocks */
 pre[class*="language-"] {
 	padding: 1em;
-	margin: 0.5em 0;
+	// [NOTE] commented by dlguswo333 margin: 0.5em 0;
 	overflow: auto;
-	border-radius: 0.3em;
+	// [NOTE] commented by dlguswo333 border-radius: 0.3em;
 }
 
 /* Inline code */
