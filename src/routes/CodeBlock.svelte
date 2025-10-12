@@ -16,8 +16,8 @@
     }
   };
 </script>
-<div class="border border-black rounded-md">
-  <div class="border-b border-black flex flex-row justify-between px-2 py-1">
+<div class="overflow-hidden border border-gray-300 dark:border-gray-700 rounded-md my-2">
+  <div class="border-b border-gray-300 dark:border-gray-700 flex flex-row justify-between px-2 py-1">
     <div class="w-0 h-0"></div>
     <button onclick={copy} class="px-2 py-1 rounded-md text-sm bg-slate-100 dark:bg-slate-700 text-black dark:text-white hover:bg-slate-200 dark:hover:bg-slate-500 active:bg-emerald-300 dark:active:bg-emerald-400">Copy</button>
   </div>

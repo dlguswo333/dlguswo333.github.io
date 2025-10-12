@@ -140,9 +140,11 @@ body.dark .post .markdown-alert {
 .post a:visited {
     color: #a520ff;
 }
-
 .post a:hover {
-    filter: brightness(120%);
+    filter: brightness(125%);
+}
+.post a:active {
+    filter: brightness(150%);
 }
 
 .post ol, .post ul {

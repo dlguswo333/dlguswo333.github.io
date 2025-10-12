@@ -11,6 +11,7 @@
   `h-8 flex items-center justify-center mr-2 last:mr-1 px-1 py-0.5 rounded dark:active:bg-cyan-900 active:bg-cyan-50
    [@media(hover:hover)]:[@media(pointer:fine)]:hover:bg-gray-200 [@media(hover:hover)]:[@media(pointer:fine)]:dark:hover:bg-slate-600
    [@media(hover:hover)]:[@media(pointer:fine)]:dark:hover:text-white
+   [@media(hover:hover)]:[@media(pointer:fine)]:active:bg-teal-200 [@media(hover:hover)]:[@media(pointer:fine)]:dark:active:bg-teal-800
    ${isActive ? 'bg-sky-100 dark:bg-sky-900' : ''}`}>
   {text}
 </a>
