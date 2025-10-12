@@ -14,8 +14,8 @@ import rehypeStringify from 'rehype-stringify';
 import rehypePrism from 'rehype-prism-plus';
 import rehypeGithubAlert from 'rehype-github-alert';
 import yaml from 'yaml';
-import type {Root, RootContent} from 'mdast';
-import type {Element, Properties} from 'hast';
+import type {Root as MdastRoot, RootContent as MdastRootContent} from 'mdast';
+import type {Element, Parent, Root as HastRoot, RootContent as HastRootContent, Properties} from 'hast';
 import type {TOCItem} from './types';
 import {maxHeadingDepthInToc} from '$lib';
 import {removeXSSCharacters} from '$lib/string';
@@ -29,7 +29,7 @@ const headingTagNames = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
  */
 export const getSummaryFromMarkdown = async (markdown: string, targetLength: number) => {
   let summary: string | null = null;
-  const visit = (node: RootContent | Root) => {
+  const visit = (node: MdastRootContent | MdastRoot) => {
     if (summary && summary.length >= targetLength) {
       return;
     }
@@ -51,7 +51,7 @@ export const getSummaryFromMarkdown = async (markdown: string, targetLength: num
   const compiler = unified()
     .use(remarkParse)
     .use(remarkFrontmatter)
-    .use(() => (root: Root) => {
+    .use(() => (root: MdastRoot) => {
       visit(root);
     });
   const root = compiler.parse(markdown);
@@ -68,7 +68,7 @@ export const getFrontmatterFromMarkdown = async <T> (markdown: string) => {
   await unified()
     .use(remarkParse)
     .use(remarkFrontmatter)
-    .use(() => (root: Root) => {
+    .use(() => (root: MdastRoot) => {
       const [yamlNode] = root.children.filter(node => /^yaml$/i.test(node.type));
       if (!('value' in yamlNode)) {
         return;
@@ -111,6 +111,9 @@ export const getHtmlFromMarkdown = async (markdown: string, includeToc: boolean)
     .use(rehypePrism, {showLineNumbers: true})
     .use(rehypeGithubAlert)
     .use(rehypeRaw) // rehype-raw better come as the last.
+    .use(() => (root: HastRoot) => {
+      visitConvertHastNodePropertiesIntoHtml(root);
+    })
     .use(rehypeStringify, {allowDangerousHtml: true});
 
   const headings: TOCItem[] = [];
@@ -150,8 +153,19 @@ export const getHtmlFromMarkdown = async (markdown: string, includeToc: boolean)
   return {html: String(html), tocData: includeToc ? headings : [], root};
 };
 
+const visitConvertHastNodePropertiesIntoHtml = (node: Parent | HastRootContent) => {
+  if ('tagName' in node) {
+    node.properties = convertHastNodePropertiesIntoHtml(node.properties);
+  }
+  if ('children' in node) {
+    for (const child of node.children) {
+      visitConvertHastNodePropertiesIntoHtml(child);
+    }
+  }
+};
+
 /** Convert hast node properties into html compatible. */
-export const convertHastNodeProperties = (properties: Properties) => {
+const convertHastNodePropertiesIntoHtml = (properties: Properties) => {
   const converted: Properties = {};
   for (const [key, val] of Object.entries(properties)) {
     if (key === 'className') {
