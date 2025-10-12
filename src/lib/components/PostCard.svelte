@@ -18,7 +18,7 @@
     <div class="inline-block">
       <h1 class="inline-block font-bold text-lg underline">
         <a href={`/post/${post.date.split('-')[0]}/${post.id}/`}
-          class="text-sky-500 visited:text-purple-600 hover:brightness-125 mr-2">
+          class="text-sky-500 visited:text-purple-600 hover:brightness-125 active:brightness-150 mr-2">
           {post.title}
         </a>
       </h1>
