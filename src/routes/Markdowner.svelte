@@ -2,7 +2,6 @@
   import type {Parent, RootContent} from 'hast';
   import Self from './Markdowner.svelte';
   import SelfSvg from './MarkdownerSvg.svelte';
-  import {convertHastNodeProperties} from '$lib/markdown';
   import {getHtmlAttributes} from '$lib/string';
   import CodeBlock from './CodeBlock.svelte';
 
@@ -26,7 +25,7 @@
   {@html node.value}
 {:else if 'tagName' in node}
   {#if voidElements.includes(node.tagName)}
-    <svelte:element this={node.tagName} {...convertHastNodeProperties(node.properties)} />
+    <svelte:element this={node.tagName} {...node.properties} />
   {:else}
     {#if node.tagName === 'svg'}
       <SelfSvg node={node} />
@@ -36,13 +35,13 @@
         https://github.com/sveltejs/svelte-preprocess/issues/507
       -->
       <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-      {@html '<styl' + `e ${getHtmlAttributes(convertHastNodeProperties(node.properties))}>${node.children.map(child => child.type === 'text' ? child.value : '')}</styl` + 'e>'}
+      {@html '<styl' + `e ${getHtmlAttributes(node.properties)}>${node.children.map(child => child.type === 'text' ? child.value : '')}</styl` + 'e>'}
     {:else if node.tagName === 'pre'}
-      <CodeBlock preProperties={convertHastNodeProperties(node.properties)}>
+      <CodeBlock preProperties={node.properties}>
         {@render Child()}
       </CodeBlock>
     {:else}
-      <svelte:element this={node.tagName} {...convertHastNodeProperties(node.properties)}>
+      <svelte:element this={node.tagName} {...node.properties}>
         {@render Child()}
       </svelte:element>
     {/if}

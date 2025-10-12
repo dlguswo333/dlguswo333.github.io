@@ -3,7 +3,6 @@
 <script lang="ts">
   import type {Parent, RootContent} from 'hast';
   import Self from './MarkdownerSvg.svelte';
-  import {convertHastNodeProperties} from '$lib/markdown';
 
   interface Props {
     node: Parent | RootContent;
@@ -25,9 +24,9 @@
   {@html node.value}
 {:else if 'tagName' in node}
   {#if voidElements.includes(node.tagName)}
-    <svelte:element this={node.tagName} {...convertHastNodeProperties(node.properties)} />
+    <svelte:element this={node.tagName} {...node.properties} />
   {:else}
-    <svelte:element this={node.tagName} {...convertHastNodeProperties(node.properties)}>
+    <svelte:element this={node.tagName} {...node.properties}>
       {@render Child()}
     </svelte:element>
   {/if}
