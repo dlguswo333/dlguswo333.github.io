@@ -149,8 +149,7 @@ export const getHtmlFromMarkdown = async (markdown: string, includeToc: boolean)
     });
   }
 
-  const html = compiler.stringify(root);
-  return {html: String(html), tocData: includeToc ? headings : [], root};
+  return {tocData: includeToc ? headings : [], root};
 };
 
 const visitConvertHastNodePropertiesIntoHtml = (node: Parent | HastRootContent) => {
