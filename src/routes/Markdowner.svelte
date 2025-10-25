@@ -25,7 +25,11 @@
   {@html node.value}
 {:else if 'tagName' in node}
   {#if voidElements.includes(node.tagName)}
-    <svelte:element this={node.tagName} {...node.properties} />
+    {#if node.tagName === 'img'}
+      <img {...node.properties} />
+    {:else}
+      <svelte:element this={node.tagName} {...node.properties} />
+    {/if}
   {:else}
     {#if node.tagName === 'svg'}
       <SelfSvg node={node} />
