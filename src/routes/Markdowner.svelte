@@ -4,6 +4,7 @@
   import SelfSvg from './MarkdownerSvg.svelte';
   import {getHtmlAttributes} from '$lib/string';
   import CodeBlock from './CodeBlock.svelte';
+  import Img from '$lib/components/Img.svelte';
 
   interface Props {
     node: Parent | RootContent;
@@ -26,7 +27,7 @@
 {:else if 'tagName' in node}
   {#if voidElements.includes(node.tagName)}
     {#if node.tagName === 'img'}
-      <img {...node.properties} />
+      <Img properties={node.properties} />
     {:else}
       <svelte:element this={node.tagName} {...node.properties} />
     {/if}
