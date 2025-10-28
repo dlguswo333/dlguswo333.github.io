@@ -1,7 +1,7 @@
 <script lang="ts">
   interface Props {
     children?: import('svelte').Snippet;
-    properties?: Record<string, unknown>;
+    properties: Record<string, unknown>;
   }
   let {properties}: Props = $props();
   const onclick = () => {
