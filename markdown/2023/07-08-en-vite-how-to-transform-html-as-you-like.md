@@ -2,6 +2,7 @@
 layout: post
 toc: true
 math: false
+editedDate: 2025-11-20
 title: "Vite: How to Transform HTML as You Like"
 category: ["Programming"]
 tags: [web, vite, javascript]
@@ -24,15 +25,15 @@ where to insert `<script>` tags.
 
 Say you have a tag that must appear earilier than any other scripts.
 For example, a `<base>` tag. You are building a project that must be served
-throught a proxy domain and you are not able to serve the project on which you want it be.
-So you inserted the script at the top inside `<head>` tag.
+through a proxy domain and you can't directly serve the project on the proxy domain.
+So you insert the script at the top inside `<head>` tag.
 
 ```html
 <head>
     <base href="https://example.com/">
 ```
 
-The result is the following.
+The html file served by vite dev server is the following.
 
 ```html
 <head>
