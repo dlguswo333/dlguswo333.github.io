@@ -3,7 +3,7 @@ toc: true
 title: "인천 국제 공항 스마트패스 후기"
 category: ["IRL"]
 tags: ["Review"]
-editedDate: 2024-04-27
+editedDate: 2025-11-20
 author:
   - 이현재
 ---
@@ -21,7 +21,7 @@ author:
 
 23년 7월 28일부터 이런 대기 시간을 획기적으로 단축할 수 있는 스마트패스가 인천 국제 공항 전 출국장에 도입되었습니다.
 
-<https://www.airport.kr/ap_lp/ko/dep/process/smart/smart.do>
+<https://www.airport.kr/ap_ko/889/subview.do>
 
 ![smartpass-screenshot](/img/2023-10-09-ko-incheon-airport-smart-pass-review/smartpass-screenshot.webp)
 
