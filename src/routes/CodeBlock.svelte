@@ -5,6 +5,10 @@
   }
   let preElement: HTMLPreElement;
   let {children, preProperties}: Props = $props();
+  const language =
+    (typeof preProperties?.class === 'string' && preProperties.class.match(/^language-/))
+      ? preProperties.class.replace(/^language-/, '')
+      : undefined;
   const copy = () => {
     try {
       if (!preElement.textContent) {
@@ -18,7 +22,11 @@
 </script>
 <div class="overflow-hidden border border-gray-300 dark:border-gray-700 rounded-md my-2">
   <div class="border-b border-gray-300 dark:border-gray-700 flex flex-row justify-between px-2 py-1">
-    <div class="w-0 h-0"></div>
+    <div class="flex items-center font-mono text-sm">
+      {#if language !== undefined}
+        {language}
+      {/if}
+    </div>
     <button onclick={copy} class="px-2 py-1 rounded-md text-sm bg-slate-100 dark:bg-slate-700 text-black dark:text-white hover:bg-slate-200 dark:hover:bg-slate-500 active:bg-emerald-300 dark:active:bg-emerald-400">Copy</button>
   </div>
   <!-- [NOTE] whitespaces within pre tag are render as-is even the indentations within the tag. -->
