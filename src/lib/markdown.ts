@@ -63,7 +63,7 @@ export const getSummaryFromMarkdown = async (markdown: string, targetLength: num
 /**
  * Extract frontmatter from markdown.
  */
-export const getFrontmatterFromMarkdown = async <T> (markdown: string) => {
+export const getFrontmatterFromMarkdown = async <T>(markdown: string) => {
   let frontmatter = null;
   await unified()
     .use(remarkParse)

@@ -5,10 +5,19 @@
   }
   let preElement: HTMLPreElement;
   let {children, preProperties}: Props = $props();
-  const language =
-    (typeof preProperties?.class === 'string' && preProperties.class.match(/^language-/))
-      ? preProperties.class.replace(/^language-/, '')
-      : undefined;
+
+  const getLanguage = () => {
+    if (typeof preProperties?.class !== 'string') {
+      return undefined;
+    }
+    const match = preProperties.class.match(/language-(\w+)/);
+    if (match === null) {
+      return undefined;
+    }
+    return match[1];
+  };
+  const language = getLanguage();
+
   const copy = () => {
     try {
       if (!preElement.textContent) {
