@@ -8,9 +8,17 @@
   }
 
   let {item, shouldBind}: Props = $props();
+  let tocItem: HTMLElement | null = $state(null);
 
   const coefficient = 2 / 3;
   const constant = 0.4;
+
+  $effect(() => {
+    if (tocItem === null) {
+      return;
+    }
+    $tocItemHeight = tocItem.getBoundingClientRect().height;
+  });
 </script>
 {#snippet anchor()}
   <a
@@ -26,7 +34,7 @@
   <li
     title={item.text}
     class={`flex ml-1 hover:bg-gray-100 dark:hover:bg-gray-700 ${item.depth === 1 ? 'font-bold' : ''}`}
-    bind:offsetHeight={$tocItemHeight}
+    bind:this={tocItem}
   >
     {@render anchor()}
   </li>
