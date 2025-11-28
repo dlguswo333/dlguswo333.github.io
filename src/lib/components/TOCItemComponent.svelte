@@ -1,6 +1,6 @@
 <script lang="ts">
   import type {TOCItem} from '$lib/types';
-  import {tocItemHeight, showTOC} from '$lib/store';
+  import {tocItemHeight} from '$lib/store';
 
   interface Props {
     item: TOCItem;
@@ -8,14 +8,22 @@
   }
 
   let {item, shouldBind}: Props = $props();
+  let tocItem: HTMLElement | null = $state(null);
 
   const coefficient = 2 / 3;
   const constant = 0.4;
+
+  $effect(() => {
+    if (tocItem === null) {
+      return;
+    }
+    $tocItemHeight = tocItem.getBoundingClientRect().height;
+  });
 </script>
 {#snippet anchor()}
   <a
     href={`#${item.id}`}
-    class="relative z-10 py-0.5 whitespace-nowrap overflow-hidden break-all overflow-ellipsis flex-grow"
+    class="relative z-10 py-1.5 whitespace-nowrap overflow-hidden break-all overflow-ellipsis flex-grow"
     style={`padding-left: ${coefficient * (item.depth - 1) + constant}rem;`}
   >
     {item.text}
@@ -25,15 +33,15 @@
   <!-- The only difference is bind property -->
   <li
     title={item.text}
-    class={`flex ml-1 hover:bg-gray-100 dark:hover:bg-gray-700 ${item.depth === 1 ? 'font-bold' : ''} ${$showTOC ? 'py-1.5' : ''}`}
-    bind:offsetHeight={$tocItemHeight}
+    class={`flex ml-1 hover:bg-gray-100 dark:hover:bg-gray-700 ${item.depth === 1 ? 'font-bold' : ''}`}
+    bind:this={tocItem}
   >
     {@render anchor()}
   </li>
 {:else}
   <li
     title={item.text}
-    class={`flex ml-1 hover:bg-gray-100 dark:hover:bg-gray-700 ${item.depth === 1 ? 'font-bold' : ''} ${$showTOC ? 'py-1.5' : ''}`}
+    class={`flex ml-1 hover:bg-gray-100 dark:hover:bg-gray-700 ${item.depth === 1 ? 'font-bold' : ''}`}
   >
     {@render anchor()}
   </li>
