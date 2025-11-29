@@ -109,6 +109,7 @@
     // This is most likely due to Svelte not recreating elements thus not running logics.
     // Thus depend on root props for reactivity.
     // See: https://github.com/dlguswo333/dlguswo333.github.io/issues/44
+    root;
     if ($tocItemHeight && mainHtml) {
       headings = [...mainHtml.querySelectorAll(headingSelector)];
       // Need to call update highlight function manually here for following situations:
