@@ -1,6 +1,6 @@
 <script lang="ts">
   import type {TOCItem} from '$lib/types';
-  import {tocItemHeight} from '$lib/store';
+  import {showTOC, tocItemHeight} from '$lib/store';
 
   interface Props {
     item: TOCItem;
@@ -14,6 +14,9 @@
   const constant = 0.4;
 
   $effect(() => {
+    // [workaround] Subscribe to $showTOC store.
+    // Otherwise it cannot get the correct height on small screen since TOC is hidden.
+    $showTOC;
     if (tocItem === null) {
       return;
     }
