@@ -112,6 +112,23 @@ Google Map보다 Waze라는 어플이 ZTL 지원이 좀 더 낫다고 들어서 
 
 <br>
 
+## 톨게이트 이용
+이탈리아에서 고속도로 톨게이트는 한국과 유사합니다.
+한국에서나 이탈리아에서나 조심해야 하는것이 알맞은 차선을 찾아가야 하는것인데요.
+이탈리아의 하이패스인 텔레패스는 텔레패스 전용 차선으로, 현금은 현금 전용, 카드는 카드 전용으로 가야하니
+들어갈 때만 조심히 들어가시면 됩니다.
+현금과 카드는 들어갈 때 티켓을 뽑고, 나올 때 티켓과 함께 지불하면 됩니다.
+각 레인에 그림이 그려져 있어 다행히 어떤 차선인지 알아보는 것이 그렇게 어렵지는 않습니다.
+카드는 _CARTE_ 라고 써있고 현금은 동전이랑 지폐가 그려져 있어요.
+손 표시가 있으면 유인 톨 게이트고 손 표시가 없으면 무인 게이트라고 하네요.
+참고로 토스 뱅크 카드로 고속도로 요금 잘 내고 다녔습니다.
+더 자세한 톨게이트 이용법은 링크를 참고해 주세요. 
+[Everything you need to know about driving in Italy: road rules, tips and useful information][how-to-drive-in-italy]
+[Payment at the toll gate][autostrade-payment-method]
+[이탈리아-렌터카-여행을-계획한다면][이탈리아-렌터카-여행을-계획한다면]
+
+<br>
+
 # 베네치아에서 돌로미티까지
 베네치아 메스트레에서 돌로미티까지는 Verona와 Trento를 거치는 고속도로를 탔습니다.
 메스트레 역 바로 옆으로 고속도로가 있기 때문에 바로 고속도로로 빠지면 ZTL을 만날 일이 없어요.
@@ -122,23 +139,17 @@ Google Map보다 Waze라는 어플이 ZTL 지원이 좀 더 낫다고 들어서 
 저는 Waidbruck이라는 작은 마을과 오르티세이 사이에 숙소가 있었기에 Chiusa 톨게이트에서
 고속도로를 빠져나왔습니다.
 메스트레에서 Chiusa까지 고속도로 요금은 22.5유로, 37080원 나왔습니다.
-참고로 토스 뱅크 카드로 고속도로 요금 잘 내고 다녔습니다.
 02:51 메스트레에서 시작해 06:20 숙소에 도착했으니 주행 시간은 10분 휴게소 들른 것 빼도
 3시간 19분으로 약간 장거리입니다. 구글 맵으로는 297KM라네요.
 
 그리고 휴게소는 돌로미티 다 와가서 있는 [Sarni Isarco Est](https://maps.app.goo.gl/nJ2aufpExUibPS96A)
-휴게소를 이용했습니다. 화장실은 무료고 사람들이 많았습니다. 독일쪽 관광객도 많았고
-중화쪽 관광객도 많아서 휴게소가 좀 붐볐네요.
+휴게소를 이용했습니다. 화장실은 무료고 사람들이 많았습니다.
+독일쪽 관광객도 많았고 중화쪽 관광객도 많아서 휴게소가 좀 붐볐네요.
 
-## 톨게이트 이용
-이탈리아에서 고속도로 톨게이트는 한국에서 하이패스 없이 사용하는 것과 거의 유사합니다.
-한국에서나 이탈리아에서나 조심해야 하는것이 알맞은 레인을 찾아가야 하는것인데요.
-이탈리아의 하이패스인 텔레패스는 텔레패스 전용으로 현금은 현금 전용, 카드는 카드 전용 차선으로 가야하니
-들어갈 때만 조심히 들어가시면 됩니다. 다행히 어떤 차선인지 알아보는 것이 그렇게 어렵지는 않습니다.
-아래 웹사이트를 참고해 주세요. 
-[Everything you need to know about driving in Italy: road rules, tips and useful information][how-to-drive-in-italy]
-[이탈리아-렌터카-여행을-계획한다면][이탈리아-렌터카-여행을-계획한다면]
-
+고속도로 출구에 다가가면서 요금 내는 것에 약간 좀 긴장을 했는데
+제 앞 차도 처음인지 경황이 없어하더군요. 저도 덕분에 느긋하게 기다릴 수 있었습니다.
+무인 톨게이트에서 카드 넣는 곳이 좀 헷갈리긴 하던데
+느긋하게 마음 먹으니 무난하게 찾을 수 있었습니다.
 
 # 오르티세이 주차장 
 
@@ -157,4 +168,5 @@ ZTL
 
 
 [how-to-drive-in-italy]: https://www.italia.it/en/italy/things-to-do/tutto-quello-che-ce-da-sapere-per-guidare-in-italia-regole-stradali-consigli-e-informazioni-utili
+[autostrade-payment-method]: https://www.autostrade.it/en/servizi-al-cliente/pedaggio/metodi-di-pagamento/carte
 [이탈리아-렌터카-여행을-계획한다면]: https://conquest-earth.tistory.com/entry/%EC%9D%B4%ED%83%88%EB%A6%AC%EC%95%84-%EB%A0%8C%ED%84%B0%EC%B9%B4-%EC%97%AC%ED%96%89%EC%9D%84-%EA%B3%84%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4-%EA%B3%A0%EC%86%8D%EB%8F%84%EB%A1%9C-%ED%86%A8%EA%B2%8C%EC%9D%B4%ED%8A%B8-%EC%B0%A8%EC%84%A0-%EC%83%89%EA%B9%94%EC%9D%84-%EC%B2%B4%ED%81%AC%ED%95%98%EC%84%B8%EC%9A%94
