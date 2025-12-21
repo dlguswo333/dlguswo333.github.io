@@ -141,7 +141,7 @@ I would rather exclude ZTL for my inner peace.
 
 <br>
 
-## Use Toll Gate
+## Using Toll Gate
 Highway in Italy is similar to one in Korea.
 Whether it is from Italy or Korea you need to cautiously choose lanes when entering the toll gates.
 Telepass which is Italian Hi-pass goes to Telepass only lane, cash to cash lane, and card to card lane
@@ -180,7 +180,7 @@ was flustered maybe because it's her first time. Gratefully I sat there and wait
 At the unmanned toll gates it was a little confusing where to insert my card but you can find the right one
 once you take it easy.
 
-# Parking lot in Ortisei
+# Parking Lot in Ortisei
 Ortisei is a small town which is located at a valley among the high Dolomites mountains
 and you can go from here to several landmarks directly such as _Seceda_, _Alpe Di Siusi_ with cable cars
 so being a transporation hub it is great for a base camp by staying or parking.
