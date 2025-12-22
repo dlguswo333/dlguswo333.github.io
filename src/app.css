@@ -129,9 +129,15 @@ body.dark .post .markdown-alert {
     max-height: 55vh;
     object-fit: contain;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0.2rem auto;
 }
+.post img + img {
+    margin-top: 0;
+}
+.post img:has(+ img) {
+    margin-bottom: 0;
+}
+
 
 .post a {
     color: #00a2ff;
