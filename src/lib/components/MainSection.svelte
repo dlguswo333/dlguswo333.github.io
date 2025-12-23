@@ -125,7 +125,7 @@
 @component
 Render raw html in main section.
 -->
-<main class={`max-w-[900px] w-full py-2 ${className ? className : ''}`} bind:this={mainHtml}>
+<main class={`max-w-[800px] w-full py-2 ${className ? className : ''}`} bind:this={mainHtml}>
   {@render children?.()}
   {#if root}
     <Markdowner node={root} />
