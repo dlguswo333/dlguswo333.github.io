@@ -65,7 +65,7 @@ but I told them I would like the car I booked since I might get more expensive i
 get in a trouble in case of an accident. You can decide flexibly on your own.
 
 I did not get a full cover insurance when I made the reservation online
-and he told me I could get one while explanation so I gladly took it.
+and he told me I could get one during explanation so I gladly took it.
 I think full coverage insurance is a must for traveling abroad, since I reckon a few hundred dollars
 are cheaper than time, expense, and stress sorting things out just in case without the full cover.
 
@@ -73,7 +73,7 @@ The deposit was 200 euros and I prepaid 549.84 euros including full coverage.
 They charged me 349.84 euros on Monday October 13th excluding the deposit.
 ![rental-information](/img/2025-12-07-rental-car-travel-dolomites/rental-information.webp)
 
-As expeced I did not get a Ford I reserved but a Jeep Renegade. Thankfully it is a hybrid but...
+As expeced I did not get a Ford I reserved but a Jeep Renegade. Thankfully it was a hybrid but...
 I will leave the details about the car I had at the travel review section.
 
 # How to Drive in Italy
@@ -262,9 +262,9 @@ But keeping one is safe.
 
 The car was Renegade from Jeep. I did not like this car that much.
 It was a compact SUV but felt a little heavy, especially handling.
-And about options, you never know what options you will get on your rental car so you need to be prepared for anything
-but it was really bare-bones without a rear camera. I expected one without 360° around view or sky view but
-did not actually expect I would get a car without rear camera in 2025.
+And about the options, you never know what options you will get with your rental car so you need to be prepared for anything
+but it was really bare-bones without a rear camera. I expected
+that I would get one without 360° around view or sky view, not without rear camera in 2025.
 Luckily it had a rear proximity sensor so I depended on it with some worries.
 
 The funny thing is the car without a rear camera had a line departure sensor.
@@ -300,7 +300,7 @@ and drive the car as little as I could.
 
 Fortunately I could drive the car to Venice Mestre and reported the problem upon the return
 and they said they could not compensate the issue since there had been no actual problem.
-I knew the point and have been more worried about them coming after me
+I knew the point and had been more worried about them coming after me
 but they just let me leave and no problem so far.
 I wish I had drove other places had the car not had any problem..
 
@@ -327,7 +327,7 @@ I got nothing until now but sometimes I still get anxious that I might get 100 e
 Driving culture was one unexpected difficulty to me.
 I thought Itailian people are laid back so their driving would be also be like that and I was wrong.
 You would understand that I am not telling you 100% lies if you have driving experiences in both countries.
-In my experience Italian was a bit trickier than Korean. Maybe it was because I was too neverous in a foreign country.
+In my experience driving in Italy was a bit trickier than one in Korea. Maybe it was because I was too neverous in a foreign country.
 
 First of all they change lanes without turn signal on a highway.
 They keep the first lane clear better than Koreans do but it's hard to see someone actually use turn signal.
