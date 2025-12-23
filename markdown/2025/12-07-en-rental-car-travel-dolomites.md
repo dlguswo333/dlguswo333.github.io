@@ -221,8 +221,8 @@ so it was confusing, but logically, as you dont need to prepay at a parking lot 
 so you don't need to prepay upon your entrance but right before your exit.
 And this Central parking lot also expects you to pay when you exit.
 
-Even if you forgot to prepay at a machine or you did not go out right after your payment
-there is a payment machine at the exit there is nothing you need to worry about.
+Even if you forgot to prepay at a machine or you did not go out right after your payment,
+there is a payment machine at the exit so there is nothing you need to worry about.
 ![exit-payment-machine](/img/2025-12-07-rental-car-travel-dolomites/exit-payment-machine.webp)
 
 > [!note]
