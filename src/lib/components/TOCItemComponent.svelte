@@ -42,7 +42,7 @@
   <!-- The only difference is bind property -->
   <li
     title={item.text}
-    class={`flex ml-1 hover:bg-gray-100 dark:hover:bg-gray-700 ${item.depth === 1 ? 'font-bold' : ''}`}
+    class={`flex ml-1 hover:bg-gray-100 dark:hover:bg-gray-700 ${item.depth <= 2 ? 'font-bold' : ''}`}
     bind:this={tocItem}
   >
     {@render anchor()}
@@ -50,7 +50,7 @@
 {:else}
   <li
     title={item.text}
-    class={`flex ml-1 hover:bg-gray-100 dark:hover:bg-gray-700 ${item.depth === 1 ? 'font-bold' : ''}`}
+    class={`flex ml-1 hover:bg-gray-100 dark:hover:bg-gray-700 ${item.depth <= 2 ? 'font-bold' : ''}`}
   >
     {@render anchor()}
   </li>

@@ -31,8 +31,10 @@ body.dark {
 }
 
 .post h1,.post h2,.post h3,.post h4 {
-    border-bottom: 1px solid #d0d0d0;
     scroll-margin-top: 50px;
+}
+.post h1 + h2,.post h2 + h3,.post h3 + h4 {
+    margin-top: 0.2rem;
 }
 body.dark .post h1,body.dark .post h2,body.dark .post h3,body.dark .post h4 {
     border-color: #777;
@@ -41,19 +43,20 @@ body.dark .post h1,body.dark .post h2,body.dark .post h3,body.dark .post h4 {
 .post h1 {
     font-weight: bold;
     margin-top: 2rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.4rem;
     font-size: 2rem;
 }
 
 .post h2 {
+    font-weight: bold;
     margin-top: 1.5rem;
-    margin-bottom: 0.5rem;
-    font-size: 1.6rem;
+    margin-bottom: 0.3rem;
+    font-size: 1.5rem;
 }
 
 .post h3 {
-    margin-top: 1.3rem;
-    margin-bottom: 0.3rem;
+    margin-top: 1rem;
+    margin-bottom: 0.2rem;
     font-size: 1.4rem;
 }
 
@@ -68,6 +71,10 @@ body.dark .post h1,body.dark .post h2,body.dark .post h3,body.dark .post h4 {
     /* Use the following rule to indent the first word. */
     /* text-indent: 0.4rem; */
 }
+.post h1 + p,.post h2 + p,.post h3 + p,.post h4 + p {
+    margin-top: 0.2rem;
+}
+
 .post blockquote {
     padding-left: 1rem;
     padding-right: 0.5rem;
