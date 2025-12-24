@@ -145,12 +145,14 @@ I would rather exclude ZTL for my inner peace.
 Highway in Italy is similar to one in Korea.
 Whether it is from Italy or Korea you need to cautiously choose lanes when entering the toll gates.
 Telepass which is Italian Hi-pass goes to Telepass only lane, cash to cash lane, and card to card lane
-and that is all about how to use toll gate.
-With cash and card you get a ticket entering highway and you pay and hand over the ticket once you get out.
+and that is all about how to use toll gate.\
+For your information I paid at toll gates just fine with a Toss Bank card.
+
+With cash and card you get a ticket entering highway and you hand over the ticket and pay once you get out.
 Each lane has a sign and it wasn't that difficult to understand.
 Card lanes say _CARTE_ and cash lanes has coins and banknotes.
 With a hand in the sign it says it is manned toll gate and without one it is an unmanned.
-For your information I paid at toll gates just fine with a Toss Bank card.
+
 For more about how to use toll gates refer to the links.\
 [Everything you need to know about driving in Italy: road rules, tips and useful information][how-to-drive-in-italy]\
 [Payment at the toll gate][autostrade-payment-method]\
