@@ -43,7 +43,7 @@
   <!-- min-width: 0 is needed to prevent this element grow bigger than the parent -->
   <div class="flex flex-col justify-center min-w-0 my-10 md:my-15">
     {#if data.frontmatter}
-      <div class="max-w-[900px] flex flex-col items-center py-6 gap-3">
+      <div class="max-w-[800px] flex flex-col items-center py-6 gap-3">
         <h1 class="text-4xl font-bold text-center">{postTitle}</h1>
         <span>
           {data.date}
