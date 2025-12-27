@@ -16,14 +16,18 @@
   // It is nonsense displayed paginations are less than 5.
   maxDisplaySize = Math.min(5, maxDisplaySize);
 
-  const displayIndices: number[] = [1];
-  const start = Math.max(2, curIndex - Math.floor(maxDisplaySize / 2));
-  for (let i = start;i <= Math.min(maxIndex, start + maxDisplaySize - 3);++i) {
-    displayIndices.push(i);
-  }
-  if (displayIndices[displayIndices.length - 1] !== maxIndex) {
-    displayIndices.push(maxIndex);
-  }
+  const displayIndices: number[] = $derived.by(() => {
+    const ret = [1];
+    // [TODO] when maxIndex=5 and curIndex=5 and maxDisplaySize=5, it skips page 2 showing only 4 indices.
+    const start = Math.max(2, curIndex - Math.floor(maxDisplaySize / 2));
+    for (let i = start;i <= Math.min(maxIndex, start + maxDisplaySize - 3);++i) {
+      ret.push(i);
+    }
+    if (ret[ret.length - 1] !== maxIndex) {
+      ret.push(maxIndex);
+    }
+    return ret;
+  });
 </script>
 
 
