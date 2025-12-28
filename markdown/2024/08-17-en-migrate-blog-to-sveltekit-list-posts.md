@@ -1,6 +1,7 @@
 ---
 layout: post
 toc: true
+editedDate: 2025-12-28
 title: "Let's Migrate Github Blog to Sveltekit: List Posts"
 category: ["Programming"]
 tags: [migrate-blog-to-sveltekit, web, svelte, sveltekit, javascript]
@@ -14,6 +15,10 @@ There will be more than one or two posts in my blog.
 That means I should list the posts to users to encourage them to read what I've written.
 Listing posts is an important feature in blog services. If they don't feel good
 or not function well, people would not spend time reading on my blog.
+
+>[!note]
+>On Dec. 8th 2025, Found a bug in the pagination algorithms
+>and rewrote the section about it.
 
 # Post Card Layout
 Each post card should notify readers with meangingful information,
@@ -226,7 +231,7 @@ return {
 By the way, you must have seen this pagination from numerous services.
 It shows the current page with highlight,
 and several pages before the current and also pages after the current.
-But I wanted to show the first and the last page always and I did it.
+But I wanted to show the first and the last page always.
 
 ![post-pagination-blueprint-2](/img/08-17-en-migrate-blog-to-sveltekit-list-posts/post-pagination-blueprint-2.png)
 
@@ -247,14 +252,42 @@ if (displayIndices[displayIndices.length - 1] !== maxIndex) {
 <br>
 
 At the comments in the middle of the codes, I should add page indices around the current page number,
-as long as the array `displayIndices` length does not exceed `maxDisplaySize`.
-Notice that this range should should be centered around the current index.
+as long as the array `displayIndices`'s length does not exceed `maxDisplaySize`.
+Notice that this range should be centered around the current index.
 Then we should assign half the remaining length to the former and the other to the latter.
-The code is not perfect, but it gets the job done.
+
+Getting the right start index is important here.
+As a base case you get the start value by `curIndex - Math.floor((maxDisplaySize - 2) / 2)`.
+It says to get the start value at about half length before the current index.
+`- 2` is for the page indices the first and the last indices.
+And there are two exceptions; if the current is near the first or near the last.
+In those cases, it may fail to fill indices fully because the range reached its either end.\
+The case where the current index is near the first is simple: Set lower limit as `2`.\
+The case where the current is near the end index is a bit tricky, since
+you need to mind the end index while calculating the start index.
+The upper limit for that case can be handled with `maxIndex - (maxDisplaySize - 2)`,
+and `- 2` is to get the range `maxDisplaySize - 1` long; `- 1` is for the first page index.
+
+After you calculate your start index minding such complitcated exceptional cases,
+getting the end index is rather simple.
+Just be careful not to exceed `maxIndex`.
 ```ts
 const displayIndices: number[] = [1];
-const start = Math.max(2, curIndex - Math.floor(maxDisplaySize / 2));
-for (let i = start;i <= Math.min(maxIndex, start + maxDisplaySize - 3);++i) {
+const start = Math.max(
+  // Lower limit: Must be equal to 2 or bigger.
+  2,
+  Math.min(
+    // Upper limit: To prevent that there may be not enough indices above the current to fill the other half.
+    maxIndex - (maxDisplaySize - 2),
+    // Base case: Half spaces for indices below the current.
+    curIndex - Math.floor((maxDisplaySize - 2) / 2)
+  )
+);
+const end = Math.min(
+  maxIndex,
+  start + maxDisplaySize - 3 // Base case: [start, end] should be (maxDisplaySize - 2) long.
+);
+for (let i = start;i <= end;++i) {
   displayIndices.push(i);
 }
 if (displayIndices[displayIndices.length - 1] !== maxIndex) {
