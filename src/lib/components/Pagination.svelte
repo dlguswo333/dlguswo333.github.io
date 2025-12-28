@@ -14,15 +14,28 @@
   }: Props = $props();
 
   // It is nonsense displayed paginations are less than 5.
-  maxDisplaySize = Math.min(5, maxDisplaySize);
+  maxDisplaySize = Math.max(5, maxDisplaySize);
 
   const displayIndices: number[] = $derived.by(() => {
-    const ret = [1];
-    // [TODO] when maxIndex=5 and curIndex=5 and maxDisplaySize=5, it skips page 2 showing only 4 indices.
-    const start = Math.max(2, curIndex - Math.floor(maxDisplaySize / 2));
-    for (let i = start;i <= Math.min(maxIndex, start + maxDisplaySize - 3);++i) {
+    const ret = [1]; // Always show the first index.
+    const start = Math.max(
+      // Lower limit: Must be equal to 2 or bigger.
+      2,
+      Math.min(
+        // Upper limit: To prevent that there may be not enough indices above the current to fill the other half.
+        maxIndex - (maxDisplaySize - 2),
+        // Base case: Half spaces for indices below the current.
+        curIndex - Math.floor((maxDisplaySize - 2) / 2)
+      )
+    );
+    const end = Math.min(
+      maxIndex,
+      start + maxDisplaySize - 3 // Base case: [start, end] should be (maxDisplaySize - 2) long.
+    );
+    for (let i = start;i <= end;++i) {
       ret.push(i);
     }
+    // Always show the last index.
     if (ret[ret.length - 1] !== maxIndex) {
       ret.push(maxIndex);
     }
