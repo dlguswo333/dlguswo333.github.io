@@ -16,4 +16,5 @@
   title='Click to open in a new tab'
   role='button'
   onclick={onclick}
+  loading="lazy"
 />
