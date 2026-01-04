@@ -5,7 +5,7 @@
   import Overlay from '$lib/components/Overlay.svelte';
   import {shouldShowOverlay} from '$lib/store';
   import {onMount} from 'svelte';
-  import {customEvent, name} from '$lib/index';
+  import {customEvent, defaultTitle} from '$lib/index';
   import {page} from '$app/state';
 
   interface Props {
@@ -29,7 +29,7 @@
   });
 </script>
 <svelte:head>
-  <title>{name}'s blog</title>
+  <title>{defaultTitle}</title>
 </svelte:head>
 <Header />
 {@render children?.()}

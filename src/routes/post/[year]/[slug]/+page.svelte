@@ -4,7 +4,7 @@
   import TOC from '$lib/components/TOC.svelte';
   import Tag from '$lib/components/Tag.svelte';
   import {onMount} from 'svelte';
-  import {defaultLang, name} from '$lib/index';
+  import {defaultLang, defaultTitle, name} from '$lib/index';
   import Lang from '$lib/components/Lang.svelte';
   import {afterNavigate} from '$app/navigation';
 
@@ -22,7 +22,7 @@
     return () => {
       // Sveltekit does not revert document title on dismount.
       // See #4.
-      document.title = `${name}'s blog`;
+      document.title = defaultTitle;
       document.documentElement.lang = defaultLang;
     };
   });
@@ -33,7 +33,7 @@
   });
 </script>
 <svelte:head>
-  <title>{(postTitle ? `${postTitle} : ` : '')}{name}'s blog</title>
+  <title>{(postTitle ? `${postTitle} | ` : '')}{name}'s blog</title>
 </svelte:head>
 
 <div class="flex flex-row flex-grow justify-center p-2 lg:p-0 lg:pr-[300px]">
