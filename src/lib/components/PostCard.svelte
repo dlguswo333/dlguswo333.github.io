@@ -16,12 +16,12 @@
     shadow-sm hover:shadow-md shadow-gray-300 dark:shadow-gray-900 dark:hover:shadow-teal-900/50`}>
   <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-1">
     <div class="inline-block">
-      <h1 class="inline-block font-bold text-lg underline">
+      <h2 class="inline-block font-bold text-lg underline">
         <a href={`/post/${post.date.split('-')[0]}/${post.id}/`}
           class="text-sky-500 visited:text-purple-600 hover:brightness-125 active:brightness-150 mr-2">
           {post.title}
         </a>
-      </h1>
+      </h2>
     </div>
     <span class="text-sm flex flex-row self-stretch justify-between">
       <span class="">
