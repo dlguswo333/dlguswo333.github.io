@@ -2,7 +2,7 @@
   import type {PostMetadata} from '$lib/types';
   import MainSection from './MainSection.svelte';
   import Pagination from './Pagination.svelte';
-  import Postcard from './PostCard.svelte';
+  import PostCard from './PostCard.svelte';
 
   interface Props {
     posts: PostMetadata[];
@@ -16,7 +16,7 @@
   <ul class="py-4">
     {#each posts as post}
       <li class="mb-5 last:mb-0 px-4">
-        <Postcard post={post} />
+        <PostCard post={post} />
       </li>
     {/each}
   </ul>
