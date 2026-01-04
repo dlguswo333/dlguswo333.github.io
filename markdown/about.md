@@ -1,4 +1,4 @@
-Hi, my name is Lee Hyeonjae, a lifelong student majoring in software, in South Korea.<br>
+Hi, my name is Lee Hyeonjae, a lifelong student majoring in software, in South Korea.\
 
 I am interested in almost every part of computer science,
 but if I need to pick what is my favorite, I would pick Web Frontend.
@@ -11,7 +11,8 @@ My skills are mostly based on Web Frontend. I do Javascript and love Typescript.
 With the languages I also do things in Node.JS other than Web Frontend.
 But I also like to learn other things that intrigues me.
 
-Visit my [github.io page](https://dlguswo333.github.io) if you want to know more about what I have done, and who I am.<br>
+Visit my [github.io page](https://dlguswo333.github.io) if you want to know more about what I have done, and who I am.\
+Software is fun, I also would like to talk about other interesting things.
 
 ---
 
@@ -30,7 +31,7 @@ Visit my [github.io page](https://dlguswo333.github.io) if you want to know more
 ![tishare](/img/about/tishare.webp)
 tiShare aims to send files or folders between devices easily, with cross-platform support.
 
-Desktop built with React, Module CSS, and Electron. Windows and Linux.<br>
+Desktop built with React, Module CSS, and Electron. Windows and Linux.\
 Mobile built with Kotlin. Android only.
 
 [tiShare documentation](https://dlguswo333.github.io/tishare-docs/)
