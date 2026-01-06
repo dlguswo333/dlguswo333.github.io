@@ -27,7 +27,7 @@
       <span class="">
         {post.date}
         {#if post.editedDate}
-          (E. {post.editedDate})
+          (Edit {post.editedDate})
         {/if}
       </span>
       <span class="ml-2">
