@@ -16,5 +16,5 @@
   <title>{name}'s blog - page {data.curIndex}</title>
 </svelte:head>
 <div class="flex flex-row flex-grow justify-center lg:pr-20">
-  <PostList posts={data.posts} curIndex={data.curIndex} maxIndex={data.maxIndex} />
+  <PostList groupedPosts={data.groupedPosts} curIndex={data.curIndex} maxIndex={data.maxIndex} />
 </div>

@@ -5,18 +5,18 @@
   import PostCard from './PostCard.svelte';
 
   interface Props {
-    posts: PostMetadata[];
+    groupedPosts: PostMetadata[][];
     curIndex: number;
     maxIndex: number;
   }
 
-  let {posts, curIndex, maxIndex}: Props = $props();
+  let {groupedPosts, curIndex, maxIndex}: Props = $props();
 </script>
 <MainSection className="flex flex-col items-center pb-3">
   <ul class="py-4">
-    {#each posts as post}
+    {#each groupedPosts as posts}
       <li class="mb-5 last:mb-0 px-4">
-        <PostCard post={post} />
+        <PostCard posts={posts} />
       </li>
     {/each}
   </ul>
