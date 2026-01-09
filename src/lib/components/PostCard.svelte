@@ -21,18 +21,18 @@
 {/snippet}
 
 <section
-  class={`flex flex-col px-4 py-3 md:py-2 transition border rounded-md hover:bg-teal-50 dark:hover:bg-teal-700/20
+  class={`flex flex-col px-4 py-4 md:py-3 transition border rounded-md hover:bg-teal-50 dark:hover:bg-teal-700/20
     border-gray-200 hover:border-teal-200 dark:border-gray-600 dark:hover:border-teal-600
     shadow-sm hover:shadow-md shadow-gray-300 dark:shadow-gray-900 dark:hover:shadow-teal-900/50`}>
-  <div class="flex flex-col md:flex-row items-start md:items-center justify-between">
+  <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-1">
     <div class="inline-block">
-      <h2 class="font-bold text-lg underline">
+      <h2 class="font-bold text-xl underline">
         {@render Anchor(getPostUrl(indexPost), indexPost.title)}
       </h2>
       {#if posts.length > 1}
         {#each posts as post}
           {#if post.lang !== indexLanguage}
-            <h3 class="font-bold text-sm underline">
+            <h3 class="font-bold text-base underline">
               {@render Anchor(getPostUrl(post), post.title)}
             </h3>
           {/if}
@@ -51,9 +51,9 @@
           {#each posts as post}
             <button
               class={
-                `transition px-2 py-0.5 rounded-md [&:not(:last-child)]:mr-1
-               hover:bg-lime-200 active:bg-lime-300 dark:hover:bg-slate-600 dark:active:bg-teal-800
-                ${indexLanguage === post.lang ? 'underline' : ''}`
+                `transition px-2 py-1 md:py-0.5 rounded-md [&:not(:last-child)]:mr-2
+               hover:bg-gray-300 active:bg-lime-200 dark:hover:bg-slate-600 dark:active:bg-teal-800
+                ${indexLanguage === post.lang ? 'underline bg-gray-200/50 dark:bg-gray-700/60' : ''}`
               }
               type="button"
               onclick={() => indexLanguage = post.lang}
