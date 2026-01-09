@@ -14,6 +14,12 @@
   const getPostUrl = (post: PostMetadata) => `/post/${post.date.split('-')[0]}/${post.id}/`;
 </script>
 
+{#snippet Anchor(href: string, text: string)}
+  <a href={href} class="text-sky-500 visited:text-purple-600 hover:brightness-125 active:brightness-150 mr-2">
+    {text}
+  </a>
+{/snippet}
+
 <section
   class={`flex flex-col px-4 py-3 md:py-2 transition border rounded-md hover:bg-teal-50 dark:hover:bg-teal-700/20
     border-gray-200 hover:border-teal-200 dark:border-gray-600 dark:hover:border-teal-600
@@ -21,10 +27,7 @@
   <div class="flex flex-col md:flex-row items-start md:items-center justify-between">
     <div class="inline-block">
       <h2 class="inline-block font-bold text-lg underline">
-        <a href={getPostUrl(indexPost)}
-          class="text-sky-500 visited:text-purple-600 hover:brightness-125 active:brightness-150 mr-2">
-          {indexPost.title}
-        </a>
+        {@render Anchor(getPostUrl(indexPost), indexPost.title)}
       </h2>
     </div>
     <span class="text-sm flex flex-row self-stretch justify-between items-center">
@@ -62,10 +65,7 @@
         {#if post.lang !== indexLanguage}
           <div>
             <h3 class="inline-block text-sm font-bold underline">
-              <!-- [TODO] Extract into snippet -->
-              <a href={getPostUrl(post)} class="text-sky-500 visited:text-purple-600 hover:brightness-125 active:brightness-150 mr-2">
-                {post.title}
-              </a>
+              {@render Anchor(getPostUrl(post), post.title)}
             </h3>
           </div>
         {/if}
