@@ -6,7 +6,7 @@
 </script>
 <div class="flex flex-row flex-grow justify-center lg:pr-[300px]">
   <Profile />
-  <PostList posts={data.posts} curIndex={data.curIndex} maxIndex={data.maxIndex} />
+  <PostList groupedPosts={data.groupedPosts} curIndex={data.curIndex} maxIndex={data.maxIndex} />
   <!-- Placeholder element -->
   <div class="max-w-[300px]"></div>
 </div>

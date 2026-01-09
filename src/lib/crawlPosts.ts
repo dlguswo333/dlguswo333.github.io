@@ -60,6 +60,15 @@ export const getDateLangIdFromPostPath = (postPath: string) => {
   };
 };
 
+const removeDateLangFromPostId = (id: string) => {
+  const regexResult = regex.postFileNameFormat.exec(`${id}.md`);
+  if (!regexResult) {
+    throw new Error(`${id} does not follow the post file name format!`);
+  }
+  const idWithoutDateLang = regexResult[5];
+  return idWithoutDateLang;
+};
+
 export const crawlPost = async (postPath: string): Promise<PostMetadata> => {
   const postContent = await fs.readFile(postPath, {encoding: 'utf-8'});
   const frontmatter = await getFrontmatterFromMarkdown<Frontmatter>(postContent);
@@ -115,21 +124,22 @@ const crawlPosts = async (): Promise<PostMetadata[]> => {
   return posts;
 };
 
+/** Group by topic so that same posts with multi languages are clustered. */
+export const groupPostsByTopic = (posts: PostMetadata[]): PostMetadata[][] => {
+  const groupedById = Object.groupBy(
+    posts,
+    (post) => `${post.date}-${removeDateLangFromPostId(post.id)}`
+  );
+  return Object.values(groupedById).filter(v => v !== undefined);
+};
+
 /** Get available language list of the post according to fileNames */
 export const getAvailableLanguagesOfPost = async (postFilePath: string): Promise<string[]> => {
   const {date, id} = getDateLangIdFromPostPath(postFilePath);
   const crawledResult = await crawlPosts();
-  const removeDateLangFromId = (id: string) => {
-    const regexResult = regex.postFileNameFormat.exec(`${id}.md`);
-    if (!regexResult) {
-      throw new Error(`${id} does not follow the post file name format!`);
-    }
-    const idWithoutDateLang = regexResult[5];
-    return idWithoutDateLang;
-  };
-  const idWithoutDateLang = removeDateLangFromId(id);
+  const idWithoutDateLang = removeDateLangFromPostId(id);
   const matchingPosts = crawledResult.filter((candidate) =>
-    date === candidate.date && idWithoutDateLang === removeDateLangFromId(candidate.id));
+    date === candidate.date && idWithoutDateLang === removeDateLangFromPostId(candidate.id));
   return matchingPosts.map(({lang}) => lang);
 };
 
