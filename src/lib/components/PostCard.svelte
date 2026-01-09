@@ -26,11 +26,20 @@
     shadow-sm hover:shadow-md shadow-gray-300 dark:shadow-gray-900 dark:hover:shadow-teal-900/50`}>
   <div class="flex flex-col md:flex-row items-start md:items-center justify-between">
     <div class="inline-block">
-      <h2 class="inline-block font-bold text-lg underline">
+      <h2 class="font-bold text-lg underline">
         {@render Anchor(getPostUrl(indexPost), indexPost.title)}
       </h2>
+      {#if posts.length > 1}
+        {#each posts as post}
+          {#if post.lang !== indexLanguage}
+            <h3 class="font-bold text-sm underline">
+              {@render Anchor(getPostUrl(post), post.title)}
+            </h3>
+          {/if}
+        {/each}
+      {/if}
     </div>
-    <span class="text-sm flex flex-row self-stretch justify-between items-center">
+    <div class="text-sm flex flex-row self-stretch md:self-start justify-between items-center">
       <span>
         {indexPost.date}
         {#if indexPost.editedDate}
@@ -56,22 +65,8 @@
           {indexLanguage}
         {/if}
       </span>
-    </span>
-  </div>
-  {#if posts.length > 1}
-    <!-- [TODO] Move right below the index title -->
-    <div class="mb-1">
-      {#each posts as post}
-        {#if post.lang !== indexLanguage}
-          <div>
-            <h3 class="inline-block text-sm font-bold underline">
-              {@render Anchor(getPostUrl(post), post.title)}
-            </h3>
-          </div>
-        {/if}
-      {/each}
     </div>
-  {/if}
+  </div>
   <div>
     <span>
       {#if indexPost.category}
