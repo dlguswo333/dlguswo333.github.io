@@ -6,6 +6,7 @@ import {error} from '@sveltejs/kit';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import type {PageServerLoad} from './$types';
+import {getImageSizes} from '$lib/server';
 
 export const load: PageServerLoad = async ({params}) => {
   const {year, slug} = params;
@@ -25,7 +26,8 @@ export const load: PageServerLoad = async ({params}) => {
     const frontmatter = await getFrontmatterFromMarkdown<Frontmatter>(rawContent);
     const {root, tocData} = await getHtmlFromMarkdown(rawContent, !!frontmatter?.toc);
     const langs = await getAvailableLanguagesOfPost(postFilePath);
-    return {root, frontmatter, date, lang, id, tocData, langs};
+    const imageSizes = await getImageSizes();
+    return {root, frontmatter, date, lang, id, tocData, langs, imageSizes};
   } catch (e) {
     console.error(e);
     error(500);

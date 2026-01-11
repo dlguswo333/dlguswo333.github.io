@@ -13,6 +13,7 @@
     className?: string | null;
     /** If toc data exists, it means it needs show toc button. */
     tocDataExists?: boolean;
+    imageSizes?: Record<string, {width: number; height: number}>;
     children?: import('svelte').Snippet;
   }
 
@@ -20,6 +21,7 @@
     root = null,
     className = null,
     tocDataExists = false,
+    imageSizes,
     children,
   }: Props = $props();
 
@@ -128,6 +130,6 @@ Render raw html in main section.
 <main class={`max-w-[800px] w-full py-2 ${className ? className : ''}`} bind:this={mainHtml}>
   {@render children?.()}
   {#if root}
-    <Markdowner node={root} />
+    <Markdowner node={root} imageSizes={imageSizes} />
   {/if}
 </main>
