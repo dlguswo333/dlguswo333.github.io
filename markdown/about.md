@@ -1,4 +1,4 @@
-Hi, my name is Lee Hyeonjae, a lifelong student majoring in software, in South Korea.\
+Hi, my name is Lee Hyeonjae, a lifelong student majoring in software, in South Korea.
 
 I am interested in almost every part of computer science,
 but if I need to pick what is my favorite, I would pick Web Frontend.
