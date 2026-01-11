@@ -3,6 +3,19 @@ import {readdir} from 'fs/promises';
 import {imageSizeFromFile} from 'image-size/fromFile';
 import {rootPath} from 'get-root-path';
 import {join as joinPath} from 'path';
+import fs from 'node:fs/promises';
+import FileBasedCache from './FileBasedCache';
+
+const imageSizeCacheFilePath = './.images.json';
+
+export const fileExists = async (filePath: string) => {
+  try {
+    await fs.stat(filePath);
+    return true;
+  } catch {
+    return false;
+  }
+};
 
 export const getCurrentPaginationIndex = (url: URL) => {
   const {pathname} = url;
@@ -37,6 +50,8 @@ export const getImageSize = async (imgPath: string): Promise<{width: number; hei
  * Related logics may malfunction if such setups change.
  */
 export const getImageSizes = async () => {
+  const imageSizeCache = new FileBasedCache<Awaited<ReturnType<typeof getImageSize>>>(imageSizeCacheFilePath);
+  await imageSizeCache.initCache();
   const supportedFormats = ['webp', 'png', 'jpeg', 'jpg', 'svg'];
   const staticFolderPath = joinPath(rootPath, 'static');
   const imageFolderPath = joinPath(staticFolderPath, 'img');
@@ -47,12 +62,13 @@ export const getImageSizes = async () => {
   const result: Record<string, Awaited<ReturnType<typeof getImageSize>>> = {};
   for (const imageFile of imageFiles) {
     const imagePath = joinPath(imageFile.parentPath, imageFile.name);
-    const imageSize = await getImageSize(imagePath);
+    const imageSize = await imageSizeCache.get(imagePath, async () => await getImageSize(imagePath));
     const imageSrc = imagePath.replace(staticFolderPath, '');
     if (!imageSrc) {
       throw new Error('Could not get image src');
     }
     result[imageSrc] = imageSize;
   }
+  await imageSizeCache.rewriteCache();
   return result;
 };
