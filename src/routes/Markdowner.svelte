@@ -8,15 +8,16 @@
 
   interface Props {
     node: Parent | RootContent;
+    imageSizes?: Record<string, {width: number; height: number}>;
   }
-  const {node}: Props = $props();
+  const {node, imageSizes}: Props = $props();
   const voidElements = ['br', 'hr', 'img', 'input', 'link'];
 </script>
 
 {#snippet Child()}
   {#if 'children' in node}
     {#each node.children as child}
-      <Self node={child} />
+      <Self node={child} imageSizes={imageSizes} />
     {/each}
   {/if}
 {/snippet}
@@ -27,7 +28,7 @@
 {:else if 'tagName' in node}
   {#if voidElements.includes(node.tagName)}
     {#if node.tagName === 'img'}
-      <Img properties={node.properties} />
+      <Img properties={node.properties} imageSizes={imageSizes} />
     {:else}
       <svelte:element this={node.tagName} {...node.properties} />
     {/if}

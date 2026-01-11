@@ -3,6 +3,7 @@ import path from 'node:path';
 import {getFrontmatterFromMarkdown, getSummaryFromMarkdown} from './markdown';
 import {postBasePath} from '$lib';
 import type {CachedPostMetadata, Frontmatter, PostMetadata} from './types';
+import {fileExists} from '$lib/server';
 
 const summaryLength = 100;
 export const crawlResultFilePath = './.posts.json';
@@ -15,15 +16,6 @@ const regex = {
 export const compareStringDesc = (a: string, b: string) => (
   b.localeCompare(a)
 );
-
-const fileExists = async (filePath: string) => {
-  try {
-    await fs.stat(filePath);
-    return true;
-  } catch {
-    return false;
-  }
-};
 
 export const getPostPaths = async () => {
   const postPaths = [];
