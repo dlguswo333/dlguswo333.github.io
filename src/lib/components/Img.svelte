@@ -22,21 +22,25 @@
   });
 </script>
 {#if imgSize}
-  <img
-    {...properties}
-    title='Click to open in a new tab'
-    role='button'
-    onclick={onclick}
-    loading="lazy"
-    width={imgSize.width}
-    height={imgSize.height}
-  />
+  <span style:aspect-ratio={`${imgSize.width} / ${imgSize.height}`} class="block max-w-[100%] max-h-[55vh] mx-auto my-1 bg-gray-100 dark:bg-zinc-900">
+    <img
+      {...properties}
+      title='Click to open in a new tab'
+      role='button'
+      onclick={onclick}
+      loading="lazy"
+      width={imgSize.width}
+      height={imgSize.height}
+    />
+  </span>
 {:else}
-  <img
-    {...properties}
-    title='Click to open in a new tab'
-    role='button'
-    onclick={onclick}
-    loading="lazy"
-  />
+  <span class="block max-w-[100%] max-h-[55vh] w-fit h-fit mx-auto my-1 bg-gray-100 dark:bg-zinc-900">
+    <img
+      {...properties}
+      title='Click to open in a new tab'
+      role='button'
+      onclick={onclick}
+      loading="lazy"
+    />
+  </span>
 {/if}
