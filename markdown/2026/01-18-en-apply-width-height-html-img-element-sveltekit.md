@@ -11,7 +11,7 @@ author:
 I applied `width` and `height` HTML attributes on `img` elements in my blog
 which is built with Sveltekit.
 This helped prevent layout shifts where `img` elements' heights change upon
-images loading and other HTML elements in the same flow change their positions.
+images loading and other HTML elements in the same flow shift their positions.
 
 # Layout Shift in My Blog
 
@@ -23,7 +23,7 @@ images loading and other HTML elements in the same flow change their positions.
 Usually, before images load, if there is no information provided about
 how big the images are, browsers render them as big as `0x0`.
 Same goes with my blog; the images' heights increase from 0 to non-zero,
-thus impacting other HTML elements in the same flow change their positions.
+thus impacting other HTML elements in the same flow, shifting their positions.
 
 It affects user experience in a negative way. To give a simple example,
 users feel annoyance if texts bounce off somewhere else while reading.
@@ -141,7 +141,7 @@ export const getImageSizes = async () => {
 };
 ```
 
-To add this, I implemented a simple cache system which is a basically a JSON file for efficiency.
+Also, for efficiency I implemented a simple cache system which is a basically a JSON file.
 If an image file has not changed since the last time it was cached, it will return the value from the cache.
 
 I had 135 image files of 46MB total. Before adding the cache system, it took about 40ms and
@@ -195,7 +195,7 @@ so you need to get the whole dimension data of hundreds of image files.
 # Flickering Even With the Attributes
 I had `width: 100%` style rule to `img` elements
 because I wanted them to be as big as their parent horizontally.
-At the same time, I did not want portrait images to be big so it fill the window vertically.
+At the same time, I did not want portrait images to be too big so they fill the window vertically.
 So I added `max-height: 55vh` style rule.
 ```css
 img {
