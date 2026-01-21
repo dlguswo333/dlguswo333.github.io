@@ -13,10 +13,6 @@ export type PostMetadata = Frontmatter & {
   id: string;
 }
 
-export type CachedPostMetadata = PostMetadata & {
-  crawledTimestamp: number;
-}
-
 export type TOCItem = {
   text: string;
   depth: number;

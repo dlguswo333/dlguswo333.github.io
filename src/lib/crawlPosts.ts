@@ -2,11 +2,11 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import {getFrontmatterFromMarkdown, getSummaryFromMarkdown} from './markdown';
 import {postBasePath} from '$lib';
-import type {CachedPostMetadata, Frontmatter, PostMetadata} from './types';
-import {fileExists} from '$lib/server';
+import type {Frontmatter, PostMetadata} from './types';
+import FileBasedCache from './FileBasedCache';
 
 const summaryLength = 100;
-export const crawlResultFilePath = './.posts.json';
+export const crawlPostsCacheFilePath = './.posts.json';
 const regex = {
   wholeNumber: /^\d+$/,
   markdownExtension: /\.md$/i,
@@ -90,29 +90,19 @@ export const crawlPost = async (postPath: string): Promise<PostMetadata> => {
 };
 
 const crawlPosts = async (): Promise<PostMetadata[]> => {
-  let cachedPosts: { [postPath: string]: CachedPostMetadata } = {};
-  let rewriteCacheFile = false;
-  if (await fileExists(crawlResultFilePath)) {
-    const cacheFileContent = await fs.readFile(crawlResultFilePath, {encoding: 'utf-8'});
-    cachedPosts = JSON.parse(cacheFileContent) as {[k: string]: CachedPostMetadata};
-  }
+  const crawlPostsCache = new FileBasedCache<PostMetadata>(crawlPostsCacheFilePath);
+  await crawlPostsCache.initCache();
   const posts = [];
+
   const postPaths = await getPostPaths();
   for (const postPath of postPaths) {
-    const fileStat = await fs.stat(postPath);
-    if (cachedPosts[postPath]?.crawledTimestamp >= fileStat.mtimeMs) {
-      const {crawledTimestamp: _, ...clonedPost} = {...cachedPosts[postPath]};
-      posts.push(clonedPost);
-      continue;
-    }
-    rewriteCacheFile = true;
-    const crawledResult = await crawlPost(postPath);
+    const crawledResult = await crawlPostsCache.get(postPath, async () => {
+      const crawledResult = await crawlPost(postPath);
+      return crawledResult;
+    });
     posts.push(crawledResult);
-    cachedPosts[postPath] = {...crawledResult, crawledTimestamp: fileStat.mtimeMs};
   }
-  if (rewriteCacheFile) {
-    await fs.writeFile(crawlResultFilePath, JSON.stringify(cachedPosts));
-  }
+  await crawlPostsCache.rewriteCache();
   return posts;
 };
 
