@@ -1,5 +1,6 @@
 import fs from 'node:fs/promises';
 import {fileExists} from '$lib/server';
+import * as z from 'zod';
 
 /**
  * This class wraps file-related logics with a json format cache file.\
@@ -12,13 +13,17 @@ import {fileExists} from '$lib/server';
  */
 class FileBasedCache<Value> {
   private cacheFilePath: string;
-  private cache: Record<string, ({data: Value; crawledTimestamp: number;})>;
+  private cache: Record<string, {data: Value; crawledTimestamp: number;}>;
   private shouldRewriteCache: boolean;
+  private valueType: z.ZodType<Value> | undefined;
 
-  constructor (cacheFilePath: string) {
+  constructor (cacheFilePath: string, valueType?: typeof this.valueType) {
     this.cacheFilePath = cacheFilePath;
     this.cache = {};
     this.shouldRewriteCache = false;
+    if (valueType) {
+      this.valueType = valueType;
+    }
   }
 
   public async initCache () {
@@ -26,8 +31,13 @@ class FileBasedCache<Value> {
       return;
     }
     const cacheFileContent = await fs.readFile(this.cacheFilePath, {encoding: 'utf-8'});
-    const parseResult = JSON.parse(cacheFileContent) as typeof this.cache;
-    this.cache = parseResult;
+    if (this.valueType !== undefined) {
+      const parseResult = z.record(z.string(), z.object({data: this.valueType, crawledTimestamp: z.number()})).parse(JSON.parse(cacheFileContent));
+      this.cache = parseResult;
+    } else {
+      const parseResult = JSON.parse(cacheFileContent) as typeof this.cache;
+      this.cache = parseResult;
+    }
   }
 
   public async get (filePath: string, getter: (filePath: string) => Promise<Value>): Promise<Value> {
@@ -47,9 +57,11 @@ class FileBasedCache<Value> {
       return;
     }
     this.shouldRewriteCache = false;
+    if (this.valueType !== undefined) {
+      z.record(z.string(), z.object({data: this.valueType, crawledTimestamp: z.number()})).parse(this.cache);
+    }
     await fs.writeFile(this.cacheFilePath, JSON.stringify(this.cache));
   }
-
 }
 
 export default FileBasedCache;
