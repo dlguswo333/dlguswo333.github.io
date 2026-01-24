@@ -5,6 +5,7 @@ import {rootPath} from 'get-root-path';
 import {join as joinPath} from 'path';
 import fs from 'node:fs/promises';
 import FileBasedCache from './FileBasedCache';
+import z from 'zod';
 
 const imageSizeCacheFilePath = './.images.json';
 
@@ -50,7 +51,10 @@ export const getImageSize = async (imgPath: string): Promise<{width: number; hei
  * Related logics may malfunction if such setups change.
  */
 export const getImageSizes = async () => {
-  const imageSizeCache = new FileBasedCache<Awaited<ReturnType<typeof getImageSize>>>(imageSizeCacheFilePath);
+  const imageSizeCache = new FileBasedCache(
+    imageSizeCacheFilePath,
+    z.object({width: z.int().positive(), height: z.int().positive()})
+  );
   await imageSizeCache.initCache();
   const supportedFormats = ['webp', 'png', 'jpeg', 'jpg', 'svg'];
   const staticFolderPath = joinPath(rootPath, 'static');

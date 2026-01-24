@@ -1,3 +1,13 @@
+import * as z from 'zod';
+
+export const frontmatterType = z.object({
+  title: z.string(),
+  toc: z.boolean().nullable(),
+  editedDate: z.string().nullable(),
+  category: z.string().nullable(),
+  tags: z.string().array(),
+});
+
 export type Frontmatter = {
   title: string;
   toc: boolean | null;
@@ -5,6 +15,14 @@ export type Frontmatter = {
   category: string | null;
   tags: string[];
 }
+
+export const postMetadataType = z.object({
+  ...frontmatterType.shape,
+  summary: z.string().nullable(),
+  lang: z.string(),
+  date: z.string(),
+  id: z.string(),
+});
 
 export type PostMetadata = Frontmatter & {
   summary: string | null;
