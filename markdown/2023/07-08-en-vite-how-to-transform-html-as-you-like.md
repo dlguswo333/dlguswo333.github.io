@@ -4,7 +4,7 @@ toc: true
 math: false
 editedDate: 2025-11-20
 title: "Vite: How to Transform HTML as You Like"
-category: ["Programming"]
+category: "Programming"
 tags: [web, vite, javascript]
 author:
   - 이현재

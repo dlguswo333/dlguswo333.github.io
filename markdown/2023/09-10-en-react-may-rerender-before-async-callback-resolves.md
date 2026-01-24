@@ -3,7 +3,7 @@ layout: post
 toc: false
 editedDate: 2024-11-02
 title: "React may Rerender before Async Callback Resolves"
-category: ["Programming"]
+category: "Programming"
 tags: [web, react, javascript]
 author:
   - 이현재

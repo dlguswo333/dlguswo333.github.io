@@ -1,7 +1,7 @@
 ---
 toc: false
 title: "window.location is not Blocking"
-category: ["Programming"]
+category: "Programming"
 tags: [javascript, web]
 author:
   - 이현재

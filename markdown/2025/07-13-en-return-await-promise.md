@@ -1,7 +1,7 @@
 ---
 toc: false
 title: "Return Await for your Stack Trace"
-category: ["Programming"]
+category: "Programming"
 tags: [javascript]
 author:
   - 이현재

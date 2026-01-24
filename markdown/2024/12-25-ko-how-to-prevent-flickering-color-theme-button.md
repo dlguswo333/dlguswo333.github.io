@@ -2,7 +2,7 @@
 layout: post
 toc: true
 title: "컬러 테마 버튼 플리커링 예방하기"
-category: ["Programming"]
+category: "Programming"
 tags: [javascript, svelte, sveltekit, html, css]
 author:
   - 이현재
@@ -51,7 +51,7 @@ HTML 파일을 생성할 때 서버는 클라이언트가 어떤 컬러 테마�
 <br><br>
 
 해결을 해보려 해도 서버가 없는 Prerender 단계에서 브라우저의 테마를 알기는 불가능한 일입니다.
-브라우저에서 업데이트 하기 전까지 HTML을 페인트 하지 않는 방식도 
+브라우저에서 업데이트 하기 전까지 HTML을 페인트 하지 않는 방식도
 가능하고 안하고는 둘째 치고 좋은 방법은 아닙니다.
 Prerender는 페이지를 최대한 빨리 보여주기 위함인데
 테마 버튼이 깜빡인다고 그리지 않는 것은 너무한 처사입니다.

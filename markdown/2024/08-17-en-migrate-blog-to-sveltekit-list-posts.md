@@ -1,9 +1,9 @@
 ---
 layout: post
 toc: true
-editedDate: 2025-12-28
+editedDate: 2026-01-24
 title: "Let's Migrate Github Blog to Sveltekit: List Posts"
-category: ["Programming"]
+category: "Programming"
 tags: [migrate-blog-to-sveltekit, web, svelte, sveltekit, javascript]
 author:
   - 이현재
@@ -90,7 +90,7 @@ This kind of yaml syntaxes in front of markdown files are called `frontmatters`.
 
 ```yaml
 title: "Let's Migrate Github Blog to Sveltekit: List Posts"
-category: ["Programming"]
+category: "Programming"
 tags: [migrate-blog-to-sveltekit, web, svelte, sveltekit, javascript]
 ```
 <br>

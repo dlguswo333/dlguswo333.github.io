@@ -2,7 +2,7 @@
 layout: post
 toc: true
 title: "이탈리아 돌로미티 오르티세이 렌트카 여행"
-category: ["IRL"]
+category: "IRL"
 tags: [Review, Travel]
 author:
   - 이현재

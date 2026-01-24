@@ -3,7 +3,7 @@ layout: post
 toc: true
 editedDate: 2021-12-25
 title: "k Means Clustering"
-category: ["Computer Science"]
+category: "Computer Science"
 tags: [Algorithms, Python]
 author:
   - 이현재

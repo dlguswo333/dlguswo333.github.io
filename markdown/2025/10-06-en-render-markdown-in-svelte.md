@@ -1,7 +1,7 @@
 ---
 toc: true
 title: "Render Markdown in Svelte Component"
-category: ["Programming"]
+category: "Programming"
 tags: [web, svelte, sveltekit, javascript]
 author:
   - 이현재

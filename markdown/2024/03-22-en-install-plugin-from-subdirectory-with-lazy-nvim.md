@@ -2,7 +2,7 @@
 layout: post
 toc: true
 title: "How to Install Plugin from Subdirectory with lazy.nvim Plugin Manger"
-category: ["Programming"]
+category: "Programming"
 tags: [neovim, vim]
 author:
   - 이현재

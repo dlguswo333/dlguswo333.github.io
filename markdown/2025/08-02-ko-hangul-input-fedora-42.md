@@ -1,7 +1,7 @@
 ---
 toc: false
 title: "Fedora 42 KDE에 한글 입력하기"
-category: ["Programming"]
+category: "Programming"
 tags: [Linux]
 author:
   - 이현재

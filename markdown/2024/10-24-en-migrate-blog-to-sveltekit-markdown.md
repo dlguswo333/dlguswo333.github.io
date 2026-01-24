@@ -2,7 +2,7 @@
 layout: post
 toc: true
 title: "Let's Migrate Github Blog to Sveltekit: Markdown"
-category: ["Programming"]
+category: "Programming"
 tags: [migrate-blog-to-sveltekit, web, svelte, sveltekit, javascript, markdown]
 author:
   - 이현재

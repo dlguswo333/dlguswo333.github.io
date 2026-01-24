@@ -1,7 +1,7 @@
 ---
 toc: false
 title: "Vite: Library Mode and Assets Inline"
-category: ["Programming"]
+category: "Programming"
 tags: [javascript, web, vite]
 author:
   - 이현재

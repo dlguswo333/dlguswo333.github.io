@@ -1,7 +1,7 @@
 ---
 toc: true
 title: "인천 국제 공항 스마트패스 후기"
-category: ["IRL"]
+category: "IRL"
 tags: ["Review"]
 editedDate: 2025-11-20
 author:

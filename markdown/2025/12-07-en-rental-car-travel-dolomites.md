@@ -2,7 +2,7 @@
 layout: post
 toc: true
 title: "Rental Car Travel in Ortisei, Dolomites, Italy"
-category: ["IRL"]
+category: "IRL"
 tags: [Review, Travel]
 author:
   - 이현재
