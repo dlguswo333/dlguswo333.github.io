@@ -1,7 +1,7 @@
 ---
 toc: true
 title: "Svelte '<style>' String Bug"
-category: ["Programming"]
+category: "Programming"
 tags: [web, svelte, sveltekit, javascript]
 author:
   - 이현재

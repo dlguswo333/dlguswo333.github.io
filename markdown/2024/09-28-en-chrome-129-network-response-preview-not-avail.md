@@ -3,7 +3,7 @@ layout: post
 toc: true
 editedDate: 2024-10-20
 title: "Chrome 129 does not Show Network Response Preview"
-category: ["Programming"]
+category: "Programming"
 tags: [web]
 author:
   - 이현재

@@ -2,7 +2,7 @@
 layout: post
 toc: true
 title: "안드로이드 폰에서 내 파일은 안전할까?"
-category: ["Programming"]
+category: "Programming"
 tags: [security, mobile, android]
 author:
   - 이현재

@@ -1,7 +1,7 @@
 ---
 toc: true
 title: "useAbortController Hook"
-category: ["Programming"]
+category: "Programming"
 tags: [web, react, javascript, typescript]
 author:
   - 이현재

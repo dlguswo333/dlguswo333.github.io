@@ -2,7 +2,7 @@
 layout: post
 toc: true
 title: "Windows 11 한글 IME 입력 이슈"
-category: ["Programming"]
+category: "Programming"
 tags: [windows, IME, hangul, javascript]
 author:
   - 이현재

@@ -2,7 +2,7 @@
 layout: post
 toc: true
 title: "Typescript 5.5 주목할만한 변경점"
-category: ["Programming"]
+category: "Programming"
 tags: [typescript]
 author:
   - 이현재
@@ -47,7 +47,7 @@ function getIsBird(animal: Bird | Fish): animal is Bird {
 ```
 
 이렇게 `arg is Type` 불린을 반환하는 함수를 *Type Guard* 함수라고 부릅니다.
->To define a user-defined type guard, we simply need to define 
+>To define a user-defined type guard, we simply need to define
 >a function whose return type is a type predicate:<br>
 >https://www.typescriptlang.org/docs/handbook/2/narrowing.html#using-type-predicates
 
@@ -134,7 +134,7 @@ const birds = animals
 
 ```ts
 // No Inferred Type Predicate
-function getIsBird (animal: Bird | Fish) { 
+function getIsBird (animal: Bird | Fish) {
   if ('fly' in animal) {
     return true;
   }

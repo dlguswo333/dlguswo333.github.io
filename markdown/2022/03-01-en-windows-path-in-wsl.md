@@ -3,7 +3,7 @@ layout: post
 toc: false
 editedDate: 2024-12-14
 title: "Windows Path In WSL"
-category: ["Programming"]
+category: "Programming"
 tags: [windows, wsl]
 author:
   - 이현재

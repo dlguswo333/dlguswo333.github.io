@@ -2,7 +2,7 @@
 layout: post
 toc: true
 title: "Apply Width and Height HTML Attributes on img Element in Sveltekit"
-category: ["Programming"]
+category: "Programming"
 tags: [html, web, javascript, svelte, sveltekit]
 author:
   - 이현재

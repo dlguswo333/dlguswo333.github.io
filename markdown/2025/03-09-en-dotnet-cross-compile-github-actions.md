@@ -2,7 +2,7 @@
 layout: post
 toc: false
 title: "Cross Compile .NET Projects with Github Actions"
-category: [Programming]
+category: Programming
 tags: [dotnet, git]
 author:
   - 이현재

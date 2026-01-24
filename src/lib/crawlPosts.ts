@@ -2,7 +2,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import {getFrontmatterFromMarkdown, getSummaryFromMarkdown} from './markdown';
 import {postBasePath} from '$lib';
-import type {Frontmatter, PostMetadata} from './types';
+import {postMetadataType, type Frontmatter, type PostMetadata} from './types';
 import FileBasedCache from './FileBasedCache';
 
 const summaryLength = 100;
@@ -90,7 +90,10 @@ export const crawlPost = async (postPath: string): Promise<PostMetadata> => {
 };
 
 const crawlPosts = async (): Promise<PostMetadata[]> => {
-  const crawlPostsCache = new FileBasedCache<PostMetadata>(crawlPostsCacheFilePath);
+  const crawlPostsCache = new FileBasedCache(
+    crawlPostsCacheFilePath,
+    postMetadataType
+  );
   await crawlPostsCache.initCache();
   const posts = [];
 

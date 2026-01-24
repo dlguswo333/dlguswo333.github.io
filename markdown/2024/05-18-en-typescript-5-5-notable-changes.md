@@ -2,7 +2,7 @@
 layout: post
 toc: true
 title: "Typescript 5.5 Noticeable Changes"
-category: ["Programming"]
+category: "Programming"
 tags: [typescript]
 author:
   - 이현재

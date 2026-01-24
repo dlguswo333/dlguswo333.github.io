@@ -2,7 +2,7 @@
 layout: post
 toc: true
 title: "Ortisei Dolomites Italy Travel: Seceda and Alpe Di Siusi"
-category: ["IRL"]
+category: "IRL"
 tags: [Review, Travel]
 author:
   - 이현재

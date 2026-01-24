@@ -2,7 +2,7 @@
 layout: post
 toc: true
 title: "I Bought Thinkpad t14s Gen 6 AMD"
-category: ["IRL"]
+category: "IRL"
 tags: [Review, laptop]
 author:
   - 이현재

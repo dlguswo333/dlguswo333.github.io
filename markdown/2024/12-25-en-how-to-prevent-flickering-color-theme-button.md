@@ -2,7 +2,7 @@
 layout: post
 toc: true
 title: "Prevent Color Theme Button Flickering"
-category: ["Programming"]
+category: "Programming"
 tags: [javascript, svelte, sveltekit, html, css]
 author:
   - 이현재

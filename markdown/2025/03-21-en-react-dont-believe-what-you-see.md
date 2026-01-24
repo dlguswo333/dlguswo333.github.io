@@ -3,7 +3,7 @@ layout: post
 toc: true
 math: false
 title: "React: Don't Believe What You See (By its Surface)"
-category: ["Programming"]
+category: "Programming"
 tags: [web, react, javascript]
 author:
   - 이현재
