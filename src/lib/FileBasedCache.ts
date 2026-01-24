@@ -15,14 +15,14 @@ class FileBasedCache<Value> {
   private cacheFilePath: string;
   private cache: Record<string, {data: Value; crawledTimestamp: number;}>;
   private shouldRewriteCache: boolean;
-  private valueType: z.ZodType<Value> | undefined;
+  private cacheType: z.ZodType<typeof this.cache> | undefined;
 
-  constructor (cacheFilePath: string, valueType?: typeof this.valueType) {
+  constructor (cacheFilePath: string, valueType?: z.ZodType<Value>) {
     this.cacheFilePath = cacheFilePath;
     this.cache = {};
     this.shouldRewriteCache = false;
     if (valueType) {
-      this.valueType = valueType;
+      this.cacheType = z.record(z.string(), z.object({data: valueType, crawledTimestamp: z.number()}));
     }
   }
 
@@ -31,8 +31,8 @@ class FileBasedCache<Value> {
       return;
     }
     const cacheFileContent = await fs.readFile(this.cacheFilePath, {encoding: 'utf-8'});
-    if (this.valueType !== undefined) {
-      const parseResult = z.record(z.string(), z.object({data: this.valueType, crawledTimestamp: z.number()})).parse(JSON.parse(cacheFileContent));
+    if (this.cacheType !== undefined) {
+      const parseResult = this.cacheType.parse(JSON.parse(cacheFileContent));
       this.cache = parseResult;
     } else {
       const parseResult = JSON.parse(cacheFileContent) as typeof this.cache;
@@ -57,8 +57,8 @@ class FileBasedCache<Value> {
       return;
     }
     this.shouldRewriteCache = false;
-    if (this.valueType !== undefined) {
-      z.record(z.string(), z.object({data: this.valueType, crawledTimestamp: z.number()})).parse(this.cache);
+    if (this.cacheType !== undefined) {
+      this.cacheType.parse(this.cache);
     }
     await fs.writeFile(this.cacheFilePath, JSON.stringify(this.cache));
   }
