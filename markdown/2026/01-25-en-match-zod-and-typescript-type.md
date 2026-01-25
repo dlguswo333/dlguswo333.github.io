@@ -124,4 +124,17 @@ getSomeData<BookData>(z.object({title: z.string(), pageCount: z.number().positiv
 getSomeData<BookData>(z.object({foo: z.string(), bar: z.number()}));
 ```
 
+Also, you can assign the zod variable the Typescript type to ensure if they are in sync.
+```ts
+type BookData = {
+    title: string;
+    pageCount: number;
+}
+
+const bookDataZod: z.ZodType<BookData> = z.object({
+  title: z.string().min(1),
+  pageCount: z.number().positive().int(),
+});
+```
+
 Happy coding!
