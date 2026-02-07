@@ -46,7 +46,7 @@
         {language}
       {/if}
     </div>
-    <button onclick={copy} class={getClasses('relative px-2 py-1 rounded-md text-sm bg-slate-100 dark:bg-slate-700 text-black dark:text-white hover:bg-slate-200 dark:hover:bg-slate-500 active:bg-emerald-300 dark:active:bg-emerald-400', {'text-transparent': !!copyResult})}>
+    <button onclick={copy} disabled={!!copyResult} class={getClasses('relative px-2 py-1 rounded-md text-sm text-black dark:text-white', {'bg-transparent text-transparent': !!copyResult, 'bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-500 active:bg-emerald-300 dark:active:bg-emerald-400': !copyResult})}>
       Copy
       {#if copyResult}
         <svg xmlns="http://www.w3.org/2000/svg" class="absolute w-[100%] h-[100%] left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] aspect-square p-1" viewBox="0 0 100 100">
