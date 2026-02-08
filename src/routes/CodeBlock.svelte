@@ -46,15 +46,17 @@
         {language}
       {/if}
     </div>
-    <button onclick={copy} disabled={!!copyResult} class={getClasses('relative px-2 py-1 rounded-md text-sm text-black dark:text-white', {'bg-transparent text-transparent': !!copyResult, 'bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-500 active:bg-emerald-300 dark:active:bg-emerald-400': !copyResult})}>
-      Copy
+    <div class="relative">
+      <button onclick={copy} class={getClasses('px-2 py-1 rounded-md text-sm bg-slate-100 dark:bg-slate-700 text-black dark:text-white hover:bg-slate-200 dark:hover:bg-slate-500 active:bg-emerald-300 dark:active:bg-emerald-400', {'invisible': !!copyResult})}>
+        Copy
+      </button>
       {#if copyResult}
-        <svg xmlns="http://www.w3.org/2000/svg" class="absolute w-[100%] h-[100%] left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] aspect-square p-1" viewBox="0 0 100 100">
+        <svg xmlns="http://www.w3.org/2000/svg" class="overflow-visible absolute w-[100%] h-[100%] left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] aspect-square p-1" viewBox="0 0 100 100">
           <circle cx="50" cy="50" r="50" fill="#3d3" />
           <path d="M 20 50 L 40 70 L 80 30 M 20 50 Z" stroke="white" stroke-linecap="round" stroke-width="10" fill="none" />
         </svg>
       {/if}
-    </button>
+    </div>
   </div>
   <!-- [NOTE] whitespaces within pre tag are render as-is even the indentations within the tag. -->
   <pre {...preProperties} bind:this={preElement}>{@render children?.()}</pre>
