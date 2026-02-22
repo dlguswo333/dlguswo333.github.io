@@ -73,7 +73,7 @@ The deposit was 200 euros and I prepaid 549.84 euros including full coverage.
 They charged me 349.84 euros on Monday October 13th excluding the deposit.
 ![rental-information](/img/2025-12-07-rental-car-travel-dolomites/rental-information.webp)
 
-As expeced I did not get a Ford I reserved but a Jeep Renegade. Thankfully it was a hybrid but...
+As expected I did not get a Ford I reserved but a Jeep Renegade. Thankfully it was a hybrid but...
 I will leave the details about the car I had at the travel review section.
 
 # How to Drive in Italy
