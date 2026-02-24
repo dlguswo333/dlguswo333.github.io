@@ -82,7 +82,7 @@
     </span>
   </div>
   {#if indexPost.summary}
-    <div class="mt-4" style={'overflow-wrap: anywhere;'}>
+    <div class="mt-4" style="overflow-wrap: anywhere;">
       {indexPost.summary}
     </div>
   {/if}

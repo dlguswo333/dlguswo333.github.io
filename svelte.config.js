@@ -20,8 +20,8 @@ const config = {
     prerender: {
       crawl: true,
       entries: ['*'],
-    }
-  }
+    },
+  },
 };
 
 export default config;
