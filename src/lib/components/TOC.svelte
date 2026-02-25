@@ -42,7 +42,7 @@ The scrollable height is not big enough to show the front child 'li' elements.
   <div class="w-full overflow-auto max-h-[80vh]">
     <div class="relative">
       <ul>
-        {#each data as item, ind}
+        {#each data as item, ind (item.id)}
           <TocItemComponent item={item} shouldBind={ind === 0} />
         {/each}
       </ul>

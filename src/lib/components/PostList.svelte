@@ -14,7 +14,7 @@
 </script>
 <MainSection className="flex flex-col items-center pb-3">
   <ul class="py-4">
-    {#each groupedPosts as posts}
+    {#each groupedPosts as posts (posts)}
       <li class="mb-5 last:mb-0 px-4">
         <PostCard posts={posts} />
       </li>

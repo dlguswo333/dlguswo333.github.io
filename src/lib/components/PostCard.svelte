@@ -3,6 +3,7 @@
   import Tag from '$lib/components/Tag.svelte';
   import type {PostMetadata} from '$lib/types';
   import Category from './Category.svelte';
+  import {resolve} from '$app/paths';
 
   interface Props {
     posts: PostMetadata[];
@@ -11,11 +12,12 @@
   const {posts}: Props = $props();
   let indexLanguage = $derived((posts.find(({lang}) => lang === defaultLang) ?? posts[0]).lang);
   const indexPost = $derived(posts.find(({lang}) => lang === indexLanguage))!;
-  const getPostUrl = (post: PostMetadata) => `/post/${post.date.split('-')[0]}/${post.id}/`;
 </script>
 
-{#snippet Anchor(href: string, text: string)}
-  <a href={href} class="text-sky-500 visited:text-purple-600 hover:brightness-125 active:brightness-150 mr-2">
+{#snippet Anchor(post: PostMetadata, text: string)}
+  <a
+    href={resolve(`/post/${post.date.split('-')[0]}/${post.id}/`)}
+    class="text-sky-500 visited:text-purple-600 hover:brightness-125 active:brightness-150 mr-2">
     {text}
   </a>
 {/snippet}
@@ -27,13 +29,13 @@
   <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-1">
     <div class="inline-block">
       <h2 class="font-bold text-xl underline">
-        {@render Anchor(getPostUrl(indexPost), indexPost.title)}
+        {@render Anchor(indexPost, indexPost.title)}
       </h2>
       {#if posts.length > 1}
-        {#each posts as post}
+        {#each posts as post (post.id)}
           {#if post.lang !== indexLanguage}
             <h3 class="font-bold text-base underline">
-              {@render Anchor(getPostUrl(post), post.title)}
+              {@render Anchor(post, post.title)}
             </h3>
           {/if}
         {/each}
@@ -48,7 +50,7 @@
       </span>
       <span class="ml-2">
         {#if posts.length > 1}
-          {#each posts as post}
+          {#each posts as post (post.id)}
             <button
               class={
                 `transition px-2 py-1 md:py-0.5 rounded-md [&:not(:last-child)]:mr-2
@@ -74,7 +76,7 @@
       {/if}
       <span>
         {#if indexPost.tags}
-          {#each indexPost.tags as tag, index}
+          {#each indexPost.tags as tag, index (tag)}
             <Tag tagName={tag} marginLeft={index === 0 ? 2 : 0} marginRight={1} />
           {/each}
         {/if}

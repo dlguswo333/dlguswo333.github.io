@@ -14,7 +14,7 @@ export type Frontmatter = {
   editedDate: string | null;
   category: string | null;
   tags: string[];
-}
+};
 
 export const postMetadataType = z.object({
   ...frontmatterType.shape,
@@ -29,7 +29,7 @@ export type PostMetadata = Frontmatter & {
   lang: string;
   date: string;
   id: string;
-}
+};
 
 export type TOCItem = {
   text: string;
@@ -42,4 +42,4 @@ export type ColorTheme = 'light' | 'dark';
 export type HeadingHighlight = {
   top: number;
   bottom: number;
-}
+};

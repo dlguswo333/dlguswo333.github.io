@@ -37,7 +37,7 @@
 <svelte:head>
   <title>{(postTitle ? `${postTitle} | ` : '')}{name}'s blog</title>
   {#if postAvailableLangs.length > 1}
-    {#each postAvailableLangs as lang}
+    {#each postAvailableLangs as lang (lang)}
       <link rel="alternate" hreflang={lang} href={new URL(getPostPathWithLang(lang), page.url.origin).toString()} />
     {/each}
   {/if}
@@ -62,14 +62,14 @@
           <Category categoryName={data.frontmatter.category} />
         {/if}
         <div>
-          {#each data.frontmatter.tags as tag, index}
+          {#each data.frontmatter.tags as tag, index (tag)}
             <Tag tagName={tag} marginLeft={index === 0 ? 2 : 0} marginRight={1} />
           {/each}
         </div>
         {#if postAvailableLangs.length > 1}
           <div>
             🌐
-            {#each postAvailableLangs as lang}
+            {#each postAvailableLangs as lang (lang)}
               <Lang
                 lang={lang}
                 getIsActive={(lang) => postLang === lang}

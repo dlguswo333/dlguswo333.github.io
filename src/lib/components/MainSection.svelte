@@ -111,6 +111,7 @@
     // This is most likely due to Svelte not recreating elements thus not running logics.
     // Thus depend on root props for reactivity.
     // See: https://github.com/dlguswo333/dlguswo333.github.io/issues/44
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     root;
     if ($tocItemHeight && mainHtml) {
       headings = [...mainHtml.querySelectorAll(headingSelector)];

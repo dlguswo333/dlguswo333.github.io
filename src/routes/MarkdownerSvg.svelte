@@ -13,7 +13,7 @@
 
 {#snippet Child()}
   {#if 'children' in node}
-    {#each node.children as child}
+    {#each node.children as child (child)}
       <Self node={child} />
     {/each}
   {/if}

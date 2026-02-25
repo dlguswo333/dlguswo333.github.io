@@ -28,7 +28,7 @@
     {/if}
   </div>
   <div class="flex flex-row items-center">
-    {#each links as {href, text, isActive}}
+    {#each links as {href, text, isActive} (href)}
       <HeaderLink href={href} text={text} isActive={isActive} />
     {/each}
   </div>

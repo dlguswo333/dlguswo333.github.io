@@ -45,7 +45,7 @@
 
 
 <ul class="m-2 flex flex-row items-center">
-  {#each displayIndices as index}
+  {#each displayIndices as index (index)}
     {#snippet anchor()}
       <a href={getHref(index)} class="font-semibold flex justify-between items-center px-2 py-1 dark:text-gray-200">
         {index}

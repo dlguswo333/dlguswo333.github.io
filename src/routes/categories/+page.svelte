@@ -10,13 +10,13 @@
     <TOC data={data.tocData} />
   {/if}
   <MainSection tocDataExists={!!data.tocData.length}>
-    {#each data.categories as {category, posts}}
+    {#each data.categories as {category, posts} (category)}
       <section class="mb-8 w-full">
         <h1 id={category} class="text-3xl font-bold pb-2 mb-3 border-b-2 scroll-mt-[50px]">
           {category}
         </h1>
         <ul>
-          {#each posts as post}
+          {#each posts as post (post.id)}
             <PostLine post={post} />
           {/each}
         </ul>
