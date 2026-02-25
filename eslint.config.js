@@ -6,16 +6,10 @@ import parser from 'svelte-eslint-parser';
 import js from '@eslint/js';
 import svelte from 'eslint-plugin-svelte';
 import stylistic from '@stylistic/eslint-plugin';
-import {dirname} from 'path';
-import {fileURLToPath} from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 
 export default defineConfig([
   globalIgnores(['build', '.svelte-kit']),
   {
-    basePath: __dirname,
     extends: [
       'js/recommended',
       '@typescript-eslint/recommended',
@@ -35,25 +29,28 @@ export default defineConfig([
       'svelte': svelte,
     },
     rules: {
-      'indent': ['error', 2],
+      '@stylistic/indent': ['error', 2],
       'svelte/indent': ['error', {
         indent: 2,
       }],
-      'quotes': ['error', 'single'],
-      'semi': ['error', 'always'],
-      'space-infix-ops': 'error',
-      'keyword-spacing': 'error',
-      'eol-last': 'error',
-      'comma-dangle': ['error', {
+      // This is too aggresive and svelte throws an error during the build if the internal link is not valid anyway.
+      // https://github.com/sveltejs/eslint-plugin-svelte/issues/1314
+      'svelte/no-navigation-without-resolve': 'off',
+      '@stylistic/quotes': ['error', 'single'],
+      '@stylistic/semi': ['error', 'always'],
+      '@stylistic/space-infix-ops': 'error',
+      '@stylistic/keyword-spacing': 'error',
+      '@stylistic/eol-last': 'error',
+      '@stylistic/comma-dangle': ['error', {
         'arrays': 'never',
         'objects': 'always-multiline',
         'imports': 'never',
         'exports': 'never',
         'functions': 'never',
       }],
-      'object-curly-spacing': 'error',
-      'space-before-function-paren': ['error', 'always'],
-      'space-before-blocks': ['error', 'always'],
+      '@stylistic/object-curly-spacing': 'error',
+      '@stylistic/space-before-function-paren': ['error', 'always'],
+      '@stylistic/space-before-blocks': ['error', 'always'],
       '@stylistic/arrow-spacing': ['error', {
         before: true,
         after: true,
