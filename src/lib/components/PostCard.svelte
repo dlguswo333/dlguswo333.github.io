@@ -26,8 +26,8 @@
   class={`flex flex-col px-4 py-4 md:py-3 transition border rounded-md hover:bg-teal-50 dark:hover:bg-teal-700/20
     border-gray-200 hover:border-teal-200 dark:border-gray-600 dark:hover:border-teal-600
     shadow-sm hover:shadow-md shadow-gray-300 dark:shadow-gray-900 dark:hover:shadow-teal-900/50`}>
-  <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-1">
-    <div class="inline-block">
+  <div class="flex flex-col md:flex-row gap-0 md:gap-1 items-start md:items-center justify-between mb-1">
+    <div class="inline-block flex-auto">
       <h2 class="font-bold text-xl underline">
         {@render Anchor(indexPost, indexPost.title)}
       </h2>
@@ -41,7 +41,7 @@
         {/each}
       {/if}
     </div>
-    <div class="text-sm flex flex-row self-stretch md:self-start justify-between items-center">
+    <div class="flex-grow-0 flex-shrink-0 basis-auto text-sm flex flex-row self-stretch md:self-start justify-between items-center">
       <span>
         {indexPost.date}
         {#if indexPost.editedDate}
