@@ -1,11 +1,13 @@
 import {sveltekit} from '@sveltejs/kit/vite';
 import {defineConfig, type PluginOption, type WebSocketServer} from 'vite';
 import {customEvent} from './src/lib';
+import type {ReloadPayloadData} from '$lib/types';
+
+const MARKDOWN_FILE_PATH_REGEX = /(\d+\/\d+-\d+-[a-z]{2}-[^.]+)\.md$/;
 
 /** Handle /posts/[year]/[slug] on markdown file change. */
 const handlePostPage = (filePath: string, {ws}: {ws: WebSocketServer}) => {
-  const markdownFilePathRegex = /(\d+\/\d+-\d+-[a-z]{2}-[^.]+)\.md$/;
-  const matchResult = filePath.match(markdownFilePathRegex);
+  const matchResult = filePath.match(MARKDOWN_FILE_PATH_REGEX);
   if (matchResult === null) {
     return;
   }
@@ -13,14 +15,27 @@ const handlePostPage = (filePath: string, {ws}: {ws: WebSocketServer}) => {
   ws.send({
     type: 'custom',
     event: customEvent.reload,
-    data: {path: `/post/${matchingUrlPath}`},
+    data: {paths: [{path: `/post/${matchingUrlPath}`, exact: false}]} satisfies ReloadPayloadData,
   });
 };
 
-// [TODO] Handle /posts.
+/** Handle /posts/[number] on markdown file change. Reload all since it may affect the entire list.  */
+const handlePostsPage = (filePath: string, {ws}: {ws: WebSocketServer}) => {
+  const matchResult = filePath.match(MARKDOWN_FILE_PATH_REGEX);
+  if (matchResult === null) {
+    return;
+  }
+  ws.send({
+    type: 'custom',
+    event: customEvent.reload,
+    data: {paths: [{path: '/posts', exact: false}, {path: '/', exact: true}]} satisfies ReloadPayloadData,
+  });
+};
+
 // [TODO] Handle /about.
 const handleMarkdownFileChange = (filePath: string, {ws}: {ws: WebSocketServer}) => {
   handlePostPage(filePath, {ws});
+  handlePostsPage(filePath, {ws});
 };
 
 const reloadPlugin = (): PluginOption => ({

@@ -43,3 +43,10 @@ export type HeadingHighlight = {
   top: number;
   bottom: number;
 };
+
+export type ReloadPayloadData = {
+  paths: {
+    path: string;
+    exact: boolean;
+  }[]
+};
