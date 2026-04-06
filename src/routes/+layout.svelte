@@ -7,6 +7,7 @@
   import {onMount} from 'svelte';
   import {customEvent, defaultTitle} from '$lib/index';
   import {page} from '$app/state';
+  import type {ReloadPayloadData} from '$lib/types';
 
   interface Props {
     children?: import('svelte').Snippet;
@@ -18,8 +19,11 @@
     if (import.meta.hot) {
       import.meta.hot.on(
         customEvent.reload,
-        (payload: {path: string}) => {
-          if (page.url.pathname.startsWith(payload.path)) {
+        (payload: ReloadPayloadData) => {
+          const matches = payload.paths.some(
+            ({path, exact}) => (exact && path === page.url.pathname) || (!exact && page.url.pathname.startsWith(path))
+          );
+          if (matches) {
             console.log(`${customEvent.reload} activated...`);
             window.location.reload();
           }

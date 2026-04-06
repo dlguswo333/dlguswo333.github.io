@@ -1,6 +1,7 @@
 import {sveltekit} from '@sveltejs/kit/vite';
 import {defineConfig, type PluginOption, type WebSocketServer} from 'vite';
 import {customEvent} from './src/lib';
+import type {ReloadPayloadData} from '$lib/types';
 
 const MARKDOWN_FILE_PATH_REGEX = /(\d+\/\d+-\d+-[a-z]{2}-[^.]+)\.md$/;
 
@@ -14,7 +15,7 @@ const handlePostPage = (filePath: string, {ws}: {ws: WebSocketServer}) => {
   ws.send({
     type: 'custom',
     event: customEvent.reload,
-    data: {path: `/post/${matchingUrlPath}`},
+    data: {paths: [{path: `/post/${matchingUrlPath}`, exact: false}]} satisfies ReloadPayloadData,
   });
 };
 
@@ -27,7 +28,7 @@ const handlePostsPage = (filePath: string, {ws}: {ws: WebSocketServer}) => {
   ws.send({
     type: 'custom',
     event: customEvent.reload,
-    data: {path: '/posts'},
+    data: {paths: [{path: '/posts', exact: false}, {path: '/', exact: true}]} satisfies ReloadPayloadData,
   });
 };
 
