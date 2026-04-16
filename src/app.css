@@ -71,6 +71,11 @@ body.dark .post h1,body.dark .post h2,body.dark .post h3,body.dark .post h4 {
     /* Use the following rule to indent the first word. */
     /* text-indent: 0.4rem; */
 }
+@media screen and (min-width: 840px) {
+    .post p {
+        line-height: 1.6;
+    }
+}
 .post h1 + p,.post h2 + p,.post h3 + p,.post h4 + p {
     margin-top: 0.2rem;
 }
