@@ -2,6 +2,7 @@
 layout: post
 toc: true
 title: "이탈리아 돌로미티 오르티세이 여행: 세체다와 알페 디 시우시"
+ogImage: "/img/2025-12-27-ortisei-dolomites-travel/seceda-0.webp"
 category: "IRL"
 tags: [Review, Travel]
 author:

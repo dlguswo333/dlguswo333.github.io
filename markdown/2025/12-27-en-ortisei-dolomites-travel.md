@@ -2,6 +2,7 @@
 layout: post
 toc: true
 title: "Ortisei Dolomites Italy Travel: Seceda and Alpe Di Siusi"
+ogImage: "/img/2025-12-27-ortisei-dolomites-travel/seceda-0.webp"
 category: "IRL"
 tags: [Review, Travel]
 author:
