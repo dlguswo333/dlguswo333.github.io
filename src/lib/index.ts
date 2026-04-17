@@ -4,6 +4,7 @@ export const email = 'dlguswo002@gmail.com';
 export const defaultTitle = `${name}'s blog, Software and More.`;
 export const blogRepositoryLink = 'https://github.com/dlguswo333/dlguswo333.github.io';
 export const blogFullUrl = 'https://dlguswo333.github.io';
+export const defaultOgImageUrl = '';
 export const paginationSize = 10;
 export const postBasePath = './markdown';
 export const maxHeadingDepthInToc = 3;

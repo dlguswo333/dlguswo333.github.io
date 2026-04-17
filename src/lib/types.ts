@@ -6,15 +6,10 @@ export const frontmatterType = z.object({
   editedDate: z.string().nullable(),
   category: z.string().nullable(),
   tags: z.string().array(),
+  ogImage: z.string().nullable(),
 });
 
-export type Frontmatter = {
-  title: string;
-  toc: boolean | null;
-  editedDate: string | null;
-  category: string | null;
-  tags: string[];
-};
+export type Frontmatter = z.infer<typeof frontmatterType>;
 
 export const postMetadataType = z.object({
   ...frontmatterType.shape,

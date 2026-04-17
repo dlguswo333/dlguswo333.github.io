@@ -4,7 +4,7 @@
   import TOC from '$lib/components/TOC.svelte';
   import Tag from '$lib/components/Tag.svelte';
   import {onMount} from 'svelte';
-  import {defaultLang, defaultTitle, name} from '$lib/index';
+  import {blogFullUrl, defaultLang, defaultOgImageUrl, defaultTitle, name} from '$lib/index';
   import Lang from '$lib/components/Lang.svelte';
   import {afterNavigate} from '$app/navigation';
   import {page} from '$app/state';
@@ -15,6 +15,13 @@
   // But data props will update. See: https://github.com/dlguswo333/dlguswo333.github.io/issues/44
   let postTitle = $derived(data.frontmatter?.title);
   let postLang = $derived(data.lang || defaultLang);
+  let postOgImage = $derived.by(() => {
+    const url = data.frontmatter?.ogImage || defaultOgImageUrl;
+    if (/^https?:/.test(url)) {
+      return url;
+    }
+    return new URL(url, blogFullUrl).toString();
+  });
   let postAvailableLangs = $derived(data.langs);
   let getPostPathWithLang = (lang: string) => `/post/${data.date.split('-')[0]}/${data.id.replace(postLang, lang)}/`;
 
@@ -40,6 +47,9 @@
     {#each postAvailableLangs as lang (lang)}
       <link rel="alternate" hreflang={lang} href={new URL(getPostPathWithLang(lang), page.url.origin).toString()} />
     {/each}
+  {/if}
+  {#if postOgImage}
+    <meta property="og:image" content={postOgImage} />
   {/if}
 </svelte:head>
 
