@@ -4,10 +4,9 @@
   import TOC from '$lib/components/TOC.svelte';
   import Tag from '$lib/components/Tag.svelte';
   import {onMount} from 'svelte';
-  import {defaultLang, defaultOgImageUrl, defaultTitle, name} from '$lib/index';
+  import {blogFullUrl, defaultLang, defaultOgImageUrl, defaultTitle, name} from '$lib/index';
   import Lang from '$lib/components/Lang.svelte';
   import {afterNavigate} from '$app/navigation';
-  import {page} from '$app/state';
 
   let {data} = $props();
 
@@ -20,7 +19,7 @@
     if (/^https?:/.test(url)) {
       return url;
     }
-    return new URL(url, page.url.origin).toString();
+    return new URL(url, blogFullUrl).toString();
   });
   let postAvailableLangs = $derived(data.langs);
   let getPostPathWithLang = (lang: string) => `/post/${data.date.split('-')[0]}/${data.id.replace(postLang, lang)}/`;
@@ -45,7 +44,7 @@
   <title>{(postTitle ? `${postTitle} | ` : '')}{name}'s blog</title>
   {#if postAvailableLangs.length > 1}
     {#each postAvailableLangs as lang (lang)}
-      <link rel="alternate" hreflang={lang} href={new URL(getPostPathWithLang(lang), page.url.origin).toString()} />
+      <link rel="alternate" hreflang={lang} href={new URL(getPostPathWithLang(lang), blogFullUrl).toString()} />
     {/each}
   {/if}
   {#if postOgImage}
