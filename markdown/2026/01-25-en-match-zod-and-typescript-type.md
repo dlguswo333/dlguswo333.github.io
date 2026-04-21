@@ -1,6 +1,7 @@
 ---
 layout: post
 toc: false
+editedDate: 2026-04-21
 title: "Matching Zod and Typescript Type"
 category: "Programming"
 tags: [typescript, zod]
@@ -19,7 +20,7 @@ like that, but implementing type checking functions for complicated types is not
 const bookData = getSomeData();
 // You got book data and want to check if it actually is...
 if (
-  typeof bookData === 'object' && 
+  typeof bookData === 'object' &&
   typeof bookData.title === 'string' &&
   bookData.title.length > 0 &&
   typeof bookData.pageCount === 'number' &&
@@ -55,7 +56,7 @@ As you saw from the code above, zod can give you Typescript static types with `z
 The inferred types are guranteed to match the original zod types.
 
 But what about the vice versa? What if you want to have an Typescript type
-and want to have the corresponding zod type? 
+and want to have the corresponding zod type?
 One such scenario is where you have Typescript types already and
 you want to have zod types for validation. Can you do that?
 ```ts
@@ -73,7 +74,7 @@ As far as I know, you can't get zod types from Typescript types easily.
 To put it simply, zod runs on runtime, Typescript types only on compile time.
 They get erased after compilation and you can't easily get
 something run on runtime which only exist in compile time.
-But it is something that is not possible, you can do that by converting zod codes into Typescript codes.
+But it isn't something that is entirely impossible; you can do it by converting zod codes into Typescript codes.
 Check out [ts-to-zod](https://github.com/fabien0102/ts-to-zod).
 
 Then can you at least write zod types so that they statically match your Typescript types?
@@ -89,7 +90,7 @@ const bookDataZod = z.object({
 const bookData = getSomeData<BookData>(bookDataZod);
 ```
 
-As the author of the function `getSomeData`, you want to match both types to each other. 
+As the author of the function `getSomeData`, you want to match both types to each other.
 ```ts
 const getSomeData = <ReturnType>(returnTypeZod: unknown): ReturnType => {
   // ...
@@ -120,7 +121,7 @@ const getSomeData = <ReturnType>(returnTypeZod: z.ZodType<ReturnType>): ReturnTy
 // Okay!
 getSomeData<BookData>(z.object({title: z.string(), pageCount: z.number().positive().int()}));
 
-// Typescript Error: Type '{ foo: string; bar: number; }' is missing the following properties from type 'BookData': title, pageCount 
+// Typescript Error: Type '{ foo: string; bar: number; }' is missing the following properties from type 'BookData': title, pageCount
 getSomeData<BookData>(z.object({foo: z.string(), bar: z.number()}));
 ```
 
