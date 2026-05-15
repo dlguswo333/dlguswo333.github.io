@@ -84,8 +84,8 @@ export const crawlPost = async (postPath: string): Promise<PostMetadata> => {
   if (!frontmatter.tags) {
     throw new Error(`${postPath}'s tag is empty! Specify '[]' if the post does not have any tag.`);
   }
-  if (!frontmatter.ogImage) {
-    frontmatter.ogImage = null;
+  if (!frontmatter.coverImage) {
+    frontmatter.coverImage = null;
   }
   return {
     ...frontmatter, ...extraMetadata, summary,

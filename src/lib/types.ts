@@ -6,7 +6,7 @@ export const frontmatterType = z.object({
   editedDate: z.string().nullable(),
   category: z.string().nullable(),
   tags: z.string().array(),
-  ogImage: z.string().nullable(),
+  coverImage: z.string().nullable(),
 });
 
 export type Frontmatter = z.infer<typeof frontmatterType>;

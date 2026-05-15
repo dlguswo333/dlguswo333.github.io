@@ -15,7 +15,7 @@
   let postTitle = $derived(data.frontmatter?.title);
   let postLang = $derived(data.lang || defaultLang);
   let postOgImage = $derived.by(() => {
-    const url = data.frontmatter?.ogImage || defaultOgImageUrl;
+    const url = data.frontmatter?.coverImage || defaultOgImageUrl;
     if (/^https?:/.test(url)) {
       return url;
     }
