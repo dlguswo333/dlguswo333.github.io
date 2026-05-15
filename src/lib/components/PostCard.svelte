@@ -23,9 +23,19 @@
 {/snippet}
 
 <section
-  class={`flex flex-col px-4 py-4 md:py-3 transition border rounded-md hover:bg-teal-50 dark:hover:bg-teal-700/20
+  class={`flex flex-col px-4 py-4 md:px-3 md:py-3 transition border rounded-md hover:bg-teal-50 dark:hover:bg-teal-700/20
     border-gray-200 hover:border-teal-200 dark:border-gray-600 dark:hover:border-teal-600
     shadow-sm hover:shadow-md shadow-gray-300 dark:shadow-gray-900 dark:hover:shadow-teal-900/50`}>
+  {#if indexPost.coverImage}
+    <div class="mb-2 rounded-md overflow-hidden bg-gray-100 dark:bg-zinc-900 shadow-md shadow-gray-300 dark:shadow-teal-900/20">
+      <img class="w-full object-cover object-center"
+        style:aspect-ratio="16 / 7"
+        src={indexPost.coverImage}
+        alt="cover"
+        loading="lazy"
+      />
+    </div>
+  {/if}
   <div class="flex flex-col md:flex-row gap-0 md:gap-1 items-start md:items-center justify-between mb-1">
     <div class="inline-block flex-auto">
       <h2 class="font-bold text-xl underline">
