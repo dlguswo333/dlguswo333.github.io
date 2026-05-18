@@ -2,6 +2,7 @@
 layout: post
 toc: true
 title: "Rental Car Travel in Ortisei, Dolomites, Italy"
+coverImage: "img/2025-12-07-rental-car-travel-dolomites/central-parking-lot.webp"
 category: "IRL"
 tags: [Review, Travel]
 author:
