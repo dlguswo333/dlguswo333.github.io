@@ -9,7 +9,7 @@ author:
 
 `async`/`await` on top of `Promise` is a major feature in JavaScript. It allows you to write asynchronous codes as if they were synchronous. It's hard to imagine writing codes without them, and it surprises me that it has not been 10 years yet since Chrome 55 supported async functions. In 2025, almost every modern browsers support it thankfully.
 
-I have been growing using async functions, but it still make me wonder to see codes like the below:
+I have been transitioning to async functions, but it still make me wonder to see codes like the below:
 ```js {3}
 const func = async () => {
   // ...
@@ -48,7 +48,7 @@ const main = async () => {
 main();
 ```
 
-The result is the following. The first stack trace shows `readAwait` which does `return await`. But the second do not show `readWithoutAwait` from the stack, as if `main` function directly calls `readdir` function.
+The result is the following. The first stack trace shows `readAwait` which does `return await`. But the second do not show `readWithoutAwait` from the stack, as if `main` function directly called `readdir` function.
 ```js
 Error: ENOENT: no such file or directory, scandir 'notexist'
     at async readdir (node:internal/fs/promises:955:18)
