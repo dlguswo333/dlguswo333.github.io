@@ -184,8 +184,8 @@ function getIsBird (animal: Bird | Fish) {
 
 <br>
 
-There are more details that I could not introduce about Inferred Type Predicate, 
-so for more please visite the official documentation and PR.
+There are more details that I did not introduce about Inferred Type Predicate here,
+so for more information please visit the official documentation and PR.
 
 https://devblogs.microsoft.com/typescript/announcing-typescript-5-5-beta/#inferred-type-predicates
 https://github.com/microsoft/TypeScript/pull/57465

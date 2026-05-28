@@ -77,7 +77,7 @@ something run on runtime which only exist in compile time.
 But it isn't something that is entirely impossible; you can do it by converting zod codes into Typescript codes.
 Check out [ts-to-zod](https://github.com/fabien0102/ts-to-zod).
 
-Then can you at least write zod types so that they statically match your Typescript types?
+Then can you at least write new zod types so that they statically match your Typescript types?
 ```ts
 type BookData = {
     title: string;
@@ -90,7 +90,8 @@ const bookDataZod = z.object({
 const bookData = getSomeData<BookData>(bookDataZod);
 ```
 
-As the author of the function `getSomeData`, you want to match both types to each other.
+Here, `getSomeData` returns a value of the Typescript type that is verified with the zod type.
+As you implement a function `getSomeData`, you want both types to be in sync.
 ```ts
 const getSomeData = <ReturnType>(returnTypeZod: unknown): ReturnType => {
   // ...
@@ -98,6 +99,7 @@ const getSomeData = <ReturnType>(returnTypeZod: unknown): ReturnType => {
   return returnTypeZod.parse(some);
 }
 ```
+
 Can you do that? The answer is yes, thanks to `z.ZodType`.
 >*All schemas extend the `z.ZodType` base class, which in turn extends `z.$ZodType` from zod/v4/core.*\
 ><https://zod.dev/packages/zod>
