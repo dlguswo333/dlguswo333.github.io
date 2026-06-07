@@ -1,6 +1,7 @@
 ---
 layout: post
 toc: true
+editedDate: 2026-06-07
 title: "Typescript 5.5 주목할만한 변경점"
 category: "Programming"
 tags: [typescript]
@@ -178,6 +179,13 @@ function getIsBird (animal: Bird | Fish) {
   return 'fly' in animal && true;
 }
 ```
+
+<br>
+
+>[!note]
+>안타깝게도 BooleanConstructor를 사용한 `.filter(Boolean)`는 타입 추론이 되지 않고
+>대신 `.filter(x => !!x)`를 쓸 수 있습니다.
+>더 알고 싶으시다면 [링크](https://github.com/microsoft/TypeScript/issues/50387#issuecomment-2037968462)를 참조하세요.
 
 이외에도 Inferred Type Predicate는 제가 소개드리지 못한 상세 사항이 많으니
 더 자세한 사항은 공식 문서와 PR을 참조해 주세요.

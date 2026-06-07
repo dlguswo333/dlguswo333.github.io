@@ -1,6 +1,7 @@
 ---
 layout: post
 toc: true
+editedDate: 2026-06-07
 title: "Typescript 5.5 Noticeable Changes"
 category: "Programming"
 tags: [typescript]
@@ -181,6 +182,13 @@ function getIsBird (animal: Bird | Fish) {
   return 'fly' in animal && true;
 }
 ```
+
+<br>
+
+>[!note]
+>Unfortunately `.filter(Boolean)` using BooleanConstructor does not infer Type Predicates.
+>You may use `.filter(x => !!x)` instead.
+>Check out this [link](https://github.com/microsoft/TypeScript/issues/50387#issuecomment-2037968462) for more information.
 
 <br>
 
