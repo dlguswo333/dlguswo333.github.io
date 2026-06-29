@@ -4,6 +4,7 @@ import {customEvent} from './src/lib';
 import type {ReloadPayloadData} from '$lib/types';
 
 const MARKDOWN_FILE_PATH_REGEX = /(\d+\/\d+-\d+-[a-z]{2}-[^.]+)\.md$/;
+const ABOUT_MARKDOWN_FILE_PATH_REGEX = /about\.md$/;
 
 /** Handle /posts/[year]/[slug] on markdown file change. */
 const handlePostPage = (filePath: string, {ws}: {ws: WebSocketServer}) => {
@@ -32,10 +33,23 @@ const handlePostsPage = (filePath: string, {ws}: {ws: WebSocketServer}) => {
   });
 };
 
-// [TODO] Handle /about.
+/** Handle /about on markdown file change. */
+const handleAboutPage = (filePath: string, {ws}: {ws: WebSocketServer}) => {
+  const matchResult = filePath.match(ABOUT_MARKDOWN_FILE_PATH_REGEX);
+  if (matchResult === null) {
+    return;
+  }
+  ws.send({
+    type: 'custom',
+    event: customEvent.reload,
+    data: {paths: [{path: '/about', exact: false}]} satisfies ReloadPayloadData,
+  });
+};
+
 const handleMarkdownFileChange = (filePath: string, {ws}: {ws: WebSocketServer}) => {
   handlePostPage(filePath, {ws});
   handlePostsPage(filePath, {ws});
+  handleAboutPage(filePath, {ws});
 };
 
 const reloadPlugin = (): PluginOption => ({
