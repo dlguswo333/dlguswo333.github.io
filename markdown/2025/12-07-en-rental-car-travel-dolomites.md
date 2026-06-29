@@ -78,9 +78,9 @@ As expected I did not get a Ford I reserved but a Jeep Renegade. Thankfully it w
 I will leave the details about the car I had at the travel review section.
 
 # How to Drive in Italy
-To explain how to drive in Italy in simple way to those who are used to drive in Korea:
+To explain how to drive in Italy in a simple way to those who are used to drive in Korea, I would say:
 **'Always stop on red light, turn on green light'**.
-It is almost the same to drive in Japan. when your make your turn you yield
+It is almost the same to driving in Japan. when you make your turn, you should yield
 to the cars from the opposite lane and pedestrians on crosswalk.\
 [Everything you need to know about driving in Italy: road rules, tips and useful information][how-to-drive-in-italy]
 
@@ -98,20 +98,20 @@ You can tell ZTL by road signs with a red circle with letters ZTL or the Italian
 
 But it is hard to notice the signs while you are driving on an unfamiliar road in a distant foreign country,
 and it may be too late by the time you recognize the sign.
-Thankfully they have LED signs in big cities such as Rome but other than those places
-they have only one sign.
+Thankfully they have LED signs in big cities such as Rome, but in other places
+they only have normal road signs.
 The Image below shows ZTL signs which I took in [Florence](https://maps.app.goo.gl/n4anopfbSxx7X1LZ6).
 You can see there are an LED and a road sign.
 ![ztl-led-sign](/img/2025-12-07-rental-car-travel-dolomites/ztl-led-firenze.webp)
 
 They say locals, guests staying in the area, people with disabilites are exempted
 but it involves complicated registration processes.
-I excluded ZTL from my routes entirely and studies about it in advance.
+I excluded ZTL from my travel routes entirely and studied about it in advance.
 
 On top of that they say there is no navigation applications that can completely support excluding ZTL from route.
 I chose Waze since I heared it has better ZTL supports than Google Map does.
 But it was worse in other aspects (I recall I could not select the starting point. Only the current location.)
-So I used Google Map for the route I have been to once.
+So I used Google Map for the route I had been to.
 <https://www.reddit.com/r/ItalyTravel/comments/16d9bao/how_to_avoid_ztl/>
 <https://medium.com/waze/driving-smarter-and-greener-with-waze-for-ztl-critair-b10080a6f91a>
 
@@ -120,25 +120,23 @@ but a public road that can be used by specific vehicles.
 I googled for ZTL areas in Mestre where I rented a car and it showed me several related webpages
 and luckily they did not overlap with my route on Google Map.
 
-But be careful since they have ZTL areas not just in big cities but also in small towns namely Ortisei.
-I thought they didn't have one in Ortisei and just departed,
-it did not show up on the internet maybe because the town is small.
+But be careful since they have ZTL areas not just in big cities but also in small towns, namely Ortisei.
+I thought they didn't have one in Ortisei and just went in, but they have.
+Maybe it did not show up on the internet because the town is small.
 The most frequently encounter ZTL in the middle of the town is a pedestrian only and
-they block cars with roadblocks and it is a relief, but be careful as there is not only one ZTL in Ortisei
+they block cars with roadblocks and that is relieving, but be careful as there is not only one ZTL in Ortisei
 and there are a few in other towns.
 
 ![pedestrian-ztl-ortisei](/img/2025-12-07-rental-car-travel-dolomites/pedestrian-ztl-ortisei.webp)
 
 ![another-ztl-ortisei](/img/2025-12-07-rental-car-travel-dolomites/another-ztl-ortisei.webp)
 
-<br>
-
 So you need to learn the below before going to travel.
 - ZTL zones in traveling cities
 - If accommodations are inside the zone; if so ask to them
 - If I am eligible for the exemption
 
-I would rather exclude ZTL for my inner peace.
+I would rather entirely exclude ZTLs for my inner peace.
 
 <br>
 
@@ -149,12 +147,12 @@ Telepass which is Italian Hi-pass goes to Telepass only lane, cash to cash lane,
 and that is all about how to use toll gate.\
 For your information I paid at toll gates just fine with a Toss Bank card.
 
-With cash and card you get a ticket entering highway and you hand over the ticket and pay once you get out.
+With cash and card you get a ticket entering highway. And you hand over the ticket and pay when you get out.
 Each lane has a sign and it wasn't that difficult to understand.
 Card lanes say _CARTE_ and cash lanes has coins and banknotes.
 With a hand in the sign it says it is manned toll gate and without one it is an unmanned.
 
-For more about how to use toll gates refer to the links.\
+For more information about how to use toll gates refer to the links.\
 [Everything you need to know about driving in Italy: road rules, tips and useful information][how-to-drive-in-italy]\
 [Payment at the toll gate][autostrade-payment-method]\
 [이탈리아-렌터카-여행을-계획한다면(in Korean)][이탈리아-렌터카-여행을-계획한다면]
@@ -165,7 +163,7 @@ For more about how to use toll gates refer to the links.\
 ![direction-mestre-to-ortisei](/img/2025-12-07-rental-car-travel-dolomites/direction-mestre-to-ortisei.webp)
 
 I took highway through Verona and Trento to get to Dolomites from Mestre, Venice.
-The highway is right next to Mestre station so you can't encounter a ZTL if you go to the highway right away.
+The highway is right next to Mestre station so you do not encounter a ZTL if you go to the highway right away.
 Keep the first lane clear unless you are passing someone and you won't have no big problem on highway.
 There were many two lane road sections and it was interesting to witness tens of gigantic trailer trucks
 driving on the second lane in a row which is not usual in Korea.
@@ -178,26 +176,26 @@ took me 3 hours and 19 minutes excluding 10 minutes for a service area. Google M
 I stopped for a break at [Sarni Isarco Est](https://maps.app.goo.gl/nJ2aufpExUibPS96A) which is almost before Dolomites.
 The restroom was free and there were lots of people. Crowed with German and Chinese tourists.
 
-I became nervous as I approached the exit gate but the car right in front me
-was flustered maybe because it's her first time. Gratefully I sat there and waited.
-At the unmanned toll gates it was a little confusing where to insert my card but you can find the right one
-once you take it easy.
+I became nervous as I approached the exit gate, but the driver ahead of me
+seemed flustered, maybe because it's her first time. i gratefully sat there and waited.
+at the unmanned toll gate it was a little confusing where to insert my card but will find the right slot
+if you take your time.
 
-# Parking Lot in Ortisei
-Ortisei is a small town which is located at a valley among the high Dolomites mountains
-and you can go from here to several landmarks directly such as _Seceda_, _Alpe Di Siusi_ with cable cars
+# parking lot in ortisei
+ortisei is a small town which is located at a valley among the high dolomites mountains
+and you can go from here to several landmarks directly such as _seceda_, _alpe di siusi_ with cable cars
 so being a transporation hub it is great for a base camp by staying or parking.
 
-It is more than a small town and has a few parking lots around the town.
-Each landmark has its own parking lot and Seceda has one near the cable car platform.
-They have competitive parking and high fees as they sit next to the tourist spots.
-The image below shows notice for [Seceda Parking lot](https://maps.app.goo.gl/z5NjUEdCwFJ6Sh336) fee
+it is more than a small town and has a few parking lots around the town.
+each landmark has its own parking lot and seceda has one near the cable car platform.
+they have competitive parking and high fees as they sit next to the tourist spots.
+the image below shows notice for [seceda parking lot](https://maps.app.goo.gl/z5njuedcwfj6sh336) fee
 and they cost you 2.8 euros, 4,614 won in daytime.
 ![seceda-parking-lot-fee](/img/2025-12-07-rental-car-travel-dolomites/seceda-parking-lot-fee.webp)
 
 > [!note]
-> Parking lots in Ortisei charge you quite different between high and low seasons.\
-> So you look into the fee for the season your trip falls into.
+> parking lots in ortisei charge you quite different between high and low seasons.\
+> so you look into the fee for the season your trip falls into.
 
 <br>
 
@@ -214,18 +212,18 @@ so it's convenient as shown in the image.
 <br>
 
 The fee is 1.9 euros every hour.
-You get a parking ticket upon entering, and pay before you exiting with a pay on foot machine at a pedestrian exit.  
+You get a parking ticket upon entering, and pay with a pay-on-foot machine near a pedestrian exit before you get out with your car.
 ![pay-on-foot-machine](/img/2025-12-07-rental-car-travel-dolomites/pay-on-foot-machine.webp)
 
 <br>
 
-I had learned that in Italy mostly you estimate your parking time and pay for it in advance
-so it was confusing, but logically, as you dont need to prepay at a parking lot with a barrier at exits
-so you don't need to prepay upon your entrance but right before your exit.
+I had learned that in Italy mostly you estimate your parking time and pay for it in advance.
+So it was confusing, but logically, you don't need to prepay at a parking lot with barriers at exits,
+so at this parking lot you don't need to prepay upon your entrance but right before your exit.
 And this Central parking lot also expects you to pay when you exit.
 
-Even if you forgot to prepay at a machine or you did not go out right after your payment,
-there is a payment machine at the exit so there is nothing you need to worry about.
+Even if you forgot to prepay at a machine or you did not get out of the parking lot right after you paid,
+there is a payment machine at the exit so there is nothing you should worry about.
 ![exit-payment-machine](/img/2025-12-07-rental-car-travel-dolomites/exit-payment-machine.webp)
 
 > [!note]
@@ -241,15 +239,15 @@ and it is free to park your car.
 If you want to get to only Alpe Di Siusi and save up your budget this will be a good option.
 
 # Fueling
-In Italy if you use a credit card at a gas station, depending on the company, they will place a large deposit
-and then cancel the remaining amount right away, or a few day later, or otherwise they will give you a comparable mileage.
+In Italy if you use a credit card at a gas station, some companies will place a large hold on your card
+and then cancel the remaining amount immediately, or a few day later, or otherwise they will give you a comparable mileage.
 This can be a quite hassle so I used only cash at gas stations.
-But be careful in some cases with cash they won't give you changes.
+However be careful if you pay with cash; at some types of self-service gas stations they won't give you change.
 [Gas Stations in Italy][gas-stations-in-italy] [Gas Station Payment][gas-station-payment]\
-So at a self service station I paid with cash to the amount small enough to fit into the tank
+So at a self service station I paid with cash to the amount small enough to fit into the tank,
 and went to a _Servito_ gas station to fill up before returning the car.
 
-Before the return I asked them to fill up at a gas station [Distributore IP](https://maps.app.goo.gl/NftBD56CpLGGCvbH8) near Mestre station
+At the gas station [Distributore IP](https://maps.app.goo.gl/NftBD56CpLGGCvbH8) near Mestre station I asked them to fill up 
 and got inside the store together and paid in cash.
 The fee was 32.65L * 1.899 euro/L, that is 62 euros.
 I got a receipt upon requesting Ricevute. The attendants were helpful.
@@ -284,38 +282,38 @@ As long as you fix it on the dashboard firmly you can have your smarphone stabil
 
 <br>
 
-The hardest part with the car was this; in the second day morning I departed from the hotel
-and I had **Check Engine** light not long after.
+The hardest part with the car was this; on the second day morning I left from the hotel
+and not long after the **Check Engine** light came on.
 
 ![check-engine](/img/2025-12-07-rental-car-travel-dolomites/check-engine.webp)
 
-At first I thought it was temporary but it did not go away after turing the engine on and off several times.
+At first I thought it was temporary but it did not go away after turning the car on and off several times.
 I tried to call the office about the problem and get some help,
-and it was Saturday before noon but most of European rental car offices run until noon on Saturday and close on Sunday.
-Luckily I had a internet call voucher from E-sim dealer, so I called them as quickly as possible one and half hour before them closing
-but did not work maybe because there is some connection problem or they did not respond.
+but it was Saturday before noon but most of European rental car offices run until noon on Saturday and close on Sunday.
+Luckily I had a internet call voucher from E-sim dealer, so I called them as quickly as possible one and half hour before them closing.
+However it did not work maybe because there were some connection problems or they did not respond.
 As a last resort I called 24 hour roadside assistance of AVIS but they said they had nothing they could do about it.
 
-The best option is to contact the office but it would took 3 and half hour to get there so I gave up at last.
-I don't know how to fix the car and I thought it would give me another problem if I went to nearby repair shop and fix it
-so I tried to make some evidence about 'I did not any strange thing on the car and I tried to contact the office but did not make it'
+The best option is to contact the office but it would took 3 and half hour to get there, so I gave up at last.
+I didn't know how to fix the car and I thought it would bring me another problem if I went to nearby repair shop and fix it.
+So I tried to make some evidence about 'I did not any strange thing on the car and I tried to contact the office but did not make it'
 and drive the car as little as I could.
 
-Fortunately I could drive the car to Venice Mestre and reported the problem upon the return
-and they said they could not compensate the issue since there had been no actual problem.
+Fortunately I could drive the car back to Venice Mestre and reported the problem upon the return.
+They said they could not compensate for the issue since there had been no actual problem.
 I knew the point and had been more worried about them coming after me
 but they just let me leave and no problem so far.
-I wish I had drove other places had the car not had any problem..
+I wish I would had drove other places had the car not had any problem..
 
 And even with full coverage insurance I filmed walking around the car right after pick up and right before return.
 With a video I felt relieved and liked to do so.
 
 ## How to Drive
-How to drive in Italy is not that difficult. You yield to pedestrians, turn left and right cautiously on green light
-then you will have no problem driving.
+Driving in Italy is not that difficult. You yield to pedestrians, turn left and right cautiously on green light
+then you will have no problem.
 
-But the parking system was a little difficult. But you can handle it if you study in advance
-but the real problem is ZTL.
+But the parking system was a little difficult. But you can handle it if you study in advance.
+But the real problem is ZTL.
 You don't know where you would meet ZTL so need to be alerted all time.
 More than that some ZTL zones have some details listed below
 but I could not understand them cause they were in Italian.
@@ -328,23 +326,23 @@ I got nothing until now but sometimes I still get anxious that I might get 100 e
 
 ## Driving Culture
 Driving culture was one unexpected difficulty to me.
-I thought Itailian people are laid back so their driving would be also be like that and I was wrong.
+I thought Itailian people are laid back so their driving would be also like that and I was wrong.
 You would understand that I am not telling you 100% lies if you have driving experiences in both countries.
-In my experience driving in Italy was a bit trickier than one in Korea. Maybe it was because I was too neverous in a foreign country.
+In my experience driving in Italy was harder than in Korea. Maybe it was because I was too neverous in a foreign country.
 
 First of all they change lanes without turn signal on a highway.
 They keep the first lane clear better than Koreans do but it's hard to see someone actually use turn signal.
 I think they don't feel the need to use one if there is no car nearby.
 
 And Dolomites. They keep tailgating me right behind me on such a steep mountain roads.
-I thought I was speeding at 50 KM/h and they just keep tailgating me.
+I thought I was speeding fast enough at 50 KM/h and they just keep tailgating me.
 I wished I could let them go first but there is hardly any space to yield
 on a two-lane roads in two directions with no sidewalk.
-I managed to find a space and watched them how fast they would go
-and they disappeared into the distance at 70 KM/h on such an alpine roads...
+I managed to find a space and watched them how fast they would go;
+they disappeared into the distance at 70 KM/h on such alpine roads...
 
 It won't apply to everyone since I am bad at driving.
-But still be careful when you drive especially in a country far away from home.
+But still, always be careful when you drive especially in a country far away from home.
 
 
 [how-to-drive-in-italy]: https://www.italia.it/en/italy/things-to-do/tutto-quello-che-ce-da-sapere-per-guidare-in-italia-regole-stradali-consigli-e-informazioni-utili
