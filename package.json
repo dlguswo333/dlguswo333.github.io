@@ -62,5 +62,8 @@
 		"vite": "^8.0.14",
 		"yaml": "^2.8.2",
 		"zod": "^4.3.5"
+	},
+	"allowScripts": {
+		"@parcel/watcher@2.5.1": true
 	}
 }
