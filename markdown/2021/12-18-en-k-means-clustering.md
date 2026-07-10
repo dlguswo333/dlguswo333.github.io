@@ -1,7 +1,7 @@
 ---
 layout: post
 toc: true
-editedDate: 2021-12-25
+editedDate: 2026-07-11
 title: "k Means Clustering"
 category: "Computer Science"
 tags: [Algorithms, Python]
@@ -11,15 +11,19 @@ author:
 
 ![clustering.png](/img/2021-12-18-k-means-clustering/clustering.png)
 
-**k means clustering** divides arbitrary data ***k*** clusters
+**k means clustering** divides arbitrary data into ***k*** clusters
 based on their similarity (or distance). This algorithm is effective at
-grouping unclustered data if you cannot have access to artificial
-intelligence, but the result is not uniform due to randomness
-and it may require long time to compute the results.
+grouping unclustered data if artificial intelligence is unavailable,
+but the result is not deterministic due to randomness
+and it may take long time to compute the results.
 <!--more-->
 
 However, the result will be acceptable as long as the data pattern is
 well-categorized and the algorithm is easy to understand and implement.
+
+>[!note]
+>**Edited on July 11, 2026.**\
+>Corrected grammar and wording.
 
 # 1. How Does it Work?
 First of all, the data need to be able to produce similarities between them,
@@ -36,7 +40,7 @@ $$
 Euclidean\ Distance: \sqrt{\sum_{i=1}^N{(A_i-B_i)^2}}
 $$
 
-They can be referred to as L1 distance and L2 distance repectively.
+They can be referred to as L1 distance and L2 distance respectively.
 If you want to give more weights on bigger differences, choose
 L2 (Euclidean) distance since the bigger the difference is,
 the much bigger the squared result is.
@@ -46,7 +50,7 @@ To describe keypoints, k means algorithms works as below:
 1. Select initial centroids randomly.
 2. Map each vector to the nearest centroid.
 3. Calculate the next centroids by averaging the vectors within a cluster.
-4. Repeat 2-3 until no changes further.
+4. Repeat 2-3 until the centroids no longer change.
 
 ![k-means-clustering-steps](/img/2021-12-18-k-means-clustering/k-means-clustering-steps.png)
 
@@ -60,7 +64,7 @@ much far from each other as you can within reasonable time?
 ## 2) Map each Vector to the Nearest Centroid.
 For each vector, find the nearest centroid and group them together (cluster).
 It may not look fine with random initial centroids, but it is okay.
-We will find better centroids fron now on.
+We will find better centroids from now on.
 
 ## 3) Calculate the next Centroids by Averaging the Vectors within a Cluster.
 For each cluster you acquired, get the average of vectors that reside in
@@ -72,13 +76,13 @@ the previous clusters do. Replace the centroids with the average vectors.
 Repeat step 2 and 3 until centroids converge. It may take long if the initial
 centroids are not well-chosen or there are too many data so computing the
 next centroids is hard work. In that case, you may decide to exit the loop
-after some *N* repetition or the differences between the previous and
+after some *N* repetitions or the differences between the previous and
 the next centroids are negligible.
 
 # 2. k Means Clustering in Python Code
 ``` python
 def kmeans_cluster(k:int, vectors:List[List[float]])->List[List[List[float]]]:
-    ''' Run k means clustering on given vectors and return centroids.
+    ''' Run k means clustering on given vectors and return clusters.
         k must be equal or smaller than the number of vectors.
     '''
     num_vectors=len(vectors)
@@ -175,7 +179,7 @@ most of the time), recursively calls itself on each clustered data.
 Think of a binary tree. Or some algorithm like merge sort.
 By recursively calling itself, the algorithm sub-divides the cluster,
 creating another 2 sub-clusters from one cluster. The time complexity
-is $$O(log_2kN)$$, since every level takes $$O(N)$$
+is $$O(Nlog_2k)$$, since every level takes $$O(N)$$
 to compute and there are $$O(log_2k)$$ levels.
 
 ![hierarchical-k-means-clustering.png](/img/2021-12-18-k-means-clustering/hierarchical-k-means-clustering.png)
