@@ -157,6 +157,53 @@ we finally converge! Exit the loop, and cluster data with
 the converged centroids and return. Else, re-run the process
 until converge is made.
 
+<br>
+
+And this is the full code of k means clustering.
+```python
+def kmeans_cluster(k:int, vectors:List[List[float]])->List[List[List[float]]]:
+    ''' Run k means clustering on given vectors and return clusters.
+        k must be equal or smaller than the number of vectors.
+    '''
+    num_vectors=len(vectors)
+    vector_len=len(vectors[0])
+    assert k<=num_vectors
+    # Select initial centroids randomly.
+    indices=random.sample(range(num_vectors), k)
+    centroids=[vectors[index] for index in indices]
+    # This list stores nearest centroid of each row.
+    nearest_centroid=[0]*num_vectors
+
+    # Repeat run until converging.
+    while True:
+        # Map each vector to the nearest centroid.
+        for i in range(num_vectors):
+            # Get the index of nearest centroid for each vector.
+            nearest_centroid[i]=get_nearest_centroid_index(vectors[i], centroids)
+
+        next_centroids=[[0]*vector_len for _ in range(k)]
+        nearest_cnt=[0]*k
+        # For each centroid, sum all the vector values,
+        # which has the centroid as the nearest.
+        for i in range(num_vectors):
+            next_centroids[nearest_centroid[i]]=add_vector(next_centroids[nearest_centroid[i]], vectors[i])
+            nearest_cnt[nearest_centroid[i]]+=1
+        # Divide by count to get the average values.
+        for i in range(k):
+            # Caution! Some centroid may have no vectors,
+            # which has the centroid as the nearest.
+            # In that case, use the previous centroid value as it is.
+            next_centroids[i]=[n_ele/nearest_cnt[i] for n_ele in next_centroids[i]] if nearest_cnt[i]!=0 else centroids[i]
+
+        if next_centroids==centroids:
+            # If there is no change, exit out of the loop.
+            break
+        centroids=next_centroids
+    # Cluster vectors with the calculated centroids.
+    clusters=cluster_vectors(vectors, centroids)
+    return clusters
+```
+
 <!--
 {% highlight python linenos %}
 {% endhighlight %}
