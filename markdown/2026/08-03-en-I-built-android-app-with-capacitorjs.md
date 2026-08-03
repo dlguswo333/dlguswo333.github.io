@@ -1,6 +1,7 @@
 ---
 layout: post
 toc: true
+editedDate: 2026-08-04
 title: "I Built an Android App tiSensible with CapacitorJS"
 category: "Programming"
 tags: [android, CapacitorJS, javascript, web]
@@ -28,6 +29,9 @@ And in this post, I want to talk about how *tiSensible* is built with *Capacitor
 
 # Why CapacitorJS?
 First, what is CapacitorJS?
+>Capacitor is an open source native runtime for building Web Native apps.
+>Create cross-platform iOS, Android, and Progressive Web Apps with JavaScript, HTML, and CSS.\
+><https://capacitorjs.com/>
 
 Briefly speaking, it's a WebView app development framework.
 One similar framework is React Native, but unlike it,
@@ -40,6 +44,17 @@ So basically you can deploy your pre-existing web app by simply adding Capacitor
 And your web app runs in a WebView on your device, almost like in a web browser.
 
 More than that, they provide official plugins that bridge the gap between your web app and the native.
+Import a plugin, and use as if it was plain Javascript library.
+```js
+// This snippet is from https://capacitorjs.com/
+import { Camera, CameraResultType } from '@capacitor/camera';
+
+// Take a picture or video, or load from the library
+const picture = await Camera.getPicture({
+  resultType: CameraResultType.Uri
+});
+```
+
 These are some example plugins.
 |Plugins|Description|
 |:---|:---|
@@ -48,7 +63,7 @@ These are some example plugins.
 |`@capacitor/dialog`|Provides methods for triggering native dialog windows for alerts, confirmations, and input prompts.|
 
 So as long as you do not need some native features that CapacitorJS does not provide
-you can keep your web code clean.
+you can focus on your web code.
 
 However, you might be worried that your app will not work on web if you import CapacitorJS in your project.
 Your concern makes sense, but one strong point of CapacitorJS is that it supports web as well as Android and iOS!\
@@ -58,7 +73,7 @@ That means you do not have to maintain a pair of your project each for web and n
 ><https://capacitorjs.com/docs/web>
 
 If you need to run different code based on platform, you can easily do that as CapacitorJS tells you which platform it is being run.
-```ts
+```js
 import {Capacitor} from '@capacitor/core';
 // 'web' | 'ios' | 'android'
 if (Capacitor.getPlatform()) {
