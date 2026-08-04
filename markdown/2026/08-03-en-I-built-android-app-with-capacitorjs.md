@@ -14,18 +14,20 @@ During the long Korean holidays in February 2026, I decided to build an Android 
 
 ![tisensible-screenshots](/img/2026-08-03-en-I-built-android-app-with-capacitorjs/tisensible-screenshots.webp)
 
-This app is nothing revolutionary; it simply provides a magnetic compass and a speedometer using your phone's sensors.\
+This app is nothing revolutionary; it simply provides a magnetic compass and a speedometer using your phone's sensors.
+
 The motivation to build this ordinary sensor app is that
 there are hardly any apps on Google Play Store that are not filled with excessive ads.\
 So *tiSensible* does not have any ad as of now. But things can change.
 
 If you want to try it (thank you) you can download APK files from the GitHub release page,
-and the code is visible to all.\
+and the code is visible to all.
+
 Sorry but I did not publish it on Google Play Store.
 Google keeps asking developers to comply with more and more requirements,
 and I think that is one of the reasons why developers add ads to their apps. It's too much work.
 
-And in this post, I want to talk about how *tiSensible* is built with *CapacitorJS*.
+And in this post, I want to talk about *CapacitorJS* that powers *tiSensible*.
 
 # Why CapacitorJS?
 First, what is CapacitorJS?
@@ -34,10 +36,15 @@ First, what is CapacitorJS?
 ><https://capacitorjs.com/>
 
 Briefly speaking, it's a WebView app development framework.
-One similar framework is React Native, but unlike it,
-with CapacitorJS you can build your app using your favorite web tools;
+One similar framework is React Native.
+However, one clear difference between them is that CapacitorJS uses WebView while React Native doesn't.
+
+Also you can build your app with CapacitorJS using your favorite web tools;
 React, Vue, Svelte, or even vanilla Javascript!
-Then CapacitorJS will read `index.html` from your build outputs and load your build outputs.
+Then CapacitorJS will read `index.html` from dist directory and load your build outputs.
+>Drop Capacitor into any existing web project, framework or library.
+>Convert an existing React, Svelte, Vue (or your preferred Web Framework) project to native mobile.
+><https://capacitorjs.com/>
 
 ## Keep the Web Code Clean
 So basically you can deploy your pre-existing web app by simply adding CapacitorJS.
@@ -72,7 +79,7 @@ That means you do not have to maintain a pair of your project each for web and n
 >In fact, using Capacitor makes it easy to ship a PWA version of your iOS and Android app store apps with minimal work.\
 ><https://capacitorjs.com/docs/web>
 
-If you need to run different code based on platform, you can easily do that as CapacitorJS tells you which platform it is being run.
+If you need to run different code based on platform, you can easily do that as CapacitorJS tells you which platform it is running on.
 ```js
 import {Capacitor} from '@capacitor/core';
 // 'web' | 'ios' | 'android'
@@ -166,7 +173,6 @@ Live reloading is one of the most crucial features when you write code and test 
 Building and deploying apps every time you make a change is not an easy job.
 Live reloading does that automatically for you.
 And CapacitorJS provides the feature, as long as you do not add native-related plugins or change the native code.
->[!quote]
 >Rather than deploy a new native binary every time you make a code change, it reloads the browser (or Web View) when changes in the app are detected.\
 ><https://capacitorjs.com/docs/guides/live-reload>
 
@@ -212,7 +218,7 @@ And CapacitorJS has an advantage that it exposes native project code and even le
 There is less of *a black box* compared to other frameworks that hide their native internals.
 
 ## CapacitorJS Has its Use
-Even with the flaws I mentioned above, I am happy to have CapacitorJS powering my app.\
+Even with the weak points I mentioned above, I am happy to have CapacitorJS powering my app.\
 As a web FE developer, it's familiar, intuitive, and easy.
 I don't have to deal with XML styling, component lifecycle, and unfamiliar Kotlin code.
 Some may find that CapacitorJS isn't for them, while others think it is right for them.\
