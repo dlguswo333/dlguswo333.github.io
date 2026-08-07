@@ -5,7 +5,7 @@ import {postBasePath} from '$lib';
 import {postMetadataType, type Frontmatter, type PostMetadata} from './types';
 import FileBasedCache from './FileBasedCache';
 
-const summaryLength = 100;
+const summaryLength = 150;
 export const crawlPostsCacheFilePath = './.posts.json';
 const regex = {
   wholeNumber: /^\d+$/,
