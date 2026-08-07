@@ -23,7 +23,7 @@
 {/snippet}
 
 <section
-  class={`flex flex-col px-4 py-4 md:px-3 md:py-3 transition border rounded-md hover:bg-teal-50 dark:hover:bg-teal-700/20
+  class={`flex flex-col p-4 md:py-5 transition border rounded-xl bg-gray-100/30 dark:bg-gray-700/20 hover:bg-teal-50 dark:hover:bg-teal-700/20
     border-gray-200 hover:border-teal-200 dark:border-gray-600 dark:hover:border-teal-600
     shadow-sm hover:shadow-md shadow-gray-300 dark:shadow-gray-900 dark:hover:shadow-teal-900/50`}>
   {#if indexPost.coverImage}
