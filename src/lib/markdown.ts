@@ -37,11 +37,18 @@ export const getSummaryFromMarkdown = async (markdown: string, targetLength: num
       // No need to visit these nodes recursively.
       return;
     }
+    if (node.type === 'link') {
+      // Skip links.
+      return;
+    }
     if (node.type === 'text' || node.type === 'inlineCode') {
-      const text = node.value.trim();
+      const text = node.value;
       if (text) {
-        summary = summary === null ? text : `${summary} ${text}`;
+        summary = summary === null ? text : `${summary}${text}`;
       }
+    }
+    if (node.type === 'paragraph' || node.type === 'break') {
+      summary = summary === null ? null : `${summary} `;
     }
     if (!('children' in node)) {
       return;
@@ -56,6 +63,10 @@ export const getSummaryFromMarkdown = async (markdown: string, targetLength: num
     });
   const root = compiler.parse(markdown);
   compiler.run(root);
+
+  if (summary && !/[.!?'"]\s*$/.test(summary as string)) {
+    summary = `${summary} …`;
+  }
 
   return summary as string | null;
 };
