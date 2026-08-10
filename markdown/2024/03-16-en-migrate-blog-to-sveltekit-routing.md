@@ -92,7 +92,7 @@ you can do that with single `+layout.svelte` file.
 `<Slot />` is where each `+page.svelte` will be rendered.
 
 But a question arises here: Where should the header component file be placed?
-Sveletekit document tells us to put it to the topmost directory where it is used.
+Sveltekit document tells us to put it to the topmost directory where it is used.
 If the topmost path is `/`, it would be best to be placed at `src/routes/` directory.
 
 Also, if the same component is shared among different paths (eg. `/post/author`, `/about/me`),
@@ -113,7 +113,7 @@ It's not just about which URL is *looking cool*, your link may be broken with 40
 
 Be aware that which URL is accessible depends on which hosting provider your website is hosted.
 
-Check out Sveletekit's `trailingSlash` layout option [document][svlete-trailing-slash].
+Check out Sveltekit's `trailingSlash` layout option [document][svlete-trailing-slash].
 Also this [trailing slash guide][trailing-slash-guide]. This guide is highly valuable.
 
 [app-router]: https://nextjs.org/docs/app/building-your-application/routing

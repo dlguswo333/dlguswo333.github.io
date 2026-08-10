@@ -37,7 +37,7 @@ Sure, you can do that with native DOM APIs. Well, that blurs the whole points of
 Defining Svelte components and using them for rendering Markdown will be really great.
 
 # How to Render in Svelte Component
-To render Markdown into Svelete component, I can get html syntax tree from *unified* compiler and traverse the tree. *remark-rehype* plugin returns a HTML syntax tree like below.
+To render Markdown into Svelte component, I can get html syntax tree from *unified* compiler and traverse the tree. *remark-rehype* plugin returns a HTML syntax tree like below.
 `tagName` represent corresponding HTML tag and I can render text upon `type: 'text'` node.
 ```js
 {
@@ -71,7 +71,7 @@ To render Markdown into Svelete component, I can get html syntax tree from *unif
 
 <br>
 
-I need to create a recursive Svelete component because I need to traverse hast tree and render children as children.
+I need to create a recursive Svelte component because I need to traverse hast tree and render children as children.
 The component below is not perfect implementation but it works on my simple *about* page.\
 Svelte has a nice tag `svelte:component` which lets you render an arbitrary, generic HTML element. You inject the tag with `this` property.
 

@@ -30,7 +30,7 @@ But I was not satisfactory with what I had.
   As stated, I am not good at Ruby. I don't know where to add, edit or delete from the codes to improve my blog.
   Also, the pre-existing html/css/js codes were a bit complicated to understand for me.
   In that sense, migrating blog to Javascript was a great choice.
-- **I wanted to try out `Svelete` and `Sveltekit`.**<br>
+- **I wanted to try out `Svelte` and `Sveltekit`.**<br>
   I have heard that [svelte][svelte] is great.
   I have been using `react` for some years and wanted to experience new things.
 - **CSR + SSG support**<br>
@@ -189,7 +189,7 @@ useEffect(() => {
 }, []);
 ```
 
-Those two codes from Svelete and React basically do the same thing.
+Those two codes from Svelte and React basically do the same thing.
 They are useful when you need to execute some logics to initialize components.
 
 [svelte]: https://svelte.dev/
