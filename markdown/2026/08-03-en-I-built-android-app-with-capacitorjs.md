@@ -83,7 +83,8 @@ If you need to run different code based on platform, you can easily do that as C
 ```js
 import {Capacitor} from '@capacitor/core';
 // 'web' | 'ios' | 'android'
-if (Capacitor.getPlatform()) {
+const platform = Capacitor.getPlatform();
+if (platform === 'ios') {
   // Do something.
 }
 ```
