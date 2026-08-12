@@ -28,13 +28,13 @@ Even though they are rendered inside Svelte, they are not compiled into Svelte c
 ><https://svelte.dev/docs/svelte/@html>
 
 # Problems with Raw HTML?
-Rendering into raw HTML string is good enough, but it doesn't allow me to redefine HTML elements in Svelte.
-I Need to handle them in *unified* or *HTML* ways.
-Most of time that might be a problem. I am already creating table of contents with my custom unfied plugin.
+Rendering Markdown into raw HTML string is fine, but it doesn't allow me to work with HTML elements in the Svelte way.
+To do that, I need to either process them with *unified* or work with *raw HTML* directly.
+In some cases that might not be a problem. I am already creating table of contents with my custom unified plugin.
 
 But what if it requires some interactivities, like click event listeners?
-Sure, you can do that with native DOM APIs. Well, that blurs the whole points of using Svelte.
-Defining Svelte components and using them for rendering Markdown will be really great.
+Sure, you can do that with native DOM APIs. Well, but that blurs the whole points of using Svelte.
+Defining Svelte components and using them to render Markdown will be the best.
 
 # How to Render in Svelte Component
 To render Markdown into Svelte component, I can get html syntax tree from *unified* compiler and traverse the tree. *remark-rehype* plugin returns a HTML syntax tree like below.
