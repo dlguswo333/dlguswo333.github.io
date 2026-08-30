@@ -43,7 +43,7 @@ Also you can build your app with CapacitorJS using your favorite web tools;
 React, Vue, Svelte, or even vanilla Javascript!
 Then CapacitorJS will read `index.html` from dist directory and load your build outputs.
 >Drop Capacitor into any existing web project, framework or library.
->Convert an existing React, Svelte, Vue (or your preferred Web Framework) project to native mobile.
+>Convert an existing React, Svelte, Vue (or your preferred Web Framework) project to native mobile.\
 ><https://capacitorjs.com/>
 
 ## Keep the Web Code Clean
