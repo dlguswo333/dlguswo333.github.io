@@ -151,18 +151,18 @@ body.dark .post .markdown-alert {
 }
 
 
-.post a {
+.post a:not(:has(code)) {
     color: #00a2ff;
     text-decoration: underline;
 }
 .post a:visited {
     color: #a520ff;
 }
-.post a:hover {
-    filter: brightness(125%);
+.post a:not(:has(code)):hover {
+    color: #00f2ff;
 }
 .post a:active {
-    filter: brightness(150%);
+    color: #00f2ff;
 }
 
 .post ol, .post ul {
@@ -214,6 +214,13 @@ body.dark .post .markdown-alert {
 body.dark .post code:not(pre code) {
     background-color: #373737;
     color: #00e333;
+}
+
+.post a code:not(pre code) {
+    text-decoration: underline;
+}
+.post a code:not(pre code):hover {
+    color: #0af915;
 }
 
 .post pre code {
