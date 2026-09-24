@@ -1,13 +1,16 @@
 ---
 layout: post
 toc: false
-editedDate: 2026-04-21
+editedDate: 2026-09-24
 title: "Matching Zod and Typescript Type"
 category: "Programming"
 tags: [typescript, zod]
 author:
   - 이현재
 ---
+
+>[!note]
+>Post edited on 2026-09-24: Wrote about a new way to handle this issue: `z.toZod<T>()`.
 
 Typescript itself already check types, but it offers only compile time type safety.
 Your Typescript codes cannot assign `string` values to `number` variables,
@@ -139,5 +142,63 @@ const bookDataZod: z.ZodType<BookData> = z.object({
   pageCount: z.number().positive().int(),
 });
 ```
+
+However, keep in mind that it can overlook even if the zod type have extra properties.
+It only checks if the zod schema variable is assignable to the zod type.
+```ts
+type BookData = {
+    title: string;
+    pageCount: number;
+}
+
+// It only checks if 'bookDataZod' is assignable to 'BookData'.
+const bookDataZod: z.ZodType<BookData> = z.object({
+  title: z.string().min(1),
+  pageCount: z.number().positive().int(),
+  // Extra property is permitted.
+  author: z.string(),
+});
+```
+
+<br>
+
+---
+
+<br>
+
+With zod v4.5 which was released on August 2026, you can also check your zod types against existing Typescript types in a new way.
+Check out `z.toZod<T>()`.\
+<https://zod.dev/api?id=matching-an-existing-type#matching-an-existing-type> \
+<https://zod.dev/blog/zod-4-5>
+
+```ts
+type BookData = {
+  title: string;
+  pageCount: number;
+}
+
+const bookDataZod = z.toZod<BookData>()(z.object({
+  title: z.string().min(1),
+  pageCount: z.number().positive().int(),
+}));
+```
+
+`z.toZod<T>()` is a newer, first-class support API and it also does the strict matching check.
+It does not allow extra properties, unlike `z.ZodType` does.
+It only agrees exactly with a static type.
+```ts
+type BookData = {
+  title: string;
+  pageCount: number;
+}
+
+const bookDataZod = z.toZod<BookData>()(z.object({
+  title: z.string().min(1),
+  pageCount: z.number().positive().int(),
+ // Typescript Error: '{ title: ZodString; pageCount: ZodNumber; author: ZodString; }' is not assignable to type '{ title: ZodString; pageCount: ZodNumber; author: ToZodKeyMismatch<never, string>; }'.
+  author: z.string(),
+}));
+```
+
 
 Happy coding!
