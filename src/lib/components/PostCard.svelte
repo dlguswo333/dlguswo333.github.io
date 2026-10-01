@@ -24,8 +24,8 @@
 
 <section
   class={`flex flex-col p-4 md:py-5 transition border rounded-xl bg-gray-100/30 dark:bg-gray-700/20
-    border-gray-200 hover:border-gray-300 dark:border-gray-700/70 dark:hover:border-gray-900/70
-    shadow-sm hover:shadow-md shadow-gray-300 dark:shadow-black/70`}>
+    border-gray-200 hover:border-gray-300 dark:border-gray-700/70 dark:hover:border-gray-600/50
+    shadow-sm hover:shadow-md shadow-gray-300 dark:shadow-black/50`}>
   {#if indexPost.coverImage}
     <div class="mb-2 rounded-md overflow-hidden bg-gray-100 dark:bg-zinc-900 shadow-md shadow-gray-300 dark:shadow-teal-900/20">
       <img class="w-full object-cover object-center"
