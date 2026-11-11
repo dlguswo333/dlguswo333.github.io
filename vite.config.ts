@@ -1,6 +1,6 @@
 import {sveltekit} from '@sveltejs/kit/vite';
 import {defineConfig, type PluginOption, type WebSocketServer} from 'vite';
-import {customEvent} from './src/lib';
+import {customEvent} from './src/lib/index.ts';
 import type {ReloadPayloadData} from '$lib/types';
 
 const MARKDOWN_FILE_PATH_REGEX = /(\d+\/\d+-\d+-[a-z]{2}-[^.]+)\.md$/;
