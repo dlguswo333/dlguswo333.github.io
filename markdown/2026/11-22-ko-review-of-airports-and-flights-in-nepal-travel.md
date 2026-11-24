@@ -403,7 +403,7 @@ author:
 ![hongkong_4](/img/2026-11-22-review-of-airports-and-flights-in-nepal-travel/hongkong_4.webp)
 ![hongkong_5](/img/2026-11-22-review-of-airports-and-flights-in-nepal-travel/hongkong_5.webp)
 저는 잠을 잘 못자서 홍콩 경유 여행이 별로일까 걱정했는데 너무 좋았습니다.
-처음으로 간 홍콩 여행인데 네팔과 비교해 동양의 도시로서 굉장히 대조적인 분위기인게 너무 좋더라구요.
+처음으로 간 홍콩 여행인데 동아시아 대도시로 네팔과 대조적인 분위기인게 너무 좋더라구요.
 공항 입국 터미널에 찬물 뜨거운 물 정수기와 종이컵도 비치되어 있는 것부터 좋았습니다.
 
 짧은 시간이지만 미드레벨 에스켈레이터, 익청 빌딩, 만모 도교 사원, 제니베이커리, 스타의 거리, 구룡공원도 가고
